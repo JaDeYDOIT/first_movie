@@ -1,0 +1,16 @@
+-- order_sql.txt
+
+-- 주문 테이블 생성
+CREATE TABLE `cart_payment_detail` (
+	`payment_detail_id`	INT UNSIGNED AUTO_INCREMENT PRIMARY KEY	NOT NULL,
+	`cart_payment_id`	INT UNSIGNED	NOT NULL,
+	`product_id`	INT UNSIGNED	NOT NULL,
+	`product_count`	SMALLINT UNSIGNED	NOT NULL,
+	`payment_price`	INT UNSIGNED	NOT NULL
+);
+
+-- 주문 시퀀스 생성
+create sequence cart_payment_detail_seq
+start with 1
+increment by 1
+cycle;

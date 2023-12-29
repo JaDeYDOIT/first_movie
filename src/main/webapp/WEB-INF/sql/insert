@@ -1,0 +1,371 @@
+////////////////////쿠폰 추가/////////////////////
+insert
+	into
+	`coupon` (`coupon_id`,
+	`coupon_name`,
+	`coupon_discount_rate`,
+	`coupon_expiration_date`,
+	`coupon_status`)
+values ('M1', '1인 영화관람권 1매 37%할인', 37, 90, '진행중');
+-- Inserting the second coupon
+insert
+	into
+	`coupon` (`coupon_id`,
+	`coupon_name`,
+	`coupon_discount_rate`,
+	`coupon_expiration_date`,
+	`coupon_status`)
+values ('H1', '현대카드 50% M포인트 할인', 50, 180, '완료');
+-- Inserting the third coupon
+
+insert
+	into
+	`coupon` (`coupon_id`,
+	`coupon_name`,
+	`coupon_discount_rate`,
+	`coupon_expiration_date`,
+	`coupon_status`)
+values ('H2', '현대백화점 모바일카드 신규 가입 프로모션', 80, 7, '진행중');
+
+
+
+
+
+////////////////////쿠폰 보유 내역 추가/////////////////////
+insert
+	into
+	user_having_coupon (member_id,
+	coupon_id,
+	coupon_expiration_date)
+values('jw990609',
+'M1',
+'2022-04-01');
+
+insert
+	into
+	user_having_coupon (member_id,
+	coupon_id,
+	coupon_expiration_date)
+values('ym930322',
+'H1',
+'2023-06-30');
+
+insert
+	into
+	user_having_coupon (member_id,
+	coupon_id,
+	coupon_expiration_date)
+values('sw572509',
+'H2',
+'2023-12-14');
+
+insert
+	into
+	user_having_coupon (member_id,
+	coupon_id,
+	coupon_expiration_date)
+values('jw990609',
+'H1',
+'2024-06-04');
+
+insert
+	into
+	user_having_coupon (member_id,
+	coupon_id,
+	coupon_expiration_date)
+values('jw990609',
+'H2',
+'2023-12-14');
+
+
+
+
+////////////////////공지사항 추가/////////////////////
+insert into notice(notice_id ,notice_title ,notice_type ,notice_content ,notice_datetime ,notice_count)
+values(nextval(notice_seq),'CGV이용안내',0,'CGV이용시 수칙을 준수해 주세요',CURRENT_TIMESTAMP,0);
+
+insert into notice(notice_id ,notice_title ,notice_type ,notice_content ,notice_datetime ,notice_count)
+values(nextval(notice_seq),'개인정보처리방침',1,'개인정보 관리법에 따라 관리함',CURRENT_TIMESTAMP,0);
+
+
+
+
+////////////////////영화 추가/////////////////////
+INSERT INTO movie (movie_id, movie_genre_id, movie_name, movie_running_time, movie_production_year, movie_audience_rating, movie_rank, movie_image, movie_video, director_name, actor_name)
+VALUES
+('movie_id1', 1, '서울의봄',     111, now(), '15세이상', 1, 'url://', 'url://', '김성수',         '배우1 '),
+('movie_id2', 2, '3일의 휴가',   111, now(), '12세이상', 2, 'url://', 'url://', '육상호',         '배우1, 배우2'),
+('movie_id3', 3, '나폴레옹',     111, now(), '15세이상', 3, 'url://', 'url://', '리들리 스콧',     '배우1, 배우2'),
+('movie_id4', 4, '싱글 인 서울', 111, now(), '12세이상', 4, 'url://', 'url://', '박범수',          '배우1, 배우3'),
+('movie_id5', 5, '괴물',        111, now(), '12세이상', 5, 'url://', 'url://', '고레에다 히로카즈', '배우1, 배우2, 배우3, 배우4');
+
+
+
+
+////////////////////회원 추가/////////////////////
+INSERT INTO member (member_id, member_name, member_pw, member_email, member_gender, member_birthdate, member_phone, member_email_check, member_sns_check)
+VALUES
+('jw990609', '김재원', 'jwjw1234', 'jw@naver.com', 0, '19123456', '010-5678-9999', 0, 1),
+('ym930322', '전영민', 'ymym1234', 'ym@gmail.com', 0, '19123456', '010-5678-9999', 1, 1),
+('sw572509', '조성우', 'swsw1234', 'sq@naver.com', 1, '191234569', '010-5678-9999', 0, 0),
+('sj921028', '원성준', 'sjsj1234', 'sj@naver.com', 1, '19123456', '010-5678-9999', 1, 1),
+('dh931004', '김동훈', 'dhdh1234', 'dh@gmail.com', 1, '19123456', '010-5678-9999', 0, 0);
+
+
+
+
+
+
+////////////////////영화 장르 추가/////////////////////
+INSERT INTO movie_genre (movie_genre_id, movie_genre_name)
+SELECT NEXTVAL(movie_genre_seq), '드라마' UNION ALL
+SELECT NEXTVAL(movie_genre_seq), '판타지' UNION ALL
+SELECT NEXTVAL(movie_genre_seq), '전쟁' UNION ALL
+SELECT NEXTVAL(movie_genre_seq), '멜로/로맨스' UNION ALL
+SELECT NEXTVAL(movie_genre_seq), '미스터리';
+
+
+
+////////////////////선호장르 추가/////////////////////
+INSERT INTO preferred_genre(preferred_genre_id,movie_genre_id,member_id) 
+VALUES
+(NEXTVAL(preferred_genre_seq), 1, 'jw990609'),
+(NEXTVAL(preferred_genre_seq), 2, 'ym930322'),
+(NEXTVAL(preferred_genre_seq), 3, 'sw572509');
+
+
+
+////////////////////결제정보 추가/////////////////////
+INSERT INTO payment(payment_id, member_id, move_information_id, adult, child, silver, price, pay_discount, pay_type, refund, pay_datetime) VALUES ('20231111153001', 'jw990609', 'movie_information1', 1, 0, 0, 13000, 120, 0, 1, now());
+INSERT INTO payment(payment_id, member_id, move_information_id, adult, child, silver, price, pay_discount, pay_type, refund, pay_datetime) VALUES ('20231115120101', 'ym930322', 'movie_information2', 1, 0, 0, 13000, 0, 1, 1, now());
+INSERT INTO payment(payment_id, member_id, move_information_id, adult, child, silver, price, pay_discount, pay_type, refund, pay_datetime) VALUES ('20231115120102', 'sw572509', 'movie_information3', 1, 0, 0, 13000, 100, 2, 1, now());
+
+
+
+
+////////////////////대관 문의 추가/////////////////////
+insert into rental_inquiry(rental_inquiry_id ,rental_inquiry_theater ,rental_inquiry_start ,rental_inquiry_end ,rental_inquiry_movie ,rental_inquiry_people_count ,rental_inquiry_content , rental_inquiry_name ,rental_inquiry_phone,rental_inquiry_pw ,rental_inquiry_review ,rental_inquiry_datetime )
+values(nextval(rental_inquiry_seq),'CGV강남','2023-12-06','2023-12-07','서울의 봄',50,'교회 단체 방문','홍길동','010-5678-9999',1234,1,CURRENT_TIMESTAMP);
+
+insert into rental_inquiry(rental_inquiry_id ,rental_inquiry_theater ,rental_inquiry_start ,rental_inquiry_end ,rental_inquiry_movie ,rental_inquiry_people_count ,rental_inquiry_content , rental_inquiry_name ,rental_inquiry_phone,rental_inquiry_pw ,rental_inquiry_review ,rental_inquiry_datetime )
+values(nextval(rental_inquiry_seq),'CGV서면','2023-12-08','2023-12-09','싱글 인 서울',50,'학교 단체 방문','이영희','010-1234-5678',5678,1,CURRENT_TIMESTAMP);
+
+insert into rental_inquiry(rental_inquiry_id ,rental_inquiry_theater ,rental_inquiry_start ,rental_inquiry_end ,rental_inquiry_movie ,rental_inquiry_people_count ,rental_inquiry_content , rental_inquiry_name ,rental_inquiry_phone,rental_inquiry_pw ,rental_inquiry_review ,rental_inquiry_datetime )
+values(nextval(rental_inquiry_seq),'CGV두만강','2023-12-07','2023-12-07','나폴레옹',50,'그냥','박철수','010-3333-4444',9999,2,CURRENT_TIMESTAMP);
+
+insert into rental_inquiry(rental_inquiry_id ,rental_inquiry_theater ,rental_inquiry_start ,rental_inquiry_end ,rental_inquiry_movie ,rental_inquiry_people_count ,rental_inquiry_content , rental_inquiry_name ,rental_inquiry_phone,rental_inquiry_pw ,rental_inquiry_review ,rental_inquiry_datetime )
+values(nextval(rental_inquiry_seq),'CGV두만강','2023-12-07 15:30','2023-12-07 16:00','나폴레옹',50,'그냥','박철수','010-3333-4444',9999,2,NOW());
+
+
+
+
+
+////////////////////문의 추가/////////////////////
+INSERT INTO inquire (inquire_id, member_id, inquire_kind, inquire_title, inquire_content, inquire_theater_name, inquire_file, inquire_pw, inquiry_answer, inquiry_datetime)
+VALUES
+(nextval(inquire_seq), 'dh931004', 0, '영화관 이용 관련',    'C8좌석 의자가 파손',            'CGV강남',   'src=""', 1234, 0, now()),
+(nextval(inquire_seq), 'jw990609', 0, '이상한 사람이 있어요', '영화관에서 술쳐먹는중',          'CGV서면',   'src=""', 4321, 0, now()),
+(nextval(inquire_seq), 'sj921028', 0, '노잼',              '너무 재미없네요 환불 가능할까요?', 'CGV두만강', 'src=""', 2234, 0, now()),
+(nextval(inquire_seq), 'sw572509', 1, '비니 잃어버림',       '대머리인데 비니가 없어졌어요ㅠㅠ', 'CGV강남',   'src=""', 1234, 1, now()),
+(nextval(inquire_seq), 'ym930322', 1, '콜라 없어짐',         '마시던 콜라가 없어졌어요',       'CGV서면',   'src=""', 1234, 1, now());
+
+
+
+
+////////////////////포인트 추가/////////////////////
+INSERT INTO point(point_id, payment_id, member_id, point_list, point_date) VALUES (nextval(point_seq), '20231111153001', 'jw990609', +164, now());
+INSERT INTO point(point_id, payment_id, member_id, point_list, point_date) VALUES (nextval(point_seq), '20231115120101', 'ym930322', +65, now());
+INSERT INTO point(point_id, payment_id, member_id, point_list, point_date) VALUES (nextval(point_seq), '20231115120102', 'sw572509', +520, now());
+
+
+
+////////////////////리뷰 추가/////////////////////
+INSERT INTO review (SELECT NEXTVAL(review_seq), 'jw990609', 'movie_id1', 1, '개꿀잼', now());
+INSERT INTO review (SELECT NEXTVAL(review_seq), 'ym930322', 'movie_id2', 1, '핵꿀잼', now());
+INSERT INTO review (SELECT NEXTVAL(review_seq), 'sw572509', 'movie_id3', 1, '핵노잼', now());
+
+
+////////////////////상영관 추가/////////////////////
+INSERT INTO screen(screen_id,branch_id,screen_location,screen_seat_count,screen_row,screen_line) 
+VALUES('screen_id1','branch_001', 1,50,10,5)
+,('screen_id2','branch_001', 2,45,10,5)
+,('screen_id3','branch_001', 3,70,10,7);
+
+
+
+////////////////////좌석 추가/////////////////////
+insert into movie_seat(seat_id, seat_x, seat_y) values('seat_1', 'a', 1);
+insert into movie_seat(seat_id, seat_x, seat_y) values('seat_2', 'a', 2);
+insert into movie_seat(seat_id, seat_x, seat_y) values('seat_3', 'a', 3);
+insert into movie_seat(seat_id, seat_x, seat_y) values('seat_4', 'a', 4);
+insert into movie_seat(seat_id, seat_x, seat_y) values('seat_5', 'a', 5);
+insert into movie_seat(seat_id, seat_x, seat_y) values('seat_6', 'a', 6);
+insert into movie_seat(seat_id, seat_x, seat_y) values('seat_7', 'a', 7);
+insert into movie_seat(seat_id, seat_x, seat_y) values('seat_8', 'a', 8);
+insert into movie_seat(seat_id, seat_x, seat_y) values('seat_9', 'a', 9);
+insert into movie_seat(seat_id, seat_x, seat_y) values('seat_10', 'a', 10);
+
+
+
+////////////////////제품 추가/////////////////////
+INSERT INTO product(product_id,product_category_id,product_name,product_image,product_cost,product_content,product_quantity) 
+VALUES((SELECT NEXTVAL(product_seq)),1,'좋은 날 패키지','http://',20000,'일반 영화 관람권 1매 + 스몰세트 1개',1)
+     ,((SELECT NEXTVAL(product_seq)),2,'CGV 골드클래스','http://',40000,'골드클래스 관람권',1)
+     ,((SELECT NEXTVAL(product_seq)),3,'더블콤보','http://',13000,'팝콘(M)2+탄산(M)2',1)
+     ,((SELECT NEXTVAL(product_seq)),4,'더블치즈팝콘(M)','http://',6000,'더블치즈팝콘(M)',1)
+     ,((SELECT NEXTVAL(product_seq)),5,'에이드','http://',5500,'에이드',1);
+
+
+
+///////////////////제품 종류 추가//////////////////////
+INSERT INTO product_category(product_category_id,product_category_name) 
+VALUES((SELECT NEXTVAL(product_category_seq)),'패키지')
+     ,((SELECT NEXTVAL(product_category_seq)),'영화관람권')
+     ,((SELECT NEXTVAL(product_category_seq)),'콤보')
+     ,((SELECT NEXTVAL(product_category_seq)),'팝콘')
+     ,((SELECT NEXTVAL(product_category_seq)),'음료');
+
+
+
+
+////////////////////지역 추가/////////////////////
+INSERT INTO region(region_id,region) 
+VALUES('region_001', '서울')
+,('region_002', '대전/충청')
+,('region_003', '광주/전라/제주');
+
+
+
+////////////////////지점 추가/////////////////////
+INSERT INTO theater_branch(branch_id,region_id,branch_name,branch_address,branch_number,branch_seats) 
+VALUES('branch_001','region_001', 'CGV강남','서울특별시 강남구 강남대로 438 (역삼동, 스타플렉스)',6,250)
+,('branch_003','region_002', 'CGV논산','충남 논산시 시민로 181 시네마타워 3층',5,150)
+,('branch_005','region_003', 'CGV광양','전라남도 광양시 금호동 624-12 2층 몰오브광양',4,200);
+
+
+
+
+
+////////////////////장바구니 추가/////////////////////
+INSERT INTO cart_payment(cart_payment_id,member_id,cart_payment_datetime,cart_payment_method,cart_payment_status) 
+VALUES((SELECT NEXTVAL(cart_payment_seq)), 'jw990609',now(),1,'완료')
+     ,((SELECT NEXTVAL(cart_payment_seq)), 'ym930322',now(),2,'환불')
+     ,((SELECT NEXTVAL(cart_payment_seq)), 'sw572509',now(),1,'완료');
+
+
+
+
+
+
+////////////////////혜택 추가/////////////////////
+insert
+	into
+	benefit (`benefit_id`, `benefit_category_id`, `benefit_name`, `benefit_image`, `benefit_content`)
+values
+    (nextval(benefit_seq), 'benefit_1', 'KT멤버십', 'N6pOt68ktn3MBQP1yg44T3dWh1Ckc41F.png', 'TEXT'),
+    (nextval(benefit_seq), 'benefit_2', 'LGU+멤버십', 'WPRyFKx1W6CUkLF96MYSavfRCO9SmTTx.png', 'TEXT'),
+    (nextval(benefit_seq), 'benefit_4', '블루멤버스 포인트', 'rnsHsbeu5HqsKWoSDIqDLwI1U7gXKc97.png', 'TEXT'),
+    (nextval(benefit_seq), 'benefit_4', 'OK캐쉬백(사용)', 'NcS6J177UXwgd43kRg8Y7ZgK11t4fACK.png', 'TEXT'),
+    (nextval(benefit_seq), 'benefit_4', 'GSPoint카드', 'wWPlFXdNbe6Fkt3Vj08nmrn5BQTdpNwG.jpg', 'TEXT'),
+    (nextval(benefit_seq), 'benefit_7', '현대카드 X2 Edition2', 'oM2yKtWRE8aACculvKqebNDJauF5332J.png', 'TEXT'),
+    (nextval(benefit_seq), 'benefit_8', 'JUICY 신한 체크카드', 'RlDtPlHegwM9qBRqJ72HZUttWcMfqB7d.png', 'TEXT'),
+    (nextval(benefit_seq), 'benefit_6', 'SSG.COM 삼성카드', '4b9X07FvL4CMlD7sVstrvE8VvL4yWxlZ.png', 'TEXT');
+
+    
+    
+    
+    
+    ////////////////////혜택 종류 추가/////////////////////
+insert
+	into
+	`benefit_category` (`benefit_category_id`,
+	`main_category_name`,
+	`middle_category_name`)
+values
+    ('benefit_1', '통신사', 'KT'),
+    ('benefit_2', '통신사','LGU+'),
+    ('benefit_3', '통신사', 'SKT'),
+    ('benefit_4', '포인트', '기타'),
+    ('benefit_5', '카드', '우리카드'),
+    ('benefit_6', '카드', '삼성카드'),
+    ('benefit_7', '카드', '현대카드'),
+    ('benefit_8', '카드', '신한카드'),
+    ('benefit_9', '카드', 'KB국민카드');
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ////////////////////상영관 영화정보 추가/////////////////////
+INSERT INTO screen_movie_information(move_information_id,screen_id,movie_id,movie_type,movie_showing_datetime) 
+VALUES('movie_information1','screen_id1','movie_id1','2D','2024-01-18 13:10')
+,('movie_information2','screen_id1','movie_id1','2D','2024-01-18 16:00')
+,('movie_information3','screen_id2','movie_id2','2D','2024-01-19 12:20')
+,('movie_information4','screen_id3','movie_id4','2D','2024-01-19 14:40');
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ////////////////////문의 답변 추가/////////////////////
+insert into inquire_answer(inquire_answer_id ,inquire_id ,inquire_answer_title ,inquire_answer_content ,inquire_answer_day)
+values(nextval(inquire_answer_seq),1,'시계도둑','이제 이 시계는 제껍니다!',CURRENT_TIMESTAMP);
+
+insert into inquire_answer(inquire_answer_id ,inquire_id ,inquire_answer_title ,inquire_answer_content ,inquire_answer_day)
+values(nextval(inquire_answer_seq),2,'콜라베어','코카콜라짱~!',CURRENT_TIMESTAMP);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ////////////////////대관 추가/////////////////////
+insert into rental(rental_details_id ,rental_inquiry_theater ,rental_details_start ,rental_details_end ,rental_details_movie ,rental_details_people_count ,rental_details_status ,rental_inquiry_name ,rental_inquiry_phone ,rental_inquiry_price ,rental_inquiry_approveday)
+values(nextval(rental_seq),'CGV강남','2023-12-06','2023-12-07','서울의 봄',50,1,'홍길동','010-5678-9999',1000000,CURRENT_TIMESTAMP);
+
+insert into rental(rental_details_id ,rental_inquiry_theater ,rental_details_start ,rental_details_end ,rental_details_movie ,rental_details_people_count ,rental_details_status ,rental_inquiry_name ,rental_inquiry_phone ,rental_inquiry_price ,rental_inquiry_approveday)
+values(nextval(rental_seq),'CGV서면','2023-12-08','2023-12-09','싱글 인 서울',50,0,'이영희','010-1234-5678',2000000,CURRENT_TIMESTAMP);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ////////////////////장바구니 결제 상세 추가/////////////////////
+INSERT INTO cart_payment_detail(payment_detail_id,cart_payment_id,product_id,product_count,payment_price) 
+VALUES
+((SELECT NEXTVAL(cart_payment_detail_seq)), 1, 6, 1, 20000),
+((SELECT NEXTVAL(cart_payment_detail_seq)), 1, 7, 2, 12000),
+((SELECT NEXTVAL(cart_payment_detail_seq)), 1, 8, 3, 16500);
+
+
+
+
+
+
+
+
+
+
+
+////////////////////예약 좌석 추가/////////////////////
+INSERT INTO payment_seat(payment_seat_id, payment_id, seat_id) VALUES ('payment_seat_1', '20231111153001', 'seat_10');
+INSERT INTO payment_seat(payment_seat_id, payment_id, seat_id) VALUES ('payment_seat_2', '20231115120101', 'seat_10');
+INSERT INTO payment_seat(payment_seat_id, payment_id, seat_id) VALUES ('payment_seat_3', '20231115120102', 'seat_10');
+
+    
+    

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<!-- order.xml --> 
+
+<mapper namespace="order">
+	
+	<select id="totalmoney" parameterType="String" resultType="int">
+		SELECT sum(PD.product_cost*CPD.product_count) AS totalmoney
+		FROM product PD JOIN cart_payment_detail CPD
+		ON PD.product_id = CPD.product_id
+		WHERE member_id= #{member_id};
+	</select>
+	
+	<select id="consumerlist" resultType="kr.co.fmos.member.MemberDTO">
+		SELECT member_name, member_phone
+		FROM member
+		WHERE member_id = #{member_id}
+	</select>
+
+
+
+</mapper>

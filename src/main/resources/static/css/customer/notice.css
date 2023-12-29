@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+table{
+	border: 1px solid black;
+	margin: 50px 0 0 290px;
+}
+
+table *{
+	height: 35px;
+	font-size: 18px;
+}
+
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	
+-webkit-appearance: none;
+margin: 0;
+}
+
+table th{
+	background-color: gainsboro;
+	width: 150px;
+}
+
+.inquirysel{
+	padding: 3px;
+}
+
+.nameinp{
+	width: 100px;
+}
+
+.phoneinp input{
+	width: 80px;
+}
+
+.phoneinp span{
+	font-size: 25px;
+}
+
+.titleinp {
+	width: 500px;
+}
+
+.contentinp {
+    width: 503px;
+    height: 280px;
+     resize: none;
+}
+
+.button_wrap{
+	width: 30%;
+	height: 50px;
+	margin: 30px auto 50px auto;
+	display: flex;
+	justify-content: space-around;
+}
+
+.button_wrap input{
+	width: 140px;
+	margin-left: 50px;
+	border-radius: 7px;
+	box-shadow: 0.5px 0.5px 0.5px 0.5px gray;
+}
+
+.button_wrap input:nth-child(1){
+	background-color: rgb(50, 150, 150);
+}
+
+.button_wrap input:nth-child(2){
+	background-color: rgb(255, 50, 100);
+}
+
+.inquire_content{
+	text-align: start;
+}

@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+body {
+	font-family: Arial, sans-serif;
+}
+
+#moviefrm{
+	padding-bottom: 5%;
+}
+
+h2{
+	font-size: 25px;
+	font-weight: bold;
+	padding: 1%;
+}
+.movie_addition {
+	width: 100%;
+	max-width: 600px;
+	margin: 0 auto;
+	background-color: #f4f4f4;
+}
+
+.movie_addition tr {
+	margin-bottom: 10px;
+}
+
+.movie_addition td {
+	padding: 10px;
+}
+
+.movie_addition input {
+	width: 100%;
+	padding: 8px;
+	box-sizing: border-box;
+	margin-top: 4px;
+}
+
+.execution {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.execution input {
+	width: 100px;
+	cursor: pointer;
+}
