@@ -1,6 +1,7 @@
 package kr.co.fmos.screenMovieInfo;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,4 +22,9 @@ public class ScreenMovieInfoDAOImp implements ScreenMovieInfoDAO{
 	public List<ScreenMovieInfoDTO> list(){
 		return sqlSession.selectList("screenMovieInfo.list");
 	}//list() end
+	
+	@Override
+	public List<ScreenMovieInfoDTO> showingTime(Map<String, Object> map){
+		return sqlSession.selectList("screenMovieInfo.showingTime", map);
+	}//showingTime() end
 }

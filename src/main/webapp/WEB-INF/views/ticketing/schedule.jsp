@@ -65,7 +65,7 @@
 																var="theaterBranch">
 																<c:if
 																	test="${region.getRegion_id() eq theaterBranch.region_id}">
-																	<li class="theaterBranchID" data-theaterBranchID="${theaterBranch.branch_id}"><a href="#none">${theaterBranch.branch_name}</a></li>
+																	<li class="theaterBranchID" data-theaterbranchid="${theaterBranch.branch_id}"><a href="#none">${theaterBranch.branch_name}</a></li>
 																</c:if>
 															</c:forEach>
 														</ul>
@@ -91,7 +91,7 @@
 						<div class="movie_select_wrap list mCustomScrollbar thm">
 							<ul>
 								<c:forEach items="${movieList}" var="movie">
-									<li class="movieID disabled" data-movieID="${movie.movie_id}"><a href="#none">
+									<li class="movieID disabled" data-movieid="${movie.movie_id}"><a href="#none">
 											<div class="bx_thm">
 												<span class="rank"><span class="hidden">순위</span><strong>${movie.movie_rank}</strong></span><img
 													src="${movie.movie_image}" alt="포스터" class="mCS_img_loaded">

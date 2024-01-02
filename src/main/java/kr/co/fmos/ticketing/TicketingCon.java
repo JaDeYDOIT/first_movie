@@ -13,8 +13,8 @@ import kr.co.fmos.theaterBranch.TheaterBranchDAOImp;
 
 @Controller
 @RequestMapping("/ticketing")
-public class ticketingCon {
-	public ticketingCon() {
+public class TicketingCon {
+	public TicketingCon() {
 		System.out.println("-----ticketingCon() 객체 생성됨");
 	}
 	
@@ -32,14 +32,14 @@ public class ticketingCon {
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("ticketing/personseat");
 		return mav;
-	}//home() end
+	}
 	
 	@GetMapping("/paysuccess")
 	public ModelAndView paysuccess() {
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("ticketing/paysuccess");
 		return mav;
-	}//home() end
+	}
 
 	@GetMapping("/schedule")
 	public ModelAndView schedule() {
@@ -50,12 +50,12 @@ public class ticketingCon {
 		mav.addObject("screenMovieInfoList", screenMovieInfoDao.list());
 		mav.setViewName("ticketing/schedule");
 		return mav;
-	}// home() end
+	}
 
 	@GetMapping("/orderSettlement")
 	public ModelAndView orderSettlement() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("ticketing/orderSettlement");
 		return mav;
-	}// home() end
+	}
 }
