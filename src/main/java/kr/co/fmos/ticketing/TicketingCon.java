@@ -13,8 +13,8 @@ import kr.co.fmos.theaterBranch.TheaterBranchDAOImp;
 
 @Controller
 @RequestMapping("/ticketing")
-public class ticketingCon {
-	public ticketingCon() {
+public class TicketingCon {
+	public TicketingCon() {
 		System.out.println("-----ticketingCon() 객체 생성됨");
 	}
 	

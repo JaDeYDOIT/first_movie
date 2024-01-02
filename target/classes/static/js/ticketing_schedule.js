@@ -41,7 +41,7 @@ $(document).ready(function() {
 		$(this).addClass('active');
 
 		//선택한 지점 저장
-		selectedBranchID = $(this).data("theaterBranchID");
+		selectedBranchID = $(this).data("theaterbranchid");
 
 		$('.movie_select_wrap').css('display', 'block');
 	});
@@ -59,7 +59,7 @@ $(document).ready(
 				$('.timeScroll').css('display', 'block');
 
 				//선택한 영화 저장
-				selectedMovieID = $(this).data("MovieID");
+				selectedMovieID = $(this).data("movieid");
 
 				//상영 시간 구역에 표시할 영화제목
 				let movieGrade = $(".movie_select_wrap .active .ic_grade").attr("class");
@@ -72,23 +72,24 @@ $(document).ready(
 
 $(document).ready(function() {
 	$('.cinemaSelect .depth2 li, .movie_select_wrap li').click(function() {
-		 var showingTimeParam = {
-                branchID: selectedBranchID,
-                movieID: selectedMovieID
-            };
-		
-		$.ajax({
-			type: "POST",
-			contentType: "application/json",
-			url: "/api/movies/showtimes",
-			data: JSON.stringify(showingTimeParam),
-			success: function(result) {
-				// 결과를 화면에 출력
-				$("#showTimesResult").html("<h2>Show Times:</h2><p>" + result.showTimes.join(", ") + "</p>");
-			},
-			error: function(error) {
-				console.log("Error:", error);
-			}
-		});
+		if (selectedBranchID !== undefined && selectedMovieID !== undefined) {
+			var showingTimeParam = {
+				branchID: selectedBranchID,
+				movieID: selectedMovieID
+			};
+
+			$.ajax({
+				type: "POST",
+				contentType: "application/json",
+				url: "/screenMovieInfo/showingTime",
+				data: JSON.stringify(showingTimeParam),
+				success: function(result) {
+					console.log(result);
+				},
+				error: function(error) {
+					console.log("Error:", error);
+				}
+			});
+		}
 	});
 });
