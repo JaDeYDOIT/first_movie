@@ -6,6 +6,14 @@
 <!-- theaterBranch.xml -->
 
 <!-- 테스트 브런치 -->
+
+<!-- 테스트 브런치 -->
+
+<!-- 테스트 브런치 -->
+
+<!-- 테스트 브런치 -->
+
+<!-- 테스트 브런치 -->
 <mapper namespace="theaterBranch">
 	<select id="list"
 		resultType="kr.co.fmos.theaterBranch.TheaterBranchDTO">
