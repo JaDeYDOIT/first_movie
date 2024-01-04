@@ -10,7 +10,11 @@
 		resultType="kr.co.fmos.theaterBranch.TheaterBranchDTO">
 		SELECT branch_id, region_id,
 		branch_name, branch_address,
+<<<<<<< Updated upstream
 		branch_number, branch_seats
+=======
+		branch_number
+>>>>>>> Stashed changes
 		FROM
 		theater_branch
 	</select>

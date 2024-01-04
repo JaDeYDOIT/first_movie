@@ -15284,7 +15284,11 @@ dl.total_price dd strong {
 
 .wrap_reserve .section_step_con .article.article_cinema>.inner .cinema_select_wrap>ul,
 .wrap_reserve .section_step_con .article.article_cinema>.inner .cinema_select_wrap>ul .depth2 .mCustomScrollbar {
+<<<<<<< Updated upstream
 	height: 753px;
+=======
+	height: 815px;
+>>>>>>> Stashed changes
 }
 
 /* customizing : cinema_select_wrap */

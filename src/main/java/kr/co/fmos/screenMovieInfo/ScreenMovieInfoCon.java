@@ -18,14 +18,13 @@ public class ScreenMovieInfoCon {
 	public ScreenMovieInfoCon() {
 		System.out.println("-----ScreenMovieInfoCon() 객체 생성됨");
 	}
-	
+
 	@Autowired
 	ScreenMovieInfoDAO screenMovieInfoDao;
-	
+
 	@PostMapping("/showingTime")
 	@ResponseBody
-	public List<ScreenMovieInfoDTO> showingTime(@RequestBody Map<String, Object> map)
-	{
+	public List<ScreenMovieInfoDTO> showingTime(@RequestBody Map<String, Object> map) {
 		return screenMovieInfoDao.showingTime(map);
 	}
 }
