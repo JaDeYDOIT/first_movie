@@ -5,6 +5,7 @@
 
 <!-- theaterBranch.xml -->
 
+<!-- 테스트 브런치 -->
 <mapper namespace="theaterBranch">
 	<select id="list"
 		resultType="kr.co.fmos.theaterBranch.TheaterBranchDTO">
@@ -12,6 +13,6 @@
 		branch_name, branch_address,
 		branch_number
 		FROM
-		theater_branch 
+		theater_branch
 	</select>
 </mapper>
