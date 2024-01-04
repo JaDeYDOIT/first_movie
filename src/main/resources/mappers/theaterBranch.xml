@@ -12,6 +12,6 @@
 		branch_name, branch_address,
 		branch_number
 		FROM
-		theater_branch
+		theater_branch 
 	</select>
 </mapper>
