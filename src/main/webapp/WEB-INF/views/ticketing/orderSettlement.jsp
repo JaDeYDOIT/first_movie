@@ -23,48 +23,45 @@
 <script src="/js/ticketing_orderSettlement.js"></script>
 </head>
 <body>
-	<div class="wrap_reserve" style="margin: 1% auto;">
-		<h2 class="hidden">예매하기</h2>
-		<div class="section_step_tit">
-			<ul>
-				<li class="step01 prev"><a href="/ticketing/schedule"><strong
-						class="tit"><span>01</span><br>상영시간</strong> </a></li>
-				<li class="step02 prev"><a href="/ticketing/personseat"><strong
-						class="tit"><span>02</span><br>인원/좌석</strong> </a></li>
-				<li class="step03 active"><a href="#"><strong class="tit"><span>03</span><br>결제</strong>
-				</a></li>
-				<li><a href="#" style="cursor: default;"><strong
-						class="tit"><span>04</span><br>결제완료</strong></a></li>
-			</ul>
-		</div>
-		<div id="reserveStep01" class="section_step_con step01 ">
-			<h3 class="hidden">상영시간</h3>
-		</div>
-		<div id="reserveStep02" class="section_step_con step02 ">
-			<h3 class="hidden">인원/좌석</h3>
-		</div>
-		<div id="reserveStep03" class="section_step_con step03 active">
-			<h3 class="hidden">결제</h3>
-			<div class="article article_sum_infor">
-				<div class="group_top">
-					<h4 class="tit">예매정보</h4>
-				</div>
-				<div class="inner">
-					<div class="movie_infor new2020">
-						<span class="thm"><img
-							src="https://cf.lottecinema.co.kr//Media/MovieFile/MovieImg/202312/20492_104_1.jpg"
-							alt="노량: 죽음의 바다"></span><strong class="tit"><span
-							class="ic_grade gr_12"></span>&nbsp;노량: 죽음의 바다(Super 4D2D)</strong>
-						<dl class="dlist_infor">
-							<dt>일시</dt>
-							<dd>
-								<strong>2023-12-20 (수) 12:30 ~ 15:12</strong>
-							</dd>
-							<dt>영화관</dt>
-							<dd>가산디지털 3관, 수퍼 4D - 2D</dd>
-							<dt>인원</dt>
-							<dd>성인1</dd>
-						</dl>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // sessionStorage에서 카운트를 가져와 해당 엘리먼트 업데이트
+    document.querySelectorAll('[id^="person_"]').forEach(function(item) {
+        var countElement = item.querySelector('.txt_num');
+        var storedCount = sessionStorage.getItem('count_' + item.id);
+
+        if (storedCount !== null) {
+            countElement.textContent = storedCount;
+        }
+    }); 
+});
+
+</script>
+		<div class="wrap_reserve" style="margin:1% auto;">
+			<h2 class="hidden">예매하기</h2>
+			<div class="section_step_tit">
+				<ul>
+					<li class="step01 prev"><a href="/ticketing/schedule"><strong class="tit"><span>01</span><br>상영시간</strong>
+					</a></li>
+					<li class="step02 prev"><a href="/ticketing/personseat"><strong class="tit"><span>02</span><br>인원/좌석</strong>
+					</a></li>
+					<li class="step03 active"><a href="#"><strong class="tit"><span>03</span><br>결제</strong>
+					</a></li>
+					<li><a href="#" style="cursor: default;"><strong
+							class="tit"><span>04</span><br>결제완료</strong></a></li>
+				</ul>
+			</div>
+			<div id="reserveStep01" class="section_step_con step01 ">
+				<h3 class="hidden">상영시간</h3>
+			</div>
+			<div id="reserveStep02" class="section_step_con step02 ">
+				<h3 class="hidden">인원/좌석</h3>
+			</div>
+			<div id="reserveStep03" class="section_step_con step03 active">
+				<h3 class="hidden">결제</h3>
+				<div class="article article_sum_infor">
+					<div class="group_top">
+						<h4 class="tit">예매정보</h4>
 					</div>
 					<div class="seat_infor">
 						<dl class="dlist_infor">
@@ -209,6 +206,15 @@
 											alt="모바일캐시비/티머니"></span><span class="pay_simple_tit">모바일캐시비/티머니</span>
 									</button></li>
 							</ul>
+						<div class="seat_infor">
+							<dl class="dlist_infor">
+								<dt>좌석</dt>
+								<dd>
+									<c:forEach items="${list}" var="dto">
+										<strong>${dto}</strong>
+									</c:forEach>
+								</dd>
+							</dl>
 						</div>
 					</div>
 				</div>

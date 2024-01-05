@@ -3,13 +3,15 @@
 <%@ include file="../header.jsp"%>
 <link rel="stylesheet" href="/css/default.css">
 <link rel="stylesheet" href="/css/owl.css">
-<link rel="stylesheet" href="/css/swiper.css">
 <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.css">
 <link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/css/content.css">
 <link rel="stylesheet" href="/css/content_lc21new.css">
 <link rel="stylesheet" href="/css/dev.css">
-<link rel="stylesheet" href="/css/ticket_seat.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 
 <script>
 	document.addEventListener("DOMContentLoaded", function() {
@@ -26,7 +28,7 @@
 				updateCount(btn, 1);
 			});
 		});
-
+		
 		// 행과 열의 개수 설정
 		var numRows = 8; // 예시로 5개의 행 사용
 		var numCols = 10; // 예시로 10개의 열 사용
@@ -94,7 +96,7 @@
 				// 좌석 요소 생성
 				var seatElement = document.createElement('a');
 				seatElement.href = "#none";
-				seatElement.alt = "좌석 번호:" + seatNumber + " 일반석";
+				seatElement.alt = seatNumber;
 				seatElement.className = "sel p0 grNum" + row + " seat"
 						+ " no_select";
 				seatElement.setAttribute('seat-group', 'grNum' + row);
@@ -106,35 +108,6 @@
 				seatTextElement.className = "f1";
 				seatTextElement.textContent = col;
 				
-				 // 좌석에 클릭 이벤트 추가 (클로저 사용) - 좌석 dto
-		        (function (row, col, seatNumber) {
-		            seatElement.addEventListener('click', function () {
-		                // 이미 선택된 좌석인지 확인
-		                var isSeatSelected = selectedSeats.some(function (selectedSeat) {
-		                    return selectedSeat.seat_id === seatNumber;
-		                });
-
-		                // 이미 선택된 좌석이면 제거, 아니면 추가
-		                if (isSeatSelected) {
-		                    // 이미 선택된 좌석을 배열에서 제거
-		                    selectedSeats = selectedSeats.filter(function (selectedSeat) {
-		                        return selectedSeat.seat_id !== seatNumber;
-		                    });
-		                } else {
-		                    // 선택되지 않은 좌석이면 배열에 추가
-		                    var dto = {
-		                        seat_id: seatNumber,
-		                        seat_x: String.fromCharCode(64 + row),
-		                        seat_y: col
-		                    };
-		                    selectedSeats.push(dto);
-		                }
-
-		                // 콘솔에 선택된 좌석 정보 출력 //
-		                console.log("Selected Seats:", selectedSeats);
-		            });
-		        })(row, col, seatNumber);
-
 				// 좌석에 텍스트 추가
 				seatElement.appendChild(seatTextElement);
 
@@ -142,7 +115,7 @@
 				seatContainer.appendChild(seatElement);
 			}
 		}
-
+		
 		// 좌석 클릭 시
 		document.querySelectorAll('.seat').forEach(function(seat) {
 			seat.addEventListener('click', function() {
@@ -158,13 +131,10 @@
 			seat.classList.toggle('selected');
 		}
 	});
-
+	
 	// totalCount 변수에 접근할 때 totalCountProxy를 사용
 	var totalCount = 0;
 	
-	// 클릭된 좌석들을 저장할 배열 - 좌석 dto 관련
-	var selectedSeats = [];
-
 	function checkSeatSelectionStatus() {
 		// seat 클래스를 가진 모든 div 요소를 선택
 		var seatElements = document.querySelectorAll('.seat');
@@ -207,17 +177,10 @@
 			currentCount += increment;
 			totalCount += increment;
 		}
-
 		countElement.textContent = currentCount;
 		checkSeatSelectionStatus();
 		deselectAllSeats(); //수가 변경될 때마다 좌석 reset
 		updateMessage("좌석 선택 후 결제하기 버튼을 클릭하세요");
-		countDeselectAllSeats();
-	}
-
-	// 좌석 선택 취소 함수 - 좌석 dto
-	function countDeselectAllSeats() {
-	    selectedSeats = [];
 	}
 	
 	// 메시지 업데이트 함수
@@ -252,19 +215,60 @@
 		}
 	}
 	
-	function validateForm() {
-	    // 결제하기 버튼을 참조
-	    var paymentButton = document.getElementById('link_rpay');
+	 // 선택된 좌석 정보를 담을 배열
+    var selectedSeats = [];
+	
+	function link_check(){
+		if ((totalCount !== document.querySelectorAll('.selected').length) || (totalCount === 0)) {
+	        alert('인원수에 맞게 좌석을 선택해 주세요.');
+	    } else {
+	    	var reservationData = {
+	    		    // 선택된 좌석 정보를 담을 배열
+	    		    selectedSeats: [],
 
-	    // 여기에 원하는 유효성 검사 로직을 추가
-	    // 예시: 결제하기 버튼이 특정 조건을 만족하지 않으면 유효성 실패로 처리 
-	    if ((totalCount !== document.querySelectorAll('.selected').length) || (totalCount === 0)) {
-	        alert('결제하기 버튼이 유효하지 않습니다.');
-	        return false; // 양식 제출을 중지
+	    		    // 각 인원별 수량을 담을 배열
+	    		    peopleCounts: {
+	    		        "10": 0, // 성인
+	    		        "20": 0, // 청소년
+	    		        "12": 0  // 경로
+	    		    },
+
+	    		    // 총 합계를 저장할 속성
+	    		    totalPrice: 0,
+	    	};
+	    	
+	        // 모든 좌석 요소를 선택
+	        var seatElements = document.getElementsByClassName('seat');
+
+	        // 각 좌석 요소에 대해 확인
+	        for (var i = 0; i < seatElements.length; i++) {
+	            var seatElement = seatElements[i];
+
+	            // "selected" 클래스가 있는 경우 선택된 좌석으로 간주
+	            if (seatElement.classList.contains('selected')) {
+	                // 좌석 정보를 가져와서 배열에 추가
+	                var seatNumber = seatElement.alt;
+	                reservationData.selectedSeats.push(seatNumber);
+	            }
+	        }
+	    
+		 // txt_num의 값들을 peopleCounts 배열에 추가하는 코드
+	    var personElements = document.querySelectorAll('.count_people li');
+	    personElements.forEach(function(personElement) {
+	        var code = personElement.getAttribute('data-code');
+	        var count = parseInt(personElement.querySelector('.txt_num').textContent, 10);
+	        reservationData.peopleCounts[code] = count;
+	    });
+
+	    // PersonSeatSummeryTotalPrice 값을 totalPrice에 추가하는 코드
+	    var totalPriceElement = document.querySelector('.PersonSeatSummeryTotalPrice');
+	    reservationData.totalPrice = parseInt(totalPriceElement.textContent, 10);
+	    
+	    console.log(reservationData);
+	    
+	 	
+	    
 	    }
-
-	    // 유효성 검사를 통과하면 양식을 제출
-	    return true;
 	}
 </script>
 
@@ -373,7 +377,7 @@
 										<button class="btn_plus" id="Plus|20">증가</button>
 								</span></li>
 								<li id="person_12" data-code="12" data-peple="경로" data-count="0"
-									value="7000"><strong class="tit">경로</strong> <span
+									value="7000"><strong class="tit">경로</strong> <spanselectedlist
 									class="bx_num">
 										<button class="btn_mins" id="Minus|12">감소</button>
 										<div class="txt_num">0</div>
@@ -383,9 +387,6 @@
 						</div>
 					</div>
 				</div>
-
-
-
 
 				<div class="select_seat_wrap">
 					<h5 class="hidden">좌석선택</h5>
@@ -479,9 +480,9 @@
 								</dd>
 							</dl>
 						</div>
-						<form id="paymentForm" onsubmit="return validateForm()">
+						<form id="paymentForm">
 							<div class="group_rgt">
-								<a type="submit" href="/ticketing/orderSettlement" class="btn_col1" id="link_rpay" >결제하기</a>
+								<a class="btn_col1" id="link_rpay" onclick="link_check()">결제하기</a>
 							</div>
 						</form>
 					</div>
@@ -489,8 +490,7 @@
 			</div>
 		</div>
 	</div>
-
-
+	
 
 	<div id="reserveStep03" class="section_step_con step03 ">
 		<h3 class="hidden">결제</h3>
@@ -506,5 +506,6 @@
 
 </div>
 <br>
+
 
 <%@ include file="../footer.jsp"%>

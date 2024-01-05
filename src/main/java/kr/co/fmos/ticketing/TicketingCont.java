@@ -65,5 +65,7 @@ public class TicketingCont {
 		mav.setViewName("ticketing/orderSettlement");
 		mav.addObject("userHavingCouponList", userHavingCouponDao.userHavingCouponList((String) session.getAttribute("s_id")));
 		return mav;
-	}
+	}// home() end
+	
+	
 }

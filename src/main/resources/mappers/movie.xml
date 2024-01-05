@@ -17,11 +17,11 @@
 
 	<!-- 추가 -->
 	<insert id="insert" parameterType="kr.co.fmos.movie.MovieDTO">
-		INSERT INTO movie(movie_id,
+		INSERT INTO movie(
 		movie_genre_id, movie_name, movie_running_time, movie_production_year,
 		movie_audience_rating, movie_rank, movie_image, movie_video,
 		director_name, actor_name)
-		VALUES (#{movie_id}, #{movie_genre_id},
+		VALUES (#{movie_genre_id},
 		#{movie_name}, #{movie_running_time}, #{movie_production_year}, #{movie_audience_rating},
 		#{movie_rank}, #{movie_image}, #{movie_video}, #{director_name},
 		#{actor_name})
@@ -86,9 +86,22 @@
 
 	<!-- 리뷰 추가 -->
 	<insert id="reviewInsert" parameterType="kr.co.fmos.movie.MoviereviewDTO">
-	INSERT INTO review(review_id, member_id, movie_id, movie_review, creation_date)
-	(SELECT NEXTVAL(review_seq), #{member_id}, #{movie_id}, #{movie_review}, now())
-	
+	INSERT INTO review(member_id, movie_id,  movie_review, creation_date)
+	VALUES(#{member_id}, #{movie_id}, #{movie_review}, NOW())
 	</insert>
+	
+<!-- TheaterCont에서 호출하는 메서드 시작 -->
+		<select id="moviecheck" resultType="kr.co.fmos.movie.MovieDTO">
+		SELECT movie_id, movie_genre_id,
+		movie_name, movie_running_time, movie_production_year,
+		movie_audience_rating, movie_rank, movie_image, movie_video,
+		director_name, actor_name
+		FROM movie
+		where movie_id = #{movie_id}
+	</select>
+<!-- TheaterCont에서 호출하는 메서드 끝 -->
+	
+	
+	
 
 </mapper>
