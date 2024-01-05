@@ -13,9 +13,9 @@ import kr.co.fmos.theaterBranch.TheaterBranchDAOImp;
 
 @Controller
 @RequestMapping("/ticketing")
-public class TicketingCon {
-	public TicketingCon() {
-		System.out.println("-----ticketingCon() 객체 생성됨");
+public class TicketingCont {
+	public TicketingCont() {
+		System.out.println("-----TicketingCont() 객체 생성됨");
 	}
 	
 	@Autowired

@@ -1,4 +1,4 @@
-package kr.co.fmos.screen;
+package kr.co.fmos.screenMovieInfo;
 
 import java.util.List;
 import java.util.Map;
@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/screen")
-public class ScreenCon {
-	public ScreenCon() {
-		System.out.println("-----ScreenCon() 객체 생성됨");
+@RequestMapping("/screenMovieInfo")
+public class ScreenMovieInfoCont {
+	public ScreenMovieInfoCont() {
+		System.out.println("-----ScreenMovieInfoCont() 객체 생성됨");
 	}
 
 	@Autowired
-	ScreenDAO screenDao;
+	ScreenMovieInfoDAO screenMovieInfoDao;
 
-	@PostMapping("/selectScreenById")
+	@PostMapping("/showingTime")
 	@ResponseBody
-	public ScreenDTO selectScreenById(@RequestBody String screenID) {
-		return screenDao.selectScreenById(screenID);
+	public List<ScreenMovieInfoDTO> showingTime(@RequestBody Map<String, Object> map) {
+		return screenMovieInfoDao.showingTime(map);
 	}
 }

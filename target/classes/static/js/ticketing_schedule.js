@@ -193,20 +193,29 @@ async function processScreenMovieInfo(screenMovieInfo) {
 	try {
 		let screen;
 		let screenSeatCount;
+		let remainSeatCount;
 
-		const response = await selectScreenById(screenMovieInfo.screen_id);
+		const screens = await selectScreenById(screenMovieInfo.screen_id);
+		console.log(screenMovieInfo);
+		const payments = await selectPaymentByMovieInfoId(screenMovieInfo.movie_information_id);
 
-		screen = response.screen_location;
-		screenSeatCount = response.screen_seat_count;
+		screen = screens.screen_location;
+		screenSeatCount = screens.screen_seat_count;
+		remainSeatCount = screens.screen_seat_count;
+		for (const payment of payments) {
+			remainSeatCount -= payment.adult;
+			remainSeatCount -= payment.child;
+			remainSeatCount -= payment.silver;
+		}
 
-		let htmlContent = '<li class=""><a role="button" href="#none"><dl>' +
+		let htmlContent = '<li class="screenMovieInfo" data-screenmovieinfoid = ' + screenMovieInfo.movie_information_id + '><a role="button" href="#none"><dl>' +
 			'<dt>상영시간</dt>' +
 			'<dd class="time">' +
 			'<strong>' + screenMovieInfo.movie_showing_time.slice(0, -3) + '</strong>' +
 			'</dd>' +
 			'<dt>잔여석</dt>' +
 			'<dd class="seat">' +
-			'<strong>' + 100 + '</strong>' + ' / ' + screenSeatCount +
+			'<strong>' + remainSeatCount + '</strong>' + ' / ' + screenSeatCount +
 			'</dd>' +
 			'<dt>상영관</dt>' +
 			'<dd class="hall">' + screen + '</dd>' +
@@ -220,13 +229,29 @@ async function processScreenMovieInfo(screenMovieInfo) {
 }
 
 //상영관 전체 좌석수, 상영관 위치 조회
-async function selectScreenById(screenId) {
+async function selectScreenById(screenID) {
 	try {
 		const response = await $.ajax({
 			type: "POST",
 			contentType: "text/plain",
 			url: "/screen/selectScreenById",
-			data: screenId.toString()
+			data: screenID.toString()
+		});
+
+		return response;
+	} catch (error) {
+		throw error;
+	}
+}
+
+//상영 영화의 남은 좌석수를 구하기 위한 함수
+async function selectPaymentByMovieInfoId(movieInformationID) {
+	try {
+		const response = await $.ajax({
+			type: "POST",
+			contentType: "text/plain",
+			url: "/payment/selectPaymentByScreenMovieInfoId",
+			data: movieInformationID.toString()
 		});
 
 		return response;

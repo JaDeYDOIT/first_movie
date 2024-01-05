@@ -20,4 +20,9 @@ public class PaymentDAOImp implements PaymentDAO {
 		return sqlSession.selectList("payment.list");
 	}
 
+	@Override
+	public List<PaymentDTO> selectPaymentByScreenMovieInfoId(String screenMovieInfoID)
+	{
+		return sqlSession.selectList("payment.selectPaymentByScreenMovieInfoId", screenMovieInfoID);
+	}
 }
