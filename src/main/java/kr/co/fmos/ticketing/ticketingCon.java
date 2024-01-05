@@ -58,4 +58,6 @@ public class ticketingCon {
 		mav.setViewName("ticketing/orderSettlement");
 		return mav;
 	}// home() end
+	
+	
 }

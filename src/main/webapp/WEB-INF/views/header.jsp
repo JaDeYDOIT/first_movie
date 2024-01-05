@@ -31,7 +31,6 @@
     <!-- JS -->
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/jquery-3.7.1.min.js"></script>
-    <script src="/js/script.js"></script>
     <script src="https://kit.fontawesome.com/cbc1642524.js" crossorigin="anonymous"></script>
     <title>영화</title>
 </head>

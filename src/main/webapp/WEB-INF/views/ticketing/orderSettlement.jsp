@@ -23,6 +23,20 @@
 <script src="/js/ticketing_orderSettlement.js"></script>
 </head>
 <body>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // sessionStorage에서 카운트를 가져와 해당 엘리먼트 업데이트
+    document.querySelectorAll('[id^="person_"]').forEach(function(item) {
+        var countElement = item.querySelector('.txt_num');
+        var storedCount = sessionStorage.getItem('count_' + item.id);
+
+        if (storedCount !== null) {
+            countElement.textContent = storedCount;
+        }
+    }); 
+});
+
+</script>
 		<div class="wrap_reserve" style="margin:1% auto;">
 			<h2 class="hidden">예매하기</h2>
 			<div class="section_step_tit">
@@ -70,7 +84,9 @@
 							<dl class="dlist_infor">
 								<dt>좌석</dt>
 								<dd>
-									<strong>A4</strong>
+									<c:forEach items="${list}" var="dto">
+										<strong>${dto}</strong>
+									</c:forEach>
 								</dd>
 							</dl>
 						</div>
