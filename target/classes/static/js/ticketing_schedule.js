@@ -270,9 +270,6 @@ async function selectPaymentByMovieInfoId(movieInformationID) {
 
 //상영 시간 클릭시 좌석선택 페이지로 이동하는 클릭 이벤트 핸틀러
 function handleScreenMovieInfoClick() {
-	/*			screenMovieInfoID: $(this).data("screenmovieinfoid"),
-				remainSeatCount: $(this).data("remainseatcount")*/
-
 	window.location.href = "/ticketing/personseat?screenMovieInfoID=" + encodeURIComponent($(this).data("screenmovieinfoid"))
 		+ "&remainSeatCount=" + encodeURIComponent($(this).data("remainseatcount"));
 }
