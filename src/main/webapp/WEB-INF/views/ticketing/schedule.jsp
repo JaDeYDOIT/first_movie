@@ -29,7 +29,7 @@
 
 
 <body>
-
+	<div id="loading" class="loader loader-bouncing is-active hidden"></div>
 	<div class="wrap_reserve" style="margin: 1% auto;">
 		<h2 class="hidden">예매하기</h2>
 		<div class="section_step_tit">
@@ -84,11 +84,6 @@
 					<h4 class="tit movie_name">서울의 봄</h4>
 				</div>
 				<div class="inner">
-					<div class="list_filter">
-						<select title="영화 정렬 방법 선택"><option value="A">예매순</option>
-							<option value="B">관객순</option>
-							<option value="D">예정작</option></select>
-					</div>
 					<div class="movie_select_wrap list mCustomScrollbar thm"
 						style="display: none;">
 						<ul>
@@ -156,10 +151,6 @@
 									<ul class="list_time">
 									</ul>
 								</div>
-							</div>
-							<div class="group_rgt">
-								<a type="submit" href="/ticketing/personseat" class="btn_col1"
-									id="link_rpay" style="padding: 10px; float: right;">좌석 선택하기</a>
 							</div>
 						</div>
 					</div>

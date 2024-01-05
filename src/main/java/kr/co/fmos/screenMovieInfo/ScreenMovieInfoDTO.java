@@ -12,11 +12,11 @@ public class ScreenMovieInfoDTO {
 	private LocalTime movie_showing_time;
 	private int branch_id;
 
-	public int getMove_information_id() {
+	public int getMovie_information_id() {
 		return movie_information_id;
 	}
 
-	public void setMove_information_id(int movie_information_id) {
+	public void setMovie_information_id(int movie_information_id) {
 		this.movie_information_id = movie_information_id;
 	}
 
@@ -67,4 +67,5 @@ public class ScreenMovieInfoDTO {
 	public void setBranch_id(int branch_id) {
 		this.branch_id = branch_id;
 	}
+
 }

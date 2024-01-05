@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.fmos.movie.MovieDAO;
@@ -17,7 +18,7 @@ public class TicketingCont {
 	public TicketingCont() {
 		System.out.println("-----TicketingCont() 객체 생성됨");
 	}
-	
+
 	@Autowired
 	RegionDAOImp regionDao;
 	@Autowired
@@ -25,18 +26,20 @@ public class TicketingCont {
 	@Autowired
 	MovieDAO movieDao;
 	@Autowired
-	ScreenMovieInfoDAO screenMovieInfoDao; 
-	
+	ScreenMovieInfoDAO screenMovieInfoDao;
+
 	@GetMapping("/personseat")
-	public ModelAndView personseat() {
-		ModelAndView mav=new ModelAndView();
+	public ModelAndView personseat(@RequestParam String screenMovieInfoID, int remainSeatCount) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("screenMovieInfoID", screenMovieInfoID);
+		mav.addObject("remainSeatCount", remainSeatCount);
 		mav.setViewName("ticketing/personseat");
 		return mav;
 	}
-	
+
 	@GetMapping("/paysuccess")
 	public ModelAndView paysuccess() {
-		ModelAndView mav=new ModelAndView();
+		ModelAndView mav = new ModelAndView();
 		mav.setViewName("ticketing/paysuccess");
 		return mav;
 	}

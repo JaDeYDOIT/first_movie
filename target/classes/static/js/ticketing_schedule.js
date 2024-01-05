@@ -182,6 +182,8 @@ async function showingTime() {
 			for (const screenMovieInfo of result) {
 				await processScreenMovieInfo(screenMovieInfo);
 			}
+
+			$('.list_time').on('click', '.screenMovieInfo', handleScreenMovieInfoClick);
 		} catch (error) {
 			console.log("Error:", error);
 		}
@@ -196,7 +198,6 @@ async function processScreenMovieInfo(screenMovieInfo) {
 		let remainSeatCount;
 
 		const screens = await selectScreenById(screenMovieInfo.screen_id);
-		console.log(screenMovieInfo);
 		const payments = await selectPaymentByMovieInfoId(screenMovieInfo.movie_information_id);
 
 		screen = screens.screen_location;
@@ -208,7 +209,14 @@ async function processScreenMovieInfo(screenMovieInfo) {
 			remainSeatCount -= payment.silver;
 		}
 
-		let htmlContent = '<li class="screenMovieInfo" data-screenmovieinfoid = ' + screenMovieInfo.movie_information_id + '><a role="button" href="#none"><dl>' +
+		let htmlContent = '<li class="screenMovieInfo';
+
+		if (remainSeatCount === 0) {
+			htmlContent += ' disabled';
+		}
+
+		htmlContent += '" data-screenmovieinfoid = ' + screenMovieInfo.movie_information_id + ' data-remainSeatCount=' + remainSeatCount + '>' +
+			'<a role="button" href="#none"><dl>' +
 			'<dt>상영시간</dt>' +
 			'<dd class="time">' +
 			'<strong>' + screenMovieInfo.movie_showing_time.slice(0, -3) + '</strong>' +
@@ -259,64 +267,13 @@ async function selectPaymentByMovieInfoId(movieInformationID) {
 		throw error;
 	}
 }
+
+//상영 시간 클릭시 좌석선택 페이지로 이동하는 클릭 이벤트 핸틀러
+function handleScreenMovieInfoClick() {
+	/*			screenMovieInfoID: $(this).data("screenmovieinfoid"),
+				remainSeatCount: $(this).data("remainseatcount")*/
+
+	window.location.href = "/ticketing/personseat?screenMovieInfoID=" + encodeURIComponent($(this).data("screenmovieinfoid"))
+		+ "&remainSeatCount=" + encodeURIComponent($(this).data("remainseatcount"));
+}
 //------------------------- 상영 시간 표시
-
-/*function showingTime() {
-	$(".list_time").empty();
-	if (selectedBranchID !== undefined && selectedMovieID !== undefined) {
-		const showingTimeParam = {
-			branchID: selectedBranchID,
-			movieID: selectedMovieID,
-			showingDate: selectedDate
-		};
-
-		$.ajax({
-			type: "POST", 
-			contentType: "application/json",
-			url: "/screenMovieInfo/showingTime",
-			data: JSON.stringify(showingTimeParam),
-			success: function(result) {
-				result.forEach(async function(screenMovieInfo) {
-					//상영관 및 상영관 전체 좌석수 조회
-					try {
-						let screen;
-						let screenSeatCount;
-
-						console.log(screenMovieInfo.movie_showing_time.slice(0, -3));
-						const response = await $.ajax({
-							type: "POST",
-							contentType: "text/plain",
-							url: "/screen/selectScreenById",
-							data: screenMovieInfo.screen_id.toString()
-						});
-
-						screen = response.screen_location;
-						screenSeatCount = response.screen_seat_count;
-
-						console.log(screenMovieInfo.movie_showing_time.slice(0, -3));
-						let htmlContent = '<li class=""><a role="button" href="#none"><dl>' +
-							'<dt>상영시간</dt>' +
-							'<dd class="time">' +
-							'<strong>' + screenMovieInfo.movie_showing_time.slice(0, -3) + '</strong>' +
-							'</dd>' +
-							'<dt>잔여석</dt>' +
-							'<dd class="seat">' +
-							'<strong>' + 100 + '</strong>' + ' / ' + screenSeatCount +
-							'</dd>' +
-							'<dt>상영관</dt>' +
-							'<dd class="hall">' + screen + '</dd>' +
-							'</dl></a></li>';
-
-						// 리스트에 HTML 추가
-						$(".list_time").append(htmlContent);
-					} catch (error) {
-						console.log("Error:", error);
-					}
-				});
-			},
-			error: function(error) {
-				console.log("Error:", error);
-			}
-		});
-	}
-}*/
