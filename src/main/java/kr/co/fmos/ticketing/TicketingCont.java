@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import jakarta.servlet.http.HttpSession;
+import kr.co.fmos.coupon.UserHavingCouponDAO;
 import kr.co.fmos.movie.MovieDAO;
 import kr.co.fmos.region.RegionDAOImp;
 import kr.co.fmos.screenMovieInfo.ScreenMovieInfoDAO;
@@ -27,6 +29,8 @@ public class TicketingCont {
 	MovieDAO movieDao;
 	@Autowired
 	ScreenMovieInfoDAO screenMovieInfoDao;
+	@Autowired
+	UserHavingCouponDAO userHavingCouponDao;
 
 	@GetMapping("/personseat")
 	public ModelAndView personseat(@RequestParam String screenMovieInfoID, int remainSeatCount) {
@@ -56,9 +60,10 @@ public class TicketingCont {
 	}
 
 	@GetMapping("/orderSettlement")
-	public ModelAndView orderSettlement() {
+	public ModelAndView orderSettlement(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("ticketing/orderSettlement");
+		mav.addObject("userHavingCouponList", userHavingCouponDao.userHavingCouponList((String) session.getAttribute("s_id")));
 		return mav;
 	}
 }
