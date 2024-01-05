@@ -293,18 +293,7 @@ document.addEventListener("DOMContentLoaded", function() {
 								없습니다.</div>
 							<div class="pay_coupon_list_wrap mCustomScrollbar">
 								<ul class="list_pay_coupon">
-									<c:forEach items="${userHavingCouponList}"
-										var="userHavingCoupon" varStatus="loop">
-										<li><input type="checkbox"
-											id="chkpay_coupon${loop.index + 1}"><label
-											for="chkpay_coupon${loop.index + 1}" class="ty2">
-												<div class="coupon_name">${userHavingCoupon.}</div>
-												<dl>
-													<dd class="period">2020.01.07 ~ 2021.01.31</dd>
-													<dt>(최대 2인까지 사용가능)</dt>
-												</dl>
-										</label></li>
-									</c:forEach>
+									
 									<!-- <li><input type="checkbox" id="chkpay_coupon01"><label
 											for="chkpay_coupon01" class="ty2">
 												<div class="coupon_name">관람권</div>
