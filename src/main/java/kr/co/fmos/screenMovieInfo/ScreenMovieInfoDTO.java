@@ -59,7 +59,7 @@ public class ScreenMovieInfoDTO {
 	}
 	@Override
 	public String toString() {
-		return "ScreenMovieInfoDTO [move_information_id=" + move_information_id + ", screen_id=" + screen_id
+		return "ScreenMovieInfoDTO [movie_information_id=" + movie_information_id + ", screen_id=" + screen_id
 				+ ", movie_id=" + movie_id + ", movie_showing_date=" + movie_showing_date + ", movie_showing_time="
 				+ movie_showing_time + ", branch_id=" + branch_id + "]";
 	}
