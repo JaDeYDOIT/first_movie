@@ -277,47 +277,38 @@
 	<h2 class="hidden">예매하기</h2>
 	<div id="PersonSeatHeader" class="section_step_tit">
 		<ul>
-			<li class="step01 prev"><a href="/ticketing/schedule"><strong
-					class="tit"><span>01</span><br>상영시간</strong>
-					<div class="bx_con">
-						<dl>
-							<dt>선택한 영화 제목</dt>
-							<dd>서울의 봄</dd>
-							<dt>선택한 상영관</dt>
-							<dd>산본피트인 7관</dd>
-							<dt>선택한 상영 날짜</dt>
-							<dd>2023-12-18 (월)</dd>
-							<dt>선택한 시간</dt>
-							<dd>15:10 ~ 17:41</dd>
-						</dl>
-					</div></a></li>
-			<li class="step02 active"><a href="#reserveStep02"> <strong
-					class="tit"><span>02</span><br>인원/좌석</strong>
-					<div class="bx_con">
-						<dl>
-							<dt>선택한 인원</dt>
-							<dd>
-								<span id="preview_person_info">성인</span>
-							</dd>
-							<dt>선택한 좌석</dt>
-							<dd class="seat_list">
-								<span id="preview_seat_info">a01</span>
-							</dd>
-						</dl>
-					</div></a></li>
-			<li class="step03"><a style="cursor: default;"><strong
-					class="tit"><span>03</span><br>결제</strong>
-					<div class="bx_con">
-						<dl>
-							<dt>티켓금액</dt>
-							<dd>0원</dd>
-							<dt>할인금액</dt>
-							<dd>0원</dd>
-							<dt>총합계</dt>
-							<dd>0원</dd>
-						</dl>
-					</div></a></li>
-			<li><a style="cursor: default;"><strong class="tit"><span>04</span><br>결제완료</strong></a></li>
+			<li class="step01 prev">
+				<a href="/ticketing/schedule">
+					<strong class="tit">
+						<span>01</span>
+						<br>상영시간
+					</strong>
+				</a>
+			</li>
+			<li class="step02 active">
+				<a href="#reserveStep02"> 
+					<strong class="tit">
+						<span>02</span>
+						<br>인원/좌석
+					</strong>
+				</a>
+			</li>
+			<li class="step03">
+				<a style="cursor: default;">
+					<strong class="tit">
+						<span>03</span>
+						<br>결제
+					</strong>
+				</a>
+			</li>
+			<li>
+				<a style="cursor: default;">
+					<strong class="tit">
+						<span>04</span>
+						<br>결제완료
+					</strong>
+				</a>
+			</li>
 		</ul>
 	</div>
 
@@ -345,13 +336,14 @@
 								src="https://cf.lottecinema.co.kr//Media/MovieFile/MovieImg/202311/20443_103_1.jpg"></span>
 							<div class="group_infor">
 								<div class="bx_tit">
-									<span class="ic_grade gr_12">관람가</span> <strong>서울의 봄
-										(2D)</strong>
+									<span class="ic_grade gr_12">관람가</span> 
+									<strong>${movie.movie_name}</strong>
 								</div>
 								<dl>
 									<dt>일시</dt>
 									<dd class="sub_info1">
-										23.12.18<em>(월)</em> <span class="time">15:10 ~ 17:41</span>
+										{영화 날짜}<em>(요일)</em> 
+										<span class="time">{영화시간}</span>
 									</dd>
 									<dt>영화관</dt>
 									<dd class="sub_info1">산본피트인 · 7관</dd>
@@ -421,7 +413,6 @@
 																style="margin-top: 50px; width: 473px; height: 358px;">
 																<!-- HTML -->
 																<div class="seat-container">
-																
 																	<!-- 좌석 생성을 위한 컨테이너 -->
 																</div>
 																<div class="seat_btm_box">
@@ -435,7 +426,6 @@
 																	</div>
 																</div>
 															</div>
-
 														</div>
 													</div>
 												</div>
@@ -452,24 +442,12 @@
 												</div>
 											</div>
 										</div>
-
-										<div class="notice_box" style="display: none;">
-											<h6 class="tit_info">이용안내</h6>
-											<ul class="list_txt ty3">
-												<li>12세 미만의 고객님(영,유아 포함)은 부모님 또는 보호자를 동반하여도 관람이 불가합니다.</li>
-												<li>영화 관람 시, 신분증을 지참하여 주시기 바랍니다.</li>
-											</ul>
-										</div>
 									</div>
 								</div>
 							</div>
 						</article>
 					</div>
-
 				</div>
-
-
-
 				<div id="PersonSeatSummery">
 					<div class="select_seat_result">
 						<div class="group_lft">
@@ -491,19 +469,13 @@
 		</div>
 	</div>
 	
-
 	<div id="reserveStep03" class="section_step_con step03 ">
 		<h3 class="hidden">결제</h3>
-
 	</div>
-
-
-
+	
 	<div id="reserveStep04" class="section_step_con step04 ">
 		<h3 class="hidden">결제완료</h3>
-
 	</div>
-
 </div>
 <br>
 
