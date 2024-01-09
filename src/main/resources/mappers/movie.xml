@@ -90,7 +90,20 @@
 	VALUES(#{member_id}, #{movie_id}, #{movie_review}, NOW())
 	</insert>
 	
+<<<<<<< HEAD
 
+=======
+<!-- TheaterCont에서 호출하는 메서드 시작 -->
+		<select id="moviecheck" resultType="kr.co.fmos.movie.MovieDTO">
+		SELECT movie_id, movie_genre_id,
+		movie_name, movie_running_time, movie_production_year,
+		movie_audience_rating, movie_rank, movie_image, movie_video,
+		director_name, actor_name
+		FROM movie
+		where movie_id = #{movie_id}
+	</select>
+<!-- TheaterCont에서 호출하는 메서드 끝 -->
+>>>>>>> d093648c6fe884f0acb58c4d8cea97dddf152cff
 	
 	
 	

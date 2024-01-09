@@ -10,9 +10,24 @@
 		resultType="kr.co.fmos.screenMovieInfo.ScreenMovieInfoDTO">
 		SELECT movie_information_id,
 		screen_id, movie_id,
-		movie_type, movie_showing_date,
+		movie_showing_date,
 		movie_showing_time, branch_id
 		FROM
 		screen_movie_information
+	</select>
+
+	<select id="showingTime" parameterType="java.util.Map"
+		resultType="kr.co.fmos.screenMovieInfo.ScreenMovieInfoDTO">
+		SELECT
+		movie_information_id, movie_showing_date,
+		movie_showing_time, screen_id, branch_id
+		FROM
+		screen_movie_information
+		WHERE
+		movie_id=#{movieID} AND
+		branch_id=#{branchID} AND
+		movie_showing_date=#{showingDate}
+		ORDER BY
+		movie_showing_time ASC
 	</select>
 </mapper>

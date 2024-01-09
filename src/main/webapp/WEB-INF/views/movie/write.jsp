@@ -17,7 +17,11 @@
 					<option value="4">다큐멘터리</option>
 					<option value="5">로맨스,멜로</option>
 					<option value="6">환타지</option>
+<<<<<<< HEAD
 					<option value="7">공포</option>
+=======
+					<opㅌtion value="7">공포</option>
+>>>>>>> d093648c6fe884f0acb58c4d8cea97dddf152cff
 					<option value="8">애니메이션</option>
 					<option value="9">전쟁</option>
 				</select>

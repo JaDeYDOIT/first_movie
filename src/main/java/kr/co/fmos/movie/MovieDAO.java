@@ -57,6 +57,15 @@ public class MovieDAO {
 //		 return sqlSession.selectOne("movie.review", movie_id);
 //	 }// movieList() end
 
+<<<<<<< HEAD
 
+=======
+// TheaterCont에서 호출하는 메서드 시작
+	public MovieDTO moviecheck(int movie_id) {
+		return sqlSession.selectOne("movie.moviecheck", movie_id);
+	}// movieList() end
+// TheaterCont에서 호출하는 메서드 끝
+	
+>>>>>>> d093648c6fe884f0acb58c4d8cea97dddf152cff
 	
 }// class end

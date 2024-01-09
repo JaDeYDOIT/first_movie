@@ -7,55 +7,115 @@
 
 
 <mapper namespace="theater">
-   <select id="regionlist"
-      resultType="kr.co.fmos.theater.TheaterregionDTO">
-      SELECT region_id, region
-      FROM region
-   </select>
+	<select id="regionlist"
+		resultType="kr.co.fmos.theater.TheaterregionDTO">
+		SELECT region_id, region
+		FROM region
+	</select>
 
-   <select id="branchlist"
-      resultType="kr.co.fmos.theater.TheaterbranchDTO" parameterType="String">
-      SELECT region_id, branch_name, branch_address, branch_id,
-      branch_number, branch_seats
-      FROM theater_branch
-      WHERE region_id = #{region_id}
-   </select>
+	<select id="branchlist"
+		resultType="kr.co.fmos.theater.TheaterbranchDTO"
+		parameterType="String">
+		SELECT region_id, branch_name, branch_address,
+		branch_id,
+		branch_number, branch_seats
+		FROM theater_branch
+		WHERE
+		region_id = #{region_id}
+	</select>
 
-   <select id="branchimg"
-      resultType="kr.co.fmos.theater.TheaterbranchDTO">
-      SELECT branch_img
-      FROM theater_branch
-      WHERE branch_id = #{branch_id}
-   </select>
+	<select id="checkList"
+		resultType="kr.co.fmos.theater.TheaterbranchDTO"
+		parameterType="String">
+		select branch_id , region_id, branch_name
+		from
+		theater_branch
+		where region_id = #{check}
+	</select>
+	<select id="branchimg"
+		resultType="kr.co.fmos.theater.TheaterbranchDTO">
+		SELECT branch_img
+		FROM theater_branch
+		WHERE branch_id =
+		#{branch_id}
+	</select>
 
-   <!-- 구조화된 값을 담을떄는 그냥 구조에 맞춰 DTO클래슬 만들면 되지만, -->
-   <!-- 그냥 여기 저기 테이블에 있는 값을 조인후 가져와서 잠깐 쓸거면 Map에 담으면 됩니다 -->   
-<!--    <select id="screenlist2"   resultType="kr.co.fmos.theater.Screen_movie_informationDTO" parameterType="int"> -->
-<!--       SELECT DISTINCT region_id, TB.branch_id, branch_name, TB.branch_img, -->
-<!--              movie_showing_date, movie_name, movie_genre_id, movie_running_time, -->
-<!--              movie_production_year, screen_location, screen_seat_count, -->
-<!--              movie_showing_time -->
-<!--       FROM screen SC JOIN screen_movie_information SMI -->
-<!--       ON SC.screen_id = SMI.screen_id JOIN theater_branch TB -->
-<!--       ON region_id = TB.region_id JOIN movie MV -->
-<!--       ON SMI.movie_id = MV.movie_id -->
-<!--       where TB.branch_id = #{branch_id} -->
-<!--       ORDER BY screen_location -->
-<!--    </select> -->
+	<!-- 구조화된 값을 담을떄는 그냥 구조에 맞춰 DTO클래슬 만들면 되지만, -->
+	<!-- 그냥 여기 저기 테이블에 있는 값을 조인후 가져와서 잠깐 쓸거면 Map에 담으면 됩니다 -->
+	<!-- <select id="screenlist2" resultType="kr.co.fmos.theater.Screen_movie_informationDTO" 
+		parameterType="int"> -->
+	<!-- SELECT DISTINCT region_id, TB.branch_id, branch_name, TB.branch_img, -->
+	<!-- movie_showing_date, movie_name, movie_genre_id, movie_running_time, -->
+	<!-- movie_production_year, screen_location, screen_seat_count, -->
+	<!-- movie_showing_time -->
+	<!-- FROM screen SC JOIN screen_movie_information SMI -->
+	<!-- ON SC.screen_id = SMI.screen_id JOIN theater_branch TB -->
+	<!-- ON region_id = TB.region_id JOIN movie MV -->
+	<!-- ON SMI.movie_id = MV.movie_id -->
+	<!-- where TB.branch_id = #{branch_id} -->
+	<!-- ORDER BY screen_location -->
+	<!-- </select> -->
 
-   <select id="screenlist" resultType="java.util.Map" parameterType="int">
-      SELECT DISTINCT region_id, TB.branch_id, branch_name, TB.branch_img,
-             movie_showing_date, movie_name, MG.movie_genre_id, movie_running_time,
-             movie_production_year, screen_location, screen_seat_count,
-             movie_showing_time, MG.movie_genre_name, MV.movie_id, SMI.movie_type
-      FROM screen SC JOIN screen_movie_information SMI
-         ON SC.screen_id = SMI.screen_id JOIN theater_branch TB
-         ON region_id = TB.region_id JOIN movie MV
-         ON SMI.movie_id = MV.movie_id JOIN movie_genre MG
-         ON MG.movie_genre_id = MV.movie_genre_id
-      where TB.branch_id = #{branch_id}
-      ORDER BY screen_location
-   </select>
-   
-   
+	<!-- <select id="screenlist" resultType="java.util.Map" parameterType="int"> -->
+	<!-- SELECT DISTINCT region_id, TB.branch_id, branch_name, TB.branch_img, -->
+	<!-- movie_showing_date, movie_name, MG.movie_genre_id, movie_running_time, -->
+	<!-- movie_production_year, screen_location, screen_seat_count, -->
+	<!-- movie_showing_time, MG.movie_genre_name, MV.movie_id -->
+	<!-- FROM screen SC JOIN screen_movie_information SMI -->
+	<!-- ON SC.screen_id = SMI.screen_id JOIN theater_branch TB -->
+	<!-- ON region_id = TB.region_id JOIN movie MV -->
+	<!-- ON SMI.movie_id = MV.movie_id JOIN movie_genre MG -->
+	<!-- ON MG.movie_genre_id = MV.movie_genre_id -->
+	<!-- where TB.branch_id = #{branch_id} -->
+	<!-- ORDER BY screen_location -->
+	<!-- </select> -->
+
+	<select id="screenlist" resultType="java.util.Map"
+		parameterType="int">
+		SELECT region_id, TB.branch_id, branch_name,
+		TB.branch_img,
+		movie_showing_date, movie_name, MG.movie_genre_id,
+		group_concat(movie_showing_time) as time,
+		movie_production_year,
+		screen_location, screen_seat_count, MG.movie_genre_name, MV.movie_id,
+		movie_running_time
+		FROM screen SC JOIN screen_movie_information SMI
+		ON
+		SC.screen_id = SMI.screen_id JOIN theater_branch TB
+		ON region_id =
+		TB.region_id JOIN movie MV
+		ON SMI.movie_id = MV.movie_id JOIN
+		movie_genre MG
+		ON MG.movie_genre_id = MV.movie_genre_id
+		where
+		TB.branch_id = #{branch_id}
+		GROUP BY movie_name
+		ORDER BY screen_location
+	</select>
+
+
+
+
+	<select id="moviewritelist" resultType="java.util.Map"
+		parameterType="int">
+		SELECT movie_id, movie_name
+		FROM movie
+	</select>
+
+
+
+	<select id="writelist" resultType="java.util.Map"
+		parameterType="int">
+		SELECT movie_id, movie_name
+		FROM movie
+	</select>
+
+
+
+
+
+
+
+
+
 </mapper>
