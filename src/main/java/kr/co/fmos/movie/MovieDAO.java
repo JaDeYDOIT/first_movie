@@ -57,4 +57,6 @@ public class MovieDAO {
 //		 return sqlSession.selectOne("movie.review", movie_id);
 //	 }// movieList() end
 
+
+	
 }// class end

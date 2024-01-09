@@ -75,7 +75,7 @@
                 <div class="nav_bottom">
                     <ul class="nav_wrap">
                         <li><a href="/movie/list.do">영화</a></li>
-                        <li><a href="/theater/branchlist.do?region_id=region_001&branch_id=19">극장</a></li>
+                        <li><a href="/theater/branchlist.do?region_id=region_001&branch_id=1">극장</a></li>
                         <li><a href="/ticketing/schedule" style="color:rgb(0, 128, 255);">예매</a></li>
                         <li><a href="/product/list.do">스토어</a></li>
                         <li><a href="#">이벤트</a></li>

@@ -1,13 +1,18 @@
 package kr.co.fmos.customer;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpSession;
+import kr.co.fmos.theater.TheaterDAO;
 
 @Controller
 @RequestMapping("/customer")
@@ -22,6 +27,9 @@ public class CustomerCont {
 	
 	@Autowired
 	private NoticeDAO noticeDao;
+	
+	@Autowired
+	private TheaterDAO theaterDao;
 	
 	@RequestMapping("/notice.do")
 	public ModelAndView noticelist(int notice_kind) {
@@ -53,9 +61,9 @@ public class CustomerCont {
 	@RequestMapping("/rental_inquiry.do")
 	public ModelAndView list() {
 	ModelAndView mav = new ModelAndView();
+	mav.addObject("region_customer", theaterDao.region_customer());
 	mav.setViewName("customer/rental_Form");
 	return mav;
-	
 	}
 	
 	@GetMapping("/noticeForm.do")
@@ -109,7 +117,23 @@ public class CustomerCont {
     	mav.addObject("list", noticeDao.faqselect(0));
 		mav.setViewName("/customer/FAQ");
 		return mav;
-    	
     }
+    
+    @PostMapping("/regionselectbox.do")
+    @ResponseBody
+    public Map<String, Object> checkList(String region_id) {
+    	Map<String, Object> map = new HashMap<String, Object>();
+    	map.put("checkList", theaterDao.checkList(region_id));
+    	return map;
+    }
+    
+    @PostMapping("/screenselectbox.do")
+    @ResponseBody
+    public Map<String, Object> screenselectbox(int branch_id){
+    	Map <String, Object> map = new HashMap<>();
+    	map.put("screenselectbox", theaterDao.screenajaxlist(branch_id));
+    	return map;
+    }
+    
     
 }//class end
