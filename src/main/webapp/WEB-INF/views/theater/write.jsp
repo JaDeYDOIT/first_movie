@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 <link rel="stylesheet" href="/css/write.css">
@@ -344,5 +343,4 @@
    });
 </script>
 
->>>>>>> d093648c6fe884f0acb58c4d8cea97dddf152cff
 <%@ include file="../footer.jsp"%>

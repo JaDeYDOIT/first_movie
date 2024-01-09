@@ -32,13 +32,6 @@ public class TheaterDAO {
 	public List<TheaterbranchDTO> branchlist(String region_id) {
 		return sqlSession.selectList("theater.branchlist", region_id);
 	}
-<<<<<<< HEAD
-=======
-
-	public List<TheaterbranchDTO> checkList(String check) {
-		return sqlSession.selectList("theater.checkList", check);
-	}
->>>>>>> d093648c6fe884f0acb58c4d8cea97dddf152cff
 
 	// 지역 -> 지점 ajax
 	public List<TheaterbranchDTO> checkList(String check) {
@@ -53,7 +46,6 @@ public class TheaterDAO {
 		return sqlSession.selectOne("theater.branchimg", branch_id);
 	}
 
-<<<<<<< HEAD
 	// write 리스트
 	public List<Map<String, Object>> writelist() {
 		return sqlSession.selectList("theater.writelist");
@@ -109,7 +101,6 @@ public class TheaterDAO {
 	//customerCont에서 사용 끝
 	
 	
-=======
 //	write 리스트
 	public List<Map<String, Object>> writemovielist() {
 		return sqlSession.selectList("theater.moviewritelist");
@@ -120,5 +111,4 @@ public class TheaterDAO {
 		return sqlSession.selectOne("theater.writelist", writelist);
 	}
 
->>>>>>> d093648c6fe884f0acb58c4d8cea97dddf152cff
 }// class end
