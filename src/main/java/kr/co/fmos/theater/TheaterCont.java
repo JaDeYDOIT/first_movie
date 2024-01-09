@@ -22,7 +22,6 @@ public class TheaterCont {
 
 	@Autowired
 	TheaterDAO theaterdao;
-
 	@Autowired
 	MovieDAO moviedao;
 

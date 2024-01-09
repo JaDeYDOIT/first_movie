@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import jakarta.servlet.http.HttpSession;
+import kr.co.fmos.coupon.UserHavingCouponDAO;
 import kr.co.fmos.movie.MovieDAO;
 import kr.co.fmos.region.RegionDAOImp;
 import kr.co.fmos.screenMovieInfo.ScreenMovieInfoDAO;
@@ -13,11 +16,11 @@ import kr.co.fmos.theaterBranch.TheaterBranchDAOImp;
 
 @Controller
 @RequestMapping("/ticketing")
-public class ticketingCon {
-	public ticketingCon() {
-		System.out.println("-----ticketingCon() 객체 생성됨");
+public class TicketingCont {
+	public TicketingCont() {
+		System.out.println("-----TicketingCont() 객체 생성됨");
 	}
-	
+
 	@Autowired
 	RegionDAOImp regionDao;
 	@Autowired
@@ -25,21 +28,25 @@ public class ticketingCon {
 	@Autowired
 	MovieDAO movieDao;
 	@Autowired
-	ScreenMovieInfoDAO screenMovieInfoDao; 
-	
+	ScreenMovieInfoDAO screenMovieInfoDao;
+	@Autowired
+	UserHavingCouponDAO userHavingCouponDao;
+
 	@GetMapping("/personseat")
-	public ModelAndView personseat() {
-		ModelAndView mav=new ModelAndView();
+	public ModelAndView personseat(@RequestParam String screenMovieInfoID, int remainSeatCount) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("screenMovieInfoID", screenMovieInfoID);
+		mav.addObject("remainSeatCount", remainSeatCount);
 		mav.setViewName("ticketing/personseat");
 		return mav;
-	}//home() end
-	
+	}
+
 	@GetMapping("/paysuccess")
 	public ModelAndView paysuccess() {
-		ModelAndView mav=new ModelAndView();
+		ModelAndView mav = new ModelAndView();
 		mav.setViewName("ticketing/paysuccess");
 		return mav;
-	}//home() end
+	}
 
 	@GetMapping("/schedule")
 	public ModelAndView schedule() {
@@ -50,12 +57,15 @@ public class ticketingCon {
 		mav.addObject("screenMovieInfoList", screenMovieInfoDao.list());
 		mav.setViewName("ticketing/schedule");
 		return mav;
-	}// home() end
+	}
 
 	@GetMapping("/orderSettlement")
-	public ModelAndView orderSettlement() {
+	public ModelAndView orderSettlement(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("ticketing/orderSettlement");
+		mav.addObject("userHavingCouponList", userHavingCouponDao.userHavingCouponList((String) session.getAttribute("s_id")));
 		return mav;
 	}// home() end
+	
+	
 }
