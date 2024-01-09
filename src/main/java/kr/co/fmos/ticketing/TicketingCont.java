@@ -63,7 +63,9 @@ public class TicketingCont {
 	public ModelAndView orderSettlement(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("ticketing/orderSettlement");
+		session.setAttribute("s_id", "sungwoo");
 		mav.addObject("userHavingCouponList", userHavingCouponDao.userHavingCouponList((String) session.getAttribute("s_id")));
+		System.out.println((String) session.getAttribute("s_id"));
 		return mav;
 	}
 }

@@ -11,6 +11,13 @@
 		SELECT having_coupon_id, member_id, coupon_id,
 		coupon_create_date, coupon_expiration_date
 		FROM user_having_coupon
-		WHERE member_id=#{member_id}
+		WHERE member_id=#{memberID}
+	</select>
+
+	<select id="selectCouponName" parameterType="String"
+		resultType="String">
+		SELECT coupon_name
+		FROM coupon
+		WHERE coupon_id=#{couponID}
 	</select>
 </mapper>

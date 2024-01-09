@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../header.jsp"%>
+<%@ include file="/WEB-INF/views/header.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>예매 - FirstMovie</title>
 <link href="../css/ticketing/common.css" rel="stylesheet"
 	type="text/css">
 <link href="../css/ticketing/content.css" rel="stylesheet"
@@ -19,9 +24,9 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
-
 <script src="/js/ticketing_orderSettlement.js"></script>
 </head>
+
 <body>
 	<div class="wrap_reserve" style="margin: 1% auto;">
 		<h2 class="hidden">예매하기</h2>
@@ -86,10 +91,11 @@
 						<div class="wrap_coupon">
 							<button class="btn_coupon">쿠폰 사용하기</button>
 							<div class="wrap_selected_coupon" style="display: none;">
+								<button type="button" class="btn_close" onclick="cancelCoupon()">팝업
+									닫기</button>
 								<div class="coupon_name">(쿠폰명)</div>
 								<dl>
 									<dd class="period">(사용기간)</dd>
-									<dt>(제약조건)</dt>
 								</dl>
 							</div>
 						</div>
@@ -107,108 +113,110 @@
 								<li><button type="button" class="cate4 ty2">휴대폰</button></li>
 							</ul>
 						</div>
-						<div class="article_pay_card">
-							<ul class="list_pay_item cate5 itemcenter">
-								<li><button class="">
-										<span class="thm"><img
-											src="/images/ticketing/card_logo_lotte.png" alt="롯데카드"
-											class="mCS_img_loaded"></span><span class="tit">롯데카드</span>
-									</button></li>
-								<li><button class="">
-										<span class="thm"><img
-											src="/images/ticketing/card_logo_kb.png" alt="국민카드"
-											class="mCS_img_loaded"></span><span class="tit">국민카드</span>
-									</button></li>
-								<li><button class="">
-										<span class="thm"><img
-											src="/images/ticketing/card_logo_kakao.png" alt="카카오뱅크"
-											class="mCS_img_loaded"></span><span class="tit">카카오뱅크</span>
-									</button></li>
-								<li><button class="">
-										<span class="thm"><img
-											src="/images/ticketing/card_logo_shinhan.png" alt="신한카드"
-											class="mCS_img_loaded"></span><span class="tit">신한카드</span>
-									</button></li>
-								<li><button class="">
-										<span class="thm"><img
-											src="/images/ticketing/card_logo_samsung_20230112.png"
-											alt="삼성카드" class="mCS_img_loaded"></span><span class="tit">삼성카드</span>
-									</button></li>
-								<li><button class="">
-										<span class="thm"><img
-											src="/images/ticketing/card_logo_hyundai.png" alt="현대카드"
-											class="mCS_img_loaded"></span><span class="tit">현대카드</span>
-									</button></li>
-								<li><button class="">
-										<span class="thm"><img
-											src="/images/ticketing/card_logo_hana.png" alt="하나카드"
-											class="mCS_img_loaded"></span><span class="tit">하나카드</span>
-									</button></li>
-								<li><button class="">
-										<span class="thm"><img
-											src="/images/ticketing/card_logo_keb.png" alt="외환카드"
-											class="mCS_img_loaded"></span><span class="tit">외환카드</span>
-									</button></li>
-								<li><button class="">
-										<span class="thm"><img
-											src="/images/ticketing/card_logo_woori.png" alt="우리카드"
-											class="mCS_img_loaded"></span><span class="tit">우리카드</span>
-									</button></li>
-								<li><button class="">
-										<span class="thm"><img
-											src="/images/ticketing/card_logo_bc.png" alt="BC카드"
-											class="mCS_img_loaded"></span><span class="tit">BC카드</span>
-									</button></li>
-								<li><button class="">
-										<span class="thm"><img
-											src="/images/ticketing/card_logo_citi.png" alt="씨티카드"
-											class="mCS_img_loaded"></span><span class="tit">씨티카드</span>
-									</button></li>
-								<li><button class="">
-										<span class="thm"><img
-											src="/images/ticketing/card_logo_nh.png" alt="NH카드"
-											class="mCS_img_loaded"></span><span class="tit">NH카드</span>
-									</button></li>
-								<li><button class="">
-										<span class="thm"><img
-											src="/images/ticketing/card_logo_jb.png" alt="전북카드"
-											class="mCS_img_loaded"></span><span class="tit">전북카드</span>
-									</button></li>
-								<li><button class="">
-										<span class="thm"><img
-											src="/images/ticketing/card_logo_kj.png" alt="광주카드"
-											class="mCS_img_loaded"></span><span class="tit">광주카드</span>
-									</button></li>
-							</ul>
-						</div>
-						<div class="article_pay_simple">
-							<ul class="list_pay_item cate3">
-								<li><button type="button" class="pay_simple_btn_box">
-										<span class="pay_simple_thm"><img
-											src="/images/ticketing/payment_simple_kakao.png" alt="카카오페이"></span><span
-											class="pay_simple_tit">카카오페이</span>
-									</button></li>
-								<li><button type="button" class="pay_simple_btn_box">
-										<span class="pay_simple_thm"><img
-											src="/images/ticketing/payment_simple_payco.png" alt="페이코"></span><span
-											class="pay_simple_tit">페이코</span>
-									</button></li>
-								<li><button type="button" class="pay_simple_btn_box">
-										<span class="pay_simple_thm"><img
-											src="/images/ticketing/payment_simple_npay1.png" alt="네이버페이"></span><span
-											class="pay_simple_tit">네이버페이</span>
-									</button></li>
-								<li><button type="button" class="pay_simple_btn_box">
-										<span class="pay_simple_thm"><img
-											src="/images/ticketing/payment_simple_toss_221012.png"
-											alt="토스"></span><span class="pay_simple_tit">토스</span>
-									</button></li>
-								<li><button type="button" class="pay_simple_btn_box">
-										<span class="pay_simple_thm"><img
-											src="/images/ticketing/payment_simple_tbee.png"
-											alt="모바일캐시비/티머니"></span><span class="pay_simple_tit">모바일캐시비/티머니</span>
-									</button></li>
-							</ul>
+						<div class="pay_method_list">
+							<div class="article_pay_card">
+								<ul class="list_pay_item cate5 itemcenter ">
+									<li><button class="">
+											<span class="thm"><img
+												src="/images/ticketing/card_logo_lotte.png" alt="롯데카드"
+												class="mCS_img_loaded"></span><span class="tit">롯데카드</span>
+										</button></li>
+									<li><button class="">
+											<span class="thm"><img
+												src="/images/ticketing/card_logo_kb.png" alt="국민카드"
+												class="mCS_img_loaded"></span><span class="tit">국민카드</span>
+										</button></li>
+									<li><button class="">
+											<span class="thm"><img
+												src="/images/ticketing/card_logo_kakao.png" alt="카카오뱅크"
+												class="mCS_img_loaded"></span><span class="tit">카카오뱅크</span>
+										</button></li>
+									<li><button class="">
+											<span class="thm"><img
+												src="/images/ticketing/card_logo_shinhan.png" alt="신한카드"
+												class="mCS_img_loaded"></span><span class="tit">신한카드</span>
+										</button></li>
+									<li><button class="">
+											<span class="thm"><img
+												src="/images/ticketing/card_logo_samsung_20230112.png"
+												alt="삼성카드" class="mCS_img_loaded"></span><span class="tit">삼성카드</span>
+										</button></li>
+									<li><button class="">
+											<span class="thm"><img
+												src="/images/ticketing/card_logo_hyundai.png" alt="현대카드"
+												class="mCS_img_loaded"></span><span class="tit">현대카드</span>
+										</button></li>
+									<li><button class="">
+											<span class="thm"><img
+												src="/images/ticketing/card_logo_hana.png" alt="하나카드"
+												class="mCS_img_loaded"></span><span class="tit">하나카드</span>
+										</button></li>
+									<li><button class="">
+											<span class="thm"><img
+												src="/images/ticketing/card_logo_keb.png" alt="외환카드"
+												class="mCS_img_loaded"></span><span class="tit">외환카드</span>
+										</button></li>
+									<li><button class="">
+											<span class="thm"><img
+												src="/images/ticketing/card_logo_woori.png" alt="우리카드"
+												class="mCS_img_loaded"></span><span class="tit">우리카드</span>
+										</button></li>
+									<li><button class="">
+											<span class="thm"><img
+												src="/images/ticketing/card_logo_bc.png" alt="BC카드"
+												class="mCS_img_loaded"></span><span class="tit">BC카드</span>
+										</button></li>
+									<li><button class="">
+											<span class="thm"><img
+												src="/images/ticketing/card_logo_citi.png" alt="씨티카드"
+												class="mCS_img_loaded"></span><span class="tit">씨티카드</span>
+										</button></li>
+									<li><button class="">
+											<span class="thm"><img
+												src="/images/ticketing/card_logo_nh.png" alt="NH카드"
+												class="mCS_img_loaded"></span><span class="tit">NH카드</span>
+										</button></li>
+									<li><button class="">
+											<span class="thm"><img
+												src="/images/ticketing/card_logo_jb.png" alt="전북카드"
+												class="mCS_img_loaded"></span><span class="tit">전북카드</span>
+										</button></li>
+									<li><button class="">
+											<span class="thm"><img
+												src="/images/ticketing/card_logo_kj.png" alt="광주카드"
+												class="mCS_img_loaded"></span><span class="tit">광주카드</span>
+										</button></li>
+								</ul>
+							</div>
+							<div class="article_pay_simple">
+								<ul class="list_pay_item cate3">
+									<li><button type="button" class="pay_simple_btn_box">
+											<span class="pay_simple_thm"><img
+												src="/images/ticketing/payment_simple_kakao.png" alt="카카오페이"></span><span
+												class="pay_simple_tit">카카오페이</span>
+										</button></li>
+									<li><button type="button" class="pay_simple_btn_box">
+											<span class="pay_simple_thm"><img
+												src="/images/ticketing/payment_simple_payco.png" alt="페이코"></span><span
+												class="pay_simple_tit">페이코</span>
+										</button></li>
+									<li><button type="button" class="pay_simple_btn_box">
+											<span class="pay_simple_thm"><img
+												src="/images/ticketing/payment_simple_npay1.png" alt="네이버페이"></span><span
+												class="pay_simple_tit">네이버페이</span>
+										</button></li>
+									<li><button type="button" class="pay_simple_btn_box">
+											<span class="pay_simple_thm"><img
+												src="/images/ticketing/payment_simple_toss_221012.png"
+												alt="토스"></span><span class="pay_simple_tit">토스</span>
+										</button></li>
+									<li><button type="button" class="pay_simple_btn_box">
+											<span class="pay_simple_thm"><img
+												src="/images/ticketing/payment_simple_tbee.png"
+												alt="모바일캐시비/티머니"></span><span class="pay_simple_tit">모바일캐시비/티머니</span>
+										</button></li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -219,7 +227,7 @@
 				</div>
 				<div class="inner">
 					<div class="select_item_wrap">
-						<div class="group_item active">
+						<div class="group_item provision active">
 							<div class="bx_item">
 								<input type="checkbox" id="chkSavingTerm"><label
 									for="chkSavingTerm" class="ty2">결제대행서비스 약관 동의</label>
@@ -281,63 +289,41 @@
 					<div class="fieldset_wrap" id="popup_discount_content_A300">
 						<div class="fieldset_box">
 							<div class="tit_area">
-								<strong>사용 가능한 쿠폰<em id="counpon_rest_count">(6)</em></strong>
+								<strong>사용 가능한 쿠폰<em id="counpon_rest_count">(${fn:length(userHavingCouponList)})
+								</em></strong>
 							</div>
-							<div class="nodata" style="display: block;">사용 가능한 할인권이
-								없습니다.</div>
-							<div class="pay_coupon_list_wrap mCustomScrollbar">
-								<ul class="list_pay_coupon">
-									
-									<!-- <li><input type="checkbox" id="chkpay_coupon01"><label
-											for="chkpay_coupon01" class="ty2">
-												<div class="coupon_name">관람권</div>
-												<dl>
-													<dd class="period">2020.01.07 ~ 2021.01.31</dd>
-													<dt>(최대 2인까지 사용가능)</dt>
-												</dl>
-										</label></li>
-										<li><input type="checkbox" id="chkpay_coupon02"><label
-											for="chkpay_coupon02" class="ty2">
-												<div class="coupon_name">관람권</div>
-												<dl>
-													<dd class="period">2020.01.07 ~ 2021.01.31</dd>
-													<dt>(최대 1인까지 사용가능)</dt>
-												</dl>
-										</label></li>
-										<li><input type="checkbox" id="chkpay_coupon03"><label
-											for="chkpay_coupon03" class="ty2">
-												<div class="coupon_name">관람권</div>
-												<dl>
-													<dd class="period">2020.01.07 ~ 2021.01.31</dd>
-													<dt>(최대 1인까지 사용가능)</dt>
-												</dl>
-										</label></li>
-										<li><input type="checkbox" id="chkpay_coupon04"><label
-											for="chkpay_coupon04" class="ty2">
-												<div class="coupon_name">관람권</div>
-												<dl>
-													<dd class="period">2020.01.07 ~ 2021.01.31</dd>
-													<dt>(최대 1인까지 사용가능)</dt>
-												</dl>
-										</label></li>
-										<li><input type="checkbox" id="chkpay_coupon05"><label
-											for="chkpay_coupon05" class="ty2">
-												<div class="coupon_name">관람권</div>
-												<dl>
-													<dd class="period">2020.01.07 ~ 2021.01.31</dd>
-													<dt>(최대 1인까지 사용가능)</dt>
-												</dl>
-										</label></li>
-										<li><input type="checkbox" id="chkpay_coupon06"><label
-											for="chkpay_coupon06" class="ty2">
-												<div class="coupon_name">관람권</div>
-												<dl>
-													<dd class="period">2020.01.07 ~ 2021.01.31</dd>
-													<dt>(최대 1인까지 사용가능)</dt>
-												</dl>
-										</label></li> -->
-								</ul>
-							</div>
+							<c:choose>
+								<c:when test="${empty userHavingCouponList}">
+									<div class="nodata" style="display: block;">사용 가능한 할인권이
+										없습니다.</div>
+								</c:when>
+								<c:otherwise>
+									<div class="pay_coupon_list_wrap mCustomScrollbar">
+										<ul class="list_pay_coupon">
+											<c:forEach items="${userHavingCouponList}"
+												var="userHavingCoupon" varStatus="loop">
+												<li class="coupon"
+													data-couponid="${userHavingCoupon.coupon_id}"><input
+													type="checkbox" id="chkpay_coupon${loop.count}"><label
+													for="chkpay_coupon${loop.count}" class="ty2">
+														<div class="coupon_name">관람권</div>
+														<dl>
+															<dd class="period">
+																<fmt:formatDate
+																	value="${userHavingCoupon.coupon_create_date}"
+																	pattern="yyyy-MM-dd" />
+																~
+																<fmt:formatDate
+																	value="${userHavingCoupon.coupon_expiration_date}"
+																	pattern="yyyy-MM-dd" />
+															</dd>
+														</dl>
+												</label></li>
+											</c:forEach>
+										</ul>
+									</div>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 					<div class="btn_btm_wrap ty2">
@@ -352,5 +338,6 @@
 	<div id="reserveStep04" class="section_step_con step04 ">
 		<h3 class="hidden">결제완료</h3>
 	</div>
-
-	<%@ include file="../footer.jsp"%>
+</body>
+</html>
+<%@ include file="../footer.jsp"%>

@@ -20,7 +20,7 @@ public class HomeController {
 		if(session.getAttribute("s_id") == null || session.getAttribute("s_pw") == null ||
 		session.getAttribute("s_id").equals("") || session.getAttribute("s_pw").equals("")) 
 		{
-			String s_id = "guest";
+			String s_id = "sungwoo";
 			String s_pw = "guest";
 			session.setAttribute("s_id", s_id);
 			session.setAttribute("s_pw", s_pw);
