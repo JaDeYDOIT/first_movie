@@ -44,3 +44,28 @@ h2{
 	width: 100px;
 	cursor: pointer;
 }
+
+#movie_running_time{
+	background-color: rgba(192, 192, 192, 0.2);
+}
+#movie_production_year{
+	background-color: rgba(192, 192, 192, 0.2);
+}
+#movie_audience_rating{
+	background-color: rgba(192, 192, 192, 0.2);
+}
+#movie_genre_name{
+	background-color: rgba(192, 192, 192, 0.2);
+}
+#director_name{
+	background-color: rgba(192, 192, 192, 0.2);
+}
+#actor_name{
+	background-color: rgba(192, 192, 192, 0.2);
+}
+
+
+
+
+
+
