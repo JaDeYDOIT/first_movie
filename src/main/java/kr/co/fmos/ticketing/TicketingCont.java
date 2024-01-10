@@ -1,10 +1,16 @@
 package kr.co.fmos.ticketing;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpSession;
@@ -31,16 +37,16 @@ public class TicketingCont {
 	ScreenMovieInfoDAO screenMovieInfoDao;
 	@Autowired
 	UserHavingCouponDAO userHavingCouponDao;
-
+	
 	@GetMapping("/personseat")
-	public ModelAndView personseat(@RequestParam String screenMovieInfoID, int remainSeatCount) {
+	public ModelAndView personseat(@RequestParam int screenMovieInfoID, int remainSeatCount) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("screenMovieInfoID", screenMovieInfoID);
+		mav.addObject("screenMovieInfo", screenMovieInfoDao.detail(screenMovieInfoID));
 		mav.addObject("remainSeatCount", remainSeatCount);
 		mav.setViewName("ticketing/personseat");
 		return mav;
 	}
-
+	
 	@GetMapping("/paysuccess")
 	public ModelAndView paysuccess() {
 		ModelAndView mav = new ModelAndView();
@@ -60,7 +66,7 @@ public class TicketingCont {
 	}
 
 	@GetMapping("/orderSettlement")
-	public ModelAndView orderSettlement(HttpSession session) {
+	public ModelAndView orderSettlement(HttpSession session, @RequestParam int screenMovieInfoID, String[] selectedSeats, int totalPrice) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("ticketing/orderSettlement");
 		session.setAttribute("s_id", "sungwoo");
