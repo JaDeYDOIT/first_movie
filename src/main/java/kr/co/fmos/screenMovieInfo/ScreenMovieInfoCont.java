@@ -20,6 +20,12 @@ public class ScreenMovieInfoCont {
 	@Autowired
 	ScreenMovieInfoDAO screenMovieInfoDao;
 
+	@PostMapping("/selectScreenMovieInfoById")
+	@ResponseBody
+	public ScreenMovieInfoDTO selectScreenMovieInfoById(@RequestBody String screenMovieInfoID) {
+		return screenMovieInfoDao.selectScreenMovieInfoById(screenMovieInfoID);
+	}
+
 	@PostMapping("/showingTime")
 	@ResponseBody
 	public List<ScreenMovieInfoDTO> showingTime(@RequestBody Map<String, Object> map) {

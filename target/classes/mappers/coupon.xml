@@ -14,10 +14,12 @@
 		WHERE member_id=#{memberID}
 	</select>
 
-	<select id="selectCouponName" parameterType="String"
-		resultType="String">
-		SELECT coupon_name
+	<select id="selectCouponById" parameterType="String"
+		resultType="kr.co.fmos.coupon.CouponDTO">
+		SELECT coupon_id, coupon_name, coupon_discount_rate,
+		coupon_expiration_date, coupon_status
 		FROM coupon
-		WHERE coupon_id=#{couponID}
+		WHERE
+		coupon_id=#{couponID}
 	</select>
 </mapper>

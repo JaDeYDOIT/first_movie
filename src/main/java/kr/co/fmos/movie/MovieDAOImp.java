@@ -1,43 +1,59 @@
 package kr.co.fmos.movie;
 
 import java.util.List;
+import java.util.Map;
 
-public interface MovieDAO {
-	public List<MovieDTO> movieList();
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestBody;
 
-	public int movieinsert(MovieDTO movieDto);
+import kr.co.fmos.member.MemberDTO;
 
-	public MovieDTO movieDetail(String movie_id);
+@Repository
+public class MovieDAOImp implements MovieDAO {
 
-	public List<MoviereviewDTO> moviereviewList(String movie_id);
+	public MovieDAOImp() {
+		System.out.println("-----MovieDAOImp() 객체 생성됨");
+	}
 
-	public int reviewInsert(MoviereviewDTO dto);
+	@Autowired
+	SqlSession sqlSession;
 
 	// 영화 리스트
+	@Override
 	public List<MovieDTO> movieList() {
 		return sqlSession.selectList("movie.list");
 	}// movieList() end
 
 	// 영화 추가
+	@Override
 	public int movieinsert(MovieDTO movieDto) {
 		return sqlSession.insert("movie.insert", movieDto);
 	}// commentInsert() end
 
 	// 영화 상세
+	@Override
 	public MovieDTO movieDetail(String movie_id) {
 		return sqlSession.selectOne("movie.detail", movie_id);
 	}// movieList() end
 
 	// 댓글 리스트
+	@Override
 	public List<MoviereviewDTO> moviereviewList(String movie_id) {
 		return sqlSession.selectList("movie.review", movie_id);
 	}// movieList() end
-	
-	
+
+	@Override
 	public int reviewInsert(MoviereviewDTO dto) {
 		return sqlSession.insert("movie.reviewInsert", dto);
-	}//insert() end
-	
+	}// insert() end
+
+	@Override
+	public MovieDTO selectMovieInfoById(String movieID) {
+		return sqlSession.selectOne("movie.selectMovieInfoById", movieID);
+	}
 //	 맵방식 댓글
 //	 public Map<String, Object> moviereviewList(String movie_id) {
 //			return sqlSession.selectOne("movie.review", movie_id);
@@ -47,12 +63,6 @@ public interface MovieDAO {
 //	 public MoviereviewDTO moviereviewList(String movie_id) {
 //		 return sqlSession.selectOne("movie.review", movie_id);
 //	 }// movieList() end
-	
-// TheaterCont에서 호출하는 메서드 시작
-	public MovieDTO moviecheck(int movie_id) {
-		return sqlSession.selectOne("movie.moviecheck", movie_id);
-	}// movieList() end
-// TheaterCont에서 호출하는 메서드 끝
 
-	public MovieDTO selectMovieInfoById(String movieID);
-}// class end
+}
+// class end

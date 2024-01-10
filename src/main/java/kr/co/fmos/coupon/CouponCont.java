@@ -17,9 +17,9 @@ public class CouponCont {
 	@Autowired
 	private CouponDAO couponDao;
 
-	@RequestMapping("/selectCouponName")
+	@RequestMapping("/selectCouponById")
 	@ResponseBody
-	public String selectCouponName(@RequestBody String couponID) {
-		return couponDao.selectCouponName(couponID);
+	public CouponDTO selectCouponName(@RequestBody String couponID) {
+		return couponDao.selectCouponById(couponID);
 	}
 }

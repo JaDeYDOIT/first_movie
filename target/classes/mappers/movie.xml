@@ -42,8 +42,9 @@
 		m.director_name,
 		m.actor_name,
 		m.movie_genre_id
-		FROM movie m JOIN movie_genre mg 
-		ON m.movie_genre_id = mg.movie_genre_id
+		FROM movie m JOIN movie_genre mg
+		ON
+		m.movie_genre_id = mg.movie_genre_id
 		WHERE m.movie_id = #{m.movie_id}
 	</select>
 
@@ -69,7 +70,8 @@
 		FROM movie
 		JOIN review
 		ON movie.movie_id = review.movie_id
-		WHERE movie.movie_id = #{movie_id}
+		WHERE movie.movie_id =
+		#{movie_id}
 		ORDER BY creation_date DESC
 	</select>
 
@@ -103,4 +105,15 @@
 	
 	
 
+	<select id="selectMovieInfoById" parameterType="String"
+		resultType="kr.co.fmos.movie.MovieDTO">
+		SELECT
+		movie_id, movie_genre_id, movie_name,
+		movie_running_time, movie_production_year, movie_audience_rating,
+		movie_rank, movie_image, movie_video, director_name, actor_name
+		FROM
+		movie
+		WHERE
+		movie_id=#{movieID}
+	</select>
 </mapper>

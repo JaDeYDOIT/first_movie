@@ -4,9 +4,8 @@ public class ScreenDTO {
 	private int screen_id;
 	private int branch_id;
 	private String screen_location;
-	private int screen_seat_count;
 	private int screen_row;
-	private int screen_low;
+	private int screen_line;
 
 	public int getScreen_id() {
 		return screen_id;
@@ -32,14 +31,6 @@ public class ScreenDTO {
 		this.screen_location = screen_location;
 	}
 
-	public int getScreen_seat_count() {
-		return screen_seat_count;
-	}
-
-	public void setScreen_seat_count(int screen_seat_count) {
-		this.screen_seat_count = screen_seat_count;
-	}
-
 	public int getScreen_row() {
 		return screen_row;
 	}
@@ -48,11 +39,11 @@ public class ScreenDTO {
 		this.screen_row = screen_row;
 	}
 
-	public int getScreen_low() {
-		return screen_low;
+	public int getScreen_line() {
+		return screen_line;
 	}
 
-	public void setScreen_low(int screen_low) {
-		this.screen_low = screen_low;
+	public void setScreen_line(int screen_line) {
+		this.screen_line = screen_line;
 	}
 }

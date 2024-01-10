@@ -28,45 +28,48 @@
 </head>
 
 <body>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // sessionStorage에서 카운트를 가져와 해당 엘리먼트 업데이트
-    document.querySelectorAll('[id^="person_"]').forEach(function(item) {
-        var countElement = item.querySelector('.txt_num');
-        var storedCount = sessionStorage.getItem('count_' + item.id);
-
-        if (storedCount !== null) {
-            countElement.textContent = storedCount;
-        }
-    }); 
-});
-
-</script>
-		<div class="wrap_reserve" style="margin:1% auto;">
-			<h2 class="hidden">예매하기</h2>
-			<div class="section_step_tit">
-				<ul>
-					<li class="step01 prev"><a href="/ticketing/schedule"><strong class="tit"><span>01</span><br>상영시간</strong>
-					</a></li>
-					<li class="step02 prev"><a href="/ticketing/personseat"><strong class="tit"><span>02</span><br>인원/좌석</strong>
-					</a></li>
-					<li class="step03 active"><a href="#"><strong class="tit"><span>03</span><br>결제</strong>
-					</a></li>
-					<li><a href="#" style="cursor: default;"><strong
-							class="tit"><span>04</span><br>결제완료</strong></a></li>
-				</ul>
-			</div>
-			<div id="reserveStep01" class="section_step_con step01 ">
-				<h3 class="hidden">상영시간</h3>
-			</div>
-			<div id="reserveStep02" class="section_step_con step02 ">
-				<h3 class="hidden">인원/좌석</h3>
-			</div>
-			<div id="reserveStep03" class="section_step_con step03 active">
-				<h3 class="hidden">결제</h3>
-				<div class="article article_sum_infor">
-					<div class="group_top">
-						<h4 class="tit">예매정보</h4>
+	<div class="wrap_reserve" style="margin: 1% auto;">
+		<h2 class="hidden">예매하기</h2>
+		<div class="section_step_tit">
+			<ul>
+				<li class="step01 prev"><a href="/ticketing/schedule"><strong
+						class="tit"><span>01</span><br>상영시간</strong> </a></li>
+				<li class="step02 prev"><a href="/ticketing/personseat"><strong
+						class="tit"><span>02</span><br>인원/좌석</strong> </a></li>
+				<li class="step03 active"><a href="#"><strong class="tit"><span>03</span><br>결제</strong>
+				</a></li>
+				<li><a href="#" style="cursor: default;"><strong
+						class="tit"><span>04</span><br>결제완료</strong></a></li>
+			</ul>
+		</div>
+		<div id="reserveStep01" class="section_step_con step01 ">
+			<h3 class="hidden">상영시간</h3>
+		</div>
+		<div id="reserveStep02" class="section_step_con step02 ">
+			<h3 class="hidden">인원/좌석</h3>
+		</div>
+		<div id="reserveStep03" class="section_step_con step03 active">
+			<h3 class="hidden">결제</h3>
+			<div class="article article_sum_infor">
+				<div class="group_top">
+					<h4 class="tit">예매정보</h4>
+				</div>
+				<div class="inner">
+					<div class="movie_infor new2020">
+						<span class="thm"><img
+							src="https://cf.lottecinema.co.kr//Media/MovieFile/MovieImg/202312/20492_104_1.jpg"></span><strong
+							class="tit"><span class="ic_grade gr_18"></span>&nbsp;노량:
+							죽음의 바다(Super 4D2D)</strong>
+						<dl class="dlist_infor">
+							<dt>일시</dt>
+							<dd>
+								<strong>2023-12-20 (수) 12:30 ~ 15:12</strong>
+							</dd>
+							<dt>영화관</dt>
+							<dd>가산디지털 3관, 수퍼 4D - 2D</dd>
+							<dt>인원</dt>
+							<dd>성인1</dd>
+						</dl>
 					</div>
 					<div class="seat_infor">
 						<dl class="dlist_infor">
@@ -98,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function() {
 						</div>
 						<h3 class="tit_payment">포인트</h3>
 						<div class="remain_point">잔여 포인트 : 1000</div>
-						<input class="point_amount" placeholder="사용할 포인트 입력">
+						<input class="point_amount" type="number" placeholder="사용할 포인트 입력">
 					</div>
 					<div class="group_payment">
 						<h5 class="tit_payment">최종 결제수단</h5>
@@ -255,23 +258,23 @@ document.addEventListener("DOMContentLoaded", function() {
 						</dl>
 						<dl>
 							<dt>상품금액</dt>
-							<dd>
+							<dd class="price">
 								<strong>18,000</strong>원
 							</dd>
 						</dl>
 						<dl>
 							<dt>할인금액</dt>
-							<dd>
+							<dd class="discount_amount">
 								-<strong>0</strong>원
 							</dd>
 						</dl>
 						<dl>
 							<dt>결제금액</dt>
-							<dd>
+							<dd class="total_price">
 								총<strong>18,000</strong>원
 							</dd>
 						</dl>
-						<a href="/ticketing/paysuccess" class="btn_col1 btn_confirm">결제하기</a>
+						<a href="/ticketing/paysuccess" class="btn_col1 btn_confirm pay_button disabled">결제하기</a>
 					</div>
 				</div>
 			</div>

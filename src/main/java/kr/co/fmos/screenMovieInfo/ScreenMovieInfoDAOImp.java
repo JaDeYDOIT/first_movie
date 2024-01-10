@@ -37,4 +37,7 @@ public class ScreenMovieInfoDAOImp implements ScreenMovieInfoDAO {
 		return sqlSession.selectList("screenMovieInfo.emptySeats", screenMovieInfoID);
 	}
 
+	public ScreenMovieInfoDTO selectScreenMovieInfoById(String screenMovieInfoID) {
+		return sqlSession.selectOne("screenMovieInfo.selectScreenMovieInfoById", screenMovieInfoID);
+	}// selectScreenMovieInfoById() end
 }
