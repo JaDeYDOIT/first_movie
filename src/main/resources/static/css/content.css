@@ -7,13 +7,15 @@ ver : 1.01 20191219 2502 line > íŒì—…ë©”ë‰´ ê³ ì •ë†�
 
 
 .seat-container {
-	margin-left: 40px;
+	margin: 10% auto 0 auto;
+	width: 100%;
 }
 
 .row-gap {
 	display: block;
 	height: 16px;
-	/* 행 간격 조절 */
+	width:100% 
+		/* 행 간격 조절 */
 }
 
 .col-gap {
@@ -40,7 +42,8 @@ ver : 1.01 20191219 2502 line > íŒì—…ë©”ë‰´ ê³ ì •ë†�
 
 /* íŒì—… : ì”¨ì¸„ ì œê³µë™ì˜ ============================== */
 
-
+.grNum1 {
+}
 
 .layer_wrap.layer_movie_grade {
 	width: 600px;
@@ -9395,9 +9398,8 @@ label.lab_txt .tit_lab {
 	height: 18px
 }
 
-.mseat_inner .title_screen1+.floor_bx {
-	margin-top: 15px;
-	padding-top: 0;
+ .showMap .floor_bx {
+	width: 100%;
 }
 
 .mseat_inner .floor_bx {
@@ -9426,7 +9428,9 @@ label.lab_txt .tit_lab {
 
 .mseat_inner .floor_bx .seat_area {
 	position: relative;
-	margin: 10px auto 0;
+	width: 46%;
+	margin: 0 auto;
+
 }
 
 .mseat_inner .floor_bx .seat_area .sel {
@@ -9810,6 +9814,7 @@ label.lab_txt .tit_lab {
 
 .seat_btm_box .seat_type_box .top_info {
 	margin-bottom: 15px;
+	margin-left: 60px;
 	
 }
 
@@ -16729,7 +16734,8 @@ dl.total_price dd strong {
 
 .select_num_people_wrap .movie_infor .group_infor .bx_tit {
 	display: block;
-	margin-bottom: 10px;
+	margin-bottom: 8px;
+	margin-inline-start: 3px;
 }
 
 .select_num_people_wrap .movie_infor .group_infor .bx_tit .ic_grade {
@@ -16759,12 +16765,14 @@ dl.total_price dd strong {
 	text-overflow: ellipsis;
 	margin-bottom: 5px;
 	font-size: 11px;
+	margin-inline-start: 3px;
+	font-weight: 500;
 }
 
 .select_num_people_wrap .movie_infor .group_infor dl dd.sub_info1 .time {
 	position: relative;
-	padding-left: 9px;
-	margin-left: 10px;
+	padding-left: 11px;
+	margin-left: 9px;
 }
 
 .select_num_people_wrap .movie_infor .group_infor dl dd.sub_info1 .time:before {

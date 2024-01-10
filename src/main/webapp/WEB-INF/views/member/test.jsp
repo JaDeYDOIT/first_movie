@@ -373,10 +373,9 @@
                                        <div class="showMap">
                                           <div class="floor_bx seatSet1">
                                              <span class="floor_tit" style="display: none;">10F</span>
-                                             <div class="seat_area"
-                                                style="margin-top: 50px; width: 473px; height: 358px;">
+                                             <div class="seat_area" style="width:100%">
                                                 <!-- HTML -->
-                                                <div class="seat-container">
+                                                <div class="seat-container" style="width:50%; margin:0 auto;">
                                                 
                                                    <!-- 좌석 생성을 위한 컨테이너 -->
                                                 </div>
