@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
-<link rel="stylesheet" href="/css/moviewrite.css">
+<link rel="stylesheet" href="/css/write.css">
 <h2>영화추가</h2>
-<form name="moviefrm" id="moviefrm" method="post" action="insert.do"
+<form name="theaterfrm" id="theaterfrm" method="post" action="insert.do"
 	enctype="multipart/form-data">
 	<table class="movie_addition">
 		<tr>
@@ -17,7 +17,11 @@
 					<option value="4">다큐멘터리</option>
 					<option value="5">로맨스,멜로</option>
 					<option value="6">환타지</option>
+<<<<<<< HEAD
+					<option value="7">공포</option>
+=======
 					<opㅌtion value="7">공포</option>
+>>>>>>> d093648c6fe884f0acb58c4d8cea97dddf152cff
 					<option value="8">애니메이션</option>
 					<option value="9">전쟁</option>
 				</select>
@@ -60,11 +64,10 @@
 			<td><input type="text" name="actor_name"></td>
 		</tr>
 		<tr>
-			<td class=""></td>
+			<td></td>
 			<td class="execution"><input name="reset" id="reset"
 				type="reset"> <input name="submit" id="submit" type="submit">
 			</td>
-
 		</tr>
 	</table>
 </form>

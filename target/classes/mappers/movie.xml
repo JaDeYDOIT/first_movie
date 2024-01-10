@@ -5,7 +5,6 @@
 
 <!-- movie.xml -->
 
-
 <mapper namespace="movie">
 	<select id="list" resultType="kr.co.fmos.movie.MovieDTO">
 		SELECT movie_id, movie_genre_id,
