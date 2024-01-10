@@ -16,7 +16,7 @@ public class CouponDAOImp implements CouponDAO {
 	SqlSession sqlSession;
 
 	@Override
-	public String selectCouponName(String couponID) {
-		return sqlSession.selectOne("coupon.selectCouponName", couponID);
+	public CouponDTO selectCouponById(String couponID) {
+		return sqlSession.selectOne("coupon.selectCouponById", couponID);
 	}
 }

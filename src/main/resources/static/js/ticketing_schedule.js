@@ -1,4 +1,4 @@
-let selectedBranchID;
+let selectedTheaterBranchID;
 let selectedMovieID;
 let selectedDate;
 
@@ -66,7 +66,7 @@ function handleBrunchListClick() {
 		$(this).addClass('active');
 
 		//선택한 지점 저장
-		selectedBranchID = $(this).data("theaterbranchid");
+		selectedTheaterBranchID = $(this).data("theaterbranchid");
 
 		$('.movie_select_wrap').css('display', 'block');
 	});
@@ -185,13 +185,13 @@ function showingTime() {
 	$('.cinemaSelect .depth2 li').click(showingTimeProcess);
 
 	async function showingTimeProcess() {
-		if (selectedBranchID === undefined || selectedMovieID === undefined) {
+		if (selectedTheaterBranchID === undefined || selectedMovieID === undefined) {
 			return;
 		}
 
 		$(".list_time").empty();
 		const showingTimeParam = {
-			branchID: selectedBranchID,
+			branchID: selectedTheaterBranchID,
 			movieID: selectedMovieID,
 			showingDate: selectedDate
 		};
@@ -225,8 +225,8 @@ function showingTime() {
 			const paymentInfo = await selectPaymentByMovieInfoId(screenMovieInfo.movie_information_id);
 
 			screen = screenInfo.screen_location;
-			screenSeatCount = screenInfo.screen_seat_count;
-			remainSeatCount = screenInfo.screen_seat_count;
+			screenSeatCount = screenInfo.screen_row * screenInfo.screen_line;
+			remainSeatCount = screenInfo.screen_row * screenInfo.screen_line;
 
 			$.each(paymentInfo, function(index, payment) {
 				remainSeatCount -= payment.adult;
@@ -262,14 +262,14 @@ function showingTime() {
 
 		async function selectScreenById(screenID) {
 			try {
-				const response = await $.ajax({
+				const screen = await $.ajax({
 					type: "POST",
 					contentType: "text/plain",
 					url: "/screen/selectScreenById",
 					data: screenID.toString()
 				});
 
-				return response;
+				return screen;
 			} catch (error) {
 				console.log("Error:", error);
 			}
@@ -278,14 +278,14 @@ function showingTime() {
 		//상영 영화의 남은 좌석수를 구하기 위한 함수
 		async function selectPaymentByMovieInfoId(movieInformationID) {
 			try {
-				const response = await $.ajax({
+				const payment = await $.ajax({
 					type: "POST",
 					contentType: "text/plain",
 					url: "/payment/selectPaymentByScreenMovieInfoId",
 					data: movieInformationID.toString()
 				});
 
-				return response;
+				return payment;
 			} catch (error) {
 				console.log("Error:", error);
 			}

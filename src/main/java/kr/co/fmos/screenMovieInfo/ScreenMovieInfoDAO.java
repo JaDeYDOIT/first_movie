@@ -6,5 +6,7 @@ import java.util.Map;
 public interface ScreenMovieInfoDAO {
 	public List<ScreenMovieInfoDTO> list();
 
+	public ScreenMovieInfoDTO selectScreenMovieInfoById(String screenMovieInfoID);
+	
 	public List<ScreenMovieInfoDTO> showingTime(Map<String, Object> map);
 }

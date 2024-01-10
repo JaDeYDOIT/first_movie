@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpSession;
 import kr.co.fmos.coupon.UserHavingCouponDAO;
-import kr.co.fmos.movie.MovieDAO;
+import kr.co.fmos.movie.MovieDAOImp;
 import kr.co.fmos.region.RegionDAOImp;
 import kr.co.fmos.screenMovieInfo.ScreenMovieInfoDAO;
 import kr.co.fmos.theaterBranch.TheaterBranchDAOImp;
@@ -26,7 +26,7 @@ public class TicketingCont {
 	@Autowired
 	TheaterBranchDAOImp theaterBranchDao;
 	@Autowired
-	MovieDAO movieDao;
+	MovieDAOImp movieDao;
 	@Autowired
 	ScreenMovieInfoDAO screenMovieInfoDao;
 	@Autowired
@@ -65,7 +65,6 @@ public class TicketingCont {
 		mav.setViewName("ticketing/orderSettlement");
 		session.setAttribute("s_id", "sungwoo");
 		mav.addObject("userHavingCouponList", userHavingCouponDao.userHavingCouponList((String) session.getAttribute("s_id")));
-		System.out.println((String) session.getAttribute("s_id"));
 		return mav;
 	}
 }

@@ -57,9 +57,9 @@
 				<div class="inner">
 					<div class="movie_infor new2020">
 						<span class="thm"><img
-							src="https://cf.lottecinema.co.kr//Media/MovieFile/MovieImg/202312/20492_104_1.jpg"
-							alt="노량: 죽음의 바다"></span><strong class="tit"><span
-							class="ic_grade gr_12"></span>&nbsp;노량: 죽음의 바다(Super 4D2D)</strong>
+							src="https://cf.lottecinema.co.kr//Media/MovieFile/MovieImg/202312/20492_104_1.jpg"></span><strong
+							class="tit"><span class="ic_grade gr_18"></span>&nbsp;노량:
+							죽음의 바다(Super 4D2D)</strong>
 						<dl class="dlist_infor">
 							<dt>일시</dt>
 							<dd>
@@ -101,7 +101,7 @@
 						</div>
 						<h3 class="tit_payment">포인트</h3>
 						<div class="remain_point">잔여 포인트 : 1000</div>
-						<input class="point_amount" placeholder="사용할 포인트 입력">
+						<input class="point_amount" type="number" placeholder="사용할 포인트 입력">
 					</div>
 					<div class="group_payment">
 						<h5 class="tit_payment">최종 결제수단</h5>
@@ -258,23 +258,23 @@
 						</dl>
 						<dl>
 							<dt>상품금액</dt>
-							<dd>
+							<dd class="price">
 								<strong>18,000</strong>원
 							</dd>
 						</dl>
 						<dl>
 							<dt>할인금액</dt>
-							<dd>
+							<dd class="discount_amount">
 								-<strong>0</strong>원
 							</dd>
 						</dl>
 						<dl>
 							<dt>결제금액</dt>
-							<dd>
+							<dd class="total_price">
 								총<strong>18,000</strong>원
 							</dd>
 						</dl>
-						<a href="/ticketing/paysuccess" class="btn_col1 btn_confirm">결제하기</a>
+						<a href="/ticketing/paysuccess" class="btn_col1 btn_confirm pay_button disabled">결제하기</a>
 					</div>
 				</div>
 			</div>
