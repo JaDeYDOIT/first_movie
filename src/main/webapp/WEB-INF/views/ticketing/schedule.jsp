@@ -23,10 +23,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="/js/ticketing_schedule.js"></script>
-
 </head>
-
-
 
 <body>
 	<div id="loading" class="loader loader-bouncing is-active hidden"></div>

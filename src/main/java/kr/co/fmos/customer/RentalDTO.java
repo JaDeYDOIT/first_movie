@@ -144,10 +144,14 @@ public class RentalDTO {
 	public String toString() {
 		return "RentalDTO [rental_inquiry_id=" + rental_inquiry_id + ", rental_inquiry_area=" + rental_inquiry_area
 <<<<<<< HEAD
+<<<<<<< HEAD
 				+ ", rental_inquiry_place=" + rental_inquiry_place + ", rental_inquirytheater=" + rental_inquirytheater
 =======
 				+ ", rental_inquiry_place=" + rental_inquiry_place + ", rental_inquirytheater=" + rental_inquiry_theater
 >>>>>>> ad2f1f70d66a628ba2e059671f2e5162d66a1945
+=======
+				+ ", rental_inquiry_place=" + rental_inquiry_place + ", rental_inquirytheater=" + rental_inquiry_theater
+>>>>>>> 21aff9b83cd1f2e981486a9ff63ce7d8c470962b
 				+ ", rental_inquiry_date=" + rental_inquiry_date + ", rental_inquiry_start=" + rental_inquiry_start
 				+ ", rental_inquiry_end=" + rental_inquiry_end + ", rental_inquiry_movie=" + rental_inquiry_movie
 				+ ", rental_inquiry_people_count=" + rental_inquiry_people_count + ", rental_inquiry_content="

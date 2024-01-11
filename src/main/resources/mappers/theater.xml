@@ -349,8 +349,6 @@
 		SELECT movie_id, movie_name
 		FROM movie
 	</select>
-	
-	
 
 =======
    <select id="writeajaxlist" resultType="java.util.Map"
