@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.websocket.Session;
-import kr.co.fmos.member.MemberDAO;
+import kr.co.fmos.member.MemberDAOImp;
 import kr.co.fmos.member.MemberDTO;
 import kr.co.fmos.screenMovieInfo.ScreenMovieInfoDTO;
 

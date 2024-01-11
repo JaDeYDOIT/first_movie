@@ -23,7 +23,7 @@ public class MemberCont {
 	}// end
 
 	@Autowired
-	private MemberDAO memberDao;
+	private MemberDAOImp memberDao;
 
 	@GetMapping("/login.do")
 	public String list() {
@@ -38,12 +38,6 @@ public class MemberCont {
 	@PostMapping("/getSessionMemberId")
 	@ResponseBody
 	public String getSessionMemberId(HttpSession session) {
-		return session.getAttribute("s_id").toString();
-	}
-
-	@PostMapping("/selectMemberById")
-	@ResponseBody
-	public String selectMemberById(HttpSession session) {
 		return session.getAttribute("s_id").toString();
 	}
 
