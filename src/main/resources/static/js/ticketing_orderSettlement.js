@@ -1,9 +1,16 @@
 const currentUrl = new URL(window.location.href);
-const seats = JSON.parse(decodeURIComponent(currentUrl.searchParams.get('seats')));
 //const screenMovieInfoID = decodeURIComponent(currentUrl.searchParams.get('screenMovieInfoID'));
+//const selectedSeats = JSON.parse(decodeURIComponent(currentUrl.searchParams.get('selectedSeats')));
+//const adult = decodeURIComponent(currentUrl.searchParams.get('adult'));
+//const student = decodeURIComponent(currentUrl.searchParams.get('student'));
+//const silver = decodeURIComponent(currentUrl.searchParams.get('silver'));
 //const price = decodeURIComponent(currentUrl.searchParams.get('price'));
+const student = 1;
+const adult = 0;
+const silver = 3;
 const price = 15000;
 const screenMovieInfoID = 50;
+let selectedSeats = ["C6", "H9", "A1", "B2"];
 let memberID;
 let movieName;
 let movieAudienceRating;
@@ -187,7 +194,32 @@ function printTicketingInfo() {
 	let movieEndTime = dateObject.setMinutes(dateObject.getMinutes() + movieRunningTime);
 	movieEndTime = dateObject.toTimeString().split(' ')[0];
 
-	let htmlContent =
+	let studentString = "청소년";
+	let adultString = "성인";
+	let silverString = "경로";
+
+	if (student === 0) {
+		studentString = "";
+	}
+	else {
+		studentString += student;
+	}
+
+	if (adult === 0) {
+		adultString = "";
+	}
+	else {
+		adultString += adult;
+	}
+
+	if (silver === 0) {
+		silverString = "";
+	}
+	else {
+		silverString += silver;
+	}
+
+	let movieInfoContent =
 		'<span class="thm"><img src="' + movieImage + '"></span>' +
 		'<strong class="tit"><span class="ic_grade ' + movieAudienceRatingClass + '"></span>' +
 		'&nbsp;' + movieName + '</strong>' +
@@ -200,10 +232,30 @@ function printTicketingInfo() {
 		'<dt>영화관</dt>' +
 		'<dd>' + theaterBranchName + " " + screenLocation + '</dd>' +
 		'<dt>인원</dt>' +
-		'<dd>성인1</dd>' +
+		'<dd>' + studentString + " " + adultString + " " + silverString + '</dd>' +
 		'</dl>';
 
-	$('.movie_infor').html(htmlContent);
+	$('.movie_infor').html(movieInfoContent);
+
+	selectedSeats.sort(function(a, b) {
+		var alphaA = a.charAt(0);
+		var alphaB = b.charAt(0);
+		var numA = parseInt(a.slice(1), 10);
+		var numB = parseInt(b.slice(1), 10);
+
+		if (alphaA === alphaB) {
+			return numA - numB;
+		} else {
+			return alphaA.localeCompare(alphaB);
+		}
+	});
+
+	//예매 좌석 표시
+	let seatInfoContent = "";
+	selectedSeats.forEach(function(seat) {
+		seatInfoContent += seat + " ";
+	});
+	$('.seat_infor strong').text(seatInfoContent);
 }
 
 async function getSessionMemberId() {
@@ -383,20 +435,16 @@ function handlePointAmountInput() {
 	$(".point_amount").on("input", function() {
 		var enteredPoints = $(this).val();
 
-		$(this).val(function(_, value) {
-			if (value > memberPoint) {
-				usedPoint = parseInt(enteredPoints);
-				return parseInt(memberPoint);
-			}
-
-			return parseInt(value.replace(/[^0-9.]/g, ''));
-		});
-
-		if (enteredPoints === "") {
+		if (enteredPoints.trim() === "") {
 			usedPoint = 0;
 		}
+		else if (enteredPoints > memberPoint) {
+			usedPoint = memberPoint;
+			$(this).val(memberPoint);
+		}
 		else {
-			usedPoint = parseInt(enteredPoints);
+
+			usedPoint = parseInt(enteredPoints.replace(/[^0-9.]/g, ''), 10) || '';
 		}
 	});
 }

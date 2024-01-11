@@ -168,7 +168,7 @@ function formatDate(date) {
 function padZero(num) {
 	return num < 10 ? '0' + num : num;
 }
-ㄴ
+
 function handleDateRadioClick() {
 	$('input[name="radioDate1"]').on('change', function() {
 		$('.article_time .tit').text($(this).data("playdate") + "(" + $(this).data("playweek") + ")");
@@ -220,13 +220,15 @@ function showingTime() {
 			let screen;
 			let screenSeatCount;
 			let remainSeatCount;
+			let noneExistSeatsCount;
 
 			const screenInfo = await selectScreenById(screenMovieInfo.screen_id);
 			const paymentInfo = await selectPaymentByMovieInfoId(screenMovieInfo.movie_information_id);
+			const noneExistSeatsInfo = await selectNoneExistSeatsByScreenId(screenMovieInfo.screen_id);
 
 			screen = screenInfo.screen_location;
-			screenSeatCount = screenInfo.screen_row * screenInfo.screen_line;
-			remainSeatCount = screenInfo.screen_row * screenInfo.screen_line;
+			screenSeatCount = screenInfo.screen_row * screenInfo.screen_line - noneExistSeatsInfo.length;
+			remainSeatCount = screenSeatCount;
 
 			$.each(paymentInfo, function(index, payment) {
 				remainSeatCount -= payment.adult;
@@ -286,6 +288,22 @@ function showingTime() {
 				});
 
 				return payment;
+			} catch (error) {
+				console.log("Error:", error);
+			}
+		}
+
+		//존재하지 않는 좌석 갯수 
+		async function selectNoneExistSeatsByScreenId(screenID) {
+			try {
+				const noneExistSeats = await $.ajax({
+					type: "POST",
+					contentType: "text/plain",
+					url: "/noneExistSeats/selectNoneExistSeatsByScreenId",
+					data: screenID.toString()
+				});
+
+				return noneExistSeats;
 			} catch (error) {
 				console.log("Error:", error);
 			}
