@@ -137,8 +137,7 @@
 						<article class="mseat_wrap">
 							<div class="mseat_inner">
 
-								<div
-									class="mCustomScrollbar _mCS_1 mCS-autoHide mCS_no_scrollbar"
+								<div class="mCustomScrollbar _mCS_1 mCS-autoHide mCS_no_scrollbar"
 									data-mcs-theme="minimal-dark"
 									style="position: relative; overflow: visible; height: 470px;">
 									<div id="mCSB_1"
@@ -157,7 +156,9 @@
 														<div class="seat_area">
 															<!-- HTML -->
 															<div class="seat-container">
-																<!-- 좌석 생성을 위한 컨테이너 -->
+																  <div id="myContainer">
+															        <!-- 여기에 좌석이 생성됩니다. -->
+															      </div>
 															</div>
 															<div class="seat_btm_box">
 																<div class="seat_type_box">

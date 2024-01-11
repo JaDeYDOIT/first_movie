@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	});
 
 	let emptySeats;
-	var seatContainer = document.querySelector('.seat-container');
+	var seatContainer = document.getElementById('myContainer');
 	initialize();
 
 	async function initialize() {
