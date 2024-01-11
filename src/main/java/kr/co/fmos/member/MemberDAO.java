@@ -1,5 +1,7 @@
 package kr.co.fmos.member;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,6 +25,14 @@ public class MemberDAO {
 		return sqlSession.selectOne("member.idcheck", member_id);
 	}//totalamount() end
 	
+	public int loginfailcheck(String member_id) {
+		return sqlSession.selectOne("member.loginfailcheck", member_id);
+	}//totalamount() end
+	
+	public int logincussesscheck(Map<String, String> map) {
+		return sqlSession.selectOne("member.logincussesscheck", map);
+	}//totalamount() end
+	
 	public String emailcheck(String member_email) {
 		return sqlSession.selectOne("member.emailcheck", member_email);
 	}//totalamount() end
@@ -39,4 +49,5 @@ public class MemberDAO {
 	public int sinsert(MemberDTO dto) {
 		return sqlSession.insert("member.sinsert", dto);
 	}//insert() end
+	
 }
