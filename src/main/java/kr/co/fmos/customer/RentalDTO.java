@@ -143,7 +143,7 @@ public class RentalDTO {
 	@Override
 	public String toString() {
 		return "RentalDTO [rental_inquiry_id=" + rental_inquiry_id + ", rental_inquiry_area=" + rental_inquiry_area
-				+ ", rental_inquiry_place=" + rental_inquiry_place + ", rental_inquirytheater=" + rental_inquirytheater
+				+ ", rental_inquiry_place=" + rental_inquiry_place + ", rental_inquirytheater=" + rental_inquiry_theater
 				+ ", rental_inquiry_date=" + rental_inquiry_date + ", rental_inquiry_start=" + rental_inquiry_start
 				+ ", rental_inquiry_end=" + rental_inquiry_end + ", rental_inquiry_movie=" + rental_inquiry_movie
 				+ ", rental_inquiry_people_count=" + rental_inquiry_people_count + ", rental_inquiry_content="
