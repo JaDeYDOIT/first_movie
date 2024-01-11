@@ -1,26 +1,17 @@
 package kr.co.fmos.movie;
 
 import java.util.List;
-import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
+public interface MovieDAO {
+	public List<MovieDTO> movieList();
 
-import kr.co.fmos.member.MemberDTO;
+	public int movieinsert(MovieDTO movieDto);
 
-@Repository
-@Controller
-public class MovieDAO {
+	public MovieDTO movieDetail(String movie_id);
 
-	public MovieDAO() {
-		System.out.println("MovieDAO() 객체 생성");
-	}
+	public List<MoviereviewDTO> moviereviewList(String movie_id);
 
-	// sql연결
-	@Autowired
-	SqlSession sqlSession;
+	public int reviewInsert(MoviereviewDTO dto);
 
 	// 영화 리스트
 	public List<MovieDTO> movieList() {
@@ -56,12 +47,12 @@ public class MovieDAO {
 //	 public MoviereviewDTO moviereviewList(String movie_id) {
 //		 return sqlSession.selectOne("movie.review", movie_id);
 //	 }// movieList() end
-
+	
 // TheaterCont에서 호출하는 메서드 시작
 	public MovieDTO moviecheck(int movie_id) {
 		return sqlSession.selectOne("movie.moviecheck", movie_id);
 	}// movieList() end
 // TheaterCont에서 호출하는 메서드 끝
-	
-	
+
+	public MovieDTO selectMovieInfoById(String movieID);
 }// class end
