@@ -6,9 +6,11 @@ ver : 1.01 20191219 2502 line > íŒì—…ë©”ë‰´ ê³ ì •ë†�
 ============================== */
 
 
+
+
 .seat-container {
-	margin: 10% auto 0 auto;
-	width: 100%;
+    margin: 10% auto 0 auto;
+    width: auto;
 }
 
 .row-gap {
@@ -36,14 +38,12 @@ ver : 1.01 20191219 2502 line > íŒì—…ë©”ë‰´ ê³ ì •ë†�
 	/* 행 레이블 너비 조절 */
 	text-align: right;
 	/* 행 레이블을 오른쪽 정렬 */
-	margin-right: 30px;
+	margin-right: 31px;
 	/* 행 레이블과 좌석 간격 조절 */
 }
 
 /* íŒì—… : ì”¨ì¸„ ì œê³µë™ì˜ ============================== */
 
-.grNum1 {
-}
 
 .layer_wrap.layer_movie_grade {
 	width: 600px;
@@ -9809,7 +9809,7 @@ label.lab_txt .tit_lab {
 
 .seat_btm_box .seat_type_box {
 	float: left;
-	width: 615px;
+	width: 382px;
 }
 
 .seat_btm_box .seat_type_box .top_info {
@@ -22643,7 +22643,7 @@ select.ty5~select.ty5 {
 }
 
 .seat_btm_box .seat_type_box {
-	width: 690px;
+	width: 382px;
 }
 
 /* íŒì—… : ì¢Œì„ì•ˆë‚´ */

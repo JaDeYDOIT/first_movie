@@ -83,7 +83,7 @@
 		SELECT es.screen_row row, es.screen_line col
 		FROM
 		screen_movie_information AS smi
-		JOIN empty_seats AS es ON smi.screen_id
+		JOIN none_exist_seats AS es ON smi.screen_id
 		= es.screen_id
 		WHERE smi.movie_information_id = #{screenMovieInfoID}
 	</select>
