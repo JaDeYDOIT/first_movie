@@ -226,9 +226,6 @@ function printPrice() {
 	$('#layerDiscountCoupon .submit').click(printDiscountPrice);
 	$(".point_amount").on("input", printDiscountPrice);
 	function printDiscountPrice() {
-		console.log((price - (price * (couponDiscountRate / 100))) - usedPoint);
-		console.log(typeof Math.round(price * (couponDiscountRate / 100)));
-		console.log(typeof usedPoint);
 		const discountAmount = Math.round(price * (couponDiscountRate / 100)) + usedPoint;
 		$('.discount_amount strong').text(discountAmount);
 		$('.total_price strong').text(price - discountAmount);
