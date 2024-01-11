@@ -80,6 +80,11 @@ public class TheaterCont {
 		// System.out.println(theaterdao.screenlist(branch_id));
 		ModelAndView mav = new ModelAndView();
 		
+		//LocalDate today = LocalDate.now();
+
+        // 변수에 담아서 사용
+        //System.out.println("오늘 날짜: " + today);
+		
 		mav.addObject("timecheck", theaterdao.timecheck()); 
 		mav.addObject("theaterlist", theaterdao.regionlist(region_id));
 		mav.addObject("branchlist", theaterdao.branchlist(region_id));

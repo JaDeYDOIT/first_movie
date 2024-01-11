@@ -33,6 +33,58 @@
 		theater_branch
 		where region_id = #{check}
 	</select>
+	
+	<!-- CustomerCont 에서 호출 시작 -->
+	
+	<select id="branchselectbox"
+	    resultType="java.util.Map"
+	    parameterType="String">
+	    select tb.branch_id, tb.region_id, tb.branch_name
+	    from theater_branch tb join region r
+	    on tb.region_id = r.region_id 
+	    where r.region_id= #{region_id}
+	</select>
+	
+	<select id="screenselectbox"
+	    resultType="java.util.Map">
+	    select s.screen_id , s.screen_location 
+		from theater_branch tb join screen s 
+		on tb.branch_id = s.branch_id
+		where s.branch_id = #{branch_id};
+	</select>
+	
+	<select id="movieselectbox" resultType="java.util.Map">
+		select m.movie_id , m.movie_name 
+		from screen_movie_information smi join movie m 
+		on smi.movie_id = m.movie_id
+		where smi.screen_id = #{screen_id}
+	</select>
+	
+	<select id="Rental_inquiry_area" resultType="String">
+		select region 
+		from region
+		where region_id = #{rental_inquiry_area}
+	</select>
+	
+	<select id="rental_inquiry_place" resultType="String">
+		select branch_name 
+		from theater_branch
+		where branch_id = #{rental_inquiry_place}
+	</select>
+	
+	<select id="rental_inquiry_place" resultType="String">
+		select screen_location 
+		from screen
+		where screen_id = #{rental_inquiry_theater}
+	</select>
+	
+	<select id="rental_inquiry_movie" resultType="String">
+		select movie_name 
+		from movie
+		where movie_id = #{movie_id}
+	</select>
+	
+	<!-- CustomerCont 에서 호출 끝 -->
 
 	<select id="branchimg"
 		resultType="kr.co.fmos.theater.TheaterbranchDTO">
@@ -72,28 +124,31 @@
 	<!-- ORDER BY screen_location -->
 	<!-- </select> -->
 
-	<select id="screenlist" resultType="java.util.Map"
+	<!-- <select id="screenlist" resultType="java.util.Map"
 		parameterType="int">
-		SELECT region_id, TB.branch_id, branch_name,
-		TB.branch_img,
-		movie_showing_date, movie_name, MG.movie_genre_id,
-		group_concat(movie_showing_time) as time,
-		movie_production_year,
-		screen_location, screen_seat_count, MG.movie_genre_name, MV.movie_id,
-		movie_running_time
-		FROM screen SC JOIN screen_movie_information SMI
-		ON
-		SC.screen_id = SMI.screen_id JOIN theater_branch TB
-		ON region_id =
-		TB.region_id JOIN movie MV
-		ON SMI.movie_id = MV.movie_id JOIN
-		movie_genre MG
-		ON MG.movie_genre_id = MV.movie_genre_id
-		where
-		TB.branch_id = #{branch_id}
-		GROUP BY movie_name
-		ORDER BY screen_location
-	</select>
+		select tb.branch_name, smi.movie_showing_date, movie_name, mg.movie_genre_name , movie_running_time, movie_production_year ,s.screen_location, smi.movie_showing_time
+		, m.movie_id, s.screen_id, tb.branch_id , s.screen_row * s.screen_line as screen_seat_count
+		from screen_movie_information smi join screen s 
+		on smi.screen_id = s.screen_id join movie m 
+		on smi.movie_id = m.movie_id join theater_branch tb 
+		on tb.branch_id  = s.branch_id join movie_genre mg 
+		on m.movie_genre_id = mg.movie_genre_id
+		where tb.branch_id = #{branch_id}
+	</select> -->
+	 <select id="screenlist" resultType="java.util.Map"
+		parameterType="int">
+		SELECT tb.branch_name, smi.movie_showing_date, m.movie_name, mg.movie_genre_name, 
+       m.movie_running_time, m.movie_production_year, s.screen_location, 
+       m.movie_id, s.screen_id, tb.branch_id, s.screen_row * s.screen_line as screen_seat_count
+		FROM screen_movie_information smi 
+		JOIN screen s ON smi.screen_id = s.screen_id 
+		JOIN movie m ON smi.movie_id = m.movie_id 
+		JOIN theater_branch tb ON tb.branch_id = s.branch_id 
+		JOIN movie_genre mg ON m.movie_genre_id = mg.movie_genre_id
+		WHERE tb.branch_id = #{branch_id}
+		GROUP BY m.movie_name, s.screen_id;
+	</select> 
+	
 
 	<select id="writeajaxlist" resultType="java.util.Map" parameterType="int">
 		SELECT movie_id, MV.movie_genre_id, movie_genre_name,
@@ -129,11 +184,11 @@
 
 	<insert id="screeninsert" parameterType="java.util.Map">
 		INSERT INTO
-		screen(branch_id, screen_location, screen_seat_count,
+		screen(branch_id, screen_location,
 		screen_row,
 		screen_line)
 		VALUES (#{branch_id}, #{screen_location},
-		#{screen_seat_count}, #{screen_row}, #{screen_line})
+		#{screen_row}, #{screen_line})
 	</insert>
 	
 	<!-- <select id="smitime" resultType="kr.co.fmos.theater.Screen_movie_informationDTO">
@@ -150,7 +205,7 @@
 	</select> -->
 	
 	<select id="timecheck" resultType="kr.co.fmos.theater.Screen_movie_informationDTO">
-		select movie_showing_time, movie_id , branch_id
+		select TIME_FORMAT(movie_showing_time, '%H:%i') as movie_showing_time, movie_id , branch_id , screen_id
 		from screen_movie_information
 	</select>
 	
@@ -164,7 +219,7 @@
 	<select id="screenajaxlist"
 		resultType="kr.co.fmos.theater.ScreenDTO" parameterType="int">
 		SELECT screen_id, branch_id, screen_location,
-		screen_seat_count, screen_row, screen_line
+		screen_row, screen_line
 		FROM screen 
         WHERE branch_id = #{branch_id}
 	</select>
@@ -172,7 +227,7 @@
 	<!-- customer 호출 시작 -->
 	<select id="region_customer"
 		resultType="kr.co.fmos.theater.TheaterregionDTO">
-		SELECT region_id, region
+		SELECT region, region_id
 		FROM region
 	</select>
 	<!-- customer 호출 끝 -->

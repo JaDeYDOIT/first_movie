@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
+
 <link rel="stylesheet" href="/css/store.css">
 <script>
 	//장바구니 : 로그인과 결제 페이지 유효성 검사

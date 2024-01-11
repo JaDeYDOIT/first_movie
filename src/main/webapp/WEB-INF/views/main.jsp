@@ -393,7 +393,7 @@
 <!-- 패키지 시작 -->
 <section id="store_wrap">
 	<dt>
-		<a href="#">패키지더보기</a>
+		<a href="/product/list.do">패키지더보기</a>
 	</dt>
 	<dl class='package_list'>
 		<dd>

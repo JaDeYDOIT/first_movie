@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/product")
@@ -23,7 +24,8 @@ public class ProductCont {
 	private ProductDAO productDao;
 	
 	@RequestMapping("/list.do")
-	public ModelAndView list() {
+	public ModelAndView list(HttpSession session) {
+		System.out.println(session.getAttribute("s_id"));
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("product/list");
 		mav.addObject("list", productDao.list());
