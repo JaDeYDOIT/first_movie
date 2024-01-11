@@ -34,7 +34,7 @@
 			<ul>
 				<li class="step01 prev"><a href="/ticketing/schedule"><strong
 						class="tit"><span>01</span><br>상영시간</strong> </a></li>
-				<li class="step02 prev"><a href="/ticketing/personseat"><strong
+				<li class="step02 prev"><a href="javascript:window.history.back();"><strong
 						class="tit"><span>02</span><br>인원/좌석</strong> </a></li>
 				<li class="step03 active"><a href="#"><strong class="tit"><span>03</span><br>결제</strong>
 				</a></li>
