@@ -23,11 +23,11 @@ public class MemberCont {
 
 	public MemberCont() {
 		System.out.println("-----MemberCont()객체생성됨");
-	}//end
-	
+	}// end
+
 	@Autowired
 	private MemberDAO memberDao;
-	
+
 	@GetMapping("/login.do")
 	public String list() {
 		return "/member/login";
@@ -142,26 +142,26 @@ public class MemberCont {
 		mav.setViewName("logmsgView");
 		return mav;
 	}
-	
+
 	@GetMapping("/social_log")
 	public ModelAndView kakao_log(MemberDTO dto, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		int result = memberDao.sMembercheck(dto);
 		System.out.println(result);
-		
-		if(result != 1) {
+
+		if (result != 1) {
 			memberDao.sinsert(dto);
 			mav.addObject("msg1", "<script>alert('환영합니다')</script>");
 			session.setAttribute("s_id", dto.getMember_email());
 		} else {
 			mav.addObject("msg1", "<script>alert('환영합니다')</script>");
 			session.setAttribute("s_id", dto.getMember_email());
-	    }
+		}
 
 		mav.setViewName("logmsgView");
 		return mav;
 	}
-	
+
 	@GetMapping("/test.do")
 	public String test() {
 		return "/member/test";

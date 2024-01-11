@@ -12,12 +12,17 @@ public class TheaterBranchDAOImp implements TheaterBranchDAO {
 	public TheaterBranchDAOImp() {
 		System.out.println("-----theaterBranchDAO() 객체 생성됨");
 	}
-	
+
 	@Autowired
 	SqlSession sqlSession;
-	
+
 	@Override
-	public List<TheaterBranchDTO> list(){
+	public List<TheaterBranchDTO> list() {
 		return sqlSession.selectList("theaterBranch.list");
-	}//list() end
+	}// list() end
+
+	@Override
+	public TheaterBranchDTO selectTheaterBranchById(String branchID) {
+		return sqlSession.selectOne("theaterBranch.selectTheaterBranchById", branchID);
+	}// selectTheaterBranchById() end
 }

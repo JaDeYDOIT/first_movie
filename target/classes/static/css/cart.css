@@ -1,0 +1,82 @@
+@charset "utf-8";
+/*cart 시작*/
+
+.cart_step_wrap {/*전체 영역*/
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'CJONLYONENEW';
+    text-align: center;
+}
+
+.cart_step_wrap .cart_step {/*step css1*/
+    overflow: hidden;
+    width: 100%;
+    margin: auto;
+    margin-top: 30px;
+    font-size: 0;
+}
+
+.cart_step_wrap .cart_step li {/*step css2*/
+    display: inline-block;
+    position: relative;
+    padding-left: 53px;
+}
+
+.cart_step_wrap .cart_step li span {/*step css3*/
+    display: block;
+    font-weight: 400;
+    font-size: 13px;
+    color: #8d8d8d;
+    line-height: 22px;
+}
+
+.cart_step_wrap .cart_step li.active span, .cart_step_wrap .cart_step li.active strong {
+    color: #f00;
+}
+
+.cart_step_wrap .cart_step li strong {/*step css5*/
+    display: block;
+    font-family: 'CJONLYONENEW';
+    font-weight: 500;
+    font-size: 22px;
+    color: #8d8d8d;
+    line-height: 22px;
+}
+
+
+table {
+    width: 900px;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 50px 50px 50px 220px;
+    text-align: center;
+}
+
+.thead_wrap {
+	background-color:gainsboro;
+	color: 8d8d8d;
+	font-size: 20px;
+	border: 0;
+}
+
+.tbody_wrap{
+	font-size: 18px;
+	text-align: center;
+}
+
+#notimsg{
+	float: right;
+	margin: 0px 200px 50px 0px;
+}
+
+#cartButton {
+  background-color: #373e46;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 50px;
+  margin-left: 600px;
+}
