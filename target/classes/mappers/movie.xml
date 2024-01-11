@@ -27,7 +27,6 @@
 		#{actor_name})
 	</insert>
 
-
 	<select id="detail" resultType="kr.co.fmos.movie.MovieDTO"
 		parameterType="String">
 		SELECT
@@ -90,9 +89,6 @@
 	VALUES(#{member_id}, #{movie_id}, #{movie_review}, NOW())
 	</insert>
 	
-<<<<<<< HEAD
-
-=======
 <!-- TheaterCont에서 호출하는 메서드 시작 -->
 		<select id="moviecheck" resultType="kr.co.fmos.movie.MovieDTO">
 		SELECT movie_id, movie_genre_id,
@@ -103,9 +99,5 @@
 		where movie_id = #{movie_id}
 	</select>
 <!-- TheaterCont에서 호출하는 메서드 끝 -->
->>>>>>> 22c4d2ee1460347ab3320d9e5230a6a12541814f
-	
-	
-	
 
 </mapper>

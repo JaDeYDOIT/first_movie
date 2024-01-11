@@ -12,7 +12,6 @@
 		SELECT region_id, region
 		FROM region
 	</select>
-<<<<<<< HEAD
 
 	<select id="branchlist"
 		resultType="kr.co.fmos.theater.TheaterbranchDTO"
@@ -33,14 +32,6 @@
 		from
 		theater_branch
 		where region_id = #{check}
-	</select>
-
-	<select id="branchimg"
-		resultType="kr.co.fmos.theater.TheaterbranchDTO">
-		SELECT branch_img
-		FROM theater_branch
-		WHERE branch_id =
-		#{branch_id}
 	</select>
 
 	<!-- 구조화된 값을 담을떄는 그냥 구조에 맞춰 DTO클래슬 만들면 되지만, -->
@@ -96,13 +87,7 @@
 		ORDER BY screen_location
 	</select>
 
-
 <!-- 리스트형식 write페이지  -->
-	<select id="writelist" resultType="java.util.Map"
-		parameterType="int">
-		SELECT movie_id, movie_name
-		FROM movie
-	</select>
 
 	<select id="writeajaxlist" resultType="java.util.Map" parameterType="int">
 		SELECT movie_id, MV.movie_genre_id, movie_genre_name,
@@ -114,7 +99,6 @@
 		MV.movie_genre_id = MG.movie_genre_id
 		where movie_id = #{movie_id};
 	</select>
-
 
 <!-- write페이지 ajax -->
 <!-- 	<select id="moviecheck" resultType="java.util.Map" -->
@@ -188,27 +172,6 @@
 	</select>
 	<!-- customer 호출 끝 -->
 	
-=======
-
-	<select id="branchlist"
-		resultType="kr.co.fmos.theater.TheaterbranchDTO"
-		parameterType="String">
-		SELECT region_id, branch_name, branch_address,
-		branch_id,
-		branch_number, branch_seats
-		FROM theater_branch
-		WHERE
-		region_id = #{region_id}
-	</select>
-
-	<select id="checkList"
-		resultType="kr.co.fmos.theater.TheaterbranchDTO"
-		parameterType="String">
-		select branch_id , region_id, branch_name
-		from
-		theater_branch
-		where region_id = #{check}
-	</select>
 	<select id="branchimg"
 		resultType="kr.co.fmos.theater.TheaterbranchDTO">
 		SELECT branch_img
@@ -270,15 +233,11 @@
 		ORDER BY screen_location
 	</select>
 
-
-
-
 	<select id="moviewritelist" resultType="java.util.Map"
 		parameterType="int">
 		SELECT movie_id, movie_name
 		FROM movie
 	</select>
-
 
 
 	<select id="writelist" resultType="java.util.Map"
@@ -287,13 +246,4 @@
 		FROM movie
 	</select>
 
-
-
-
-
-
-
-
-
->>>>>>> 22c4d2ee1460347ab3320d9e5230a6a12541814f
 </mapper>
