@@ -99,5 +99,11 @@
 		where movie_id = #{movie_id}
 	</select>
 <!-- TheaterCont에서 호출하는 메서드 끝 -->
+<<<<<<< HEAD
+=======
+	
+	
+	
+>>>>>>> 9bd6a48eb907b35e52949a832593e6092b3e232e
 
 </mapper>

@@ -63,6 +63,4 @@ public class ScreenMovieInfoDTO {
 				+ ", movie_id=" + movie_id + ", movie_showing_date=" + movie_showing_date + ", movie_showing_time="
 				+ movie_showing_time + ", branch_id=" + branch_id + "]";
 	}
-	
-	
 }

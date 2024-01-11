@@ -56,12 +56,11 @@ public class MovieDAO {
 //	 public MoviereviewDTO moviereviewList(String movie_id) {
 //		 return sqlSession.selectOne("movie.review", movie_id);
 //	 }// movieList() end
-
+	
 // TheaterCont에서 호출하는 메서드 시작
 	public MovieDTO moviecheck(int movie_id) {
 		return sqlSession.selectOne("movie.moviecheck", movie_id);
 	}// movieList() end
 // TheaterCont에서 호출하는 메서드 끝
-	
 	
 }// class end

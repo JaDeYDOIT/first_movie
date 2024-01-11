@@ -1,16 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
+
 <link rel="stylesheet" href="/css/store.css">
 <script>
-	function product_cart(){
+	/* function product_cart(){
 	  		 if($("#product_count").val()=="0"){
 	  			alert("상품수량을 선택해주세요~");
 	  		}else {
 	  			document.detailfrm.action="/cart/insert.do";
 	  			document.detailfrm.submit();
 	  		}//if end
-	  	}//product_cart() end
+	  	}//product_cart() end */
+	  	
+	  	 function deleteBoard() {
+	  	    // 삭제할 때 필요한 조건을 여기에 추가
+	  	    if ($("#product_count").val() == "0") {
+	  	      Swal.fire({
+	  	        title: '상품수량을 선택해주세요~',
+	  	        icon: 'warning',
+	  	      })
+	  	    } 
+	  	  }
+	  	
 </script>
 
 <!-- contents 시작 -->
@@ -100,7 +112,7 @@
 			<div class="category_product_button">
 				 <tr>
 					<td colpsan="2" align="center" class="category_product_button">
-						<input type="button" value="장바구니" onclick="return product_cart()">
+						<input type="button" value="장바구니" onclick="return deleteBoard()">
 						<input type="button" value="구매하기" onclick="location.href='/order/confirm.do'">
 					</td>
 				</tr> 

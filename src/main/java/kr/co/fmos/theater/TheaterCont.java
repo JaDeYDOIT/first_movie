@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
 import kr.co.fmos.movie.MovieDAO;
+import kr.co.fmos.movie.MovieDAO;
+import kr.co.fmos.movie.MovieDTO;
+
 
 @Controller
 @RequestMapping("/theater")
@@ -22,6 +26,7 @@ public class TheaterCont {
 
 	@Autowired
 	TheaterDAO theaterdao;
+
 	@Autowired
 	MovieDAO moviedao;
 
@@ -71,7 +76,14 @@ public class TheaterCont {
 	// 지점
 	@RequestMapping("/branchlist.do")
 	public ModelAndView list(String region_id, int branch_id) {// region_id=region_001, branch_id=19
+		// System.out.println(region_id);
+		// System.out.println(theaterdao.screenlist(branch_id));
 		ModelAndView mav = new ModelAndView();
+		
+		//LocalDate today = LocalDate.now();
+
+        // 변수에 담아서 사용
+        //System.out.println("오늘 날짜: " + today);
 		
 		mav.addObject("timecheck", theaterdao.timecheck()); 
 		mav.addObject("theaterlist", theaterdao.regionlist(region_id));
@@ -80,9 +92,7 @@ public class TheaterCont {
 		mav.addObject("branchimg", theaterdao.branchimg(branch_id));
 		mav.setViewName("theater/list");
 		return mav;
-		
 	}// list() end
-
 	
 	//지역 -> 지점  ajax
 	@GetMapping("/check.do")
@@ -140,6 +150,17 @@ public class TheaterCont {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("screenajaxlist", theaterdao.screenajaxlist(branch_id));
 		return map;
-	}
+	}// list() end
+
+
+//	@GetMapping("/writelist.do")
+//	@ResponseBody
+//	public Map<String, Object> writelist(Map<String, Object> writelist) {
+////		ModelAndView mav = new ModelAndView();
+////		mav.addObject("writelist", theaterdao.writelist(writelist));
+////		mav.setViewName("theater/write");
+//		Map<String, Object> map = new HashMap<>();
+//		return map;
+//	}
 
 }// class end

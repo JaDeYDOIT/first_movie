@@ -47,7 +47,6 @@ public class CustomerCont {
 	@RequestMapping("/inquire.do")
 	public ModelAndView inquirylist(int inquire_kind) {
 		ModelAndView mav = new ModelAndView();
-		System.out.println(inquire_kind);
 		if(inquire_kind == 0) {
 			mav.addObject("list", inquireDao.oneselect(inquire_kind));
 			mav.setViewName("customer/one_inquire");
@@ -84,10 +83,6 @@ public class CustomerCont {
     @PostMapping("/noticeinsert.do") 
     public ModelAndView noticeins(NoticeDTO dto) {
     	ModelAndView mav = new ModelAndView();
-    	System.out.println(dto.getNotice_kind());
-    	System.out.println(dto.getNotice_type());
-    	System.out.println(dto.getNotice_title());
-    	System.out.println(dto.getNotice_content());
 		
 		 int num = noticeDao.noticeInsert(dto);
 		 if(num != 0) { 
@@ -104,7 +99,6 @@ public class CustomerCont {
     public ModelAndView oneinquiryins(InquireDTO dto ,HttpSession session) {
     	ModelAndView mav = new ModelAndView();
     	String s_id = (String)session.getAttribute("s_id");
-    	System.out.println(s_id);
     	dto.setMember_id(s_id);
     	
     	int num = inquireDao.oneInquireins(dto);
@@ -119,20 +113,53 @@ public class CustomerCont {
 		return mav;
     }
     
-    @PostMapping("/regionselectbox.do")
+    @PostMapping("/branchselectbox.do")
     @ResponseBody
-    public Map<String, Object> checkList(String region_id) {
-    	Map<String, Object> map = new HashMap<String, Object>();
-    	map.put("checkList", theaterDao.checkList(region_id));
-    	return map;
+    public Map<String, Object> branchselectbox(String region_id) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("regionselectbox", theaterDao.branchselectbox(region_id));
+        return map;
     }
     
     @PostMapping("/screenselectbox.do")
     @ResponseBody
     public Map<String, Object> screenselectbox(int branch_id){
     	Map <String, Object> map = new HashMap<>();
-    	map.put("screenselectbox", theaterDao.screenajaxlist(branch_id));
+    	map.put("screenselectbox", theaterDao.screenselectbox(branch_id));
+    	System.out.println(map.toString());
     	return map;
+    }
+    
+    @PostMapping("/movieselectbox.do")
+    @ResponseBody
+    public Map<String, Object> movieselectbox(int screen_id){
+    	Map <String, Object> map = new HashMap<>();
+    	map.put("movieselectbox", theaterDao.movieselectbox(screen_id));
+    	return map;
+    }
+    
+    @PostMapping("/rentalinsert.do")
+    public void rentalinsert(RentalDTO dto) {
+    	String rental_inquiry_area = dto.getRental_inquiry_area();
+    	System.out.println(theaterDao.Rental_inquiry_area(rental_inquiry_area));
+    	dto.setRental_inquiry_area(theaterDao.Rental_inquiry_area(rental_inquiry_area));
+    	
+    	int rental_inquiry_place = Integer.parseInt(dto.getRental_inquiry_place());
+    	System.out.println(theaterDao.rental_inquiry_place(rental_inquiry_place));
+    	dto.setRental_inquiry_place(theaterDao.rental_inquiry_place(rental_inquiry_place));
+    	
+    	int rental_inquiry_theater = Integer.parseInt(dto.getRental_inquiry_theater());
+    	System.out.println(theaterDao.rental_inquiry_theater(rental_inquiry_theater));
+    	dto.setRental_inquiry_place(theaterDao.rental_inquiry_theater(rental_inquiry_theater));
+    	
+    	int rental_inquiry_movie = Integer.parseInt(dto.getRental_inquiry_movie());
+    	System.out.println(theaterDao.rental_inquiry_movie(rental_inquiry_movie));
+    	dto.setRental_inquiry_place(theaterDao.rental_inquiry_movie(rental_inquiry_movie));
+    	
+    	
+    	
+    	
+    	
     }
     
     

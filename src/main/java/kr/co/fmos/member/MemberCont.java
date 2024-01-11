@@ -1,5 +1,8 @@
 package kr.co.fmos.member;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,36 +33,7 @@ public class MemberCont {
 		return "/member/login";
 	}//list() end
 	
-	@GetMapping("/member.do")
-	public String member() {
-		return "/member/member";
-	}
-	
-	@PostMapping("/insert")
-	public String memberInsert(MemberDTO dto) {
-	    memberDao.memberInsert(dto);
-
-	    return "redirect:/main";
-	}
-	
-	@PostMapping("idcheckproc.do")
-	@ResponseBody
-	public String idCheckForm(HttpServletRequest req) {
-		String member_id = req.getParameter("memid").trim();
-		System.out.println(req.getParameter("memid").trim());
-		String result = memberDao.idcheck(member_id);
-		return result;
-	}
-	
-	@PostMapping("emailcheck.do")
-	@ResponseBody
-	public String emailCheckForm(HttpServletRequest req) {
-		String member_email = req.getParameter("mememail").trim();
-		String result = memberDao.emailcheck(member_email);
-		return result;
-	}
-	
-	 @PostMapping("/login.do") 
+	@PostMapping("/login.do") 
 	 public ModelAndView login(HttpServletResponse response ,MemberDTO dto , HttpSession session, @RequestParam(name = "idcheckbox", defaultValue = "2")String idcheckbox, HttpServletRequest request) { 
 		 ModelAndView mav = new ModelAndView();
 		 int check = memberDao.membercheck(dto);
@@ -80,18 +54,85 @@ public class MemberCont {
 				 response.addCookie(idcookie); 
 				 response.addCookie(chcookie); 				 
 			 }
-			 
-			 mav.addObject("msg1", "<script>alert('환영합니다')</script>");
 			 session.setAttribute("s_id", dto.getMember_id());
 			 session.setAttribute("s_pw", dto.getMember_pw()); 
-		 } else {
-			 mav.addObject("msg1", "<script>alert('아이디 혹은 비밀번호가 틀렸습니다.')</script>");
+		 } 
 			 mav.addObject("msg2", check);
-		 }
+//		 } else {
+//			 mav.addObject("msg1", 1);
+//			 mav.addObject("msg2", check);
+//		 }
 		 mav.setViewName("logmsgView"); 
 		 return mav; 
 	 }
-	 	
+	
+//	@GetMapping("/logfail.do")
+//	public ModelAndView logfail() {
+//		
+//		ModelAndView mav = new ModelAndView();
+//		int msg1 = 1;
+//		
+//		mav.addObject("msg1", msg1);
+//		mav.setViewName("/member/login");
+//		return mav;
+//	}//list() end
+	
+	@GetMapping("/loginfailcheck.do")
+	@ResponseBody
+	public int loginfailcheck(String member_id) {
+		Map<String, String> map = new HashMap<>();
+		int num = memberDao.loginfailcheck(member_id);
+		return num;
+	}//list() end
+	
+	@GetMapping("/logincussesscheck.do")
+	@ResponseBody
+	public int logincussesscheck(String member_id, String member_pw) {
+		Map<String, String> map = new HashMap<>();
+		map.put("member_id", member_id);
+		map.put("member_pw", member_pw);
+		int num = memberDao.logincussesscheck(map);
+		return num;
+	}//list() end
+	
+	@GetMapping("/logsuc.do")
+	public ModelAndView logsuc() {
+		ModelAndView mav = new ModelAndView();
+		int msg1 = 2;
+		
+		mav.addObject("msg1", msg1);
+		mav.setViewName("/member/login");
+		return mav;
+	}//list() end
+	
+	@GetMapping("/member.do")
+	public String member() {
+		return "/member/member";
+	}
+	
+	@PostMapping("/insert")
+	public String memberInsert(MemberDTO dto) {
+	    memberDao.memberInsert(dto);
+	    return "redirect:/main";
+	}
+	
+	@PostMapping("idcheckproc.do")
+	@ResponseBody
+	public String idCheckForm(HttpServletRequest req) {
+		String member_id = req.getParameter("memid").trim();
+		System.out.println(req.getParameter("memid").trim());
+		String result = memberDao.idcheck(member_id);
+		return result;
+	}
+	
+	@PostMapping("emailcheck.do")
+	@ResponseBody
+	public String emailCheckForm(HttpServletRequest req) {
+		String member_email = req.getParameter("mememail").trim();
+		String result = memberDao.emailcheck(member_email);
+		return result;
+	}
+	
 	@GetMapping("/logout.do")
 	public ModelAndView logout(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -125,4 +166,10 @@ public class MemberCont {
 	public String test() {
 		return "/member/test";
 	}
+	
+	@GetMapping("/memberInfo.do")
+	public String memberInfo() {
+		return "/member/memberinfo";
+	}
+	
 }//class end
