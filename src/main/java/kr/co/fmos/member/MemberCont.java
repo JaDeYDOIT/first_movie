@@ -41,6 +41,12 @@ public class MemberCont {
 		return session.getAttribute("s_id").toString();
 	}
 
+	@PostMapping("/selectMemberById")
+	@ResponseBody
+	public String selectMemberById(HttpSession session) {
+		return session.getAttribute("s_id").toString();
+	}
+
 	@PostMapping("/insert")
 	public String memberInsert(MemberDTO dto) {
 		memberDao.memberInsert(dto);

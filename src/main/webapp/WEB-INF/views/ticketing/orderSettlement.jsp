@@ -274,12 +274,13 @@
 								총<strong>18,000</strong>원
 							</dd>
 						</dl>
-						<a href="/ticketing/paysuccess" class="btn_col1 btn_confirm pay_button disabled">결제하기</a>
+						<a href="/ticketing/paysuccess"
+							class="btn_col1 btn_confirm pay_button disabled">결제하기</a>
 					</div>
 				</div>
 			</div>
 			<div id="layerDiscountCoupon"
-				class="layer_wrap layer_discount_Coupon active">
+				class="layer_wrap layer_discount_Coupon">
 				<strong class="hidden">레이어 팝업 시작</strong>
 				<div class="layer_header">
 					<h1 class="tit" id="popup_discount_title_A300">쿠폰</h1>
@@ -333,7 +334,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="dim ty2" style="position: fixed;"></div>
+		<div class="dim ty2" style="position: fixed; display: none;"></div>
 	</div>
 	<div id="reserveStep04" class="section_step_con step04 ">
 		<h3 class="hidden">결제완료</h3>
