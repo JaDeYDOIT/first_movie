@@ -93,13 +93,6 @@ public class TheaterDAO {
 	public int SMIinsert(Screen_movie_informationDTO dto) {
 		return sqlSession.insert("theater.SMIinsert", dto);
 	}
-
-	//customerCont에서 사용 시작
-	public List<TheaterregionDTO> region_customer() {
-		return sqlSession.selectList("theater.region_customer");
-	}
-	//customerCont에서 사용 끝
-	
 	
 //	write 리스트
 	public List<Map<String, Object>> writemovielist() {
@@ -110,5 +103,40 @@ public class TheaterDAO {
 	public Map<String, Object> writelist(Map<String, Object> writelist) {
 		return sqlSession.selectOne("theater.writelist", writelist);
 	}
-
+	
+	//customerCont에서 사용 시작
+		public List<TheaterregionDTO> region_customer() {
+			return sqlSession.selectList("theater.region_customer");
+		}
+		
+		public List<Map<String, Object>> movieselectbox(int screen_id) {
+			return sqlSession.selectList("theater.movieselectbox", screen_id);
+		}
+		
+		public List<Map<String, Object>> branchselectbox(String region_id) {
+			return sqlSession.selectList("theater.branchselectbox", region_id);
+		}
+		
+		public List<Map<String, Object>> screenselectbox(int branch_id) {
+			return sqlSession.selectList("theater.screenselectbox", branch_id);
+		}
+	
+	//대관문의 데이터 문자열로 가져오기 시작
+		public String Rental_inquiry_area(String rental_inquiry_area) {
+			return sqlSession.selectOne("theater.Rental_inquiry_area", rental_inquiry_area);
+		}
+		
+		public String rental_inquiry_place(int rental_inquiry_place) {
+			return sqlSession.selectOne("theater.rental_inquiry_place", rental_inquiry_place);
+		}
+		
+		public String rental_inquiry_theater(int rental_inquiry_theater) {
+			return sqlSession.selectOne("theater.rental_inquiry_theater", rental_inquiry_theater);
+		}
+		
+		public String rental_inquiry_movie(int rental_inquiry_movie) {
+			return sqlSession.selectOne("theater.rental_inquiry_movie", rental_inquiry_movie);
+		}
+	//대관문의 데이터 문자열로 가져오기 시작
+		//customerCont에서 사용 끝
 }// class end
