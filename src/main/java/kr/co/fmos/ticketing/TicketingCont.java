@@ -45,6 +45,7 @@ public class TicketingCont {
 	public ModelAndView paysuccess() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("ticketing/paysuccess");
+
 		return mav;
 	}
 
@@ -64,7 +65,8 @@ public class TicketingCont {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("ticketing/orderSettlement");
 		session.setAttribute("s_id", "sungwoo");
-		mav.addObject("userHavingCouponList", userHavingCouponDao.userHavingCouponList((String) session.getAttribute("s_id")));
+		mav.addObject("userHavingCouponList",
+				userHavingCouponDao.userHavingCouponList((String) session.getAttribute("s_id")));
 		return mav;
 	}
 }
