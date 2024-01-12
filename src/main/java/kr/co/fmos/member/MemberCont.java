@@ -23,7 +23,7 @@ public class MemberCont {
 	}// end
 
 	@Autowired
-	private MemberDAO memberDao;
+	private MemberDAOImp memberDao;
 
 	@GetMapping("/login.do")
 	public String list() {

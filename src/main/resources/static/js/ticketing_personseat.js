@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	});
 
 	let emptySeats;
-	var seatContainer = document.querySelector('.seat-container');
 	var seatContainer = document.getElementById('myContainer');
 	initialize();
 
@@ -240,7 +239,7 @@ function link_check() {
 			student: 0,
 			silver: 0,
 			// 총 합계를 저장할 속성
-			totalPrice: 0
+			price: 0
 		};
 
 		// 모든 좌석 요소를 선택
