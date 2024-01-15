@@ -273,14 +273,13 @@ function link_check() {
 		// PersonSeatSummeryTotalPrice 값을 totalPrice에 추가하는 코드
 		var totalPriceElement = document.querySelector('.PersonSeatSummeryTotalPrice');
 		reservationData.totalPrice = parseInt(totalPriceElement.textContent, 10);
-
 		console.log(reservationData);
 		
 		// URL에 데이터 추가
         var newURL = "/ticketing/orderSettlement?";
         newURL += 'screenMovieInfoID=' + getURLParameter('screenMovieInfoID');
 		newURL += '&selectedSeats=' + encodeURIComponent(JSON.stringify(reservationData.selectedSeats));
-        newURL += '&totalPrice=' + encodeURIComponent(reservationData.totalPrice);
+        newURL += '&price=' + encodeURIComponent(reservationData.totalPrice);
         newURL += '&adult=' + encodeURIComponent(reservationData.adult);
         newURL += '&student=' + encodeURIComponent(reservationData.student);
         newURL += '&silver=' + encodeURIComponent(reservationData.silver);

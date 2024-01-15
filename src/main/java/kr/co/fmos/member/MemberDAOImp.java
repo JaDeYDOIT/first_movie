@@ -44,4 +44,9 @@ public class MemberDAOImp implements MemberDAO {
 	public int sinsert(MemberDTO dto) {
 		return sqlSession.insert("member.sinsert", dto);
 	}// sinsert() end
+
+	@Override
+	public MemberDTO selectMemberById(String memberId) {
+		return sqlSession.selectOne("member.selectMemberById", memberId);
+	}// selectMemberById() end
 }

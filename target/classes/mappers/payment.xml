@@ -29,9 +29,7 @@
 
 		INSERT INTO
 		payment (member_id, movie_information_id, adult, student,
-		silver,
-		price,
-		pay_discount, pay_type, refund) VALUES
+		silver, price, pay_discount, pay_type, refund) VALUES
 		(#{member_id},
 		#{movie_information_id},
 		#{adult},

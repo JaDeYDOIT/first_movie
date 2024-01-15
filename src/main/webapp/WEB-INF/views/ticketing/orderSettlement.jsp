@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function() {
 						<div class="wrap_coupon">
 							<button class="btn_coupon">쿠폰 사용하기</button>
 							<div class="wrap_selected_coupon" style="display: none;">
+								<button type="button" class="btn_close">팝업 닫기</button>
 								<div class="coupon_name">(쿠폰명)</div>
 								<dl>
 									<dd class="period">(사용기간)</dd>
@@ -272,7 +273,11 @@ document.addEventListener("DOMContentLoaded", function() {
 								총<strong>18,000</strong>원
 							</dd>
 						</dl>
-						<a href="/ticketing/paysuccess" class="btn_col1 btn_confirm">결제하기</a>
+
+						<a class="btn_col1 btn_confirm pay_button disabled"
+							onclick="requestPay()">결제하기</a>
+						<script src="/js/main.js"></script>
+
 					</div>
 				</div>
 			</div>

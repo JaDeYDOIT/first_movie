@@ -6,7 +6,7 @@ import java.time.LocalTime;
 public class ScreenMovieInfoDTO {
 	private int movie_information_id;
 	private int screen_id;
-	private String movie_id;
+	private int movie_id;
 	private LocalDate movie_showing_date;
 	private LocalTime movie_showing_time;
 	private int branch_id;
@@ -27,11 +27,11 @@ public class ScreenMovieInfoDTO {
 		this.screen_id = screen_id;
 	}
 
-	public String getMovie_id() {
+	public int getMovie_id() {
 		return movie_id;
 	}
 
-	public void setMovie_id(String movie_id) {
+	public void setMovie_id(int movie_id) {
 		this.movie_id = movie_id;
 	}
 	public LocalDate getMovie_showing_date() {

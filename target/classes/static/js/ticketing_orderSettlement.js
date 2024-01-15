@@ -56,6 +56,9 @@ function initialize() {
 	//쿠폰 취소
 	handleCouponCancleButtonClick();
 
+	//선택한 쿠폰 취소 버튼
+	handleCouponCloseButtonClick();
+
 	//결제수단이나 약관동의하지 않았을 경우 경고 표기
 	showPaymentWarning();
 
@@ -277,15 +280,15 @@ async function getSessionMemberId() {
 }
 
 function printPrice() {
-	$('.price strong').text(price.toLocaleString());
-	$('.total_price strong').text(price.toLocaleString());
+	$('.price strong').text(parseInt(price).toLocaleString());
+	$('.total_price strong').text(parseInt(price).toLocaleString());
 
 	$('#layerDiscountCoupon .submit').click(printDiscountPrice);
 	$(".point_amount").on("input", printDiscountPrice);
 	function printDiscountPrice() {
 		payDiscount = Math.round(price * (couponDiscountRate / 100)) + usedPoint;
-		$('.discount_amount strong').text(discountAmount.toLocaleString());
-		$('.total_price strong').text((price - discountAmount).toLocaleString());
+		$('.discount_amount strong').text(payDiscount.toLocaleString());
+		$('.total_price strong').text((price - payDiscount).toLocaleString());
 	}
 }
 
@@ -475,7 +478,6 @@ function showPaymentWarning() {
 
 function handlePaymentConfirmButtonClick() {
 	$('.pay_button').click(function() {
-		console.log("handlePaymentConfirmButtonClick");
 		// 새로운 폼 엘리먼트 생성
 		let form = document.createElement('form');
 
@@ -490,7 +492,8 @@ function handlePaymentConfirmButtonClick() {
 		addFormField(form, 'silver', silver);
 		addFormField(form, 'price', price);
 		addFormField(form, 'payDiscount', payDiscount);
-		addFormField(form, 'pay_type', '네이버페이');
+		addFormField(form, 'payType', '네이버페이');
+		addFormField(form, 'selectedSeats', selectedSeats);
 		// ... 원하는 만큼 필드 추가
 
 		// 폼을 문서에 추가하고 자동으로 제출
@@ -508,8 +511,10 @@ function handlePaymentConfirmButtonClick() {
 	});
 }
 
-function cancelCoupon() {
-	$('.wrap_selected_coupon').css('display', 'none');
-	selectedCouponID = undefined;
-	couponDiscountRate = 0;
+function handleCouponCloseButtonClick() {
+	$('.wrap_selected_coupon .btn_close').click(function() {
+		$('.wrap_selected_coupon').css('display', 'none');
+		selectedCouponID = undefined;
+		couponDiscountRate = 0;
+	});
 }
