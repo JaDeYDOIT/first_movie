@@ -43,7 +43,7 @@
 			<div class="inner">
 				<div class="payment_fin_wrap">
 					<div class="top_notice_ic ty1">
-						<strong>김재원 회원님, 결제가 성공적으로 완료되었습니다.</strong>
+						<strong>${memberName}님, 결제가 성공적으로 완료되었습니다.</strong>
 					</div>
 					<div class="reserve_result_wrap">
 						<div class="infor_wrap">
@@ -56,20 +56,27 @@
 								<dl>
 									<dt>예매번호</dt>
 									<dd>
-										<strong class="txt_num">39497442</strong>
+										<strong class="txt_num">${paymentId}</strong>
 									</dd>
 								</dl>
 								<dl>
 									<dt>상영일시</dt>
 									<dd>
-										2023-12-27 (수 )<span>20:05 ~ 22:47</span>
+										${movieShowingDate} (수) <span>${movieShowingTime} ~
+											22:47</span>
 									</dd>
 									<dt>상영관</dt>
-									<dd>월드타워20관</dd>
+									<dd>${theaterBranchName}${screenLocation}</dd>
 									<dt>관람인원</dt>
 									<dd>성인1</dd>
 									<dt>좌석</dt>
-									<dd>H13</dd>
+									<dd>
+										<c:forEach items="${selectedSeats}" var="seat"
+											varStatus="loop">
+											${seat}<c:if test="${not loop.last}"> 
+											</c:if>
+										</c:forEach>
+									</dd>
 								</dl>
 								<button type="button" class="btn_col1 ty5">휴대폰으로 바로티켓
 									받기</button>
