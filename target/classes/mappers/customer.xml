@@ -18,11 +18,22 @@
 		FROM notice
 		WHERE notice_kind = #{notice_kind}
 	</select>
+	<select id="mainfaq" resultType="kr.co.fmos.customer.NoticeDTO">
+		SELECT notice_title, notice_type, notice_kind
+		FROM notice
+		WHERE notice_kind = 0
+	</select>
 	
 	<select id="noticeselect" resultType="kr.co.fmos.customer.NoticeDTO" parameterType="int">
 		SELECT notice_title, notice_type, notice_datetime
 		FROM notice
 		WHERE notice_kind = #{notice_kind}
+	</select>
+	
+	<select id="mainnotice" resultType="kr.co.fmos.customer.NoticeDTO">
+		SELECT notice_title, notice_type, notice_datetime
+		FROM notice
+		WHERE notice_kind = 1
 	</select>
 <!-- notice관련 끝 -->
 	
