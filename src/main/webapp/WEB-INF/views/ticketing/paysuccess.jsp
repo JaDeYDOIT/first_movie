@@ -48,9 +48,7 @@
 					<div class="reserve_result_wrap">
 						<div class="infor_wrap">
 							<div class="bx_thm">
-								<img
-									src="https://cf.lottecinema.co.kr//Media/MovieFile/MovieImg/202312/20492_102_1.jpg"
-									alt="노량: 죽음의 바다">
+								<img src="${movieImage}" alt="노량: 죽음의 바다">
 							</div>
 							<div class="group_infor">
 								<dl>
@@ -62,24 +60,34 @@
 								<dl>
 									<dt>상영일시</dt>
 									<dd>
-										${movieShowingDate} (수) <span>${movieShowingTime} ~
-											22:47</span>
+										${movieShowingDate} (${dayOfWeek}) <span>${movieShowingTime}
+											~ ${movieEndTime}</span>
 									</dd>
 									<dt>상영관</dt>
 									<dd>${theaterBranchName}${screenLocation}</dd>
 									<dt>관람인원</dt>
-									<dd>성인1</dd>
+									<dd>
+										<c:if test="${adult ne 0}">
+    										성인${adult} 
+										</c:if>
+										<c:if test="${student ne 0}">
+    										청소년${student} 
+										</c:if>
+										<c:if test="${silver ne 0}">
+    										경로${silver} 
+										</c:if>
+									</dd>
 									<dt>좌석</dt>
 									<dd>
 										<c:forEach items="${selectedSeats}" var="seat"
 											varStatus="loop">
-											${seat}<c:if test="${not loop.last}"> 
+											${seat}<c:if test="${not loop.last}">
 											</c:if>
 										</c:forEach>
 									</dd>
 								</dl>
-								<button type="button" class="btn_col1 ty5">휴대폰으로 바로티켓
-									받기</button>
+								<!-- <button type="button" class="btn_col1 ty5">휴대폰으로 바로티켓
+									받기</button> -->
 							</div>
 						</div>
 						<div class="payment_wrap new2020">
@@ -87,7 +95,7 @@
 								<dl>
 									<dt>주문금액</dt>
 									<dd>
-										<strong>7,000</strong>원
+										<strong>${price}</strong>원
 									</dd>
 								</dl>
 							</div>
@@ -95,7 +103,7 @@
 								<dl class="minus">
 									<dt>할인금액</dt>
 									<dd>
-										<strong>0</strong>원
+										<strong>${payDiscount}</strong>원
 									</dd>
 								</dl>
 							</div>
@@ -103,36 +111,22 @@
 								<dl>
 									<dt>총 결제 금액</dt>
 									<dd>
-										<strong>7,000</strong>원
+										<strong>${price - payDiscount}</strong>원
 									</dd>
 								</dl>
 								<div class="pay_method">
 									<dl class="sml">
 										<dt>결제방법</dt>
-										<dd>
-											<span class="txt_card1 ty1">신용카드</span>
-										</dd>
-										<dt>카드번호</dt>
-										<dd class="sml last">토스</dd>
+										<dd class="sml last">${payType}</dd>
 									</dl>
 								</div>
 							</div>
 						</div>
 					</div>
-					<ul class="list_txt sml">
-						<li><strong>온라인 예매 내역 취소는 상영 시작 20분 전까지 온라인에서 가능합니다.</strong></li>
-						<li><strong>상영시작 20분전 이후 부터는 영화관 현장에서만 취소 가능합니다.</strong></li>
-						<li><strong>무대인사, 스페셜상영회, GV, 라이브뷰잉 등 특별 상영 회차의 예매
-								취소는 상영전일 23시 59분 59초까지만 취소 가능합니다.</strong></li>
-						<li>적립 예정 POINT는 영화 관람 다음 날 적립 됩니다.</li>
-						<li>예고편 상영 등 사정에 의해 본 영화 시작이 10여분 정도 차이 날 수 있습니다.</li>
-						<li>개인정보 보호 정책에 따라 주민번호로 예매 티켓을 찾을 수 없습니다. 꼭 예매번호를 확인해 주세요.</li>
-						<li>스토어에서 구매한 상품은 마이페이지 &gt; 예매/구매 내역에서 확인 및 사용할 수 있습니다.</li>
-					</ul>
 					<div class="btn_btm_wrap mb50 pb50">
-						<a href="#none" class="btn_col3 ty5">결제내역</a> <a href="#none"
-							class="btn_col2 ty5">스토어 바로가기</a> <a href="#none"
-							class="btn_col1 ty5">홈으로 바로가기</a>
+						<a href="#none" class="btn_col3 ty5">결제내역</a> <a
+							href="/product/list.do" class="btn_col2 ty5">스토어 바로가기</a> <a
+							href="/main" class="btn_col1 ty5">홈으로 바로가기</a>
 					</div>
 				</div>
 			</div>

@@ -1,8 +1,7 @@
 package kr.co.fmos.ticketing;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.format.TextStyle;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpSession;
@@ -18,18 +16,15 @@ import kr.co.fmos.coupon.UserHavingCouponDAO;
 import kr.co.fmos.member.MemberDAO;
 import kr.co.fmos.member.MemberDTO;
 import kr.co.fmos.movie.MovieDAO;
-import kr.co.fmos.movie.MovieDAOImp;
 import kr.co.fmos.movie.MovieDTO;
 import kr.co.fmos.payment.PaymentDAO;
 import kr.co.fmos.payment.PaymentDTO;
 import kr.co.fmos.region.RegionDAO;
-import kr.co.fmos.region.RegionDAOImp;
 import kr.co.fmos.screen.ScreenDAO;
 import kr.co.fmos.screen.ScreenDTO;
 import kr.co.fmos.screenMovieInfo.ScreenMovieInfoDAO;
 import kr.co.fmos.screenMovieInfo.ScreenMovieInfoDTO;
 import kr.co.fmos.theaterBranch.TheaterBranchDAO;
-import kr.co.fmos.theaterBranch.TheaterBranchDAOImp;
 import kr.co.fmos.theaterBranch.TheaterBranchDTO;
 
 @Controller
@@ -94,6 +89,7 @@ public class TicketingCont {
 		paymentDto.setRefund(1);
 		PaymentDTO inputPaymentDto = paymentDao.insertAndReturnWithId(paymentDto);
 
+		// 정보 불러오기
 		ScreenMovieInfoDTO screenMovieInfo = screenMovieInfoDao.selectScreenMovieInfoById(screenMovieInfoID);
 		MovieDTO movie = movieDao.selectMovieInfoById(String.valueOf(screenMovieInfo.getMovie_id()));
 		TheaterBranchDTO theaterBranch = theaterBranchDao
@@ -101,25 +97,20 @@ public class TicketingCont {
 		ScreenDTO screen = screenDao.selectScreenById(String.valueOf(screenMovieInfo.getScreen_id()));
 		MemberDTO member = memberDao.selectMemberById((String) session.getAttribute("s_id"));
 
-		System.out.println(inputPaymentDto);
-		System.out.println(screenMovieInfo);
-		System.out.println(movie);
-		System.out.println(theaterBranch);
-		System.out.println(screen);
-		System.out.println(member);
-		System.out.println(selectedSeats);
-		
 		mav.addObject("memberName", member.getMember_name());
 		mav.addObject("paymentId", inputPaymentDto.getPayment_id());
+		mav.addObject("movieImage", movie.getMovie_image());
 		mav.addObject("movieShowingDate", screenMovieInfo.getMovie_showing_date());
+		mav.addObject("dayOfWeek", screenMovieInfo.getMovie_showing_date().getDayOfWeek()
+				.getDisplayName(TextStyle.SHORT, Locale.getDefault()));
 		mav.addObject("movieShowingTime", screenMovieInfo.getMovie_showing_time());
-		mav.addObject("movieRunningTime", movie.getMovie_running_time());
+		mav.addObject("movieEndTime",
+				screenMovieInfo.getMovie_showing_time().plusMinutes(movie.getMovie_running_time()));
 		mav.addObject("theaterBranchName", theaterBranch.getBranch_name());
 		mav.addObject("screenLocation", screen.getScreen_location());
 		mav.addObject("adult", adult);
 		mav.addObject("student", student);
 		mav.addObject("silver", silver);
-
 		mav.addObject("selectedSeats", selectedSeats);
 		mav.addObject("price", price);
 		mav.addObject("payDiscount", payDiscount);
