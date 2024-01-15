@@ -6,11 +6,9 @@
 <!-- "screen".xml -->
 
 <mapper namespace="screen">
-	<select id="selectScreenById"
-		resultType="kr.co.fmos.screen.ScreenDTO">
+	<select id="selectScreenById" resultType="kr.co.fmos.screen.ScreenDTO">
 		SELECT screen_id, branch_id,
-		screen_location, screen_row,
-		screen_line
+		screen_location, screen_seat_count, screen_row, screen_line
 		FROM screen
 		WHERE screen_id=#{screenID}
 	</select>

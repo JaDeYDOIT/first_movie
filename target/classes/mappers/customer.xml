@@ -18,11 +18,22 @@
 		FROM notice
 		WHERE notice_kind = #{notice_kind}
 	</select>
+	<select id="mainfaq" resultType="kr.co.fmos.customer.NoticeDTO">
+		SELECT notice_title, notice_type, notice_kind
+		FROM notice
+		WHERE notice_kind = 0
+	</select>
 	
 	<select id="noticeselect" resultType="kr.co.fmos.customer.NoticeDTO" parameterType="int">
 		SELECT notice_title, notice_type, notice_datetime
 		FROM notice
 		WHERE notice_kind = #{notice_kind}
+	</select>
+	
+	<select id="mainnotice" resultType="kr.co.fmos.customer.NoticeDTO">
+		SELECT notice_title, notice_type, notice_datetime
+		FROM notice
+		WHERE notice_kind = 1
 	</select>
 <!-- notice관련 끝 -->
 	
@@ -49,8 +60,5 @@
 		VALUES (#{rental_inquiry_id},#{rental_inquiry_area}, #{rental_inquiry_place}, #{rental_inquiry_theater}, #{rental_inquiry_movie}, #{rental_inquiry_date}, #{rental_inquiry_start} , #{rental_inquiry_end} , #{rental_inquiry_people_count} , #{rental_inquiry_title} , #{rental_inquiry_content} , #{rental_inquiry_name} , #{rental_inquiry_phone} , #{rental_inquiry_pw})
 	</insert>
 <!-- inquire관련 끝 -->
-
-
-
 	
 </mapper>
