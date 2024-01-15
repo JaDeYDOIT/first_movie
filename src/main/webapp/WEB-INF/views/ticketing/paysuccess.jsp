@@ -73,7 +73,7 @@
 									<dd>
 										<c:forEach items="${selectedSeats}" var="seat"
 											varStatus="loop">
-											${seat}<c:if test="${not loop.last}">
+											${seat}<c:if test="${not loop.last}"> 
 											</c:if>
 										</c:forEach>
 									</dd>

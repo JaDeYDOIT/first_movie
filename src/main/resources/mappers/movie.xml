@@ -118,5 +118,4 @@
 		WHERE
 		movie_id=#{movieID}
 	</select>
-
 </mapper>

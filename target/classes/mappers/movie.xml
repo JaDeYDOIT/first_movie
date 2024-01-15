@@ -23,15 +23,10 @@
 		movie_audience_rating, movie_image, movie_video,
 		director_name, actor_name)
 		VALUES (#{movie_genre_id},
-<<<<<<< Updated upstream
 		#{movie_name},
 		#{movie_running_time}, #{movie_production_year},
 		#{movie_audience_rating}, #{movie_image}, #{movie_video},
 		#{director_name},
-=======
-		#{movie_name}, #{movie_running_time}, #{movie_production_year}, #{movie_audience_rating},
-		#{movie_image}, #{movie_video}, #{director_name},
->>>>>>> Stashed changes
 		#{actor_name})
 	</insert>
 
@@ -123,5 +118,4 @@
 		WHERE
 		movie_id=#{movieID}
 	</select>
-
 </mapper>
