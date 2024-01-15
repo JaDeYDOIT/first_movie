@@ -20,14 +20,13 @@ public class HomeController {
 		if(session.getAttribute("s_id") == null || session.getAttribute("s_pw") == null ||
 		session.getAttribute("s_id").equals("") || session.getAttribute("s_pw").equals("")) 
 		{
-			String s_id = "sungwoo";
-			String s_pw = "guest";
+			String s_id = "guest";
+			String s_pw = "";
 			session.setAttribute("s_id", s_id);
-			session.setAttribute("s_pw", s_pw);
 		}
-	    
+		
      ModelAndView mav = new ModelAndView();
-     //redirect : 등록한 명령어를 호출하 수 
+     mav.addObject("sessionTimeoutInSeconds", session.getMaxInactiveInterval());
      mav.setViewName("main");
      return mav;
 	}//home() end

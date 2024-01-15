@@ -1,5 +1,7 @@
 package kr.co.fmos.customer;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,6 +32,9 @@ public class CustomerCont {
 	
 	@Autowired
 	private TheaterDAO theaterDao;
+	
+	@Autowired
+	private RentalDAO rentalDao;
 	
 	@RequestMapping("/notice.do")
 	public ModelAndView noticelist(int notice_kind) {
@@ -126,7 +131,6 @@ public class CustomerCont {
     public Map<String, Object> screenselectbox(int branch_id){
     	Map <String, Object> map = new HashMap<>();
     	map.put("screenselectbox", theaterDao.screenselectbox(branch_id));
-    	System.out.println(map.toString());
     	return map;
     }
     
@@ -139,7 +143,15 @@ public class CustomerCont {
     }
     
     @PostMapping("/rentalinsert.do")
-    public void rentalinsert(RentalDTO dto) {
+    public ModelAndView rentalinsert(RentalDTO dto) {
+    	ModelAndView mav = new ModelAndView();
+    	
+    	//1. 주문번호 생성
+        SimpleDateFormat sd = new SimpleDateFormat("yyyyMMddHHmmss");
+        String payment_datetime = sd.format(new Date());
+        payment_datetime = payment_datetime + "1";
+        dto.setRental_inquiry_id(Long.parseLong(payment_datetime));
+    	
     	String rental_inquiry_area = dto.getRental_inquiry_area();
     	System.out.println(theaterDao.Rental_inquiry_area(rental_inquiry_area));
     	dto.setRental_inquiry_area(theaterDao.Rental_inquiry_area(rental_inquiry_area));
@@ -156,11 +168,10 @@ public class CustomerCont {
     	System.out.println(theaterDao.rental_inquiry_movie(rental_inquiry_movie));
     	dto.setRental_inquiry_place(theaterDao.rental_inquiry_movie(rental_inquiry_movie));
     	
+    	int cnt = rentalDao.rentalInsert(dto);
     	
-    	
-    	
-    	
+    	mav.addObject("cnt", cnt);
+    	mav.setViewName("/noticeView"); 	
+    	return mav;
     }
-    
-    
 }//class end

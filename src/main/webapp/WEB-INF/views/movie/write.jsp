@@ -44,10 +44,6 @@
 			<td><input type="text" name="movie_audience_rating"></td>
 		</tr>
 		<tr>
-			<td>영화순위</td>
-			<td><input type="number" name="movie_rank"></td>
-		</tr>
-		<tr>
 			<td>영화 이미지</td>
 			<td><input type="text" name="movie_image"></td>
 		</tr>

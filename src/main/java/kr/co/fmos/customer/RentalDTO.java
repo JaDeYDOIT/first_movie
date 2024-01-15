@@ -2,7 +2,7 @@ package kr.co.fmos.customer;
 
 public class RentalDTO {
 
-	private int rental_inquiry_id;
+	private long rental_inquiry_id;
 	private String rental_inquiry_area;
 	private String rental_inquiry_place;
 	private String rental_inquiry_theater;
@@ -11,6 +11,7 @@ public class RentalDTO {
 	private String rental_inquiry_end;
 	private String rental_inquiry_movie;
 	private String rental_inquiry_people_count;
+	private String rental_inquiry_title;
 	private String rental_inquiry_content;
 	private String rental_inquiry_name;
 	private String rental_inquiry_phone;
@@ -20,8 +21,14 @@ public class RentalDTO {
 	
 	public RentalDTO() {}
 
-	public int getRental_inquiry_id() {
+	
+	public long getRental_inquiry_id() {
 		return rental_inquiry_id;
+	}
+
+
+	public void setRental_inquiry_id(long rental_inquiry_id) {
+		this.rental_inquiry_id = rental_inquiry_id;
 	}
 
 	public void setRental_inquiry_id(int rental_inquiry_id) {
@@ -91,6 +98,14 @@ public class RentalDTO {
 	public void setRental_inquiry_people_count(String rental_inquiry_people_count) {
 		this.rental_inquiry_people_count = rental_inquiry_people_count;
 	}
+	
+	public String getRental_inquiry_title() {
+		return rental_inquiry_title;
+	}
+
+	public void setRental_inquiry_title(String rental_inquiry_title) {
+		this.rental_inquiry_title = rental_inquiry_title;
+	}
 
 	public String getRental_inquiry_content() {
 		return rental_inquiry_content;
@@ -143,12 +158,14 @@ public class RentalDTO {
 	@Override
 	public String toString() {
 		return "RentalDTO [rental_inquiry_id=" + rental_inquiry_id + ", rental_inquiry_area=" + rental_inquiry_area
-				+ ", rental_inquiry_place=" + rental_inquiry_place + ", rental_inquirytheater=" + rental_inquiry_theater
-				+ ", rental_inquiry_date=" + rental_inquiry_date + ", rental_inquiry_start=" + rental_inquiry_start
-				+ ", rental_inquiry_end=" + rental_inquiry_end + ", rental_inquiry_movie=" + rental_inquiry_movie
-				+ ", rental_inquiry_people_count=" + rental_inquiry_people_count + ", rental_inquiry_content="
+				+ ", rental_inquiry_place=" + rental_inquiry_place + ", rental_inquiry_theater="
+				+ rental_inquiry_theater + ", rental_inquiry_date=" + rental_inquiry_date + ", rental_inquiry_start="
+				+ rental_inquiry_start + ", rental_inquiry_end=" + rental_inquiry_end + ", rental_inquiry_movie="
+				+ rental_inquiry_movie + ", rental_inquiry_people_count=" + rental_inquiry_people_count
+				+ ", rental_inquiry_title=" + rental_inquiry_title + ", rental_inquiry_content="
 				+ rental_inquiry_content + ", rental_inquiry_name=" + rental_inquiry_name + ", rental_inquiry_phone="
 				+ rental_inquiry_phone + ", rental_inquiry_pw=" + rental_inquiry_pw + ", rental_inquiry_review="
 				+ rental_inquiry_review + ", rental_inquiry_datetime=" + rental_inquiry_datetime + "]";
 	}
+	
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ page import="java.util.Date" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -11,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
 	<script>
 	function kakaoLogout() {
 		 Kakao.Auth.logout()
@@ -24,7 +25,7 @@
 	      });
 	  }
 	</script>
-
+    	
     <!-- 웹 폰트 -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
     <link rel="stylesheet" href="/css/reset.css">
@@ -41,6 +42,7 @@
 	  	<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
 	  	<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
     <!-- 서머노트 관련 끝 -->
+    <link rel="icon" type="image/ico" href="images/header/logo.png">
     <title>영화</title>
 </head>
 
@@ -53,28 +55,35 @@
                         <h1 id="logo"><img src="/images/header/logo.png" alt=""></h1>
                     </a>
                     <ul class="login_wrap">
-					<c:choose>
-					    <c:when test="${empty sessionScope.s_id or sessionScope.s_id eq 'guest'}">
+					  <c:choose>                   
+					    <c:when test="${sessionScope.s_id eq 'guest'}">
 					        <!-- 로그인하지 않은 경우 또는 세션의 s_id가 'guest'인 경우 -->
 					        <li id="loginhid"><img src="/images/header_icon/login.png" alt="" onclick="location.href='/member/login.do'"><a href="/member/login.do">로그인</a></li>
-					    </c:when>
-					    <c:otherwise>
-					    <li><img src="/images/header_icon/logout.png" alt="" onclick="kakaoLogout()"><a href="/member/logout.do">로그아웃</a></li>
-					    </c:otherwise>
-					</c:choose>
-					<c:choose>
-					    <%-- <c:when test="${empty sessionScope.s_id or sessionScope.s_id ne 'guest'}"> --%>
-					       <c:when test="${empty sessionScope.s_id or (not empty sessionScope.s_id and sessionScope.s_id ne 'guest')}">
-					    	<!-- 로그인하지 않은 경우 또는 세션의 s_id가 'guest'가 아닌 경우 -->
-					    	<style>
-				            #hiddenNewMember {
-				                display: none;
-				            }
-					        </style>
-					    </c:when>
-					    <c:otherwise>
 					        <li id="hiddenNewMember"><img src="/images/header_icon/newmember.png" alt="" onclick="location.href='/member/member.do'"><a href="/member/member.do">회원가입</a></li>
-					    </c:otherwise>
+					    </c:when>
+					    <c:when test="${not empty sessionScope.s_id && sessionScope.s_id ne 'guest'}">
+					        <style>
+					            #hiddenNewMember {
+					                display: none;
+					            }
+					        </style>
+					        <li><img src="/images/header_icon/logout.png" alt="" onclick="kakaoLogout()"><a href="/member/logout.do">로그아웃</a></li>
+					    </c:when>
+					    <c:otherwise>
+						    <%
+						        // HttpSession 객체 가져오기
+						        HttpSession session2 = request.getSession();
+						
+						        // 세션 시간을 30분으로 설정 (단위: 초)
+						        int sessionTimeoutInMinutes = 30;
+						        int sessionTimeoutInSeconds = sessionTimeoutInMinutes * 60;
+						        session2.setMaxInactiveInterval(sessionTimeoutInSeconds);
+						    %>
+						    <script>
+						        window.alert("세션 시간이 만료되었습니다.");
+						        location.href="/member/sessionlogout.do";
+						    </script>
+						</c:otherwise>
 					</c:choose>
                         <li><img src="/images/header_icon/mypage.png" alt=""><a href="/member/memberInfo.do">my page</a></li>
                         <li><img src="/images/header_icon/csc.png" alt="" onclick="location.href='/customer/notice.do?notice_kind=0'"><a href="/customer/notice.do?notice_kind=0">고객센터</a></li>
@@ -93,7 +102,9 @@
             </nav>
         </header>
         <div class="headerfill"></div>
-        <!-- header end -->
+        <div id="myModal" class="overlay">
+	</div>
+	       <!-- header end -->
         
 
     

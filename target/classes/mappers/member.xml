@@ -53,5 +53,5 @@
 		INSERT INTO member(member_id, member_name, member_pw, member_email, member_gender, member_birthdate, member_phone, member_email_check, member_sns_check)
 		VALUES (#{member_email}, #{member_name}, '0', #{member_email}, #{member_gender}, '0', '0', '0', '0') 
 	</insert>
-	 	
+	
 </mapper>

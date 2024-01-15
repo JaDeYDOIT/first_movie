@@ -9,7 +9,6 @@ public class MovieDTO extends MoviegenreDTO{
 	private int movie_running_time;	    	//SMALLINT UNSIGNED	NOT NULL,
 	private Date movie_production_year;		//DATETIME	NOT NULL,
 	private String movie_audience_rating;	//VARCHAR(30)	NOT NULL,
-	private int movie_rank;					//TINYINT	NOT NULL,
 	private String movie_image;				//VARCHAR(255)	NOT NULL,
 	private String movie_video;				//VARCHAR(255)	NOT NULL,
 	private String director_name;			//VARCHAR(20)	NOT NULL,
@@ -50,12 +49,7 @@ public class MovieDTO extends MoviegenreDTO{
 	public void setMovie_audience_rating(String movie_audience_rating) {
 		this.movie_audience_rating = movie_audience_rating;
 	}
-	public int getMovie_rank() {
-		return movie_rank;
-	}
-	public void setMovie_rank(int movie_rank) {
-		this.movie_rank = movie_rank;
-	}
+	
 	public String getMovie_image() {
 		return movie_image;
 	}
@@ -80,16 +74,5 @@ public class MovieDTO extends MoviegenreDTO{
 	public void setActor_name(String actor_name) {
 		this.actor_name = actor_name;
 	}
-	@Override
-	public String toString() {
-		return "MovieDTO [movie_id=" + movie_id + ", movie_genre_id=" + movie_genre_id + ", movie_name=" + movie_name
-				+ ", movie_running_time=" + movie_running_time + ", movie_production_year=" + movie_production_year
-				+ ", movie_audience_rating=" + movie_audience_rating + ", movie_rank=" + movie_rank + ", movie_image="
-				+ movie_image + ", movie_video=" + movie_video + ", director_name=" + director_name + ", actor_name="
-				+ actor_name + "]";
-	}
-
-
-	
 	
 }

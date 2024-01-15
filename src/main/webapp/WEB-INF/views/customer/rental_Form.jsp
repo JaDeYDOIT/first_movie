@@ -24,12 +24,12 @@
 	    });
 	});
 </script>
-<form name="rentalfrm" method="post" action="/customer/rentalinsert.do">
+<form name="rentalfrm" method="post" action="/customer/rentalinsert.do" onsubmit="return rentalcheck()">
 	<div id="mtebox"> 
 	<div class="rentaldiv">
  		<div class="headtext">영화관 선택</div>
  		<select id="regionselectbox" class="dependent-select" name="rental_inquiry_area">
-	 			<option>지역선택</option>
+	 			<option value="0">지역선택</option>
  			<c:forEach items="${region_customer}" var="list">
 				<option value="${list.region_id}">${list.region}</option> 
 			</c:forEach>
@@ -38,44 +38,44 @@
    			 <option value="0">지점선택</option>
 		</select>
 		<select id="screenselectbox" class="dependent-select" name="rental_inquiry_theater">
-		    <option>상영관 선택</option>
+		    <option value="0">상영관 선택</option>
 		</select>
  	</div>
  		<div class="rentaldiv">
  			<div class="headtext">관람할영화</div>
  			<select id="movieselectbox" class="dependent-select" name="rental_inquiry_movie">
-				<option>영화선택</option> 		
+				<option value="0">영화선택</option> 		
  			</select>
  		</div>
  		<div class="rentaldiv">
 	 		<div class="headtext">대관시간</div>
-	 		<input type="date" class="dependent-select">
-	 		<input type="time" class="dependent-select"> ~
-	 		<input type="time" class="dependent-select">
+	 		<input type="date" class="dependent-select" name="rental_inquiry_date" id="rental_inquiry_date">
+	 		<input type="time" class="dependent-select" name="rental_inquiry_start" id="rental_inquiry_start"> ~
+	 		<input type="time" class="dependent-select" name="rental_inquiry_end" id="rental_inquiry_end">
  		</div>
  		<div class="rentaldiv">
 	 		<div class="headtext">관람인원</div>
-	 		<input type="number" id="people_count">
+	 		<input type="number" id="people_count" name="rental_inquiry_people_count" id="rental_inquiry_people_count">
  		</div>
  		<div class="rentaldiv">
 	 		<div class="headtext">제목</div>
-	 		<input type="text" id="titleinp">
+	 		<input type="text" id="titleinp" name="rental_inquiry_title" id="rental_inquiry_title">
  		</div>
  		<div class="textareaspan">
 	 		<span class="headtext" id="textareaspan">내용</span>
-	 		<textarea class=contentinp></textarea>
+	 		<textarea class=contentinp name="rental_inquiry_content" id="rental_inquiry_content"></textarea>
  		</div>
  		<div class="rentaldiv">
 	 		<div class="headtext">예약자명</div>
-	 		<input type="text" class="reservation">
+	 		<input type="text" class="reservation" name="rental_inquiry_name" id="rental_inquiry_name">
  		</div>
  		<div class="rentaldiv">
  			<div class="headtext">예약자 전화번호</div>
- 			<input type="number" id="phoneinp">
+ 			<input type="number" id="phoneinp" name="rental_inquiry_phone" id="rental_inquiry_phone">
  		</div>
  		<div class="rentaldiv">
 	 		<div class="headtext">비밀번호</div>
-	 		<input type="password" class="reservation">
+	 		<input type="password" class="reservation" name="rental_inquiry_pw" id="rental_inquiry_pw">
  		</div>
  		
  	</div>
@@ -215,8 +215,33 @@ $('.contentinp').summernote({
 		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
 	});
 	
+var content = $('.contentinp').summernote('code');
+
+//HTML 태그 제거
+var tempDiv = document.createElement('div');
+tempDiv.innerHTML = content;
+var plainText = tempDiv.textContent || tempDiv.innerText;
+
+//<p> 태그 제거
+var withoutPTags = plainText.replace(/<p>/g, '').replace(/<\/p>/g, '');
+
+	
 function goBack() {
 	window.location.href = "/customer/notice.do?notice_kind=0";
+}
+
+function rentalcheck(){
+	var regionselectbox = document.getElementById("regionselectbox").value;
+	var branchselectbox = document.getElementById("branchselectbox").value;
+	var screenselectbox = document.getElementById("screenselectbox").value;
+    var movieselectbox = document.getElementById("movieselectbox").value;
+    var check = 1;
+
+    if (member_id.length < 4 || member_id.length >= 15) {
+      alert("아이디는 4~15 글자로 작성해주세요");
+      return false;
+    }
+    
 }
 </script>
 <%@ include file="../footer.jsp" %>

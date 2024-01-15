@@ -94,6 +94,5 @@ public class MemberDTO {
 				+ member_birthdate + ", member_phone=" + member_phone + ", member_email_check=" + member_email_check
 				+ ", member_sns_check=" + member_sns_check + "]";
 	}
-
 	
 }

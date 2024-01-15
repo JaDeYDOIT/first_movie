@@ -25,7 +25,6 @@
 			<c:forEach items="${list}" var="dto" varStatus="vs">
 				<li class="movie_item">
 					<div class='rank_box'>
-						<div class='movie_rank'>영화순위 : ${dto.movie_rank}</div>
 						<div class="movie_img">
 							<img src="${dto.movie_image}" alt="영화 이미지">
 							<div class="click_btn">
