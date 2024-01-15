@@ -8,4 +8,6 @@ public interface PaymentDAO {
 	public List<PaymentDTO> list();
 
 	public List<PaymentDTO> selectPaymentByScreenMovieInfoId(String screenMovieInfoID);
+
+	public PaymentDTO insertAndWithReturnID(PaymentDTO paymentDto);
 }

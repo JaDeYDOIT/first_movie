@@ -245,7 +245,7 @@
 						<dl>
 							<dt>상품금액</dt>
 							<dd class="price">
-								<strong>18,000</strong>원
+								<strong></strong>원
 							</dd>
 						</dl>
 						<dl>
@@ -257,11 +257,10 @@
 						<dl>
 							<dt>결제금액</dt>
 							<dd class="total_price">
-								총<strong>18,000</strong>원
+								총<strong></strong>원
 							</dd>
 						</dl>
-						<a href="/ticketing/paysuccess"
-							class="btn_col1 btn_confirm pay_button disabled">결제하기</a>
+						<a class="btn_col1 btn_confirm pay_button disabled">결제하기</a>
 					</div>
 				</div>
 			</div>

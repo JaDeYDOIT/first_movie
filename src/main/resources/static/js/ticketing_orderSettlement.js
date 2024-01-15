@@ -6,7 +6,7 @@ const currentUrl = new URL(window.location.href);
 //const silver = decodeURIComponent(currentUrl.searchParams.get('silver'));
 //const price = decodeURIComponent(currentUrl.searchParams.get('price'));
 const student = 1;
-const adult = 0;
+const adult = 1;
 const silver = 3;
 const price = 15000;
 const screenMovieInfoID = 50;
@@ -24,6 +24,7 @@ let couponDiscountRate = 0;
 let selectedCouponID;
 let memberPoint = 0;
 let usedPoint = 0;
+let payDiscount = 0;
 
 $(document).ready(function() {
 	initialize();
@@ -57,6 +58,9 @@ function initialize() {
 
 	//결제수단이나 약관동의하지 않았을 경우 경고 표기
 	showPaymentWarning();
+
+	//최종결제
+	handlePaymentConfirmButtonClick();
 }
 
 async function asyncInitialize() {
@@ -198,21 +202,21 @@ function printTicketingInfo() {
 	let adultString = "성인";
 	let silverString = "경로";
 
-	if (student === 0) {
+	if (student == 0) {
 		studentString = "";
 	}
 	else {
 		studentString += student;
 	}
 
-	if (adult === 0) {
+	if (adult == 0) {
 		adultString = "";
 	}
 	else {
 		adultString += adult;
 	}
 
-	if (silver === 0) {
+	if (silver == 0) {
 		silverString = "";
 	}
 	else {
@@ -232,7 +236,7 @@ function printTicketingInfo() {
 		'<dt>영화관</dt>' +
 		'<dd>' + theaterBranchName + " " + screenLocation + '</dd>' +
 		'<dt>인원</dt>' +
-		'<dd>' + studentString + " " + adultString + " " + silverString + '</dd>' +
+		'<dd>' + adultString + " " + studentString + " " + silverString + '</dd>' +
 		'</dl>';
 
 	$('.movie_infor').html(movieInfoContent);
@@ -274,13 +278,14 @@ async function getSessionMemberId() {
 
 function printPrice() {
 	$('.price strong').text(price.toLocaleString());
+	$('.total_price strong').text(price.toLocaleString());
 
 	$('#layerDiscountCoupon .submit').click(printDiscountPrice);
 	$(".point_amount").on("input", printDiscountPrice);
 	function printDiscountPrice() {
-		const discountAmount = Math.round(price * (couponDiscountRate / 100)) + usedPoint;
-		$('.discount_amount strong').text(discountAmount);
-		$('.total_price strong').text(price - discountAmount);
+		payDiscount = Math.round(price * (couponDiscountRate / 100)) + usedPoint;
+		$('.discount_amount strong').text(discountAmount.toLocaleString());
+		$('.total_price strong').text((price - discountAmount).toLocaleString());
 	}
 }
 
@@ -466,6 +471,41 @@ function showPaymentWarning() {
 			$('.pay_button').addClass("disabled");
 		}
 	}
+}
+
+function handlePaymentConfirmButtonClick() {
+	$('.pay_button').click(function() {
+		console.log("handlePaymentConfirmButtonClick");
+		// 새로운 폼 엘리먼트 생성
+		let form = document.createElement('form');
+
+		// 폼 속성 설정 (페이지 URL과 전송 방식 설정)
+		form.action = '/ticketing/paysuccess'; // 대상 페이지 URL
+		form.method = 'post';
+
+		// 폼에 전송할 데이터 추가 (키-값 쌍 형식)
+		addFormField(form, 'screenMovieInfoID', screenMovieInfoID);
+		addFormField(form, 'adult', adult);
+		addFormField(form, 'student', student);
+		addFormField(form, 'silver', silver);
+		addFormField(form, 'price', price);
+		addFormField(form, 'payDiscount', payDiscount);
+		addFormField(form, 'pay_type', '네이버페이');
+		// ... 원하는 만큼 필드 추가
+
+		// 폼을 문서에 추가하고 자동으로 제출
+		document.body.appendChild(form);
+		form.submit();
+
+		// 폼에 필드를 추가하는 함수
+		function addFormField(form, name, value) {
+			let input = document.createElement('input');
+			input.type = 'hidden';
+			input.name = name;
+			input.value = value;
+			form.appendChild(input);
+		}
+	});
 }
 
 function cancelCoupon() {

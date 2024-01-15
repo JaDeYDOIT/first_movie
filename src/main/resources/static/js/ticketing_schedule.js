@@ -220,7 +220,6 @@ function showingTime() {
 			let screen;
 			let screenSeatCount;
 			let remainSeatCount;
-			let noneExistSeatsCount;
 
 			const screenInfo = await selectScreenById(screenMovieInfo.screen_id);
 			const paymentInfo = await selectPaymentByMovieInfoId(screenMovieInfo.movie_information_id);
@@ -232,7 +231,7 @@ function showingTime() {
 
 			$.each(paymentInfo, function(index, payment) {
 				remainSeatCount -= payment.adult;
-				remainSeatCount -= payment.child;
+				remainSeatCount -= payment.student;
 				remainSeatCount -= payment.silver;
 			});
 
