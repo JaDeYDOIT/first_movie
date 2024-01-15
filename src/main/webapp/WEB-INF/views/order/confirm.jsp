@@ -107,7 +107,6 @@
             msg += '에러내용 : ' + response.error_msg;
          }
          	alert(msg);
-         	
       	});
   	 }
 	//버튼 클릭 시 이벤트 핸들러 추가

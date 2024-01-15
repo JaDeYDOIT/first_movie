@@ -1,5 +1,7 @@
 package kr.co.fmos.member;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -8,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public class MemberDAO {
 
 	public MemberDAO() {
-		System.out.println("-----CartDAO() 객체 생성됨");
+		System.out.println("-----MemberDAO() 객체 생성됨");
 	}//end
 	
 	@Autowired
@@ -21,11 +23,11 @@ public class MemberDAO {
 	
 	public String idcheck(String member_id) {
 		return sqlSession.selectOne("member.idcheck", member_id);
-	}//totalamount() end
+	}//idcheck() end
 	
 	public String emailcheck(String member_email) {
 		return sqlSession.selectOne("member.emailcheck", member_email);
-	}//totalamount() end
+	}//emailcheck() end
 	
 	public int membercheck(MemberDTO dto){
 		return sqlSession.selectOne("member.membercheck", dto);
@@ -39,4 +41,16 @@ public class MemberDAO {
 	public int sinsert(MemberDTO dto) {
 		return sqlSession.insert("member.sinsert", dto);
 	}//insert() end
-}
+	
+	/* 영민작업 시작 */
+	//회원수정 관련 시작//
+	public MemberDTO memberlist(String member_id) {
+		return sqlSession.selectOne("member.memberlist", member_id);
+	}//memberList() end
+	
+	public void memberupdate(MemberDTO dto) {
+		sqlSession.update("member.memberupdate", dto);
+	}//memberupdate() end
+	//회원수정 관련 끝//
+	/* 영민작업 끝 */
+}//class end

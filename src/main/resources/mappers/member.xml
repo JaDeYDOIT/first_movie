@@ -42,4 +42,20 @@
 		VALUES (#{member_email}, #{member_name}, '0', #{member_email}, #{member_gender}, '0', '0', '0', '0') 
 	</insert>
 	 	
+	<!-- 영민작업 시작 -->
+	<!-- 회원정보 수정 관련 -->
+	<!-- 기존 정보 불러오기  -->
+	<select id="memberlist" resultType="kr.co.fmos.member.MemberDTO" parameterType="String">
+		SELECT member_id, member_name, member_email, member_birthdate, member_gender
+		FROM member
+		WHERE member_id = #{member_id}
+	</select>
+	
+	<!-- 수정사항 업데이트하기  -->
+	<update id="memberupdate">
+		UPDATE member
+		SET member_pw = #{member_pw}, member_phone = #{member_phone}, member_gender = #{member_gender}, member_email_check =#{member_email_check}, member_sns_check =#{member_sns_check}
+		WHERE member_id = #{member_id}
+	</update>
+	<!-- 영민작업 끝 -->
 </mapper>
