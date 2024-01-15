@@ -25,6 +25,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="/js/ticketing_orderSettlement.js"></script>
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 </head>
 
 <body>
@@ -260,7 +261,8 @@
 								총<strong></strong>원
 							</dd>
 						</dl>
-						<a class="btn_col1 btn_confirm pay_button disabled">결제하기</a>
+						<a class="btn_col1 btn_confirm pay_button disabled" onclick="requestPay()">결제하기</a>
+						<script src="/js/main.js"></script>
 					</div>
 				</div>
 			</div>
