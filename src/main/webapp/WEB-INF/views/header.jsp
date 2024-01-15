@@ -1,18 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-<<<<<<< HEAD
 <%@ page import="java.util.Date" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-=======
-    
-<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
->>>>>>> fa89c44157bcb5e3c44e5a70a609a38ab608ba1b
-=======
-    
-<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
->>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
 <%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
@@ -34,36 +24,18 @@
 	        alert('Not logged in');
 	      });
 	  }
-	
-	function mypage_check(){
-		// 세션 아이디 넘기기
-		var checkLogin = "${s_id}";
-		// 로그인하지 않은 경우
-		if(checkLogin == 'guest'){
-			alert("로그인 해주세요.");
-			location.href='/member/login.do';
-		}else{
-		// 로그인한 경우 mypage페이지로 이동
-			location.href='/member/memberInfo.do';
-		}
-	}//mypage_check()() end 
 	</script>
-<<<<<<< HEAD
     	
-=======
->>>>>>> fa89c44157bcb5e3c44e5a70a609a38ab608ba1b
     <!-- 웹 폰트 -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
     <link rel="stylesheet" href="/css/reset.css">
     <!-- JS -->
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/jquery-3.7.1.min.js"></script>
-    <script src="/js/script.js"></script>
     <script src="https://kit.fontawesome.com/cbc1642524.js" crossorigin="anonymous"></script>
     <!-- 경고창 커스텀 관련 시작 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!-- 경고창 커스텀 관련 끝 -->
-<<<<<<< HEAD
     
     <!-- 서머노트 관련 시작 -->
 	    <script src="/js/summernote/summernote-lite.js"></script>
@@ -71,8 +43,6 @@
 	  	<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
     <!-- 서머노트 관련 끝 -->
     <link rel="icon" type="image/ico" href="images/header/logo.png">
-=======
->>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
     <title>영화</title>
 </head>
 
@@ -89,7 +59,6 @@
 					    <c:when test="${sessionScope.s_id eq 'guest'}">
 					        <!-- 로그인하지 않은 경우 또는 세션의 s_id가 'guest'인 경우 -->
 					        <li id="loginhid"><img src="/images/header_icon/login.png" alt="" onclick="location.href='/member/login.do'"><a href="/member/login.do">로그인</a></li>
-<<<<<<< HEAD
 					        <li id="hiddenNewMember"><img src="/images/header_icon/newmember.png" alt="" onclick="location.href='/member/member.do'"><a href="/member/member.do">회원가입</a></li>
 					    </c:when>
 					    <c:when test="${not empty sessionScope.s_id && sessionScope.s_id ne 'guest'}">
@@ -115,39 +84,15 @@
 						        location.href="/member/sessionlogout.do";
 						    </script>
 						</c:otherwise>
-=======
-					    </c:when>
-					    <c:otherwise>
-					    <!-- <li><li><img src="/images/header_icon/logout.png" alt="" onclick="location.href='/member/logout.do'"><a href="/member/logout.do">로그아웃</a></li> -->
-					    <li><li><img src="/images/header_icon/logout.png" alt="" onclick="kakaoLogout()"><a href="/member/logout.do">로그아웃</a></li>
-					    </c:otherwise>
 					</c:choose>
-					<c:choose>
-					    <c:when test="${empty sessionScope.s_id or sessionScope.s_id ne 'guest'}">
-					    	<!-- 로그인하지 않은 경우 또는 세션의 s_id가 'guest'가 아닌 경우 -->
-					    <style>
-				            #hiddenNewMember {
-				                display: none;
-				            }
-					        </style>
-					    </c:when>
-					    <c:otherwise>
-					        <li id="hiddenNewMember"><img src="/images/header_icon/newmember.png" alt="" onclick="location.href='/member/member.do'"><a href="/member/member.do"> 회원가입</a></li>
-					    </c:otherwise>
->>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
-					</c:choose>
-<<<<<<< HEAD
                         <li><img src="/images/header_icon/mypage.png" alt=""><a href="/member/memberInfo.do">my page</a></li>
-=======
-                        <li><img src="/images/header_icon/mypage.png" alt="" onclick="mypage_check()"><a onclick="mypage_check()">my page</a></li>
->>>>>>> fa89c44157bcb5e3c44e5a70a609a38ab608ba1b
                         <li><img src="/images/header_icon/csc.png" alt="" onclick="location.href='/customer/notice.do?notice_kind=0'"><a href="/customer/notice.do?notice_kind=0">고객센터</a></li>
                     </ul>
                 </div>
                 <div class="nav_bottom">
                     <ul class="nav_wrap">
                         <li><a href="/movie/list.do">영화</a></li>
-                        <li><a href="/theater/branchlist.do?region_id=region_001&branch_id=19">극장</a></li>
+                        <li><a href="/theater/branchlist.do?region_id=region_001&branch_id=1">극장</a></li>
                         <li><a href="/ticketing/schedule" style="color:rgb(0, 128, 255);">예매</a></li>
                         <li><a href="/product/list.do">스토어</a></li>
                         <li><a href="#">이벤트</a></li>

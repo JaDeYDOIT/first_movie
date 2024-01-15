@@ -183,19 +183,19 @@
 	    var check = 1;
 
 	    if (member_id.length < 4 || member_id.length >= 15) {
-	      alert("아이디는 5~15 글자로 작성해주세요");
+	      alert("아이디는 4~15 글자로 작성해주세요");
 	      return false;
 	    }
 	    if (member_pw.length < 4 || member_pw.length >= 15) {
-	      alert("비밀번호는 5~15 글자로 작성해주세요");
+	      alert("비밀번호는 4~15 글자로 작성해주세요");
 	      return false;
 	    }
 		    if (member_pw.length >= 4 && member_pw.length <= 15 && member_id.length >= 4 && member_id.length <= 15) {
 		      $.ajax({
-		        url: '/member/logincheck.do',
+		        url: '/member/loginfailcheck.do',
 		        type: 'get',
 		        data: {
-		          'member_id': member_id
+		        	'member_id': member_id
 		        },
 		        error: function (error) {
 		          alert(error);
@@ -232,10 +232,11 @@
 		    }
 		    if (check == 1) {
 		        $.ajax({
-		            url: '/member/logincheck.do',
+		            url: '/member/logincussesscheck.do',
 		            type: 'get',
 		            data: {
-		                'member_id': member_id
+		                'member_id': member_id,
+		                'member_pw': member_pw
 		            },
 		            error: function (error) {
 		                alert(error);
@@ -248,8 +249,32 @@
 		                        icon: "success"
 		                    }).then((result) => {
 		                        if (result.value) {
-		                        	 document.getElementById("myForm").submit();
+		                            document.getElementById("myForm").submit();
 		                        }
+		                    });
+		                } else {
+		                    Swal.fire({
+		                        title: "로그인실패했다 이 멍청아!! 아이디도 기억하지 못하다니...",
+		                        width: 600,
+		                        padding: "3em",
+		                        color: "#716add",
+		                        html: `
+		                            <div style="background: #fff url(/images/trees.png) no-repeat center/cover; padding: 20px;">
+		                                <img src="/images/nyan-cat.gif" alt="Image 1" style="width: 80px; height: 80px; margin-right: 2px;">
+		                                <img src="/images/nyan-cat.gif" alt="Image 1" style="width: 80px; height: 80px; margin-right: 2px;">
+		                                <img src="/images/nyan-cat.gif" alt="Image 1" style="width: 80px; height: 80px; margin-right: 2px;">
+		                                <img src="/images/nyan-cat.gif" alt="Image 1" style="width: 80px; height: 80px; margin-right: 2px;">
+		                            </div>
+		                        `,
+		                        backdrop: `
+		                            rgba(128,128,128,.5)
+		                            url("/images/nyan-cat.gif")
+		                            center 30px
+		                            no-repeat
+		                        `
+		                    }).then(() => {
+		                        $("#member_id").val('');
+		                        $("#member_pw").val('');
 		                    });
 		                }
 		            }
@@ -257,7 +282,6 @@
 		    }
 		    return false;
   	}
-			   
   </script>
 <!-- 아이디,비밀번호 5~15글자 제약 시작 끝 -->
  

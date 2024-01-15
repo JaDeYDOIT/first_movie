@@ -24,27 +24,16 @@
 	    });
 	});
 </script>
-<<<<<<< HEAD
 <form name="rentalfrm" method="post" action="/customer/rentalinsert.do" onsubmit="return rentalcheck()">
 	<div id="mtebox"> 
 	<div class="rentaldiv">
  		<div class="headtext">영화관 선택</div>
  		<select id="regionselectbox" class="dependent-select" name="rental_inquiry_area">
 	 			<option value="0">지역선택</option>
-=======
-<form name="rentalfrm" method="post" action="/customer/rentalinsert.do">
- <table>
- 	<tr>
- 		<th>영화관 선택</th>
- 		<td>
- 		<select id="regionselectbox" class="dependent-select">
-	 			<option>지역선택</option>
->>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
  			<c:forEach items="${region_customer}" var="list">
 				<option value="${list.region_id}">${list.region}</option> 
 			</c:forEach>
  		</select>
-<<<<<<< HEAD
  		<select id="branchselectbox" class="dependent-select" name="rental_inquiry_place">
    			 <option value="0">지점선택</option>
 		</select>
@@ -88,58 +77,13 @@
 	 		<div class="headtext">비밀번호</div>
 	 		<input type="password" class="reservation" name="rental_inquiry_pw" id="rental_inquiry_pw">
  		</div>
-=======
- 		<select id="branchselectbox" class="dependent-select">
- 			<option value="0">지점선택</option>
- 		</select>
- 		<select id="screenselectbox" class="dependent-select">
- 			<option>상영관 선택</option>
- 		</select>
- 		</td>
- 	</tr>
- 	<tr>
- 		<th>관람할영화</th>
- 		<td>
- 			<select id="movieselectbox" class="dependent-select">
-				<option>영화선택</option> 		
- 			</select>
- 		</td>
- 	</tr>
- 	<tr>
- 		<th>대관시간</th>
- 		<td>
- 		<input type="date" class="dependent-select">
- 		<input type="time" class="dependent-select">
- 		<input type="time" class="dependent-select">
- 		</td>
->>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
  		
- 	</tr>
- 	<tr>
- 		<th>휴대전화</th>
- 		<td class="phoneinp">
-	 		<input type="number"><span>-</span>
-	 		<input type="number"><span>-</span>
- 			<input type="number">
- 		</td>
- 	</tr>
- 	<tr>
- 		<th>제목</th>
- 		<td><input type="text" class="titleinp"></td>
- 	</tr>
- 	<tr>
- 		<th>내용</th>
- 		<td><input type="text" class="contentinp"></td>
- 	</tr>
- 	<tr>
- 		<th>사진첨부</th>
- 		<td><input type="file" class="photoinp"></td>
- 	</tr>
- </table>
+ 	</div>
  	<div class="button_wrap">
 		<input type="submit" value="등록하기"> 	
 		<input type="button" value="취소하기" onclick="goBack()">
 	</div>
+	
 </form>
 <script>
 
@@ -147,7 +91,7 @@ $("#regionselectbox").change(
 		function() {
 			var region_id = $('#regionselectbox').val();
 				$.ajax({
-					url : '/customer/regionselectbox.do',
+					url : '/customer/branchselectbox.do',
 					type : 'post',
 					data : {
 						'region_id' : region_id
@@ -158,11 +102,10 @@ $("#regionselectbox").change(
 					success : function(result) {
 						 $("#branchselectbox").empty();
 						 $("#branchselectbox").append($('<option>', {
-							 value: 0,
 							 text: '지점선택'
 						 }));
 				            // 서버에서 전송한 객체의 'screenajaxlist' 프로퍼티에 접근합니다.
-				            $.each(result.checkList, function(index, value) {
+				            $.each(result.regionselectbox, function(index, value) {
 				                // 각각의 값에 대한 옵션을 생성하고 추가합니다.
 				                $("#branchselectbox").append($('<option>', {
 				                    value: value.branch_id,
@@ -193,9 +136,7 @@ $("#branchselectbox").change(
 						 $("#screenselectbox").append($('<option>', {
 							 text: '상영관 선택'
 						 }));
-				            // 서버에서 전송한 객체의 'screenajaxlist' 프로퍼티에 접근합니다.
 				            $.each(result.screenselectbox, function(index, value) {
-				                // 각각의 값에 대한 옵션을 생성하고 추가합니다.
 				                $("#screenselectbox").append($('<option>', {
 				                    value: value.screen_id,
 				                    text: value.screen_location
@@ -226,7 +167,7 @@ $("#screenselectbox").change(
 							 text: '영화선택'
 						 }));
 				            // 서버에서 전송한 객체의 'screenajaxlist' 프로퍼티에 접근합니다.
-				            $.each(result.screenselectbox, function(index, value) {
+				            $.each(result.movieselectbox, function(index, value) {
 				                // 각각의 값에 대한 옵션을 생성하고 추가합니다.
 				                $("#movieselectbox").append($('<option>', {
 				                    value: value.movie_id,
@@ -240,7 +181,6 @@ $("#screenselectbox").change(
 		}// function() end 
 ); // change function end
 
-<<<<<<< HEAD
 $('.contentinp').summernote({
 	  // 에디터 높이
 	  height: 300,
@@ -286,9 +226,6 @@ var plainText = tempDiv.textContent || tempDiv.innerText;
 var withoutPTags = plainText.replace(/<p>/g, '').replace(/<\/p>/g, '');
 
 	
-=======
-
->>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
 function goBack() {
 	window.location.href = "/customer/notice.do?notice_kind=0";
 }

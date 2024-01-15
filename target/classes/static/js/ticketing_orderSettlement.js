@@ -1,32 +1,6 @@
-const currentUrl = new URL(window.location.href);
-const screenMovieInfoID = decodeURIComponent(currentUrl.searchParams.get('screenMovieInfoID'));
-const selectedSeats = JSON.parse(decodeURIComponent(currentUrl.searchParams.get('selectedSeats')));
-const adult = decodeURIComponent(currentUrl.searchParams.get('adult'));
-const student = decodeURIComponent(currentUrl.searchParams.get('student'));
-const silver = decodeURIComponent(currentUrl.searchParams.get('silver'));
-const price = decodeURIComponent(currentUrl.searchParams.get('price'));
-/*const student = 1;
-const adult = 0;
-const silver = 3;
-const price = 15000;
-const screenMovieInfoID = 50;
-let selectedSeats = ["C6", "H9", "A1", "B2"];*/
-let memberID;
-let movieName;
-let movieAudienceRating;
-let movieImage;
-let movieRunningTime;
-let movieShowingDate;
-let movieShowingTime;
-let theaterBranchName;
-let screenLocation;
-let couponDiscountRate = 0;
-let selectedCouponID;
-let memberPoint = 0;
-let usedPoint = 0;
-let payDiscount = 0;
-
+// mCustomScrollbar 초기화 및 옵션 설정
 $(document).ready(function() {
+<<<<<<< HEAD
 	initialize();
 	asyncInitialize();
 });
@@ -90,6 +64,8 @@ async function asyncInitialize() {
 }
 
 function initializeCustomScrollbar() {
+=======
+>>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
 	$(".mCustomScrollbar").mCustomScrollbar({
 		theme: "dark-thin", // 테마 설정 (dark 또는 light)
 		scrollButtons: {
@@ -97,8 +73,9 @@ function initializeCustomScrollbar() {
 		}, // 스크롤 버튼 활성화
 		scrollInertia: 300, // 스크롤 속도
 	});
-}
+});
 
+<<<<<<< HEAD
 async function getTicketingInfo() {
 	try {
 		const screenMovieInfo = await $.ajax({
@@ -335,53 +312,52 @@ function selectMemberPoint() {
 
 function handlePaymentButtonClick() {
 	$('.bx_cate li>button').click(function() {
+=======
+//최종 결제수단
+$(document).ready(function() {
+	$('.group_payment .list_pay_item li>button').click(function() {
+>>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
 		// 모든 li 요소에서 'selected' 클래스를 제거
-		$('.bx_cate li>button').removeClass('active');
+		$('.group_payment .list_pay_item li>button').removeClass('active');
 
 		// 클릭된 li 요소에 'selected' 클래스 추가
 		$(this).addClass('active');
 
 		//신용카드 클릭시
-		if ($('.bx_cate .pay_card').hasClass('active')) {
+		if ($('.group_payment .list_pay_item .pay_card').hasClass('active')) {
 			// active 클래스가 있다면 article 클래스를 가진 요소를 보이게 함
-			$('.pay_method_list .article_pay_card').css('display', 'block');
+			$('.group_payment .article_pay_card').css('display', 'block');
 		} else {
 			// active 클래스가 없다면 article 클래스를 가진 요소를 숨김
-			$('.pay_method_list .article_pay_card').css('display', 'none');
+			$('.group_payment .article_pay_card').css('display', 'none');
 		}
 
 		//간편결재 클릭시
-		if ($('.bx_cate .pay_simple').hasClass('active')) {
+		if ($('.group_payment .list_pay_item .pay_simple').hasClass('active')) {
 			// active 클래스가 있다면 article 클래스를 가진 요소를 보이게 함
-			$('.pay_method_list .article_pay_simple').css('display', 'block');
+			$('.group_payment .article_pay_simple').css('display', 'block');
 		} else {
 			// active 클래스가 없다면 article 클래스를 가진 요소를 숨김
-			$('.pay_method_list .article_pay_simple').css('display', 'none');
+			$('.group_payment .article_pay_simple').css('display', 'none');
 		}
 	});
-}
+});
 
-function handlePayItemClick() {
-	$('.pay_method_list button').click(function() {
-		$('.pay_method_list li').removeClass('active');
-		$(this).parent().closest('li').addClass('active');
-	});
-}
-
-function handleProvisionCheckboxChange() {
+//약관 동의
+$(document).ready(function() {
 	$('#chkSavingTerm').change(function() {
 		//약관 모두 동의
 		if ($(this).is(':checked')) {
-			$('.provision_list input[type="checkbox"]').prop('checked', true);
+			$('.article_payment .bx_provision .provision_list input[type="checkbox"]').prop('checked', true);
 			// 체크되었을 때 수행할 동작을 여기에 추가
 		} else {
-			$('.provision_list input[type="checkbox"]').prop('checked', false);
+			$('.article_payment .bx_provision .provision_list input[type="checkbox"]').prop('checked', false);
 			// 체크 해제되었을 때 수행할 동작을 여기에 추가
 		}
 	});
 
-	$('.provision_list input[type="checkbox"]').click(function() {
-		var checkbox = $('.provision_list input[type="checkbox"]');
+	$('.article_payment .bx_provision .provision_list input[type="checkbox"]').click(function() {
+		var checkbox = $('.article_payment .bx_provision .provision_list input[type="checkbox"]');
 
 		// 체크박스들 중 모두 체크되어 있는지 확인
 		var someUnchecked = checkbox.filter(':checked').length === checkbox.length;
@@ -389,31 +365,30 @@ function handleProvisionCheckboxChange() {
 		// 모든 체크박스의 체크 상태를 토글
 		$('#chkSavingTerm').prop('checked', someUnchecked);
 	});
-}
+});
 
-function handleApplyCouponButtionClick() {
+//쿠폰 버튼클릭
+$(document).ready(function() {
+	// 체크박스가 변경될 때의 이벤트 처리
 	$('.btn_coupon').click(function() {
 		$('.dim').css('display', 'block');
 		$('#layerDiscountCoupon').addClass('active');
 	});
-}
+});
 
-function handleCouponCheckboxChange() {
+
+//등록된 쿠폰목록
+$(document).ready(function() {
+	// 체크박스가 변경될 때의 이벤트 처리
 	$('.list_pay_coupon input[type="checkbox"]').change(function() {
 		// 모든 체크박스의 체크를 해제
 		$('.list_pay_coupon input[type="checkbox"]').prop('checked', false);
 		// 현재 선택된 체크박스만 체크
 		$(this).prop('checked', true);
 	});
-}
 
-function handleCouponSubmitButtonClick() {
+	//등록버튼 클릭
 	$('#layerDiscountCoupon .submit').click(function() {
-		if ($('.list_pay_coupon input[type="checkbox"]:checked').length === 0) {
-			$('.dim').css('display', 'none');
-			return;
-		}
-
 		$('.dim').css('display', 'none');
 		$('#layerDiscountCoupon').removeClass('active');
 
@@ -423,22 +398,20 @@ function handleCouponSubmitButtonClick() {
 		var couponName = checkedBox.find('.coupon_name').text();
 		var couponPeriod = checkedBox.find('.period').text();
 		var couponConstraints = checkedBox.find('dt').text();
-		selectedCouponID = checkedBox.data("couponid");
-		couponDiscountRate = checkedBox.data("coupondiscountrate");
 
 		$('.wrap_selected_coupon .coupon_name').text(couponName);
 		$('.wrap_selected_coupon .period').text(couponPeriod);
 		$('.wrap_selected_coupon dt').text(couponConstraints);
 	});
-}
 
-function handleCouponCancleButtonClick() {
+	//취소버튼 클릭
 	$('#layerDiscountCoupon .cancle').click(function() {
 		$('.dim').css('display', 'none');
 		$('#layerDiscountCoupon').removeClass('active');
 	});
-}
+});
 
+<<<<<<< HEAD
 function handlePointAmountInput() {
 	$(".point_amount").on("input", function() {
 		var enteredPoints = $(this).val();
@@ -518,3 +491,5 @@ function handleCouponCloseButtonClick() {
 		couponDiscountRate = 0;
 	});
 }
+=======
+>>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
