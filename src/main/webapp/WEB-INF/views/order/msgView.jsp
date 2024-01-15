@@ -39,6 +39,11 @@
    					<a href="#">플레이존</a>
    				</li>
   			</ul>
+  			<ul class="cart_content">
+  				<li>
+  					<a href="/cart/list.do">장바구니<span id="cartviewcnt">0</span></a>
+  				</li>
+  			</ul>
   		</div>
   	</div>
   	<!-- category_wrap 끝 -->
