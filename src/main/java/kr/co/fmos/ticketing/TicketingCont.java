@@ -1,18 +1,7 @@
 package kr.co.fmos.ticketing;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-=======
 import java.time.format.TextStyle;
 import java.util.Locale;
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
-import java.time.format.TextStyle;
-import java.util.Locale;
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

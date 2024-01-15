@@ -7,46 +7,25 @@
 
 <mapper namespace="payment">
 	<select id="list" resultType="kr.co.fmos.payment.PaymentDTO">
-<<<<<<< HEAD
-<<<<<<< HEAD
 		SELECT payment_id, member_id,
 		movie_information_id, adult, student,
 		silver, price, pay_discount,
 		pay_type, refund, pay_datetime
 		FROM payment
-=======
-	SELECT payment_id, member_id, movie_information_id, adult, child,
-	silver, price, pay_discount, pay_type, refund, pay_datetime
-	FROM payment
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 	</select>
-	
-	<select id="selectPaymentByScreenMovieInfoId" parameterType="String"
-	resultType="kr.co.fmos.payment.PaymentDTO">
-	SELECT payment_id, member_id, movie_information_id, adult, child,
-	silver, price, pay_discount, pay_type, refund, pay_datetime
-	FROM payment
-	WHERE movie_information_id=#{screenMovieInfoID}
+
+	<select id="selectPaymentByScreenMovieInfoId"
+		parameterType="String" resultType="kr.co.fmos.payment.PaymentDTO">
+		SELECT payment_id, member_id,
+		movie_information_id, adult, student,
+		silver, price, pay_discount,
+		pay_type, refund, pay_datetime
+		FROM payment
+		WHERE
+		movie_information_id=#{screenMovieInfoID}
 	</select>
-<<<<<<< HEAD
 
 	<insert id="insertAndReturnWithId" useGeneratedKeys="true"
-=======
-	SELECT payment_id, member_id, movie_information_id, adult, student,
-	silver, price, pay_discount, pay_type, refund, pay_datetime
-	FROM payment
-	</select>
-	
-	<select id="selectPaymentByScreenMovieInfoId" parameterType="String"
-	resultType="kr.co.fmos.payment.PaymentDTO">
-	SELECT payment_id, member_id, movie_information_id, adult, student,
-	silver, price, pay_discount, pay_type, refund, pay_datetime
-	FROM payment
-	WHERE movie_information_id=#{screenMovieInfoID}
-	</select>
-
-	<insert id="insertAndWithReturnID" useGeneratedKeys="true"
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
 		keyProperty="payment_id" parameterType="kr.co.fmos.payment.PaymentDTO">
 		<selectKey keyProperty="payment_id" resultType="int"
 			order="AFTER">
@@ -66,6 +45,4 @@
 		#{pay_type},
 		#{refund})
 	</insert>
-=======
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 </mapper>

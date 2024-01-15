@@ -52,8 +52,6 @@
 		#{branch_id}
 	</select>
 
-
-
 	<select id="screenlist" resultType="java.util.Map"
 		parameterType="kr.co.fmos.theater.Screen_movie_informationDTO">
 		SELECT tb.branch_name, smi.movie_showing_date, m.movie_name,
@@ -70,7 +68,6 @@
 		GROUP BY m.movie_name, s.screen_id
 	</select>
 
-
 	<select id="writeajaxlist" resultType="java.util.Map"
 		parameterType="int">
 		SELECT movie_id, MV.movie_genre_id, movie_genre_name,
@@ -83,8 +80,6 @@
 		where movie_id = #{movie_id};
 	</select>
 
-
-
 	<insert id="theaterinsert" parameterType="java.util.Map">
 		INSERT INTO
 		screen_movie_information(movie_id, screen_id, branch_id,
@@ -94,8 +89,6 @@
 		#{movie_showing_time})
 	</insert>
 
-
-
 	<select id="timecheck"
 		resultType="kr.co.fmos.theater.Screen_movie_informationDTO">
 		select TIME_FORMAT(movie_showing_time, '%H:%i') as
@@ -104,7 +97,6 @@
 		screen_movie_information
 	</select>
 
-
 	<!-- customer 호출 시작 -->
 	<select id="region_customer"
 		resultType="kr.co.fmos.theater.TheaterregionDTO">
@@ -112,7 +104,6 @@
 		FROM region
 	</select>
 	<!-- customer 호출 끝 -->
-
 
 	<!-- 상영관 추가 페이지 시작 -->
 	<select id="writebranchlist"

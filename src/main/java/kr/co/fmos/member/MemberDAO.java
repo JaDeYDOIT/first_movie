@@ -1,6 +1,5 @@
 package kr.co.fmos.member;
 
-<<<<<<< HEAD
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -24,16 +23,6 @@ public interface MemberDAO {
 	public int membercheck(MemberDTO dto);
 	
 	// 카카오 로그인 관련
-=======
-
-@Repository
-public interface MemberDAO {
-
-	public String emailcheck(String member_email);
-
-	public int membercheck(MemberDTO dto);
-
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
 	public int sMembercheck(MemberDTO dto);
 	
 	public int sinsert(MemberDTO dto);	
@@ -43,13 +32,5 @@ public interface MemberDAO {
 	public void memberupdate(MemberDTO dto);
 	
 	public MemberDTO selectMemberById(String memberId);
-<<<<<<< HEAD
-<<<<<<< HEAD
-
+	
 }//class end
-=======
-}
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
-}
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e

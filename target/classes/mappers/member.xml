@@ -17,10 +17,19 @@
 	 	from member
 		where member_id = #{member_id}
 	</select>
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	<select id="loginfailcheck" parameterType="String"
+		resultType="int">
+		select COUNT(*)
+		from member
+=======
 	
 	<select id="loginfailcheck" parameterType="String" resultType="int">
 	 	select COUNT(*)
 	 	from member
+>>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 		where member_id = #{member_id}
 	</select>
 	
@@ -29,6 +38,18 @@
 	 	from member
 		where member_id = #{member_id} and member_pw = #{member_pw}
 	</select>
+<<<<<<< HEAD
+		
+=======
+	
+>>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
+	<select id="logincheck" parameterType="String" resultType="int">
+	 	select COUNT(*)
+	 	from member
+		where member_id = #{member_id}
+	</select>
+=======
+>>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 	
 	<select id="emailcheck" parameterType="String" resultType="String">
 	 	select member_email
@@ -38,6 +59,20 @@
 	
 	<select id="membercheck" parameterType="kr.co.fmos.member.MemberDTO" resultType="int">
 	 	SELECT COUNT(*)
+<<<<<<< HEAD
+=======
+
+	<select id="loginfailcheck" parameterType="String"
+		resultType="int">
+		select COUNT(*)
+		from member
+		where member_id = #{member_id}
+	</select>
+
+	<select id="logincussesscheck" parameterType="java.util.Map"
+		resultType="int">
+		select COUNT(*)
+>>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
 		from member
 		where member_id = #{member_id} and member_pw = #{member_pw}; 
 	</select>
