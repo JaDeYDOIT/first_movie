@@ -4,18 +4,6 @@
 <link rel="stylesheet" href="/css/moviedetail.css">
 
 
-
-<script>
-	function moviedelete(movie_id){
-		alert(11);
-		alert(movie_id);
-		if(confirm("해당 영화를 삭제할까요??")){
-			return location.href="/movie/delete.do?movie_id=" + movie_id;
-		}
-		
-	}// moviedelete() end
-</script>
-
 <div class="movie_detail_wrap">
 	<div class='movie_detail'>
 		<div class="movie_img_wrap">
@@ -24,7 +12,6 @@
 			</div>
 		</div>
 		<div class="movie_text_wrap">
-		<button onclick="return moviedelete(${detail.movie_id})">삭제</button>
 			<ul class="movie_text">
 				<li><h3>${detail.movie_name}</h3></li>
 				<li>장르아이디 : ${detail.movie_genre_name}</li>

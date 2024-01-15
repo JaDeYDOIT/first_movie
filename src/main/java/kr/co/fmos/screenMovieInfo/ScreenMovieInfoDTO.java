@@ -34,7 +34,6 @@ public class ScreenMovieInfoDTO {
 	public void setMovie_id(String movie_id) {
 		this.movie_id = movie_id;
 	}
-
 	public LocalDate getMovie_showing_date() {
 		return movie_showing_date;
 	}
@@ -58,7 +57,6 @@ public class ScreenMovieInfoDTO {
 	public void setBranch_id(int branch_id) {
 		this.branch_id = branch_id;
 	}
-
 	@Override
 	public String toString() {
 		return "ScreenMovieInfoDTO [movie_information_id=" + movie_information_id + ", screen_id=" + screen_id

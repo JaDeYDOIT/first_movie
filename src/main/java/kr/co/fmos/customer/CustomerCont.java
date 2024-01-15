@@ -113,53 +113,30 @@ public class CustomerCont {
 		return mav;
     }
     
-    @PostMapping("/branchselectbox.do")
+    @PostMapping("/regionselectbox.do")
     @ResponseBody
-    public Map<String, Object> branchselectbox(String region_id) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("regionselectbox", theaterDao.branchselectbox(region_id));
-        return map;
+    public Map<String, Object> checkList(String region_id) {
+    	Map<String, Object> map = new HashMap<String, Object>();
+    	map.put("checkList", theaterDao.checkList(region_id));
+    	return map;
     }
     
     @PostMapping("/screenselectbox.do")
     @ResponseBody
     public Map<String, Object> screenselectbox(int branch_id){
     	Map <String, Object> map = new HashMap<>();
-    	map.put("screenselectbox", theaterDao.screenselectbox(branch_id));
-    	System.out.println(map.toString());
+    	map.put("screenselectbox", theaterDao.screenajaxlist(branch_id));
     	return map;
     }
     
     @PostMapping("/movieselectbox.do")
     @ResponseBody
     public Map<String, Object> movieselectbox(int screen_id){
+    	System.out.println(123);
     	Map <String, Object> map = new HashMap<>();
+    	System.out.println(theaterDao.movieselectbox(screen_id).toString());
     	map.put("movieselectbox", theaterDao.movieselectbox(screen_id));
     	return map;
-    }
-    
-    @PostMapping("/rentalinsert.do")
-    public void rentalinsert(RentalDTO dto) {
-    	String rental_inquiry_area = dto.getRental_inquiry_area();
-    	System.out.println(theaterDao.Rental_inquiry_area(rental_inquiry_area));
-    	dto.setRental_inquiry_area(theaterDao.Rental_inquiry_area(rental_inquiry_area));
-    	
-    	int rental_inquiry_place = Integer.parseInt(dto.getRental_inquiry_place());
-    	System.out.println(theaterDao.rental_inquiry_place(rental_inquiry_place));
-    	dto.setRental_inquiry_place(theaterDao.rental_inquiry_place(rental_inquiry_place));
-    	
-    	int rental_inquiry_theater = Integer.parseInt(dto.getRental_inquiry_theater());
-    	System.out.println(theaterDao.rental_inquiry_theater(rental_inquiry_theater));
-    	dto.setRental_inquiry_place(theaterDao.rental_inquiry_theater(rental_inquiry_theater));
-    	
-    	int rental_inquiry_movie = Integer.parseInt(dto.getRental_inquiry_movie());
-    	System.out.println(theaterDao.rental_inquiry_movie(rental_inquiry_movie));
-    	dto.setRental_inquiry_place(theaterDao.rental_inquiry_movie(rental_inquiry_movie));
-    	
-    	
-    	
-    	
-    	
     }
     
     

@@ -117,25 +117,22 @@
                      <span><a href="">${time.movie_showing_time}</a></a></span>
                  </c:if>
              </c:if>
-            	</c:forEach>
+             </c:forEach>
+                     <button id="delete" onclick="return screendelete(${screen.branch_id})">삭제</button>
             </li>
          </ul>
       </c:forEach>
    </div> 
 
+	<script>
+	function screendelete(branch_id) {
+	    alert(branch_id);
+	    if (confirm("해당 상영관을 삭제할까요??")) {
+	        alert(branch_id);
+	        location.href = "/theater/delete.do";
+	    }// if end
+	}// screendelete() end
+	</script>
 	<!-- 극장상영시간표 끝 -->
-
-
-
-
-
-
-</div>
-<button id="apibtn">카카오결제</button>
-<div>결제 테스트
-
-<script src="/js/kakaoAPI.js"></script>
-
-
-
+	
 <%@ include file="../footer.jsp"%>

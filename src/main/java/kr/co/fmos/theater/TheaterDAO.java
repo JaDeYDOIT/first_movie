@@ -45,7 +45,7 @@ public class TheaterDAO {
 	public TheaterbranchDTO branchimg(int branch_id) {
 		return sqlSession.selectOne("theater.branchimg", branch_id);
 	}
-
+	
 	// write 리스트
 	public List<Map<String, Object>> writelist() {
 		return sqlSession.selectList("theater.writelist");
@@ -75,7 +75,7 @@ public class TheaterDAO {
 	public List<TheaterbranchDTO> writebranchlist() {
 		return sqlSession.selectList("theater.writebranchlist");
 	}
-
+	
 
 	// write ajax 상영관 리스트
 	public List<ScreenDTO> screenajaxlist(int branch_id) {
