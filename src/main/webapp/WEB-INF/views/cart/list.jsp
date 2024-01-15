@@ -50,7 +50,7 @@
   			</ul>
   			<ul class="cart_content">
   				<li>
-  					<a href="/cart/list.do">장바구니<span id="cartviewcnt">0</span></a>
+  					<a href="/cart/list.do">장바구니<span id="cartviewcnt">${cartcnt}</span></a>
   				</li>
   			</ul>
   		</div>

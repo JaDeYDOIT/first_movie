@@ -1,8 +1,5 @@
 package kr.co.fmos.member;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,8 +20,8 @@ public class MemberCont {
 
 	public MemberCont() {
 		System.out.println("-----MemberCont()객체생성됨");
-	}// end
-
+	}//end
+	
 	@Autowired
 	private MemberDAO memberDao;
 	
@@ -66,21 +63,21 @@ public class MemberCont {
 		 return mav; 
 	 }
 	
-	@GetMapping("/loginfailcheck.do")
-	@ResponseBody
-	public int loginfailcheck(String member_id) {
-		Map<String, String> map = new HashMap<>();
-		int num = memberDao.loginfailcheck(member_id);
-		return num;
-	}//list() end
+//	@GetMapping("/logfail.do")
+//	public ModelAndView logfail() {
+//		
+//		ModelAndView mav = new ModelAndView();
+//		int msg1 = 1;
+//		
+//		mav.addObject("msg1", msg1);
+//		mav.setViewName("/member/login");
+//		return mav;
+//	}//list() end
 	
-	@GetMapping("/logincussesscheck.do")
+	@GetMapping("/logincheck.do")
 	@ResponseBody
-	public int logincussesscheck(String member_id, String member_pw) {
-		Map<String, String> map = new HashMap<>();
-		map.put("member_id", member_id);
-		map.put("member_pw", member_pw);
-		int num = memberDao.logincussesscheck(map);
+	public int logincheck(String member_id) {
+		int num = memberDao.logincheck(member_id);
 		return num;
 	}//list() end
 	
@@ -142,34 +139,72 @@ public class MemberCont {
 		mav.setViewName("logmsgView");
 		return mav;
 	}
-
+	
 	@GetMapping("/social_log")
 	public ModelAndView kakao_log(MemberDTO dto, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		int result = memberDao.sMembercheck(dto);
 		System.out.println(result);
-
-		if (result != 1) {
+		
+		if(result != 1) {
 			memberDao.sinsert(dto);
 			mav.addObject("msg1", "<script>alert('환영합니다')</script>");
 			session.setAttribute("s_id", dto.getMember_email());
 		} else {
 			mav.addObject("msg1", "<script>alert('환영합니다')</script>");
 			session.setAttribute("s_id", dto.getMember_email());
-		}
+	    }
 
 		mav.setViewName("logmsgView");
 		return mav;
 	}
-
+	
 	@GetMapping("/test.do")
 	public String test() {
 		return "/member/test";
 	}
 	
+	//회원수정 관련 시작//
+	@GetMapping("/memberModify.do")
+	public ModelAndView memberList(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		String s_id = (String)session.getAttribute("s_id");
+		MemberDTO dto = memberDao.memberlist(s_id);
+		mav.addObject("memberlist", dto);
+		mav.setViewName("member/memberModify");
+		return mav;
+	}//memberModify() end
+	
+	
+	@PostMapping("/memberModify.do")
+	public ModelAndView memberModify(HttpSession session) {
+		String s_id = (String)session.getAttribute("s_id");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("s_id", s_id);
+		
+		MemberDTO dto = memberDao.memberlist(s_id);
+		System.out.println(dto);
+		mav.addObject("memberlist", dto);
+		mav.setViewName("/member/member");
+		return mav;
+	}
+	
+	@PostMapping("/memberupdate")
+	public String memberupdate(MemberDTO dto,
+							   @RequestParam String member_id,
+							   @RequestParam String member_pw, 
+							   @RequestParam String member_phone) {
+		MemberDTO update = new MemberDTO();
+		update.setMember_id(member_id);
+		update.setMember_pw(member_pw);
+		update.setMember_phone(member_phone);
+		memberDao.memberupdate(dto);
+		return "redirect:/main";
+	}//memberupdate() end
+	//회원수정 관련 끝//
+	
 	@GetMapping("/memberInfo.do")
 	public String memberInfo() {
 		return "/member/memberinfo";
 	}
-	
 }//class end

@@ -16,8 +16,6 @@ public class RentalDAO {
 	
 	public int rentalInsert(RentalDTO dto) {
 		return sqlSession.insert("customer.rentalInsert", dto);
-	}//insert() end
-
-	
+	}//insert() end	
 	
 }

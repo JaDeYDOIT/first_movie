@@ -24,25 +24,31 @@
 	        alert('Not logged in');
 	      });
 	  }
+	
+	function mypage_check(){
+		// 세션 아이디 넘기기
+		var checkLogin = "${s_id}";
+		// 로그인하지 않은 경우
+		if(checkLogin == 'guest'){
+			alert("로그인 해주세요.");
+			location.href='/member/login.do';
+		}else{
+		// 로그인한 경우 mypage페이지로 이동
+			location.href='/member/memberInfo.do';
+		}
+	}//mypage_check()() end 
 	</script>
-    	
     <!-- 웹 폰트 -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
     <link rel="stylesheet" href="/css/reset.css">
     <!-- JS -->
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/jquery-3.7.1.min.js"></script>
+    <script src="/js/script.js"></script>
     <script src="https://kit.fontawesome.com/cbc1642524.js" crossorigin="anonymous"></script>
     <!-- 경고창 커스텀 관련 시작 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!-- 경고창 커스텀 관련 끝 -->
-    
-    <!-- 서머노트 관련 시작 -->
-	    <script src="/js/summernote/summernote-lite.js"></script>
-	  	<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
-	  	<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
-    <!-- 서머노트 관련 끝 -->
-    <link rel="icon" type="image/ico" href="images/header/logo.png">
     <title>영화</title>
 </head>
 
@@ -92,7 +98,7 @@
                 <div class="nav_bottom">
                     <ul class="nav_wrap">
                         <li><a href="/movie/list.do">영화</a></li>
-                        <li><a href="/theater/branchlist.do?region_id=region_001&branch_id=1">극장</a></li>
+                        <li><a href="/theater/branchlist.do?region_id=region_001&branch_id=19">극장</a></li>
                         <li><a href="/ticketing/schedule" style="color:rgb(0, 128, 255);">예매</a></li>
                         <li><a href="/product/list.do">스토어</a></li>
                         <li><a href="#">이벤트</a></li>
