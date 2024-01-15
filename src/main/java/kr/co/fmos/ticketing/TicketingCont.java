@@ -67,7 +67,7 @@ public class TicketingCont {
 	}
 
 	@GetMapping("/orderSettlement")
-	public ModelAndView orderSettlement(HttpSession session, @RequestParam int screenMovieInfoID, String[] selectedSeats, int totalPrice) {
+	public ModelAndView orderSettlement(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("ticketing/orderSettlement");
 		session.setAttribute("s_id", "sungwoo");

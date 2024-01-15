@@ -10,7 +10,7 @@
 	<select id="list" resultType="kr.co.fmos.movie.MovieDTO">
 		SELECT movie_id, movie_genre_id,
 		movie_name, movie_running_time, movie_production_year,
-		movie_audience_rating, movie_rank, movie_image, movie_video,
+		movie_audience_rating, movie_image, movie_video,
 		director_name, actor_name
 		FROM movie
 	</select>
@@ -19,11 +19,11 @@
 	<insert id="insert" parameterType="kr.co.fmos.movie.MovieDTO">
 		INSERT INTO movie(
 		movie_genre_id, movie_name, movie_running_time, movie_production_year,
-		movie_audience_rating, movie_rank, movie_image, movie_video,
+		movie_audience_rating, movie_image, movie_video,
 		director_name, actor_name)
 		VALUES (#{movie_genre_id},
 		#{movie_name}, #{movie_running_time}, #{movie_production_year}, #{movie_audience_rating},
-		#{movie_rank}, #{movie_image}, #{movie_video}, #{director_name},
+		#{movie_image}, #{movie_video}, #{director_name},
 		#{actor_name})
 	</insert>
 
@@ -36,7 +36,6 @@
 		m.movie_running_time,
 		m.movie_production_year,
 		m.movie_audience_rating,
-		m.movie_rank,
 		m.movie_image,
 		m.movie_video,
 		m.director_name,
@@ -95,7 +94,7 @@
 		<select id="moviecheck" resultType="kr.co.fmos.movie.MovieDTO">
 		SELECT movie_id, movie_genre_id,
 		movie_name, movie_running_time, movie_production_year,
-		movie_audience_rating, movie_rank, movie_image, movie_video,
+		movie_audience_rating, movie_image, movie_video,
 		director_name, actor_name
 		FROM movie
 		where movie_id = #{movie_id}
@@ -107,7 +106,7 @@
 		SELECT
 		movie_id, movie_genre_id, movie_name,
 		movie_running_time, movie_production_year, movie_audience_rating,
-		movie_rank, movie_image, movie_video, director_name, actor_name
+		movie_image, movie_video, director_name, actor_name
 		FROM
 		movie
 		WHERE
