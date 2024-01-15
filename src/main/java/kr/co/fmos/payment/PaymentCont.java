@@ -24,4 +24,11 @@ public class PaymentCont {
 	public List<PaymentDTO> selectPaymentByScreenMovieInfoId(@RequestBody String screenMovieInfoID) {
 		return paymentDao.selectPaymentByScreenMovieInfoId(screenMovieInfoID);
 	}
+	
+	
+	
+	
+	
+	
+	
 }

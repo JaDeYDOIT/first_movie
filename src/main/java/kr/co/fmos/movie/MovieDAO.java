@@ -49,10 +49,7 @@ public class MovieDAO {
 		return sqlSession.insert("movie.reviewInsert", dto);
 	}//insert() end
 	
-	public int delete(int movie_id) {
-		return sqlSession.delete("movie.delete", movie_id);
-	}//insert() end
-	
+
 //	 맵방식 댓글
 //	 public Map<String, Object> moviereviewList(String movie_id) {
 //			return sqlSession.selectOne("movie.review", movie_id);

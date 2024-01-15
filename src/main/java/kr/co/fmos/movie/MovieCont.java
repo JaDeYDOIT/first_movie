@@ -134,18 +134,4 @@ public class MovieCont {
 		return "redirect:/movie/detail.do?movie_id=" + dto.getMovie_id();
 	}// list() end
 	
-	
-	
-	
-	@GetMapping("/delete.do")
-	public ModelAndView delet(int movie_id) {
-		System.out.println(movie_id);
-		ModelAndView mav = new ModelAndView();
-		mav.addObject(movieDao.delete(movie_id));
-		mav.setViewName("movie/list.do");
-		return mav;
-	}// list() end
-	
-
-
 }

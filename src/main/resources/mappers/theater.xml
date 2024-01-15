@@ -152,6 +152,5 @@
 		where smi.screen_id = #{screen_id}
 	</select>
 
-
 	<!-- 상영관 추가 페이지 끝 -->
 </mapper>

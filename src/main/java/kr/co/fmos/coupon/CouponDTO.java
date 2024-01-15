@@ -46,4 +46,5 @@ public class CouponDTO {
 	public void setCoupon_status(String coupon_status) {
 		this.coupon_status = coupon_status;
 	}
+
 }

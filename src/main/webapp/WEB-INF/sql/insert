@@ -91,7 +91,7 @@ values(nextval(notice_seq),'개인정보처리방침',1,'개인정보 관리법�
 
 
 ////////////////////영화 추가/////////////////////
-INSERT INTO movie (movie_id, movie_genre_id, movie_name, movie_running_time, movie_production_year, movie_audience_rating, movie_rank, movie_image, movie_video, director_name, actor_name)
+INSERT INTO movie (movie_id, movie_genre_id, movie_name, movie_running_time, movie_production_year, movie_audience_rating, movie_image, movie_video, director_name, actor_name)
 VALUES
 ('movie_id1', 1, '서울의봄',     111, now(), '15세이상', 1, 'url://', 'url://', '김성수',         '배우1 '),
 ('movie_id2', 2, '3일의 휴가',   111, now(), '12세이상', 2, 'url://', 'url://', '육상호',         '배우1, 배우2'),
