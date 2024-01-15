@@ -1,5 +1,6 @@
 package kr.co.fmos.member;
 
+<<<<<<< HEAD
 import java.util.Map;
 import java.util.List;
 
@@ -21,6 +22,16 @@ public interface MemberDAO {
 	public int membercheck(MemberDTO dto);
 	
 	// 카카오 로그인 관련
+=======
+
+@Repository
+public interface MemberDAO {
+
+	public String emailcheck(String member_email);
+
+	public int membercheck(MemberDTO dto);
+
+>>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
 	public int sMembercheck(MemberDTO dto);
 	
 	public int sinsert(MemberDTO dto);//insert() endz
@@ -30,5 +41,9 @@ public interface MemberDAO {
 	public void memberupdate(MemberDTO dto);//memberupdate() end
 	
 	public MemberDTO selectMemberById(String memberId);
+<<<<<<< HEAD
 
 }//class end
+=======
+}
+>>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d

@@ -7,6 +7,7 @@
 
 <mapper namespace="payment">
 	<select id="list" resultType="kr.co.fmos.payment.PaymentDTO">
+<<<<<<< HEAD
 		SELECT payment_id, member_id,
 		movie_information_id, adult, student,
 		silver, price, pay_discount,
@@ -26,6 +27,22 @@
 	</select>
 
 	<insert id="insertAndReturnWithId" useGeneratedKeys="true"
+=======
+	SELECT payment_id, member_id, movie_information_id, adult, student,
+	silver, price, pay_discount, pay_type, refund, pay_datetime
+	FROM payment
+	</select>
+	
+	<select id="selectPaymentByScreenMovieInfoId" parameterType="String"
+	resultType="kr.co.fmos.payment.PaymentDTO">
+	SELECT payment_id, member_id, movie_information_id, adult, student,
+	silver, price, pay_discount, pay_type, refund, pay_datetime
+	FROM payment
+	WHERE movie_information_id=#{screenMovieInfoID}
+	</select>
+
+	<insert id="insertAndWithReturnID" useGeneratedKeys="true"
+>>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
 		keyProperty="payment_id" parameterType="kr.co.fmos.payment.PaymentDTO">
 		<selectKey keyProperty="payment_id" resultType="int"
 			order="AFTER">

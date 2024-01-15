@@ -1,6 +1,9 @@
 // mCustomScrollbar 초기화 및 옵션 설정
 $(document).ready(function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
 	initialize();
 	asyncInitialize();
 });
@@ -64,8 +67,11 @@ async function asyncInitialize() {
 }
 
 function initializeCustomScrollbar() {
+<<<<<<< HEAD
 =======
 >>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
+=======
+>>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
 	$(".mCustomScrollbar").mCustomScrollbar({
 		theme: "dark-thin", // 테마 설정 (dark 또는 light)
 		scrollButtons: {
@@ -76,6 +82,9 @@ function initializeCustomScrollbar() {
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
 async function getTicketingInfo() {
 	try {
 		const screenMovieInfo = await $.ajax({
@@ -312,11 +321,14 @@ function selectMemberPoint() {
 
 function handlePaymentButtonClick() {
 	$('.bx_cate li>button').click(function() {
+<<<<<<< HEAD
 =======
 //최종 결제수단
 $(document).ready(function() {
 	$('.group_payment .list_pay_item li>button').click(function() {
 >>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
+=======
+>>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
 		// 모든 li 요소에서 'selected' 클래스를 제거
 		$('.group_payment .list_pay_item li>button').removeClass('active');
 
@@ -412,6 +424,9 @@ $(document).ready(function() {
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
 function handlePointAmountInput() {
 	$(".point_amount").on("input", function() {
 		var enteredPoints = $(this).val();
@@ -491,5 +506,8 @@ function handleCouponCloseButtonClick() {
 		couponDiscountRate = 0;
 	});
 }
+<<<<<<< HEAD
 =======
 >>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
+=======
+>>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d

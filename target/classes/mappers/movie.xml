@@ -27,9 +27,15 @@
 		LEFT JOIN payment p ON
 		smi.movie_information_id = p.movie_information_id
 		GROUP BY
+<<<<<<< HEAD
 		m.movie_id
 		ORDER BY
 		payment_count DESC
+=======
+		movie_id
+		) p ON m.movie_id = p.movie_id
+		order by payment_count DESC
+>>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
 	</select>
 
 	<!-- 추가 -->
@@ -37,17 +43,30 @@
 		INSERT INTO movie(
 		movie_genre_id, movie_name, movie_running_time, movie_production_year,
 		movie_audience_rating, movie_image, movie_video,
+<<<<<<< HEAD
 		director_name,
 		actor_name)
+=======
+		director_name, actor_name)
+>>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
 		VALUES (#{movie_genre_id},
 		#{movie_name},
 		#{movie_running_time}, #{movie_production_year},
 		#{movie_audience_rating},
+<<<<<<< HEAD
 		#{movie_image}, #{movie_video},
 		#{director_name},
 		#{actor_name})
 	</insert>
 
+=======
+		#{movie_image},
+		#{movie_video}, #{director_name},
+		#{actor_name})
+	</insert>
+
+
+>>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
 	<select id="detail" resultType="kr.co.fmos.movie.MovieDTO"
 		parameterType="String">
 		SELECT
@@ -64,6 +83,7 @@
 		m.movie_genre_id
 		FROM movie m JOIN movie_genre mg
 		ON
+<<<<<<< HEAD
 		m.movie_genre_id =
 		mg.movie_genre_id
 		WHERE m.movie_id = #{m.movie_id}
@@ -75,6 +95,19 @@
 		movie_id = #{movie_id}
 	</delete>
 
+=======
+		m.movie_genre_id = mg.movie_genre_id
+		WHERE m.movie_id = #{m.movie_id}
+	</select>
+
+
+	<delete id="delete" parameterType="int">
+		DELETE FROM movie 
+		WHERE movie_id = #{movie_id}
+	</delete>
+	
+	
+>>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
 	<!-- 사용 가능하지만 selectOne 만 가능 -->
 	<!-- <select id="review" resultType="kr.co.fmos.movie.MoviereviewDTO" -->
 	<!-- parameterType="String"> -->
@@ -127,8 +160,12 @@
 		movie_genre_id,
 		movie_name, movie_running_time, movie_production_year,
 		movie_audience_rating, movie_image, movie_video,
+<<<<<<< HEAD
 		director_name,
 		actor_name
+=======
+		director_name, actor_name
+>>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
 		FROM movie
 		where movie_id = #{movie_id}
 	</select>
