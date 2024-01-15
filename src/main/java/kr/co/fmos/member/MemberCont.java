@@ -1,9 +1,12 @@
 package kr.co.fmos.member;
 
+<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.Map;
 import java.io.Console;
 
+=======
+>>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +33,7 @@ public class MemberCont {
 	@Autowired
 	private MemberDAO memberDao;
 	
+<<<<<<< HEAD
 	
 //	/* mypage 시작 */
 //	@GetMapping("/mypage.do")
@@ -45,6 +49,8 @@ public class MemberCont {
 	}
 	/* mypage 끝 */
 	
+=======
+>>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
 	@GetMapping("/login.do")
 	public String list() {
 		return "/member/login";
@@ -83,21 +89,25 @@ public class MemberCont {
 		 return mav; 
 	 }
 	
+<<<<<<< HEAD
 	@GetMapping("/loginfailcheck.do")
-	@ResponseBody
-	public int loginfailcheck(String member_id) {
-		Map<String, String> map = new HashMap<>();
-		int num = memberDao.loginfailcheck(member_id);
-		return num;
-	}//list() end
+=======
+//	@GetMapping("/logfail.do")
+//	public ModelAndView logfail() {
+//		
+//		ModelAndView mav = new ModelAndView();
+//		int msg1 = 1;
+//		
+//		mav.addObject("msg1", msg1);
+//		mav.setViewName("/member/login");
+//		return mav;
+//	}//list() end
 	
-	@GetMapping("/logincussesscheck.do")
+	@GetMapping("/logincheck.do")
+>>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
 	@ResponseBody
-	public int logincussesscheck(String member_id, String member_pw) {
-		Map<String, String> map = new HashMap<>();
-		map.put("member_id", member_id);
-		map.put("member_pw", member_pw);
-		int num = memberDao.logincussesscheck(map);
+	public int logincheck(String member_id) {
+		int num = memberDao.logincheck(member_id);
 		return num;
 	}//list() end
 	
@@ -150,6 +160,7 @@ public class MemberCont {
 		return mav;
 	}
 	
+<<<<<<< HEAD
 	@GetMapping("/sessionlogout.do")
 	public ModelAndView sessionlogout(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -160,6 +171,8 @@ public class MemberCont {
 		return mav;
 	}
 	
+=======
+>>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
 	@GetMapping("/social_log")
 	public ModelAndView kakao_log(MemberDTO dto, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -184,6 +197,7 @@ public class MemberCont {
 		return "/member/test";
 	}
 	
+<<<<<<< HEAD
 	/* 영민작업 시작 */
 	//회원수정 관련 시작//
 	@GetMapping("/memberModify.do")
@@ -225,3 +239,17 @@ public class MemberCont {
 	//회원수정 관련 끝//
 	/* 영민작업 끝 */
 }//class end
+=======
+	
+	
+	
+	
+	
+	
+	
+	@GetMapping("/memberInfo.do")
+	public String memberInfo() {
+		return "/member/memberinfo";
+	}
+}//class end
+>>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a

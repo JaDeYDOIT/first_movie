@@ -7,6 +7,7 @@ public class PaymentDTO {
 	private String payment_id;
 	private String member_id;
 	private String movie_information_id;
+	private int movie_id;
 	private int adult;
 	private int child;
 	private int silver;
@@ -15,7 +16,6 @@ public class PaymentDTO {
 	private String pay_type;
 	private int refund;
 	private LocalDateTime pay_datetime;
-	
 	public String getPayment_id() {
 		return payment_id;
 	}
@@ -33,6 +33,12 @@ public class PaymentDTO {
 	}
 	public void setMovie_information_id(String movie_information_id) {
 		this.movie_information_id = movie_information_id;
+	}
+	public int getMovie_id() {
+		return movie_id;
+	}
+	public void setMovie_id(int movie_id) {
+		this.movie_id = movie_id;
 	}
 	public int getAdult() {
 		return adult;
@@ -82,4 +88,13 @@ public class PaymentDTO {
 	public void setPay_datetime(LocalDateTime pay_datetime) {
 		this.pay_datetime = pay_datetime;
 	}
+	@Override
+	public String toString() {
+		return "PaymentDTO [payment_id=" + payment_id + ", member_id=" + member_id + ", movie_information_id="
+				+ movie_information_id + ", movie_id=" + movie_id + ", adult=" + adult + ", child=" + child
+				+ ", silver=" + silver + ", price=" + price + ", pay_discount=" + pay_discount + ", pay_type="
+				+ pay_type + ", refund=" + refund + ", pay_datetime=" + pay_datetime + "]";
+	}
+
+	
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <%@ page import="java.util.Date" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -8,6 +9,10 @@
     
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 >>>>>>> fa89c44157bcb5e3c44e5a70a609a38ab608ba1b
+=======
+    
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+>>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
 <%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
@@ -58,6 +63,7 @@
     <!-- 경고창 커스텀 관련 시작 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!-- 경고창 커스텀 관련 끝 -->
+<<<<<<< HEAD
     
     <!-- 서머노트 관련 시작 -->
 	    <script src="/js/summernote/summernote-lite.js"></script>
@@ -65,6 +71,8 @@
 	  	<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
     <!-- 서머노트 관련 끝 -->
     <link rel="icon" type="image/ico" href="images/header/logo.png">
+=======
+>>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
     <title>영화</title>
 </head>
 
@@ -81,6 +89,7 @@
 					    <c:when test="${sessionScope.s_id eq 'guest'}">
 					        <!-- 로그인하지 않은 경우 또는 세션의 s_id가 'guest'인 경우 -->
 					        <li id="loginhid"><img src="/images/header_icon/login.png" alt="" onclick="location.href='/member/login.do'"><a href="/member/login.do">로그인</a></li>
+<<<<<<< HEAD
 					        <li id="hiddenNewMember"><img src="/images/header_icon/newmember.png" alt="" onclick="location.href='/member/member.do'"><a href="/member/member.do">회원가입</a></li>
 					    </c:when>
 					    <c:when test="${not empty sessionScope.s_id && sessionScope.s_id ne 'guest'}">
@@ -106,6 +115,26 @@
 						        location.href="/member/sessionlogout.do";
 						    </script>
 						</c:otherwise>
+=======
+					    </c:when>
+					    <c:otherwise>
+					    <!-- <li><li><img src="/images/header_icon/logout.png" alt="" onclick="location.href='/member/logout.do'"><a href="/member/logout.do">로그아웃</a></li> -->
+					    <li><li><img src="/images/header_icon/logout.png" alt="" onclick="kakaoLogout()"><a href="/member/logout.do">로그아웃</a></li>
+					    </c:otherwise>
+					</c:choose>
+					<c:choose>
+					    <c:when test="${empty sessionScope.s_id or sessionScope.s_id ne 'guest'}">
+					    	<!-- 로그인하지 않은 경우 또는 세션의 s_id가 'guest'가 아닌 경우 -->
+					    <style>
+				            #hiddenNewMember {
+				                display: none;
+				            }
+					        </style>
+					    </c:when>
+					    <c:otherwise>
+					        <li id="hiddenNewMember"><img src="/images/header_icon/newmember.png" alt="" onclick="location.href='/member/member.do'"><a href="/member/member.do"> 회원가입</a></li>
+					    </c:otherwise>
+>>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
 					</c:choose>
 <<<<<<< HEAD
                         <li><img src="/images/header_icon/mypage.png" alt=""><a href="/member/memberInfo.do">my page</a></li>

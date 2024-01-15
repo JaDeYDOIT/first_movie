@@ -1,9 +1,16 @@
 const currentUrl = new URL(window.location.href);
-const seats = JSON.parse(decodeURIComponent(currentUrl.searchParams.get('seats')));
-//const screenMovieInfoID = decodeURIComponent(currentUrl.searchParams.get('screenMovieInfoID'));
-//const price = decodeURIComponent(currentUrl.searchParams.get('price'));
+const screenMovieInfoID = decodeURIComponent(currentUrl.searchParams.get('screenMovieInfoID'));
+const selectedSeats = JSON.parse(decodeURIComponent(currentUrl.searchParams.get('selectedSeats')));
+const adult = decodeURIComponent(currentUrl.searchParams.get('adult'));
+const student = decodeURIComponent(currentUrl.searchParams.get('student'));
+const silver = decodeURIComponent(currentUrl.searchParams.get('silver'));
+const price = decodeURIComponent(currentUrl.searchParams.get('price'));
+/*const student = 1;
+const adult = 0;
+const silver = 3;
 const price = 15000;
 const screenMovieInfoID = 50;
+let selectedSeats = ["C6", "H9", "A1", "B2"];*/
 let memberID;
 let movieName;
 let movieAudienceRating;
@@ -17,6 +24,7 @@ let couponDiscountRate = 0;
 let selectedCouponID;
 let memberPoint = 0;
 let usedPoint = 0;
+let payDiscount = 0;
 
 $(document).ready(function() {
 	initialize();
@@ -48,8 +56,14 @@ function initialize() {
 	//쿠폰 취소
 	handleCouponCancleButtonClick();
 
+	//선택한 쿠폰 취소 버튼
+	handleCouponCloseButtonClick();
+
 	//결제수단이나 약관동의하지 않았을 경우 경고 표기
 	showPaymentWarning();
+
+	//최종결제
+	handlePaymentConfirmButtonClick();
 }
 
 async function asyncInitialize() {
@@ -187,7 +201,32 @@ function printTicketingInfo() {
 	let movieEndTime = dateObject.setMinutes(dateObject.getMinutes() + movieRunningTime);
 	movieEndTime = dateObject.toTimeString().split(' ')[0];
 
-	let htmlContent =
+	let studentString = "청소년";
+	let adultString = "성인";
+	let silverString = "경로";
+
+	if (parseInt(student) === 0) {
+		studentString = "";
+	}
+	else {
+		studentString += student;
+	}
+
+	if (parseInt(adult) === 0) {
+		adultString = "";
+	}
+	else {
+		adultString += adult;
+	}
+
+	if (parseInt(silver) === 0) {
+		silverString = "";
+	}
+	else {
+		silverString += silver;
+	}
+
+	let movieInfoContent =
 		'<span class="thm"><img src="' + movieImage + '"></span>' +
 		'<strong class="tit"><span class="ic_grade ' + movieAudienceRatingClass + '"></span>' +
 		'&nbsp;' + movieName + '</strong>' +
@@ -200,10 +239,30 @@ function printTicketingInfo() {
 		'<dt>영화관</dt>' +
 		'<dd>' + theaterBranchName + " " + screenLocation + '</dd>' +
 		'<dt>인원</dt>' +
-		'<dd>성인1</dd>' +
+		'<dd>' + adultString + " " + studentString + " " + silverString + '</dd>' +
 		'</dl>';
 
-	$('.movie_infor').html(htmlContent);
+	$('.movie_infor').html(movieInfoContent);
+
+	selectedSeats.sort(function(a, b) {
+		var alphaA = a.charAt(0);
+		var alphaB = b.charAt(0);
+		var numA = parseInt(a.slice(1), 10);
+		var numB = parseInt(b.slice(1), 10);
+
+		if (alphaA === alphaB) {
+			return numA - numB;
+		} else {
+			return alphaA.localeCompare(alphaB);
+		}
+	});
+
+	//예매 좌석 표시
+	let seatInfoContent = "";
+	selectedSeats.forEach(function(seat) {
+		seatInfoContent += seat + " ";
+	});
+	$('.seat_infor strong').text(seatInfoContent);
 }
 
 async function getSessionMemberId() {
@@ -221,14 +280,15 @@ async function getSessionMemberId() {
 }
 
 function printPrice() {
-	$('.price strong').text(price.toLocaleString());
+	$('.price strong').text(parseInt(price).toLocaleString());
+	$('.total_price strong').text(parseInt(price).toLocaleString());
 
 	$('#layerDiscountCoupon .submit').click(printDiscountPrice);
 	$(".point_amount").on("input", printDiscountPrice);
 	function printDiscountPrice() {
-		const discountAmount = Math.round(price * (couponDiscountRate / 100)) + usedPoint;
-		$('.discount_amount strong').text(discountAmount);
-		$('.total_price strong').text(price - discountAmount);
+		payDiscount = Math.round(price * (couponDiscountRate / 100)) + usedPoint;
+		$('.discount_amount strong').text(payDiscount.toLocaleString());
+		$('.total_price strong').text((price - payDiscount).toLocaleString());
 	}
 }
 
@@ -383,20 +443,16 @@ function handlePointAmountInput() {
 	$(".point_amount").on("input", function() {
 		var enteredPoints = $(this).val();
 
-		$(this).val(function(_, value) {
-			if (value > memberPoint) {
-				usedPoint = parseInt(enteredPoints);
-				return parseInt(memberPoint);
-			}
-
-			return parseInt(value.replace(/[^0-9.]/g, ''));
-		});
-
-		if (enteredPoints === "") {
+		if (enteredPoints.trim() === "") {
 			usedPoint = 0;
 		}
+		else if (enteredPoints > memberPoint) {
+			usedPoint = memberPoint;
+			$(this).val(memberPoint);
+		}
 		else {
-			usedPoint = parseInt(enteredPoints);
+
+			usedPoint = parseInt(enteredPoints.replace(/[^0-9.]/g, ''), 10) || '';
 		}
 	});
 }
@@ -420,8 +476,46 @@ function showPaymentWarning() {
 	}
 }
 
-function cancelCoupon() {
-	$('.wrap_selected_coupon').css('display', 'none');
-	selectedCouponID = undefined;
-	couponDiscountRate = 0;
+function handlePaymentConfirmButtonClick() {
+	$('.pay_button').click(function() {
+		console.log("handlePaymentConfirmButtonClick");
+		// 새로운 폼 엘리먼트 생성
+		let form = document.createElement('form');
+
+		// 폼 속성 설정 (페이지 URL과 전송 방식 설정)
+		form.action = '/ticketing/paysuccess'; // 대상 페이지 URL
+		form.method = 'post';
+
+		// 폼에 전송할 데이터 추가 (키-값 쌍 형식)
+		addFormField(form, 'screenMovieInfoID', screenMovieInfoID);
+		addFormField(form, 'adult', adult);
+		addFormField(form, 'student', student);
+		addFormField(form, 'silver', silver);
+		addFormField(form, 'price', price);
+		addFormField(form, 'payDiscount', payDiscount);
+		addFormField(form, 'payType', '네이버페이');
+		addFormField(form, 'selectedSeats', selectedSeats);
+		// ... 원하는 만큼 필드 추가
+
+		// 폼을 문서에 추가하고 자동으로 제출
+		document.body.appendChild(form);
+		form.submit();
+
+		// 폼에 필드를 추가하는 함수
+		function addFormField(form, name, value) {
+			let input = document.createElement('input');
+			input.type = 'hidden';
+			input.name = name;
+			input.value = value;
+			form.appendChild(input);
+		}
+	});
+}
+
+function handleCouponCloseButtonClick() {
+	$('.wrap_selected_coupon .btn_close').click(function() {
+		$('.wrap_selected_coupon').css('display', 'none');
+		selectedCouponID = undefined;
+		couponDiscountRate = 0;
+	});
 }

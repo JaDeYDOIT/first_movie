@@ -10,43 +10,118 @@
 <link rel="stylesheet" href="/css/content_lc21new.css">
 <link rel="stylesheet" href="/css/dev.css">
 <link rel="stylesheet" href="/css/ticket_seat.css">
+
+<<<<<<< HEAD
 <br>
+<div class="wrap_reserve">
+	<h2 class="hidden">결제완료</h2>
+	<div class="section_step_tit">
+		<ul>
+			<li class="step01 prev"><a href="#"><strong class="tit"><span>01</span><br>상영시간</strong>
+			</a></li>
+			<li class="step02 prev"><a href="#"><strong class="tit"><span>02</span><br>인원/좌석</strong>
+			</a></li>
+			<li class="step03 prev"><a href="#"><strong class="tit"><span>03</span><br>결제</strong>
+			</a></li>
+			<li class="step04 active"><a href="#"><strong class="tit"><span>04</span><br>결제완료</strong></a></li>
+		</ul>
+	</div>
+	<div id="reserveStep01" class="section_step_con step01 ">
+		<h3 class="hidden">상영시간</h3>
+	</div>
+	<div id="reserveStep02" class="section_step_con step02 ">
+		<h3 class="hidden">인원/좌석</h3>
+	</div>
+	<div id="reserveStep03" class="section_step_con step03 ">
+		<h3 class="hidden">결제</h3>
+	</div>
+	<div id="reserveStep04" class="section_step_con step04 active">
+		<h3 class="hidden">결제완료</h3>
+		<div class="article article_payment_fin ">
+			<div class="group_top">
+				<h4 class="tit">결제완료</h4>
+			</div>
+			<div class="inner">
+				<div class="payment_fin_wrap">
+					<div class="top_notice_ic ty1">
+						<strong>${memberName}님, 결제가 성공적으로 완료되었습니다.</strong>
+					</div>
+					<div class="reserve_result_wrap">
+						<div class="infor_wrap">
+							<div class="bx_thm">
+								<img
+									src="https://cf.lottecinema.co.kr//Media/MovieFile/MovieImg/202312/20492_102_1.jpg"
+									alt="노량: 죽음의 바다">
+							</div>
+							<div class="group_infor">
+								<dl>
+									<dt>예매번호</dt>
+									<dd>
+										<strong class="txt_num">${paymentId}</strong>
+									</dd>
+								</dl>
+								<dl>
+									<dt>상영일시</dt>
+									<dd>
+										${movieShowingDate} (수) <span>${movieShowingTime} ~
+											22:47</span>
+									</dd>
+									<dt>상영관</dt>
+									<dd>${theaterBranchName}${screenLocation}</dd>
+									<dt>관람인원</dt>
+									<dd>성인1</dd>
+									<dt>좌석</dt>
+									<dd>
+										<c:forEach items="${selectedSeats}" var="seat"
+											varStatus="loop">
+											${seat}<c:if test="${not loop.last}"> 
+											</c:if>
+										</c:forEach>
+									</dd>
+								</dl>
+								<button type="button" class="btn_col1 ty5">휴대폰으로 바로티켓
+									받기</button>
+							</div>
+=======
+	<br>
 	<div class="wrap_reserve">
 		<h2 class="hidden">결제완료</h2>
 		<div class="section_step_tit">
 			<ul>
-				<li class="step01 prev">
-					<a href="#" style="cursor: default;">
-						<strong class="tit">
-							<span>01</span>
-							<br>상영시간
-						</strong>
-					</a>
-				</li>
-				<li class="step02 prev">
-					<a href="#" style="cursor: default;">
-						<strong class="tit">
-							<span>02</span>
-							<br>인원/좌석
-						</strong>
-					</a>
-				</li>
-				<li class="step03 prev">
-					<a href="#" style="cursor: default;">
-						<strong class="tit">
-							<span>03</span>
-							<br>결제
-						</strong>
-					</a>
-				</li>
-				<li class="step04 active">
-					<a href="#" style="cursor: default;">
-						<strong class="tit">
-							<span>04</span>
-							<br>결제완료
-						</strong>
-					</a>
-				</li>
+				<li class="step01 prev"><a href="#"><strong class="tit"><span>01</span><br>상영시간</strong>
+					<div class="bx_con">
+							<dl>
+								<dt>선택한 영화 제목</dt>
+								<dd>노량: 죽음의 바다(2D)</dd>
+								<dt>선택한 상영관</dt>
+								<dd>월드타워20관</dd>
+								<dt>선택한 상영 날짜</dt>
+								<dd>2023-12-27 (수 )</dd>
+								<dt>선택한 시간</dt>
+								<dd>20:05 ~ 22:47</dd>
+							</dl>
+						</div></a></li>
+				<li class="step02 prev"><a href="#"><strong class="tit"><span>02</span><br>인원/좌석</strong>
+					<div class="bx_con">
+							<dl>
+								<dt>선택한 인원</dt>
+								<dd>성인1</dd>
+								<dt>선택한 좌석</dt>
+								<dd>H13</dd>
+							</dl>
+						</div></a></li>
+				<li class="step03 prev"><a href="#"><strong class="tit"><span>03</span><br>결제</strong>
+					<div class="bx_con">
+							<dl>
+								<dt>티켓금액</dt>
+								<dd>7,000원</dd>
+								<dt>할인금액</dt>
+								<dd>0원</dd>
+								<dt>총합계</dt>
+								<dd>7,000원</dd>
+							</dl>
+						</div></a></li>
+				<li class="step04 active"><a href="#"><strong class="tit"><span>04</span><br>결제완료</strong></a></li>
 			</ul>
 		</div>
 		<div id="reserveStep01" class="section_step_con step01 ">
@@ -68,6 +143,7 @@
 					<div class="payment_fin_wrap">
 						<div class="top_notice_ic ty1">
 							<strong>김재원 회원님, 결제가 성공적으로 완료되었습니다.</strong>
+>>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
 						</div>
 						<div class="reserve_result_wrap">
 							<div class="infor_wrap">
@@ -95,9 +171,8 @@
 										<dt>좌석</dt>
 										<dd>H13</dd>
 									</dl>
-									<button type="button" class="btn_col1 ty5" onclick="location.href='/ticketing/schedule'">
-										다른 영화 예매하기
-									</button>
+									<button type="button" class="btn_col1 ty5">휴대폰으로 바로티켓
+										받기</button>
 								</div>
 							</div>
 							<div class="payment_wrap new2020">
@@ -150,8 +225,8 @@
 						</ul>
 						<div class="btn_btm_wrap mb50 pb50">
 							<a href="#none" class="btn_col3 ty5">결제내역</a>
-							<a href="/product/list.do" class="btn_col2 ty5">스토어 바로가기</a>
-							<a href="/main" class="btn_col1 ty5">홈으로 바로가기</a>
+							<a href="#none" class="btn_col2 ty5">스토어 바로가기</a>
+							<a href="#none" class="btn_col1 ty5">홈으로 바로가기</a>
 						</div>
 					</div>
 				</div>
