@@ -21,13 +21,17 @@ public class PaymentDAOImp implements PaymentDAO {
 	}
 
 	@Override
-	public List<PaymentDTO> selectPaymentByScreenMovieInfoId(String screenMovieInfoID) {
+	public List<PaymentDTO> selectPaymentByScreenMovieInfoId(String screenMovieInfoID)
+	{
 		return sqlSession.selectList("payment.selectPaymentByScreenMovieInfoId", screenMovieInfoID);
 	}
+<<<<<<< HEAD
 
 	@Override
 	public PaymentDTO insertAndReturnWithId(PaymentDTO paymentDto) {
 		sqlSession.insert("payment.insertAndReturnWithId", paymentDto);
 		return paymentDto;
 	}
+=======
+>>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
 }

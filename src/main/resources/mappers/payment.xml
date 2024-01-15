@@ -7,21 +7,14 @@
 
 <mapper namespace="payment">
 	<select id="list" resultType="kr.co.fmos.payment.PaymentDTO">
-	SELECT payment_id, member_id, movie_information_id, adult, student,
-	silver, price, pay_discount, pay_type, refund, pay_datetime
-	FROM payment
-	</select>
-	
-	<select id="selectPaymentByScreenMovieInfoId" parameterType="String"
-	resultType="kr.co.fmos.payment.PaymentDTO">
-	SELECT payment_id, member_id, movie_information_id, adult, student,
-	silver, price, pay_discount, pay_type, refund, pay_datetime
-	FROM payment
-	WHERE movie_information_id=#{screenMovieInfoID}
+		SELECT payment_id, member_id, movie_information_id, adult, child,
+		silver, price, pay_discount, pay_type, refund, pay_datetime
+		FROM payment
 	</select>
 
 	<select id="selectPaymentByScreenMovieInfoId"
 		parameterType="String" resultType="kr.co.fmos.payment.PaymentDTO">
+<<<<<<< HEAD
 		SELECT payment_id, member_id,
 		movie_information_id, adult, student,
 		silver, price, pay_discount,
@@ -49,4 +42,12 @@
 	</insert>
 
 
+=======
+		SELECT payment_id, member_id, movie_information_id, adult, child,
+		silver, price, pay_discount, pay_type, refund, pay_datetime
+		FROM payment
+		WHERE movie_information_id=#{screenMovieInfoID}
+	</select>
+
+>>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
 </mapper>

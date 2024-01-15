@@ -3,6 +3,7 @@
 <%@ include file="../header.jsp"%>
 <link rel="stylesheet" href="/css/moviedetail.css">
 
+
 <div class="movie_detail_wrap">
 	<div class='movie_detail'>
 		<div class="movie_img_wrap">
@@ -13,7 +14,6 @@
 		<div class="movie_text_wrap">
 			<ul class="movie_text">
 				<li><h3>${detail.movie_name}</h3></li>
-				<li class='movie_rank'>영화순위 : ${detail.movie_rank}</li>
 				<li>장르아이디 : ${detail.movie_genre_name}</li>
 				<li>상영시간 : ${detail.movie_running_time}</li>
 				<li>관람등급 : ${detail.movie_audience_rating} 관람가</li>
@@ -21,7 +21,10 @@
 				<li>감독명 : ${detail.director_name}</li>
 				<li>배우명 : ${detail.actor_name}</li>
 			</ul>
-			<button onclick="location.href='http:/ticketing/schedule'">예매하기</button>
+			<div class="button_wrap">
+				<button class="Ticketing_btn" onclick="location.href='http:/ticketing/schedule'">예매하기</button>
+				<button class="like_btn"><img alt="좋아요버튼" src="/images/like.png"></button>
+			</div>
 		</div>
 		<!-- movie_text end -->
 	</div>

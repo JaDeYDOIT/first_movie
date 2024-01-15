@@ -11,15 +11,6 @@
 		SELECT having_coupon_id, member_id, coupon_id,
 		coupon_create_date, coupon_expiration_date
 		FROM user_having_coupon
-		WHERE member_id=#{memberID}
-	</select>
-
-	<select id="selectCouponById" parameterType="String"
-		resultType="kr.co.fmos.coupon.CouponDTO">
-		SELECT coupon_id, coupon_name, coupon_discount_rate,
-		coupon_expiration_date, coupon_status
-		FROM coupon
-		WHERE
-		coupon_id=#{couponID}
+		WHERE member_id=#{member_id}
 	</select>
 </mapper>
