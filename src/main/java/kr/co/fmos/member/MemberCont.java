@@ -2,10 +2,12 @@ package kr.co.fmos.member;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.io.Console;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,10 +25,25 @@ public class MemberCont {
 
 	public MemberCont() {
 		System.out.println("-----MemberCont()객체생성됨");
-	}// end
-
+	}//end
+	
 	@Autowired
 	private MemberDAO memberDao;
+	
+	
+//	/* mypage 시작 */
+//	@GetMapping("/mypage.do")
+//	public String mypage() {
+//		return "/member/mypage";
+//	}
+//	/* mypage 끝 */
+	
+	/* mypage 시작 */
+	@GetMapping("/memberInfo.do")
+	public String memberInfo() {
+		return "/member/memberInfo";
+	}
+	/* mypage 끝 */
 	
 	@GetMapping("/login.do")
 	public String list() {
@@ -142,34 +159,69 @@ public class MemberCont {
 		mav.setViewName("logmsgView");
 		return mav;
 	}
-
+	
 	@GetMapping("/social_log")
 	public ModelAndView kakao_log(MemberDTO dto, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		int result = memberDao.sMembercheck(dto);
 		System.out.println(result);
-
-		if (result != 1) {
+		
+		if(result != 1) {
 			memberDao.sinsert(dto);
 			mav.addObject("msg1", "<script>alert('환영합니다')</script>");
 			session.setAttribute("s_id", dto.getMember_email());
 		} else {
 			mav.addObject("msg1", "<script>alert('환영합니다')</script>");
 			session.setAttribute("s_id", dto.getMember_email());
-		}
+	    }
 
 		mav.setViewName("logmsgView");
 		return mav;
 	}
-
+	
 	@GetMapping("/test.do")
 	public String test() {
 		return "/member/test";
 	}
 	
-	@GetMapping("/memberInfo.do")
-	public String memberInfo() {
-		return "/member/memberinfo";
+	/* 영민작업 시작 */
+	//회원수정 관련 시작//
+	@GetMapping("/memberModify.do")
+	public ModelAndView memberList(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		String s_id = (String)session.getAttribute("s_id");
+		MemberDTO dto = memberDao.memberlist(s_id);
+		mav.addObject("memberlist", dto);
+		mav.setViewName("member/memberModify");
+		return mav;
+	}//memberModify() end
+	
+	
+	@PostMapping("/memberModify.do")
+	public ModelAndView memberModify(HttpSession session) {
+		String s_id = (String)session.getAttribute("s_id");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("s_id", s_id);
+		
+		MemberDTO dto = memberDao.memberlist(s_id);
+		System.out.println(dto);
+		mav.addObject("memberlist", dto);
+		mav.setViewName("/member/member");
+		return mav;
 	}
 	
+	@PostMapping("/memberupdate")
+	public String memberupdate(MemberDTO dto,
+							   @RequestParam String member_id,
+							   @RequestParam String member_pw, 
+							   @RequestParam String member_phone) {
+		MemberDTO update = new MemberDTO();
+		update.setMember_id(member_id);
+		update.setMember_pw(member_pw);
+		update.setMember_phone(member_phone);
+		memberDao.memberupdate(dto);
+		return "redirect:/main";
+	}//memberupdate() end
+	//회원수정 관련 끝//
+	/* 영민작업 끝 */
 }//class end

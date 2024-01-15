@@ -1,6 +1,7 @@
 package kr.co.fmos.member;
 
 import java.util.Map;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +11,11 @@ import org.springframework.stereotype.Repository;
 public class MemberDAO {
 
 	public MemberDAO() {
-		System.out.println("-----CartDAO() 객체 생성됨");
+		System.out.println("-----MemberDAO() 객체 생성됨");
 	}//end
 	
 	@Autowired
 	SqlSession sqlSession;
-	
 	
 	public int memberInsert(MemberDTO dto) {
 		return sqlSession.insert("member.insert", dto);
@@ -23,7 +23,7 @@ public class MemberDAO {
 	
 	public String idcheck(String member_id) {
 		return sqlSession.selectOne("member.idcheck", member_id);
-	}//totalamount() end
+	}//idcheck() end
 	
 	public int loginfailcheck(String member_id) {
 		return sqlSession.selectOne("member.loginfailcheck", member_id);
@@ -35,7 +35,7 @@ public class MemberDAO {
 	
 	public String emailcheck(String member_email) {
 		return sqlSession.selectOne("member.emailcheck", member_email);
-	}//totalamount() end
+	}//emailcheck() end
 	
 	public int membercheck(MemberDTO dto){
 		return sqlSession.selectOne("member.membercheck", dto);
@@ -49,5 +49,13 @@ public class MemberDAO {
 	public int sinsert(MemberDTO dto) {
 		return sqlSession.insert("member.sinsert", dto);
 	}//insert() endz
+		
+	public MemberDTO memberlist(String member_id) {
+		return sqlSession.selectOne("member.memberlist", member_id);
+	}//memberList() end
 	
-}
+	public void memberupdate(MemberDTO dto) {
+		sqlSession.update("member.memberupdate", dto);
+	}//memberupdate() end
+	
+}//class end
