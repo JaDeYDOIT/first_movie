@@ -25,9 +25,44 @@
 	        selects.slice(currentIndex + 2).prop("disabled", true);
 	    });
 	});
+	
+
+	function submitcheck() {
+		//영화명 선택
+		let movie_name = $("#movie_name").val()
+		if (movie_name == 0) {
+			alert("영화명을 선택해 주세요~!");
+			return false;
+		}
+		// 지점명 선택
+		let branch_id = $("#branch_id").val()
+		if (branch_id == 0) {
+			alert("지점명을 선택해 주세요~!");
+			return false;
+		}
+		//상영관 선택
+		let screen_id = $("#screen_id").val()
+		if (screen_id == null) {
+			alert("상영관을 선택해 주세요~!");
+			return false;
+		}
+		//상영날짜 선택
+		let movie_showing_date = $("#movie_showing_date").val()
+		if (movie_showing_date == "") {
+			alert("상영날짜를 선택해 주세요~!");
+			return false;
+		}
+		//상영시간 선택
+		let movie_showing_time = $("#movie_showing_time").val()
+		if (movie_showing_time == "") {
+			alert("상영시간을 선택해 주세요~!");
+			return false;
+		}
+	}
 </script>
+
 <form name="moviefrm" id="moviefrm" method="post" action="insert.do"
-	enctype="multipart/form-data">
+	enctype="multipart/form-data" onsubmit="return submitcheck()">
 
 	
 	<table class="movie_addition">
@@ -111,16 +146,18 @@
 		
 		<tr>
 			<td></td>
-			<td class="execution"><input name="reset" id="reset"
-				type="reset"> <input name="submit" id="submit" type="submit"></td>
+			<td class="execution">
+				<input name="reset" id="reset" type="reset"> 
+				<input name="submit" id="submit" type="submit"></td>
 		</tr>
-		
 	</table>
+	
+	<div id="hi" va>11</div>
 </form>
 
 <script>
 
-// 영화선택시 관 정보변경 시작
+// 영화선택시 지점 정보변경 시작
 	if ($('#movie_name').val() == 0) {
 		$('#movie_image').hide();
 	}

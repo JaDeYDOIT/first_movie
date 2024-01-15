@@ -7,13 +7,26 @@
 
 
 <mapper namespace="movie">
-	<select id="list" resultType="kr.co.fmos.movie.MovieDTO">
-		SELECT movie_id, movie_genre_id,
-		movie_name, movie_running_time, movie_production_year,
-		movie_audience_rating, movie_image, movie_video,
-		director_name,
-		actor_name
-		FROM movie
+	<select id="list" resultType="java.util.Map">
+		select
+		m.movie_id,
+		m.movie_audience_rating,
+		m.movie_name,
+		m.movie_running_time,
+		m.movie_image,
+		COALESCE(p.payment_count, 0) AS payment_count
+		FROM
+		movie m
+		LEFT JOIN (
+		SELECT
+		movie_id,
+		COUNT(movie_id) AS payment_count
+		FROM
+		payment
+		GROUP BY
+		movie_id
+		) p ON m.movie_id = p.movie_id
+		order by payment_count DESC
 	</select>
 
 	<!-- 추가 -->
@@ -23,10 +36,14 @@
 		movie_audience_rating, movie_image, movie_video,
 		director_name, actor_name)
 		VALUES (#{movie_genre_id},
-		#{movie_name}, #{movie_running_time}, #{movie_production_year}, #{movie_audience_rating},
-		#{movie_image}, #{movie_video}, #{director_name},
+		#{movie_name},
+		#{movie_running_time}, #{movie_production_year},
+		#{movie_audience_rating},
+		#{movie_image},
+		#{movie_video}, #{director_name},
 		#{actor_name})
 	</insert>
+
 
 	<select id="detail" resultType="kr.co.fmos.movie.MovieDTO"
 		parameterType="String">
@@ -44,11 +61,17 @@
 		m.movie_genre_id
 		FROM movie m JOIN movie_genre mg
 		ON
-		m.movie_genre_id =
-		mg.movie_genre_id
+		m.movie_genre_id = mg.movie_genre_id
 		WHERE m.movie_id = #{m.movie_id}
 	</select>
 
+
+	<delete id="delete" parameterType="int">
+		DELETE FROM movie 
+		WHERE movie_id = #{movie_id}
+	</delete>
+	
+	
 	<!-- 사용 가능하지만 selectOne 만 가능 -->
 	<!-- <select id="review" resultType="kr.co.fmos.movie.MoviereviewDTO" -->
 	<!-- parameterType="String"> -->
@@ -89,7 +112,8 @@
 	<!-- 리뷰 추가 -->
 	<insert id="reviewInsert"
 		parameterType="kr.co.fmos.movie.MoviereviewDTO">
-		INSERT INTO review(member_id, movie_id, movie_review, creation_date)
+		INSERT INTO review(member_id, movie_id, movie_review,
+		creation_date)
 		VALUES(#{member_id}, #{movie_id}, #{movie_review}, NOW())
 	</insert>
 
@@ -105,16 +129,10 @@
 	</select>
 	<!-- TheaterCont에서 호출하는 메서드 끝 -->
 
-	<select id="selectMovieInfoById" parameterType="String"
-		resultType="kr.co.fmos.movie.MovieDTO">
-		SELECT
-		movie_id, movie_genre_id, movie_name,
-		movie_running_time, movie_production_year, movie_audience_rating,
-		movie_image, movie_video, director_name, actor_name
-		FROM
-		movie
-		WHERE
-		movie_id=#{movieID}
-	</select>
+	
+
+
+
+
 
 </mapper>

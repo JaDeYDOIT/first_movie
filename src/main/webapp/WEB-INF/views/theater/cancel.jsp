@@ -84,7 +84,7 @@
 
 				}//success end
 			}); //ajax() end
-		}//commentList() end
+		}//commentList() en
 	</script>
 
 	<!-- 지점 이미지 시작 -->
@@ -124,7 +124,6 @@
    </div> 
 
 	<!-- 극장상영시간표 끝 -->
-
 
 
 
