@@ -1,0 +1,141 @@
+@charset "utf-8";
+
+
+*{margin: 0; padding: 0;}
+
+
+a{
+    text-decoration: none;
+}
+
+/* 전체 wrap */
+#mypage_wrap{
+    width: 100%;
+    height: auto;
+    background: #f2ecec;
+}
+
+/* 회원 wrap */
+.member_wrap{
+    width: 90%;
+    height: 300px;
+    margin: 0 auto 10% auto;
+}
+/* 상단 회원 박스 내용물 wrap */
+.memberbox{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 5% 0;
+}
+
+/* 회원 */
+.member{
+    width: 40%;
+    height: 100%;
+    background: rgb(192, 41, 229);
+}
+
+/* 우측 리스트박스 */
+.list_box{
+    width: 60%;
+    height: 100%;
+    background: #544954;
+}
+/* 리스트 ul */
+.list{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+/* 리스트 li 묶음 */
+.list article{
+    width: 33.333333%;
+    height: 100%;
+}
+
+/* 리스트 li 시작 */
+.list .list1{
+    background: rgb(35, 107, 178);
+}
+.list .list2{
+    background: rgb(183, 189, 195);
+}
+.list .list3{
+    background: rgb(191, 210, 229);
+}
+/* 리스트 li 끝 */
+
+/* 하단 .mypage_content */
+.mypage_content{
+    width: 100%;
+    height: 700px;
+    background: #fc4d4d;
+    display: flex;
+}
+
+/* 좌측 aside menu 묶음 */
+.menu_wrap{
+    width: 15%;
+}
+
+/* 좌측 aside 제목 */
+.menu_wrap h2{
+    font-size: 30px;
+    font-weight: bold;
+    width: 100%;
+    height: 15%;
+    text-align: center;
+    line-height: 100px;
+}
+
+/* aside 박스 묶음 */
+.menubox{
+    width: 100%;
+    height: 85%;
+}
+.menubox ul{
+    display: flex;
+    flex-direction: column;
+}
+.menubox ul li{
+    width: 100%;
+    height: 10%;
+    background-color: wheat;
+}
+.menubox ul li a{
+    padding: 10%;
+    display: block;
+    border: 1px solid black;
+    text-align: center
+}
+/* aside 박스 묶음 끝 */
+
+/* 우측 content 묶음 */
+.content_wrap{
+    width: 85%;
+    background: rgb(27, 175, 99);
+}
+
+/* 콘텐츠 상단 */
+.content_top{
+    width: 100%;
+    background: rgb(127, 232, 178); 
+    height: 15%;  
+}
+
+/* 콘텐츠 하단 */
+.content_bottom{
+    width: 100%;;
+    height: 85%;
+    background: #bbcc37;
+}
+
+
+
+
+
+
+
+

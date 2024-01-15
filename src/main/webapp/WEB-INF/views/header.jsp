@@ -31,8 +31,16 @@
     <!-- JS -->
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/jquery-3.7.1.min.js"></script>
-    <script src="/js/script.js"></script>
     <script src="https://kit.fontawesome.com/cbc1642524.js" crossorigin="anonymous"></script>
+    <!-- 경고창 커스텀 관련 시작 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!-- 경고창 커스텀 관련 끝 -->
+    
+    <!-- 서머노트 관련 시작 -->
+	    <script src="/js/summernote/summernote-lite.js"></script>
+	  	<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
+	  	<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
+    <!-- 서머노트 관련 끝 -->
     <title>영화</title>
 </head>
 
@@ -51,31 +59,31 @@
 					        <li id="loginhid"><img src="/images/header_icon/login.png" alt="" onclick="location.href='/member/login.do'"><a href="/member/login.do">로그인</a></li>
 					    </c:when>
 					    <c:otherwise>
-					    <!-- <li><li><img src="/images/header_icon/logout.png" alt="" onclick="location.href='/member/logout.do'"><a href="/member/logout.do">로그아웃</a></li> -->
-					    <li><li><img src="/images/header_icon/logout.png" alt="" onclick="kakaoLogout()"><a href="/member/logout.do">로그아웃</a></li>
+					    <li><img src="/images/header_icon/logout.png" alt="" onclick="kakaoLogout()"><a href="/member/logout.do">로그아웃</a></li>
 					    </c:otherwise>
 					</c:choose>
 					<c:choose>
-					    <c:when test="${empty sessionScope.s_id or sessionScope.s_id ne 'guest'}">
+					    <%-- <c:when test="${empty sessionScope.s_id or sessionScope.s_id ne 'guest'}"> --%>
+					       <c:when test="${empty sessionScope.s_id or (not empty sessionScope.s_id and sessionScope.s_id ne 'guest')}">
 					    	<!-- 로그인하지 않은 경우 또는 세션의 s_id가 'guest'가 아닌 경우 -->
-					    <style>
+					    	<style>
 				            #hiddenNewMember {
 				                display: none;
 				            }
 					        </style>
 					    </c:when>
 					    <c:otherwise>
-					        <li id="hiddenNewMember"><img src="/images/header_icon/newmember.png" alt="" onclick="location.href='/member/member.do'"><a href="/member/member.do"> 회원가입</a></li>
+					        <li id="hiddenNewMember"><img src="/images/header_icon/newmember.png" alt="" onclick="location.href='/member/member.do'"><a href="/member/member.do">회원가입</a></li>
 					    </c:otherwise>
 					</c:choose>
-                        <li><img src="/images/header_icon/mypage.png" alt=""><a href="#">my page</a></li>
+                        <li><img src="/images/header_icon/mypage.png" alt=""><a href="/member/memberInfo.do">my page</a></li>
                         <li><img src="/images/header_icon/csc.png" alt="" onclick="location.href='/customer/notice.do?notice_kind=0'"><a href="/customer/notice.do?notice_kind=0">고객센터</a></li>
                     </ul>
                 </div>
                 <div class="nav_bottom">
                     <ul class="nav_wrap">
                         <li><a href="/movie/list.do">영화</a></li>
-                        <li><a href="/theater/branchlist.do?region_id=region_001&branch_id=19">극장</a></li>
+                        <li><a href="/theater/branchlist.do?region_id=region_001&branch_id=1">극장</a></li>
                         <li><a href="/ticketing/schedule" style="color:rgb(0, 128, 255);">예매</a></li>
                         <li><a href="/product/list.do">스토어</a></li>
                         <li><a href="#">이벤트</a></li>

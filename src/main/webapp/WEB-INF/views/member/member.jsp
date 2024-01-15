@@ -114,7 +114,7 @@
 	</table>
 		<div class="submitbut">
 			<input type="submit" value="회원등록">
-			<input type="button" value="취소" onclick="">
+			<input type="button" value="취소" onclick="location.href='/main'">
 		</div>
 	</form>
 	

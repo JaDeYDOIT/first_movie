@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpSession;
@@ -43,14 +44,14 @@ public class TicketingCont {
 	PaymentDAO paymentDao;
 
 	@GetMapping("/personseat")
-	public ModelAndView personseat(@RequestParam String screenMovieInfoID, int remainSeatCount) {
+	public ModelAndView personseat(@RequestParam int screenMovieInfoID, int remainSeatCount) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("screenMovieInfoID", screenMovieInfoID);
+		mav.addObject("screenMovieInfo", screenMovieInfoDao.detail(screenMovieInfoID));
 		mav.addObject("remainSeatCount", remainSeatCount);
 		mav.setViewName("ticketing/personseat");
 		return mav;
 	}
-
+	
 	@GetMapping("/paysuccess")
 	public ModelAndView getPaysuccess() {
 		ModelAndView mav = new ModelAndView();
@@ -98,5 +99,7 @@ public class TicketingCont {
 		mav.addObject("userHavingCouponList",
 				userHavingCouponDao.userHavingCouponList((String) session.getAttribute("s_id")));
 		return mav;
-	}
+	}// home() end
+	
+	
 }

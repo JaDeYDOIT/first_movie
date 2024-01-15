@@ -9,4 +9,8 @@ public interface ScreenMovieInfoDAO {
 	public ScreenMovieInfoDTO selectScreenMovieInfoById(String screenMovieInfoID);
 	
 	public List<ScreenMovieInfoDTO> showingTime(Map<String, Object> map);
+
+	public Map<String, Object> detail(int screenMovieInfoID);
+
+	public List<Map<String, Object>> emptySeats(String screenMovieInfoID);
 }

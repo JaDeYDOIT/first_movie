@@ -7,7 +7,6 @@ public class ScreenMovieInfoDTO {
 	private int movie_information_id;
 	private int screen_id;
 	private String movie_id;
-	private String movie_type;
 	private LocalDate movie_showing_date;
 	private LocalTime movie_showing_time;
 	private int branch_id;
@@ -36,14 +35,6 @@ public class ScreenMovieInfoDTO {
 		this.movie_id = movie_id;
 	}
 
-	public String getMovie_type() {
-		return movie_type;
-	}
-
-	public void setMovie_type(String movie_type) {
-		this.movie_type = movie_type;
-	}
-
 	public LocalDate getMovie_showing_date() {
 		return movie_showing_date;
 	}
@@ -68,4 +59,10 @@ public class ScreenMovieInfoDTO {
 		this.branch_id = branch_id;
 	}
 
+	@Override
+	public String toString() {
+		return "ScreenMovieInfoDTO [movie_information_id=" + movie_information_id + ", screen_id=" + screen_id
+				+ ", movie_id=" + movie_id + ", movie_showing_date=" + movie_showing_date + ", movie_showing_time="
+				+ movie_showing_time + ", branch_id=" + branch_id + "]";
+	}
 }

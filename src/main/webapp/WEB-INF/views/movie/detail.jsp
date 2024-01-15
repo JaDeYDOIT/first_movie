@@ -16,7 +16,7 @@
 				<li class='movie_rank'>영화순위 : ${detail.movie_rank}</li>
 				<li>장르아이디 : ${detail.movie_genre_name}</li>
 				<li>상영시간 : ${detail.movie_running_time}</li>
-				<li>관람등급 : ${detail.movie_audience_rating}</li>
+				<li>관람등급 : ${detail.movie_audience_rating} 관람가</li>
 				<li>개봉날짜 : ${detail.movie_production_year}</li>
 				<li>감독명 : ${detail.director_name}</li>
 				<li>배우명 : ${detail.actor_name}</li>

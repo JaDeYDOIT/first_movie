@@ -1,16 +1,16 @@
 const currentUrl = new URL(window.location.href);
-//const screenMovieInfoID = decodeURIComponent(currentUrl.searchParams.get('screenMovieInfoID'));
-//const selectedSeats = JSON.parse(decodeURIComponent(currentUrl.searchParams.get('selectedSeats')));
-//const adult = decodeURIComponent(currentUrl.searchParams.get('adult'));
-//const student = decodeURIComponent(currentUrl.searchParams.get('student'));
-//const silver = decodeURIComponent(currentUrl.searchParams.get('silver'));
-//const price = decodeURIComponent(currentUrl.searchParams.get('price'));
-const student = 1;
-const adult = 1;
+const screenMovieInfoID = decodeURIComponent(currentUrl.searchParams.get('screenMovieInfoID'));
+const selectedSeats = JSON.parse(decodeURIComponent(currentUrl.searchParams.get('selectedSeats')));
+const adult = decodeURIComponent(currentUrl.searchParams.get('adult'));
+const student = decodeURIComponent(currentUrl.searchParams.get('student'));
+const silver = decodeURIComponent(currentUrl.searchParams.get('silver'));
+const price = decodeURIComponent(currentUrl.searchParams.get('price'));
+/*const student = 1;
+const adult = 0;
 const silver = 3;
 const price = 15000;
 const screenMovieInfoID = 50;
-let selectedSeats = ["C6", "H9", "A1", "B2"];
+let selectedSeats = ["C6", "H9", "A1", "B2"];*/
 let memberID;
 let movieName;
 let movieAudienceRating;
@@ -202,21 +202,21 @@ function printTicketingInfo() {
 	let adultString = "성인";
 	let silverString = "경로";
 
-	if (student == 0) {
+	if (parseInt(student) === 0) {
 		studentString = "";
 	}
 	else {
 		studentString += student;
 	}
 
-	if (adult == 0) {
+	if (parseInt(adult) === 0) {
 		adultString = "";
 	}
 	else {
 		adultString += adult;
 	}
 
-	if (silver == 0) {
+	if (parseInt(silver) === 0) {
 		silverString = "";
 	}
 	else {

@@ -46,4 +46,12 @@ public class ScreenDTO {
 	public void setScreen_line(int screen_line) {
 		this.screen_line = screen_line;
 	}
+
+	@Override
+	public String toString() {
+		return "ScreenDTO [screen_id=" + screen_id + ", branch_id=" + branch_id + ", screen_location=" + screen_location
+				+ ", screen_seat_count=" + ", screen_row=" + screen_row + ", screen_line="
+				+ screen_line + "]";
+	}
+
 }

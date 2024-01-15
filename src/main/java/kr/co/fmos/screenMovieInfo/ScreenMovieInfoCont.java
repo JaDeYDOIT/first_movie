@@ -31,4 +31,10 @@ public class ScreenMovieInfoCont {
 	public List<ScreenMovieInfoDTO> showingTime(@RequestBody Map<String, Object> map) {
 		return screenMovieInfoDao.showingTime(map);
 	}
+
+	@PostMapping("/emptySeats")
+	@ResponseBody
+	public List<Map<String, Object>> emptySeats(@RequestBody String screenMovieInfoID) {
+		return screenMovieInfoDao.emptySeats(screenMovieInfoID);
+	}
 }
