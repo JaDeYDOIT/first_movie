@@ -27,7 +27,7 @@ public class MemberCont {
 
 	@Autowired
 	private MemberDAO memberDao;
-
+	
 	@GetMapping("/login.do")
 	public String list() {
 		return "/member/login";
@@ -56,26 +56,15 @@ public class MemberCont {
 			 }
 			 session.setAttribute("s_id", dto.getMember_id());
 			 session.setAttribute("s_pw", dto.getMember_pw()); 
+			 
+			 	// 세션 시간을 30분으로 설정 (단위: 초)
+		        int sessionTimeout = 30 * 60; // 30분
+		        session.setMaxInactiveInterval(sessionTimeout);
 		 } 
 			 mav.addObject("msg2", check);
-//		 } else {
-//			 mav.addObject("msg1", 1);
-//			 mav.addObject("msg2", check);
-//		 }
 		 mav.setViewName("logmsgView"); 
 		 return mav; 
 	 }
-	
-//	@GetMapping("/logfail.do")
-//	public ModelAndView logfail() {
-//		
-//		ModelAndView mav = new ModelAndView();
-//		int msg1 = 1;
-//		
-//		mav.addObject("msg1", msg1);
-//		mav.setViewName("/member/login");
-//		return mav;
-//	}//list() end
 	
 	@GetMapping("/loginfailcheck.do")
 	@ResponseBody
@@ -136,8 +125,19 @@ public class MemberCont {
 	@GetMapping("/logout.do")
 	public ModelAndView logout(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("msg1", "<script>alert('로그아웃 되셨습니다.')</script>");
-		session.removeAttribute("s_id");
+		mav.addObject("msg1", "<script>alert('로그아웃 되었습니다.')</script>");
+		mav.addObject("msg2", 2);
+		session.setAttribute("s_id", "guest");
+		session.removeAttribute("s_pw");
+		mav.setViewName("logmsgView");
+		return mav;
+	}
+	
+	@GetMapping("/sessionlogout.do")
+	public ModelAndView sessionlogout(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("msg2", 3);
+		session.setAttribute("s_id", "guest");
 		session.removeAttribute("s_pw");
 		mav.setViewName("logmsgView");
 		return mav;

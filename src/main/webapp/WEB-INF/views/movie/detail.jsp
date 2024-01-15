@@ -13,7 +13,6 @@
 		<div class="movie_text_wrap">
 			<ul class="movie_text">
 				<li><h3>${detail.movie_name}</h3></li>
-				<li class='movie_rank'>영화순위 : ${detail.movie_rank}</li>
 				<li>장르아이디 : ${detail.movie_genre_name}</li>
 				<li>상영시간 : ${detail.movie_running_time}</li>
 				<li>관람등급 : ${detail.movie_audience_rating} 관람가</li>

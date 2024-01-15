@@ -48,6 +48,6 @@ public class MemberDAO {
 	
 	public int sinsert(MemberDTO dto) {
 		return sqlSession.insert("member.sinsert", dto);
-	}//insert() end
+	}//insert() endz
 	
 }
