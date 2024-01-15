@@ -118,12 +118,12 @@ public class CustomerCont {
 		return mav;
     }
     
-    @PostMapping("/regionselectbox.do")
+    @PostMapping("/branchselectbox.do")
     @ResponseBody
-    public Map<String, Object> checkList(String region_id) {
-    	Map<String, Object> map = new HashMap<String, Object>();
-    	map.put("checkList", theaterDao.checkList(region_id));
-    	return map;
+    public Map<String, Object> branchselectbox(String region_id) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("regionselectbox", theaterDao.branchselectbox(region_id));
+        return map;
     }
     
     @PostMapping("/screenselectbox.do")
@@ -137,9 +137,7 @@ public class CustomerCont {
     @PostMapping("/movieselectbox.do")
     @ResponseBody
     public Map<String, Object> movieselectbox(int screen_id){
-    	System.out.println(123);
     	Map <String, Object> map = new HashMap<>();
-    	System.out.println(theaterDao.movieselectbox(screen_id).toString());
     	map.put("movieselectbox", theaterDao.movieselectbox(screen_id));
     	return map;
     }

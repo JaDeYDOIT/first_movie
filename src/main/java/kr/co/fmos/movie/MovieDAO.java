@@ -15,26 +15,25 @@ import kr.co.fmos.payment.PaymentDTO;
 @Repository
 @Controller
 public interface MovieDAO {
-	
+
 	// 영화 리스트
-	public List<Map<String, Object>> movieList(); // movieList() end
-
-	// 영화 추가
-	public int movieinsert(MovieDTO movieDto); // commentInsert() end
-
-	// 영화 상세
-	public MovieDTO movieDetail(String movie_id); // movieList() end
-
-	// 댓글 리스트
-	public List<MoviereviewDTO> moviereviewList(String movie_id); // movieList() end
+	public List<Map<String, Object>> movieList();
 	
-	public int reviewInsert(MoviereviewDTO dto); //insert() end
+	// 영화 추가
+	public int movieinsert(MovieDTO movieDto);
+	
+	// 영화 상세
+	public MovieDTO movieDetail(String movie_id);
+	
+	// 댓글 리스트
+	public List<MoviereviewDTO> moviereviewList(String movie_id);	
+	
+	public int reviewInsert(MoviereviewDTO dto);
 	
 	public MovieDTO selectMovieInfoById(String movieID);
 	
 // TheaterCont에서 호출하는 메서드 시작
-	public MovieDTO moviecheck(int movie_id); // movieList() end
+	public MovieDTO moviecheck(int movie_id);
 // TheaterCont에서 호출하는 메서드 끝
 	
 }// class end
-	

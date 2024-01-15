@@ -31,22 +31,14 @@ table th{
 	width: 100px;
 }
 
-.phoneinp input{
+#phoneinp input{
 	width: 80px;
-}
-
-.phoneinp span{
-	font-size: 25px;
-}
-
-.titleinp {
-	width: 500px;
 }
 
 .contentinp {
     width: 503px;
     height: 280px;
-     resize: none;
+    resize: none;
 }
 
 .button_wrap{
@@ -78,4 +70,45 @@ table th{
 
 #movieselectbox{
 	width: 139px;
+}
+
+#people_count{
+	width: 50px;
+}
+#mtebox{
+	margin: 50px auto;
+	width: 50%;
+}
+
+.rentaldiv{
+	border-bottom: 2px solid black;
+	width: 700px;
+	padding-bottom: 4px;
+}
+
+.rentaldiv input{
+	height: 22px;
+}
+
+.rentaldiv select{
+	width: 100px;
+	font-size: 16px;
+}
+
+.rentaldatediv input{
+	width: 110px;
+	font-size: 16px;
+}
+
+.headtext{
+	font-size: 20px;
+}
+
+.reservation{
+	width: 80px;
+	font-size: 16px;
+}
+
+#titleinp{
+	width: 695px;
 }

@@ -119,56 +119,6 @@
 										<dt>결제방법</dt>
 										<dd class="sml last">${payType}</dd>
 									</dl>
-									<dl>
-										<dt>상영일시</dt>
-										<dd>
-											2023-12-27 (수 )<span>20:05 ~ 22:47</span>
-										</dd>
-										<dt>상영관</dt>
-										<dd>월드타워20관</dd>
-										<dt>관람인원</dt>
-										<dd>성인1</dd>
-										<dt>좌석</dt>
-										<dd>H13</dd>
-									</dl>
-									<button type="button" class="btn_col1 ty5">휴대폰으로 바로티켓
-										받기</button>
-								</div>
-							</div>
-							<div class="payment_wrap new2020">
-								<div class="group_price case1">
-									<dl>
-										<dt>주문금액</dt>
-										<dd>
-											<strong>7,000</strong>원
-										</dd>
-									</dl>
-								</div>
-								<div class="group_price case2">
-									<dl class="minus">
-										<dt>할인금액</dt>
-										<dd>
-											<strong>0</strong>원
-										</dd>
-									</dl>
-								</div>
-								<div class="group_price case3">
-									<dl>
-										<dt>총 결제 금액</dt>
-										<dd>
-											<strong>7,000</strong>원
-										</dd>
-									</dl>
-									<div class="pay_method">
-										<dl class="sml">
-											<dt>결제방법</dt>
-											<dd>
-												<span class="txt_card1 ty1">신용카드</span>
-											</dd>
-											<dt>카드번호</dt>
-											<dd class="sml last">토스</dd>
-										</dl>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -182,6 +132,7 @@
 			</div>
 		</div>
 	</div>
-	<br>
+</div>
+<br>
 
 <%@ include file="../footer.jsp"%>

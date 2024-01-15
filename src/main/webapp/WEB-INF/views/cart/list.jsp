@@ -67,7 +67,7 @@
 	</div>
 	<div class="row">
 		<form action="delete" name="cartfrm" id="cartfrm" method="get">
-		<input type="hidden" name="PDI" value="${PDI.member_id}">
+		<%-- <input type="hidden" name="PDI" value="${PDI.member_id}"> --%>
 		<%-- <input type="hidden" name="PDI" value="${PDI.member_id}"> --%>
 		<table class="com_cart_list_wrap">
 		    <thead>

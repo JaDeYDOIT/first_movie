@@ -30,7 +30,8 @@ public class ProductCont {
 	
 	@RequestMapping("/list.do")
 	public ModelAndView list(HttpSession session) {
-		System.out.println(session.getAttribute("s_id"));
+		String s_id = (String)session.getAttribute("s_id");
+		//System.out.println(s_id);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("product/list");
 		mav.addObject("list", productDao.list());
@@ -67,6 +68,7 @@ public class ProductCont {
 		productDao.insert(map);
 		return "redirect:/product/list.do";
 	}//insert() end
+
 	
 	@GetMapping("/category.do")
 	//public ModelAndView category(int product_category_id) { //--->이렇게 하면 에러남 Name for argument of type [int] not specified

@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	});
 
 	let emptySeats;
+	var seatContainer = document.querySelector('.seat-container');
 	var seatContainer = document.getElementById('myContainer');
 	initialize();
 
@@ -239,7 +240,7 @@ function link_check() {
 			student: 0,
 			silver: 0,
 			// 총 합계를 저장할 속성
-			price: 0
+			totalPrice: 0
 		};
 
 		// 모든 좌석 요소를 선택
@@ -273,13 +274,14 @@ function link_check() {
 		// PersonSeatSummeryTotalPrice 값을 totalPrice에 추가하는 코드
 		var totalPriceElement = document.querySelector('.PersonSeatSummeryTotalPrice');
 		reservationData.totalPrice = parseInt(totalPriceElement.textContent, 10);
+
 		console.log(reservationData);
 		
 		// URL에 데이터 추가
         var newURL = "/ticketing/orderSettlement?";
         newURL += 'screenMovieInfoID=' + getURLParameter('screenMovieInfoID');
 		newURL += '&selectedSeats=' + encodeURIComponent(JSON.stringify(reservationData.selectedSeats));
-        newURL += '&price=' + encodeURIComponent(reservationData.totalPrice);
+        newURL += '&totalPrice=' + encodeURIComponent(reservationData.totalPrice);
         newURL += '&adult=' + encodeURIComponent(reservationData.adult);
         newURL += '&student=' + encodeURIComponent(reservationData.student);
         newURL += '&silver=' + encodeURIComponent(reservationData.silver);

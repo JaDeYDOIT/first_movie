@@ -5,6 +5,7 @@
 
 <!-- movie.xml -->
 
+
 <mapper namespace="movie">
 	<select id="list" resultType="java.util.Map">
 		SELECT
@@ -38,6 +39,7 @@
 >>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
 	</select>
 
+
 	<!-- 추가 -->
 	<insert id="insert" parameterType="kr.co.fmos.movie.MovieDTO">
 		INSERT INTO movie(
@@ -54,11 +56,17 @@
 		#{movie_running_time}, #{movie_production_year},
 		#{movie_audience_rating},
 <<<<<<< HEAD
+<<<<<<< HEAD
 		#{movie_image}, #{movie_video},
+=======
+		#{movie_image},
+		#{movie_video},
+>>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 		#{director_name},
 		#{actor_name})
 	</insert>
 
+<<<<<<< HEAD
 =======
 		#{movie_image},
 		#{movie_video}, #{director_name},
@@ -67,6 +75,9 @@
 
 
 >>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
+=======
+
+>>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 	<select id="detail" resultType="kr.co.fmos.movie.MovieDTO"
 		parameterType="String">
 		SELECT
@@ -182,4 +193,5 @@
 		WHERE
 		movie_id=#{movieID}
 	</select>
+	
 </mapper>

@@ -23,6 +23,7 @@
 }
 .movie_chart_wrap .submenu {
 	font-size: 25px;
+	width: 100%;
 	margin-top: 30px;
 	padding-bottom: 1%;
 	border-bottom: 2px solid black;
@@ -37,16 +38,16 @@
 	flex-wrap: wrap;
 }
 
+.movie_chart_wrap .submenu ul li:nth-child(1) {
+}
 
 
-#insert_bt{
-font-size: 30px;
-	cursor:pointer;
-	border-radius: 10px;
-	border: 1px solid black;
-	padding: 0 1%;
-	position: absolute;
+
+.insert_bt{
+	font-size: 20px;
+	position: absolute;	
 	right: 0;
+	cursor: pointer;
 }
 
 .movie_chart {

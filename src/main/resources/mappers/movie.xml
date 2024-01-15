@@ -5,6 +5,7 @@
 
 <!-- movie.xml -->
 
+
 <mapper namespace="movie">
 	<select id="list" resultType="java.util.Map">
 		SELECT
@@ -32,6 +33,7 @@
 		payment_count DESC
 	</select>
 
+
 	<!-- 추가 -->
 	<insert id="insert" parameterType="kr.co.fmos.movie.MovieDTO">
 		INSERT INTO movie(
@@ -43,10 +45,12 @@
 		#{movie_name},
 		#{movie_running_time}, #{movie_production_year},
 		#{movie_audience_rating},
-		#{movie_image}, #{movie_video},
+		#{movie_image},
+		#{movie_video},
 		#{director_name},
 		#{actor_name})
 	</insert>
+
 
 	<select id="detail" resultType="kr.co.fmos.movie.MovieDTO"
 		parameterType="String">
@@ -145,4 +149,5 @@
 		WHERE
 		movie_id=#{movieID}
 	</select>
+	
 </mapper>

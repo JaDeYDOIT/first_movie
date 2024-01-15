@@ -2,22 +2,24 @@ package kr.co.fmos.member;
 
 <<<<<<< HEAD
 import java.util.Map;
-import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-@Repository
 public interface MemberDAO {
+
+	public int memberInsert(MemberDTO dto);
 	
-	public int memberInsert(MemberDTO dto);//insert() end
+	public String idcheck(String member_id);
 	
-	public String idcheck(String member_id);//idcheck() end
+	public int logincheck(String member_id);
 	
-	public int logincheck(String member_id);//totalamount() end
+	public int loginfailcheck(String member_id);	
 	
-	public String emailcheck(String member_email);//emailcheck() end
+	public int logincussesscheck(Map<String, String> map);
+	
+	public String emailcheck(String member_email);
 	
 	public int membercheck(MemberDTO dto);
 	
@@ -34,16 +36,20 @@ public interface MemberDAO {
 >>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
 	public int sMembercheck(MemberDTO dto);
 	
-	public int sinsert(MemberDTO dto);//insert() endz
-		
-	public MemberDTO memberlist(String member_id);//memberList() end
+	public int sinsert(MemberDTO dto);	
 	
-	public void memberupdate(MemberDTO dto);//memberupdate() end
+	public MemberDTO memberlist(String member_id);
+	
+	public void memberupdate(MemberDTO dto);
 	
 	public MemberDTO selectMemberById(String memberId);
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 }//class end
 =======
 }
 >>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
+=======
+}
+>>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e

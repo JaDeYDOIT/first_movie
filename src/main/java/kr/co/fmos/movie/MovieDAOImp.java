@@ -25,13 +25,13 @@ public class MovieDAOImp implements MovieDAO {
 	@Override
 	public List<Map<String, Object>> movieList() {
 		return sqlSession.selectList("movie.list");
-	}
+	}// movieList() end
 
 	// 영화 추가
 	@Override
 	public int movieinsert(MovieDTO movieDto) {
 		return sqlSession.insert("movie.insert", movieDto);
-	}
+	}// commentInsert() end
 
 	// 영화 상세
 	@Override
@@ -60,5 +60,6 @@ public class MovieDAOImp implements MovieDAO {
 		return sqlSession.selectOne("movie.moviecheck", movie_id);
 	}// movieList() end
 // TheaterCont에서 호출하는 메서드 끝
+
 }
 // class end
