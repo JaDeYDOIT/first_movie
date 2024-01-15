@@ -273,7 +273,6 @@ function link_check() {
 		// PersonSeatSummeryTotalPrice 값을 totalPrice에 추가하는 코드
 		var totalPriceElement = document.querySelector('.PersonSeatSummeryTotalPrice');
 		reservationData.totalPrice = parseInt(totalPriceElement.textContent, 10);
-
 		console.log(reservationData);
 		
 		// URL에 데이터 추가

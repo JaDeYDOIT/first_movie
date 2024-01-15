@@ -451,7 +451,6 @@ function showPaymentWarning() {
 
 function handlePaymentConfirmButtonClick() {
 	$('.pay_button').click(function() {
-		console.log("handlePaymentConfirmButtonClick");
 		// 새로운 폼 엘리먼트 생성
 		let form = document.createElement('form');
 

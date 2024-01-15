@@ -1,16 +1,8 @@
 package kr.co.fmos.member;
 
-<<<<<<< HEAD
-import java.util.HashMap;
-import java.util.Map;
-import java.io.Console;
-
-=======
->>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,24 +25,6 @@ public class MemberCont {
 	@Autowired
 	private MemberDAO memberDao;
 	
-<<<<<<< HEAD
-	
-//	/* mypage 시작 */
-//	@GetMapping("/mypage.do")
-//	public String mypage() {
-//		return "/member/mypage";
-//	}
-//	/* mypage 끝 */
-	
-	/* mypage 시작 */
-	@GetMapping("/memberInfo.do")
-	public String memberInfo() {
-		return "/member/memberInfo";
-	}
-	/* mypage 끝 */
-	
-=======
->>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
 	@GetMapping("/login.do")
 	public String list() {
 		return "/member/login";
@@ -89,9 +63,6 @@ public class MemberCont {
 		 return mav; 
 	 }
 	
-<<<<<<< HEAD
-	@GetMapping("/loginfailcheck.do")
-=======
 //	@GetMapping("/logfail.do")
 //	public ModelAndView logfail() {
 //		
@@ -104,7 +75,6 @@ public class MemberCont {
 //	}//list() end
 	
 	@GetMapping("/logincheck.do")
->>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
 	@ResponseBody
 	public int logincheck(String member_id) {
 		int num = memberDao.logincheck(member_id);
@@ -160,7 +130,6 @@ public class MemberCont {
 		return mav;
 	}
 	
-<<<<<<< HEAD
 	@GetMapping("/sessionlogout.do")
 	public ModelAndView sessionlogout(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -171,8 +140,6 @@ public class MemberCont {
 		return mav;
 	}
 	
-=======
->>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
 	@GetMapping("/social_log")
 	public ModelAndView kakao_log(MemberDTO dto, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -197,8 +164,6 @@ public class MemberCont {
 		return "/member/test";
 	}
 	
-<<<<<<< HEAD
-	/* 영민작업 시작 */
 	//회원수정 관련 시작//
 	@GetMapping("/memberModify.do")
 	public ModelAndView memberList(HttpSession session) {
@@ -237,19 +202,9 @@ public class MemberCont {
 		return "redirect:/main";
 	}//memberupdate() end
 	//회원수정 관련 끝//
-	/* 영민작업 끝 */
-}//class end
-=======
-	
-	
-	
-	
-	
-	
 	
 	@GetMapping("/memberInfo.do")
 	public String memberInfo() {
 		return "/member/memberinfo";
 	}
 }//class end
->>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a

@@ -67,7 +67,6 @@ public class ProductCont {
 		productDao.insert(map);
 		return "redirect:/product/list.do";
 	}//insert() end
-
 	
 	@GetMapping("/category.do")
 	//public ModelAndView category(int product_category_id) { //--->이렇게 하면 에러남 Name for argument of type [int] not specified

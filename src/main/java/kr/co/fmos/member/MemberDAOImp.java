@@ -13,39 +13,44 @@ public class MemberDAOImp implements MemberDAO {
 
 	@Autowired
 	SqlSession sqlSession;
-
-	@Override
+	
 	public int memberInsert(MemberDTO dto) {
 		return sqlSession.insert("member.insert", dto);
-	}// insert() end
-
-	@Override
+	}//insert() end
+	
 	public String idcheck(String member_id) {
 		return sqlSession.selectOne("member.idcheck", member_id);
-	}// idcheck() end
-
-	@Override
+	}//idcheck() end
+	
+	public int logincheck(String member_id) {
+		return sqlSession.selectOne("member.logincheck", member_id);
+	}//totalamount() end
+	
 	public String emailcheck(String member_email) {
 		return sqlSession.selectOne("member.emailcheck", member_email);
-	}// emailcheck() end
-
-	@Override
-	public int membercheck(MemberDTO dto) {
+	}//emailcheck() end
+	
+	public int membercheck(MemberDTO dto){
 		return sqlSession.selectOne("member.membercheck", dto);
-	}// membercheck() end
-
-	@Override
+	}
+	
 	// 카카오 로그인 관련
-	public int sMembercheck(MemberDTO dto) {
+	public int sMembercheck(MemberDTO dto){
 		return sqlSession.selectOne("member.smembercheck", dto);
-	}// sMembercheck() end
-
-	@Override
+	}
+	
 	public int sinsert(MemberDTO dto) {
 		return sqlSession.insert("member.sinsert", dto);
-	}// sinsert() end
+	}//insert() endz
+		
+	public MemberDTO memberlist(String member_id) {
+		return sqlSession.selectOne("member.memberlist", member_id);
+	}//memberList() end
+	
+	public void memberupdate(MemberDTO dto) {
+		sqlSession.update("member.memberupdate", dto);
+	}//memberupdate() end
 
-	@Override
 	public MemberDTO selectMemberById(String memberId) {
 		return sqlSession.selectOne("member.selectMemberById", memberId);
 	}// selectMemberById() end

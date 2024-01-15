@@ -130,11 +130,7 @@ public class CustomerCont {
     @ResponseBody
     public Map<String, Object> screenselectbox(int branch_id){
     	Map <String, Object> map = new HashMap<>();
-<<<<<<< HEAD
     	map.put("screenselectbox", theaterDao.screenselectbox(branch_id));
-=======
-    	map.put("screenselectbox", theaterDao.screenajaxlist(branch_id));
->>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
     	return map;
     }
     
@@ -148,7 +144,6 @@ public class CustomerCont {
     	return map;
     }
     
-<<<<<<< HEAD
     @PostMapping("/rentalinsert.do")
     public ModelAndView rentalinsert(RentalDTO dto) {
     	ModelAndView mav = new ModelAndView();
@@ -181,7 +176,4 @@ public class CustomerCont {
     	mav.setViewName("/noticeView"); 	
     	return mav;
     }
-=======
-    
->>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
 }//class end

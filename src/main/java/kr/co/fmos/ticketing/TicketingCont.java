@@ -7,8 +7,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpSession;
@@ -57,16 +59,16 @@ public class TicketingCont {
 	MemberDAO memberDao;
 
 	@GetMapping("/personseat")
-	public ModelAndView personseat(@RequestParam String screenMovieInfoID, int remainSeatCount) {
+	public ModelAndView personseat(@RequestParam int screenMovieInfoID, int remainSeatCount) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("screenMovieInfoID", screenMovieInfoID);
+		mav.addObject("screenMovieInfo", screenMovieInfoDao.detail(screenMovieInfoID));
 		mav.addObject("remainSeatCount", remainSeatCount);
 		mav.setViewName("ticketing/personseat");
 		return mav;
 	}
 
 	@GetMapping("/paysuccess")
-	public ModelAndView paysuccess() {
+	public ModelAndView getPaysuccess() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("ticketing/paysuccess");
 		return mav;
@@ -138,13 +140,12 @@ public class TicketingCont {
 	}
 
 	@GetMapping("/orderSettlement")
-	public ModelAndView orderSettlement(HttpSession session) {
+	public ModelAndView orderSettlement() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("ticketing/orderSettlement");
 		session.setAttribute("s_id", "sungwoo");
 		mav.addObject("userHavingCouponList",
 				userHavingCouponDao.userHavingCouponList((String) session.getAttribute("s_id").toString()));
-		mav.addObject("userHavingCouponList", userHavingCouponDao.userHavingCouponList((String) session.getAttribute("s_id")));
 		return mav;
 	}// home() end
 
