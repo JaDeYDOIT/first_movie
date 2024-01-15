@@ -26,8 +26,8 @@ public class PaymentDAOImp implements PaymentDAO {
 	}
 
 	@Override
-	public PaymentDTO insertAndWithReturnID(PaymentDTO paymentDto) {
-		sqlSession.insert("payment.insertAndReturn", paymentDto);
+	public PaymentDTO insertAndReturnWithId(PaymentDTO paymentDto) {
+		sqlSession.insert("payment.insertAndReturnWithId", paymentDto);
 		return paymentDto;
 	}
 }

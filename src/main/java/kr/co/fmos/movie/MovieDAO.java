@@ -19,3 +19,4 @@ public interface MovieDAO {
 	public MovieDTO moviecheck(int movie_id);
 	
 }// class end
+	

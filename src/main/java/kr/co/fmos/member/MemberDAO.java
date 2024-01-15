@@ -12,4 +12,6 @@ public interface MemberDAO {
 	public int sMembercheck(MemberDTO dto);
 
 	public int sinsert(MemberDTO dto);
+
+	public MemberDTO selectMemberById(String memberId);
 }

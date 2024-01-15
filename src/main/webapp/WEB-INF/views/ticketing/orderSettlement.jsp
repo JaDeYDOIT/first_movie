@@ -77,8 +77,7 @@
 						<div class="wrap_coupon">
 							<button class="btn_coupon">쿠폰 사용하기</button>
 							<div class="wrap_selected_coupon" style="display: none;">
-								<button type="button" class="btn_close" onclick="cancelCoupon()">팝업
-									닫기</button>
+								<button type="button" class="btn_close">팝업 닫기</button>
 								<div class="coupon_name">(쿠폰명)</div>
 								<dl>
 									<dd class="period">(사용기간)</dd>
@@ -260,7 +259,13 @@
 								총<strong></strong>원
 							</dd>
 						</dl>
+<<<<<<< Updated upstream
 						<a class="btn_col1 btn_confirm pay_button disabled">결제하기</a>
+=======
+						<a class="btn_col1 btn_confirm pay_button disabled"
+							onclick="requestPay()">결제하기</a>
+						<script src="/js/main.js"></script>
+>>>>>>> Stashed changes
 					</div>
 				</div>
 			</div>

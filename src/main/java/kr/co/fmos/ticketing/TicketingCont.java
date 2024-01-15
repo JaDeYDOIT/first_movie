@@ -1,5 +1,6 @@
 package kr.co.fmos.ticketing;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,12 +15,22 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpSession;
 import kr.co.fmos.coupon.UserHavingCouponDAO;
+import kr.co.fmos.member.MemberDAO;
+import kr.co.fmos.member.MemberDTO;
+import kr.co.fmos.movie.MovieDAO;
 import kr.co.fmos.movie.MovieDAOImp;
+import kr.co.fmos.movie.MovieDTO;
 import kr.co.fmos.payment.PaymentDAO;
 import kr.co.fmos.payment.PaymentDTO;
+import kr.co.fmos.region.RegionDAO;
 import kr.co.fmos.region.RegionDAOImp;
+import kr.co.fmos.screen.ScreenDAO;
+import kr.co.fmos.screen.ScreenDTO;
 import kr.co.fmos.screenMovieInfo.ScreenMovieInfoDAO;
+import kr.co.fmos.screenMovieInfo.ScreenMovieInfoDTO;
+import kr.co.fmos.theaterBranch.TheaterBranchDAO;
 import kr.co.fmos.theaterBranch.TheaterBranchDAOImp;
+import kr.co.fmos.theaterBranch.TheaterBranchDTO;
 
 @Controller
 @RequestMapping("/ticketing")
@@ -29,19 +40,23 @@ public class TicketingCont {
 	}
 
 	@Autowired
-	private HttpSession session;
+	HttpSession session;
 	@Autowired
-	RegionDAOImp regionDao;
+	RegionDAO regionDao;
 	@Autowired
-	TheaterBranchDAOImp theaterBranchDao;
+	TheaterBranchDAO theaterBranchDao;
 	@Autowired
-	MovieDAOImp movieDao;
+	MovieDAO movieDao;
 	@Autowired
 	ScreenMovieInfoDAO screenMovieInfoDao;
 	@Autowired
 	UserHavingCouponDAO userHavingCouponDao;
 	@Autowired
 	PaymentDAO paymentDao;
+	@Autowired
+	ScreenDAO screenDao;
+	@Autowired
+	MemberDAO memberDao;
 
 	@GetMapping("/personseat")
 	public ModelAndView personseat(@RequestParam int screenMovieInfoID, int remainSeatCount) {
@@ -51,7 +66,7 @@ public class TicketingCont {
 		mav.setViewName("ticketing/personseat");
 		return mav;
 	}
-	
+
 	@GetMapping("/paysuccess")
 	public ModelAndView getPaysuccess() {
 		ModelAndView mav = new ModelAndView();
@@ -62,7 +77,7 @@ public class TicketingCont {
 	@PostMapping("/paysuccess")
 	public ModelAndView paysuccess(@RequestParam String screenMovieInfoID, @RequestParam int adult,
 			@RequestParam int student, @RequestParam int silver, @RequestParam int price, @RequestParam int payDiscount,
-			@RequestParam String pay_type) {
+			@RequestParam String payType, @RequestParam String[] selectedSeats) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("ticketing/paysuccess");
 
@@ -72,11 +87,44 @@ public class TicketingCont {
 		paymentDto.setMovie_information_id(screenMovieInfoID);
 		paymentDto.setAdult(adult);
 		paymentDto.setStudent(student);
+		paymentDto.setSilver(silver);
 		paymentDto.setPrice(price);
 		paymentDto.setPay_discount(payDiscount);
-		paymentDto.setPay_type(pay_type);
+		paymentDto.setPay_type(payType);
 		paymentDto.setRefund(1);
-		PaymentDTO inputPaymentDto = paymentDao.insertAndWithReturnID(paymentDto);
+		PaymentDTO inputPaymentDto = paymentDao.insertAndReturnWithId(paymentDto);
+
+		ScreenMovieInfoDTO screenMovieInfo = screenMovieInfoDao.selectScreenMovieInfoById(screenMovieInfoID);
+		MovieDTO movie = movieDao.selectMovieInfoById(String.valueOf(screenMovieInfo.getMovie_id()));
+		TheaterBranchDTO theaterBranch = theaterBranchDao
+				.selectTheaterBranchById(String.valueOf(screenMovieInfo.getBranch_id()));
+		ScreenDTO screen = screenDao.selectScreenById(String.valueOf(screenMovieInfo.getScreen_id()));
+		MemberDTO member = memberDao.selectMemberById((String) session.getAttribute("s_id"));
+
+		System.out.println(inputPaymentDto);
+		System.out.println(screenMovieInfo);
+		System.out.println(movie);
+		System.out.println(theaterBranch);
+		System.out.println(screen);
+		System.out.println(member);
+		System.out.println(selectedSeats);
+		
+		mav.addObject("memberName", member.getMember_name());
+		mav.addObject("paymentId", inputPaymentDto.getPayment_id());
+		mav.addObject("movieShowingDate", screenMovieInfo.getMovie_showing_date());
+		mav.addObject("movieShowingTime", screenMovieInfo.getMovie_showing_time());
+		mav.addObject("movieRunningTime", movie.getMovie_running_time());
+		mav.addObject("theaterBranchName", theaterBranch.getBranch_name());
+		mav.addObject("screenLocation", screen.getScreen_location());
+		mav.addObject("adult", adult);
+		mav.addObject("student", student);
+		mav.addObject("silver", silver);
+
+		mav.addObject("selectedSeats", selectedSeats);
+		mav.addObject("price", price);
+		mav.addObject("payDiscount", payDiscount);
+		mav.addObject("payType", payType);
+
 		return mav;
 	}
 
@@ -97,9 +145,8 @@ public class TicketingCont {
 		mav.setViewName("ticketing/orderSettlement");
 		session.setAttribute("s_id", "sungwoo");
 		mav.addObject("userHavingCouponList",
-				userHavingCouponDao.userHavingCouponList((String) session.getAttribute("s_id")));
+				userHavingCouponDao.userHavingCouponList((String) session.getAttribute("s_id").toString()));
 		return mav;
 	}// home() end
-	
-	
+
 }
