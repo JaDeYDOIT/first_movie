@@ -72,7 +72,6 @@ public class MovieDAOImp implements MovieDAO {
 		return sqlSession.selectOne("movie.moviecheck", movie_id);
 	}// movieList() end
 // TheaterCont에서 호출하는 메서드 끝
-<<<<<<< HEAD
 //	 맵방식 댓글
 //	 public Map<String, Object> moviereviewList(String movie_id) {
 //			return sqlSession.selectOne("movie.review", movie_id);
@@ -82,8 +81,6 @@ public class MovieDAOImp implements MovieDAO {
 //	 public MoviereviewDTO moviereviewList(String movie_id) {
 //		 return sqlSession.selectOne("movie.review", movie_id);
 //	 }// movieList() end
-=======
->>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
 
 }
 // class end

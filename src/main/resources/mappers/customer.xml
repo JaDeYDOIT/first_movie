@@ -24,14 +24,11 @@
 		FROM notice
 		WHERE notice_kind = #{notice_kind}
 	</select>
-<<<<<<< HEAD
 	
 	<delete id="noticeDelete" parameterType="int">
 		DELETE FROM notice
 		WHERE notice_id=#{notice_id}
 	</delete>
-=======
->>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
 <!-- notice관련 끝 -->
 	
 <!-- inquire관련 시작 -->

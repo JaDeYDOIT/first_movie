@@ -136,7 +136,6 @@ public class CustomerCont {
 		return mav;
     }
     
-<<<<<<< HEAD
     @GetMapping("/inquiredelete.do")
 	public String inquiredelete(HttpServletRequest req) {//
 		int inquire_id = Integer.parseInt(req.getParameter("inquire_id"));
@@ -145,8 +144,6 @@ public class CustomerCont {
 		return "redirect:/customer/inquire.do?inquire_kind=" + inquire_kind;
 	}//delete() end
     
-=======
->>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
     @PostMapping("/branchselectbox.do")
     @ResponseBody
     public Map<String, Object> branchselectbox(String region_id) {

@@ -41,11 +41,7 @@
 		</tr>
 		<tr>
 			<td>관람등급</td>
-<<<<<<< HEAD
 			<td><input type="text" name="movie_audience_rating"></td>
-=======
-			<td><input type="text" name="movie_audience_rating" id="movie_audience_rating"></td>
->>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
 		</tr>
 		<tr>
 			<td>영화 이미지</td>

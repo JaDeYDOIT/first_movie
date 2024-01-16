@@ -30,12 +30,9 @@ public class NoticeDAO {
 	public List<NoticeDTO> noticeselect(int notice_kind) {
 		return sqlSession.selectList("customer.noticeselect", notice_kind);
 	}// movieList() end
-<<<<<<< HEAD
 	
 	public int noticeDelete(int notice_id) { 
 		return sqlSession.delete("customer.noticeDelete", notice_id); 
 	}//delete() end
 	
-=======
->>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
 }

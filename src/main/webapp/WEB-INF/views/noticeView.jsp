@@ -1,24 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-pageEncoding="EUC-KR"%>
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="EUC-KR" />
-        <title>占쏙옙화</title>
-    </head>
-    <body>
-        <script>
-            var cnt = ${cnt}
-                          if (cnt == 1) {
-                              Swal.fire({
-                                  title: "占쏙옙占쏙옙占쏙옙품占� 占싹뤄옙퓸占쏙옙占쏙옙求占�.",
-                                  icon: "success"
-                              }).then((result) => {
-                                  if (result.value) {
-                                  	window.location.href = "/customer/notice.do?notice_kind=0";
-                                  }
-                              });
-                          }
-        </script>
-    </body>
+<head>
+<meta charset="EUC-KR">
+<title>영화</title>
+</head>
+<body>
+
+	<script>
+		var cnt = ${cnt}
+                if (cnt == 1) {
+                    Swal.fire({
+                        title: "대관문의가 완료되었습니다.",
+                        icon: "success"
+                    }).then((result) => {
+                        if (result.value) {
+                        	window.location.href = "/customer/notice.do?notice_kind=0";
+                        }
+                    });
+                }
+	</script>
+
+	
+
+</body>
 </html>

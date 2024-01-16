@@ -8,11 +8,7 @@
 <link rel="stylesheet" href="/css/content.css">
 <link rel="stylesheet" href="/css/content_lc21new.css">
 <link rel="stylesheet" href="/css/dev.css">
-<<<<<<< HEAD
 <script src="/js/ticketing_personseat2.js"></script>
-=======
-<script src="/js/ticketing_personseat.js"></script>
->>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
 
 <script>
 	// 행과 열의 개수 설정
