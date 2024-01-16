@@ -6,7 +6,6 @@ public class Screen_movie_informationDTO extends ScreenDTO{
 	private int	   screen_id;				//TINYINT UNSIGNED	NOT NULL,
 	private String movie_id;				//VARCHAR(30)		NOT NULL,
 	private int    branch_id;				//TINYINT UNSIGNEDNOT NULL,
-	private String movie_type;				//VARCHAR(30)		NOT NULL	COMMENT 'ex)2D,3D',
 	private String movie_showing_date;		//DATE	NOT NULL
 	private String movie_showing_time;		//TIME	NOT NULL
 
@@ -35,12 +34,7 @@ public class Screen_movie_informationDTO extends ScreenDTO{
 	public void setBranch_id(int branch_id) {
 		this.branch_id = branch_id;
 	}
-	public String getMovie_type() {
-		return movie_type;
-	}
-	public void setMovie_type(String movie_type) {
-		this.movie_type = movie_type;
-	}
+
 	public String getMovie_showing_date() {
 		return movie_showing_date;
 	}
@@ -56,11 +50,10 @@ public class Screen_movie_informationDTO extends ScreenDTO{
 	@Override
 	public String toString() {
 		return "Screen_movie_informationDTO [movie_information_id=" + movie_information_id + ", screen_id=" + screen_id
-				+ ", movie_id=" + movie_id + ", branch_id=" + branch_id + ", movie_type=" + movie_type
-				+ ", movie_showing_date=" + movie_showing_date + ", movie_showing_time=" + movie_showing_time + "]";
+				+ ", movie_id=" + movie_id + ", branch_id=" + branch_id + ", movie_showing_date=" + movie_showing_date
+				+ ", movie_showing_time=" + movie_showing_time + "]";
 	}
-	
-	
+
 
 	
 }

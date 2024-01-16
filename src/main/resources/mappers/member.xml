@@ -17,6 +17,19 @@
 	 	from member
 		where member_id = #{member_id}
 	</select>
+
+	<select id="loginfailcheck" parameterType="String"
+		resultType="int">
+		select COUNT(*)
+		from member
+		where member_id = #{member_id}
+	</select>
+	
+	<select id="logincheck" parameterType="String" resultType="int">
+	 	select COUNT(*)
+	 	from member
+		where member_id = #{member_id}
+	</select>
 	
 	<select id="emailcheck" parameterType="String" resultType="String">
 	 	select member_email
@@ -26,6 +39,13 @@
 	
 	<select id="membercheck" parameterType="kr.co.fmos.member.MemberDTO" resultType="int">
 	 	SELECT COUNT(*)
+		from member
+		where member_id = #{member_id} and member_pw = #{member_pw}; 
+	</select>
+	 	
+	<select id="logincussesscheck" parameterType="java.util.Map"
+		resultType="int">
+		select COUNT(*)
 		from member
 		where member_id = #{member_id} and member_pw = #{member_pw}; 
 	</select>
@@ -41,5 +61,5 @@
 		INSERT INTO member(member_id, member_name, member_pw, member_email, member_gender, member_birthdate, member_phone, member_email_check, member_sns_check)
 		VALUES (#{member_email}, #{member_name}, '0', #{member_email}, #{member_gender}, '0', '0', '0', '0') 
 	</insert>
-	 	
+	
 </mapper>

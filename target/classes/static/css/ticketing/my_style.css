@@ -1,3 +1,10 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
 .btn_coupon {
 	border-radius: 4px;
 	width: 100px;
@@ -9,7 +16,6 @@
 	display: block;
 	/* 가로로 전체를 차지하도록 block 설정 */
 	padding: 15px;
-	padding-bottom: 30px;
 	border-radius: 4px;
 	border: 1px solid #DDD;
 	background-color: #FFF;
@@ -60,5 +66,20 @@
 	padding-top: 14px;
 	padding-bottom: 14px;
 	font-size: 20px;
+}
 
+.wrap_selected_coupon .btn_close {
+	position: absolute;
+	right: 30px;
+	top: 170px;
+	width: 15px;
+	height: 15px;
+	border: none;
+	text-indent: -9999em;
+	background: transparent url("/images/ticketing/close_19.png") no-repeat 0 0;
+	background-size: contain;
+}
+
+.pay_method_list .active button {
+	border-color: #7B7B7B;
 }

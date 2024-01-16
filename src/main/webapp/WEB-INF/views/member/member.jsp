@@ -27,12 +27,12 @@
 		membirth = membirth.trim();
 		
 		if(memid.length < 4 || memid.length > 15 || memid === null){
-			alert("아이디는 5~15글자 사이로 작성해주세요");
+			alert("아이디는 4~15글자 사이로 작성해주세요");
 			$(".memid").focus();
 			return false;
 			
 		} else if(mempw.length < 4 || mempw.length > 15){
-			alert("비밀번호는 5~15글자 사이로 작성해주세요");
+			alert("비밀번호는 4~15글자 사이로 작성해주세요");
 			$(".mempw").focus();
 			return false;
 		} else if(mempw !== mempw2){
@@ -114,7 +114,7 @@
 	</table>
 		<div class="submitbut">
 			<input type="submit" value="회원등록">
-			<input type="button" value="취소" onclick="">
+			<input type="button" value="취소" onclick="location.href='/main'">
 		</div>
 	</form>
 	

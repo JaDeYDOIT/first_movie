@@ -30,7 +30,6 @@ CREATE TABLE `movie` (
 	`movie_running_time`	SMALLINT UNSIGNED	NOT NULL,
 	`movie_production_year`	DATETIME	NOT NULL,
 	`movie_audience_rating`	VARCHAR(30)	NOT NULL,
-	`movie_rank`	TINYINT	NOT NULL,
 	`movie_image`	VARCHAR(255)	NOT NULL,
 	`movie_video`	VARCHAR(255)	NOT NULL,
 	`director_name`	VARCHAR(20)	NOT NULL,

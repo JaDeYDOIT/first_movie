@@ -3,14 +3,69 @@
 <%@ include file="../header.jsp" %>
 <link rel="stylesheet" href="/css/store.css">
 <script>
-	function product_cart(){
-	  		 if($("#product_count").val()=="0"){
-	  			alert("상품수량을 선택해주세요~");
-	  		}else {
-	  			document.detailfrm.action="/cart/insert.do";
-	  			document.detailfrm.submit();
-	  		}//if end
-	  	}//product_cart() end
+	//장바구니 : 로그인과 결제 페이지 유효성 검사
+  	function product_cart() {
+  	   //세션 아이디 넘기기
+  	   var checkLogin = "${s_id}";
+	
+  	   //로그인 및 상품 수량 관련 유효성 검사
+  	   if (checkLogin == 'guest') {
+  	        //로그인하지 않은 경우
+  	        alert("로그인 해주세요.");
+  	    } else if ($("#product_count").val() == "0") {
+  	        //상품 수량을 선택하지 않은 경우
+  	        alert("상품수량을 선택해주세요.");
+  	    } else {
+  	        //로그인 상태이고, 상품 수량도 선택한 경우
+  	        document.detailfrm.action = "/cart/insert.do";
+  	        document.detailfrm.submit();
+  	    }
+  	}//product_cart() end
+  	
+  	//결제하기 : 로그인과 결제 페이지 유효성 검사
+  	function product_order(){
+  		//세션 아이디 넘기기
+  		var checkLogin = "${s_id}";
+  		
+  		//로그인하지 않은 경우
+  		if(checkLogin == 'guest'){
+  			alert("로그인 해주세요.");
+  		} else if($("#product_count").val() == "0") {
+  	        //상품 수량을 선택하지 않은 경우
+  	        alert("상품수량을 선택해주세요.");
+  		} else{
+  		//로그인 상태이고, 상품 수량도 선택한 경우
+  	        document.detailfrm.action = "/cart/insert.do";
+  	        document.detailfrm.submit();
+  		}
+  	}//product_order() end
+  	
+	//페이지 로드 시 호출하여 특정 아이디의 버튼을 활성화 여부를 설정
+	window.onload = function () {
+	  enableDeleteButton();
+	};
+  	
+  	//특정 아이디를 가진 버튼만 활성화하는 함수
+	function enableDeleteButton() {
+	  var checkLogin = "${s_id}";
+	  var deleteButton = document.getElementById("deleteButton");
+	
+	  // 관리자 아이디인 "fmos"인 경우에만 버튼을 보이고 활성화
+	  if (checkLogin === 'fmos' && deleteButton) {
+	    deleteButton.style.display = "block"; // 보이도록 설정
+	    deleteButton.disabled = false; // 활성화
+	  } else if (deleteButton) {
+	    deleteButton.style.display = "none"; // 안 보이도록 설정
+	  }
+	}//enableDeleteButton() end
+
+    function product_delete() {
+  	  var checkLogin = "${s_id}";
+  	  if (checkLogin === 'fmos' && confirm("첨부된 파일은 영구히 삭제됩니다.\n진행할까요?")) {
+  	    document.detailfrm.action = "/product/delete.do";
+  	    document.detailfrm.submit();
+  	  }
+  	}//product_delete() end
 </script>
 
 <!-- contents 시작 -->
@@ -19,7 +74,6 @@
    	<div class="tit-evt">
    		<h3>스토어</h3>
    	</div>
-   	
    	<!-- category_wrap 시작 -->
    	<div class="category_wrap" style="left:0px;">
    		<div class="category_contents_wrap">
@@ -49,7 +103,7 @@
    			</ul>
    			<ul class="cart_content">
    				<li>
-   					<a href="/cart/list.do">장바구니<span id="cartviewcnt">0</span></a>
+   					<a href="/cart/list.do" style="cursor:pointer;" onclick="return cart_list()">장바구니<span id="cartviewcnt">${cartcnt}</span></a>
    				</li>
    			</ul>
    		</div> 	
@@ -100,8 +154,9 @@
 			<div class="category_product_button">
 				 <tr>
 					<td colpsan="2" align="center" class="category_product_button">
+						<input type="button" id="deleteButton" value="삭제하기" onclick="return product_delete()">
 						<input type="button" value="장바구니" onclick="return product_cart()">
-						<input type="button" value="구매하기" onclick="location.href='/order/confirm.do'">
+						<input type="button" value="구매하기" onclick="return product_order()">
 					</td>
 				</tr> 
 			</div>

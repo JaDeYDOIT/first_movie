@@ -6,14 +6,18 @@ ver : 1.01 20191219 2502 line > íŒì—…ë©”ë‰´ ê³ ì •ë†�
 ============================== */
 
 
+
+
 .seat-container {
-	margin-left: 40px;
+    margin: 10% auto 0 auto;
+    width: auto;
 }
 
 .row-gap {
 	display: block;
 	height: 16px;
-	/* 행 간격 조절 */
+	width:100% 
+		/* 행 간격 조절 */
 }
 
 .col-gap {
@@ -34,12 +38,11 @@ ver : 1.01 20191219 2502 line > íŒì—…ë©”ë‰´ ê³ ì •ë†�
 	/* 행 레이블 너비 조절 */
 	text-align: right;
 	/* 행 레이블을 오른쪽 정렬 */
-	margin-right: 30px;
+	margin-right: 31px;
 	/* 행 레이블과 좌석 간격 조절 */
 }
 
 /* íŒì—… : ì”¨ì¸„ ì œê³µë™ì˜ ============================== */
-
 
 
 .layer_wrap.layer_movie_grade {
@@ -9395,9 +9398,8 @@ label.lab_txt .tit_lab {
 	height: 18px
 }
 
-.mseat_inner .title_screen1+.floor_bx {
-	margin-top: 15px;
-	padding-top: 0;
+ .showMap .floor_bx {
+	width: 100%;
 }
 
 .mseat_inner .floor_bx {
@@ -9426,7 +9428,9 @@ label.lab_txt .tit_lab {
 
 .mseat_inner .floor_bx .seat_area {
 	position: relative;
-	margin: 10px auto 0;
+	width: 46%;
+	margin: 0 auto;
+
 }
 
 .mseat_inner .floor_bx .seat_area .sel {
@@ -9805,11 +9809,12 @@ label.lab_txt .tit_lab {
 
 .seat_btm_box .seat_type_box {
 	float: left;
-	width: 615px;
+	width: 382px;
 }
 
 .seat_btm_box .seat_type_box .top_info {
 	margin-bottom: 15px;
+	margin-left: 60px;
 	
 }
 
@@ -16729,7 +16734,8 @@ dl.total_price dd strong {
 
 .select_num_people_wrap .movie_infor .group_infor .bx_tit {
 	display: block;
-	margin-bottom: 10px;
+	margin-bottom: 8px;
+	margin-inline-start: 3px;
 }
 
 .select_num_people_wrap .movie_infor .group_infor .bx_tit .ic_grade {
@@ -16759,12 +16765,14 @@ dl.total_price dd strong {
 	text-overflow: ellipsis;
 	margin-bottom: 5px;
 	font-size: 11px;
+	margin-inline-start: 3px;
+	font-weight: 500;
 }
 
 .select_num_people_wrap .movie_infor .group_infor dl dd.sub_info1 .time {
 	position: relative;
-	padding-left: 9px;
-	margin-left: 10px;
+	padding-left: 11px;
+	margin-left: 9px;
 }
 
 .select_num_people_wrap .movie_infor .group_infor dl dd.sub_info1 .time:before {
@@ -22635,7 +22643,7 @@ select.ty5~select.ty5 {
 }
 
 .seat_btm_box .seat_type_box {
-	width: 690px;
+	width: 382px;
 }
 
 /* íŒì—… : ì¢Œì„ì•ˆë‚´ */
@@ -23018,22 +23026,22 @@ select.ty5~select.ty5 {
 }
 
 .txt_grade.gr_all:before {
-	background: #229c56 url("../../Content/images/common/grade_all.png") 0 0 no-repeat;
+	background: #229c56 url("../images/ticket_seat/grade_all.png") 0 0 no-repeat;
 	background-size: 100%;
 }
 
 .txt_grade.gr_12:before {
-	background: #e9b630 url("../../Content/images/common/grade_12.png") 0 0 no-repeat;
+	background: #e9b630 url("../images/ticket_seat/grade_12.png") 0 0 no-repeat;
 	background-size: 100%;
 }
 
 .txt_grade.gr_15:before {
-	background: #dd7430 url("../../Content/images/common/grade_15.png") 0 0 no-repeat;
+	background: #dd7430 url("../images/ticket_seat/grade_15.png") 0 0 no-repeat;
 	background-size: 100%;
 }
 
 .txt_grade.gr_18:before {
-	background: #d92b36 url("../../Content/images/common/grade_18.png") 0 0 no-repeat;
+	background: #d92b36 url("../images/ticket_seat/grade_18.png") 0 0 no-repeat;
 	background-size: 100%;
 }
 
@@ -23076,22 +23084,22 @@ select.ty5~select.ty5 {
 }
 
 .ic_grade.gr_all:before {
-	background: #229c56 url("../../Content/images/common/grade_all.png") 0 0 no-repeat;
+	background: #229c56 url("../images/ticket_seat/grade_all.png") 0 0 no-repeat;
 	background-size: 100%;
 }
 
 .ic_grade.gr_12:before {
-	background: #e9b630 url("../../Content/images/common/grade_12.png") 0 0 no-repeat;
+	background: #e9b630 url("../images/ticket_seat/grade_12.png") 0 0 no-repeat;
 	background-size: 100%;
 }
 
 .ic_grade.gr_15:before {
-	background: #dd7430 url("../../Content/images/common/grade_15.png") 0 0 no-repeat;
+	background: #dd7430 url("../images/ticket_seat/grade_15.png") 0 0 no-repeat;
 	background-size: 100%;
 }
 
 .ic_grade.gr_18:before {
-	background: #d92b36 url("../../Content/images/common/grade_18.png") 0 0 no-repeat;
+	background: #d92b36 url("../images/ticket_seat/grade_18.png") 0 0 no-repeat;
 	background-size: 100%;
 }
 

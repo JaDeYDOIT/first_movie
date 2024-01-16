@@ -1,23 +1,17 @@
 package kr.co.fmos.movie;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import jakarta.websocket.Session;
 import kr.co.fmos.member.MemberDAO;
-import kr.co.fmos.member.MemberDTO;
 
 @Controller
 @RequestMapping("/movie")
@@ -43,8 +37,10 @@ public class MovieCont {
 
 	/////////////////// 영화 리스트 조회///////////////
 	@GetMapping("/list.do")
-	public ModelAndView list() {
-
+	public ModelAndView list(HttpSession session, String movie_id) {
+		
+		String s_id = (String)session.getAttribute("s_id");
+		
 		ModelAndView mav = new ModelAndView();
 
 		mav.addObject("list", movieDao.movieList());
@@ -64,16 +60,6 @@ public class MovieCont {
 	@PostMapping("/insert.do")
 	@ResponseBody
 	public ModelAndView insert(Map<String, Object> map, MovieDTO moviedto, HttpSession session) throws Exception {
-		// HttpServletRequest req
-		// @ModelAttribute CommentDTO commentDto
-
-//		count += count+1;
-//		movie = "movie"+count;
-//		
-//		moviedto.setMovie_id(movie);
-		
-		System.out.println(map.get("movie_id"));
-		
 		ModelAndView mav = new ModelAndView();
 
 		int cnt = movieDao.movieinsert(moviedto);
@@ -86,7 +72,6 @@ public class MovieCont {
 			mav.addObject("msg2", "<p><a href='javascript:history.back()'>[다시시도]</a></p>");
 		}
 		 // if end
-
 		mav.setViewName("msgView");
 		return mav;
 
@@ -146,5 +131,5 @@ public class MovieCont {
 		movieDao.reviewInsert(dto);
 		return "redirect:/movie/detail.do?movie_id=" + dto.getMovie_id();
 	}// list() end
-
+	
 }

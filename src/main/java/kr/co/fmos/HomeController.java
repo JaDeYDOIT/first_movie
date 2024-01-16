@@ -1,13 +1,21 @@
 package kr.co.fmos;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpSession;
+import kr.co.fmos.customer.NoticeDAO;
+import kr.co.fmos.movie.MovieDAO;
 
 @Controller
 public class HomeController {
+    
+    @Autowired
+	private MovieDAO movieDao;
+    @Autowired
+	private NoticeDAO noticeDao;
     
 	public HomeController() {
         System.out.println("-----HomeController()객체 생성됨");
@@ -21,13 +29,15 @@ public class HomeController {
 		session.getAttribute("s_id").equals("") || session.getAttribute("s_pw").equals("")) 
 		{
 			String s_id = "guest";
-			String s_pw = "guest";
+			String s_pw = "";
 			session.setAttribute("s_id", s_id);
-			session.setAttribute("s_pw", s_pw);
 		}
-	    
+		
      ModelAndView mav = new ModelAndView();
-     //redirect : 등록한 명령어를 호출하 수 
+     mav.addObject("sessionTimeoutInSeconds", session.getMaxInactiveInterval());
+     mav.addObject("movie", movieDao.movieList());
+     mav.addObject("noticelist", noticeDao.noticeselect());
+     mav.addObject("FAQlist", noticeDao.faqselect());
      mav.setViewName("main");
      return mav;
 	}//home() end
