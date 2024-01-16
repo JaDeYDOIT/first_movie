@@ -280,7 +280,7 @@ function link_check() {
         var newURL = "/ticketing/orderSettlement?";
         newURL += 'screenMovieInfoID=' + getURLParameter('screenMovieInfoID');
 		newURL += '&selectedSeats=' + encodeURIComponent(JSON.stringify(reservationData.selectedSeats));
-        newURL += '&totalPrice=' + encodeURIComponent(reservationData.totalPrice);
+        newURL += '&price=' + encodeURIComponent(reservationData.totalPrice);
         newURL += '&adult=' + encodeURIComponent(reservationData.adult);
         newURL += '&student=' + encodeURIComponent(reservationData.student);
         newURL += '&silver=' + encodeURIComponent(reservationData.silver);

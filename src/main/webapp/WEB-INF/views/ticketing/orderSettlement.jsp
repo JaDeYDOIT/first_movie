@@ -261,9 +261,7 @@
 							</dd>
 						</dl>
 
-						<a class="btn_col1 btn_confirm pay_button disabled"
-							onclick="requestPay()">결제하기</a>
-						<script src="/js/main.js"></script>
+						<a class="btn_col1 btn_confirm pay_button disabled">결제하기</a>
 
 					</div>
 				</div>

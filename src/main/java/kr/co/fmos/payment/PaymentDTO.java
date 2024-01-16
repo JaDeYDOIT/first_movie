@@ -11,7 +11,6 @@ public class PaymentDTO {
 	private int silver;
 	private int price;
 	private int pay_discount;
-	private String pay_type;
 	private int refund;
 	private LocalDateTime pay_datetime;
 
@@ -79,14 +78,6 @@ public class PaymentDTO {
 		this.pay_discount = pay_discount;
 	}
 
-	public String getPay_type() {
-		return pay_type;
-	}
-
-	public void setPay_type(String pay_type) {
-		this.pay_type = pay_type;
-	}
-
 	public int getRefund() {
 		return refund;
 	}
@@ -107,7 +98,7 @@ public class PaymentDTO {
 	public String toString() {
 		return "PaymentDTO [payment_id=" + payment_id + ", member_id=" + member_id + ", movie_information_id="
 				+ movie_information_id + ", adult=" + adult + ", student=" + student + ", silver=" + silver + ", price="
-				+ price + ", pay_discount=" + pay_discount + ", pay_type=" + pay_type + ", refund=" + refund
+				+ price + ", pay_discount=" + pay_discount + ", refund=" + refund
 				+ ", pay_datetime=" + pay_datetime + "]";
 	}
 }

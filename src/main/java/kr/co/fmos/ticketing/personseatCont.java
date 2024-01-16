@@ -16,7 +16,6 @@ public class personseatCont {
     @ResponseBody
     public void processArray(@RequestParam List<Map<String, Object>> doubleArray) {
         // 전달받은 배열의 각 요소를 출력
-       
        System.out.println(doubleArray);
     }
 }

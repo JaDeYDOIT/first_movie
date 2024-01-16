@@ -72,7 +72,7 @@ public class TicketingCont {
 	@PostMapping("/paysuccess")
 	public ModelAndView paysuccess(@RequestParam String screenMovieInfoID, @RequestParam int adult,
 			@RequestParam int student, @RequestParam int silver, @RequestParam int price, @RequestParam int payDiscount,
-			@RequestParam String payType, @RequestParam String[] selectedSeats) {
+			@RequestParam String[] selectedSeats) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("ticketing/paysuccess");
 
@@ -85,7 +85,6 @@ public class TicketingCont {
 		paymentDto.setSilver(silver);
 		paymentDto.setPrice(price);
 		paymentDto.setPay_discount(payDiscount);
-		paymentDto.setPay_type(payType);
 		paymentDto.setRefund(1);
 		PaymentDTO inputPaymentDto = paymentDao.insertAndReturnWithId(paymentDto);
 
@@ -114,7 +113,6 @@ public class TicketingCont {
 		mav.addObject("selectedSeats", selectedSeats);
 		mav.addObject("price", price);
 		mav.addObject("payDiscount", payDiscount);
-		mav.addObject("payType", payType);
 
 		return mav;
 	}

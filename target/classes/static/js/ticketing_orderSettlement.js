@@ -478,35 +478,55 @@ function showPaymentWarning() {
 
 function handlePaymentConfirmButtonClick() {
 	$('.pay_button').click(function() {
-		// 새로운 폼 엘리먼트 생성
-		let form = document.createElement('form');
+		console.log("handlePaymentConfirmButtonClick");
+		IMP.init("imp14397622");
+		IMP.request_pay({
+			pg: "html5_inicis",  // PG사
+			pay_method: "card",  // 결제 수단
+			merchant_uid: "merchant_" + new Date().getTime(), // 주문번호
+			name: "first movie_" + movieName,  // 상품명
+			amount: 100,//price - payDiscount,  // 결제 금액
+			buyer_name: memberID
+		}, function(rsp) {
+			if (rsp.success) {
+				console.log(rsp);
+				postPaysuccess();
+			} else {
+				// 결제 실패 시
+				alert("결제에 실패하였습니다. 에러 내용: " + rsp.error_msg);
+			}
+		});
 
-		// 폼 속성 설정 (페이지 URL과 전송 방식 설정)
-		form.action = '/ticketing/paysuccess'; // 대상 페이지 URL
-		form.method = 'post';
+		function postPaysuccess() {
+			// 새로운 폼 엘리먼트 생성
+			let form = document.createElement('form');
 
-		// 폼에 전송할 데이터 추가 (키-값 쌍 형식)
-		addFormField(form, 'screenMovieInfoID', screenMovieInfoID);
-		addFormField(form, 'adult', adult);
-		addFormField(form, 'student', student);
-		addFormField(form, 'silver', silver);
-		addFormField(form, 'price', price);
-		addFormField(form, 'payDiscount', payDiscount);
-		addFormField(form, 'payType', '네이버페이');
-		addFormField(form, 'selectedSeats', selectedSeats);
-		// ... 원하는 만큼 필드 추가
+			// 폼 속성 설정 (페이지 URL과 전송 방식 설정)
+			form.action = '/ticketing/paysuccess'; // 대상 페이지 URL
+			form.method = 'post';
 
-		// 폼을 문서에 추가하고 자동으로 제출
-		document.body.appendChild(form);
-		form.submit();
+			// 폼에 전송할 데이터 추가 (키-값 쌍 형식)
+			addFormField(form, 'screenMovieInfoID', screenMovieInfoID);
+			addFormField(form, 'adult', adult);
+			addFormField(form, 'student', student);
+			addFormField(form, 'silver', silver);
+			addFormField(form, 'price', price);
+			addFormField(form, 'payDiscount', payDiscount);
+			addFormField(form, 'selectedSeats', selectedSeats);
+			// ... 원하는 만큼 필드 추가
 
-		// 폼에 필드를 추가하는 함수
-		function addFormField(form, name, value) {
-			let input = document.createElement('input');
-			input.type = 'hidden';
-			input.name = name;
-			input.value = value;
-			form.appendChild(input);
+			// 폼을 문서에 추가하고 자동으로 제출
+			document.body.appendChild(form);
+			form.submit();
+
+			// 폼에 필드를 추가하는 함수
+			function addFormField(form, name, value) {
+				let input = document.createElement('input');
+				input.type = 'hidden';
+				input.name = name;
+				input.value = value;
+				form.appendChild(input);
+			}
 		}
 	});
 }
