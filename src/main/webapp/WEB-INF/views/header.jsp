@@ -84,14 +84,22 @@
 						    </script>
 						</c:otherwise>
 					</c:choose>
+<<<<<<< HEAD
                                  <li><img src="/images/header_icon/mypage.png" alt=""><a href="/member/memberInfo.do">my page</a></li>
+=======
+                        <li><img src="/images/header_icon/mypage.png" alt=""><a href="/member/memberInfo.do">my page</a></li>
+>>>>>>> 5bb2df2f787c30c5a08182faf4cf192112bb09d5
                         <li><img src="/images/header_icon/csc.png" alt="" onclick="location.href='/customer/notice.do?notice_kind=0'"><a href="/customer/notice.do?notice_kind=0">고객센터</a></li>
                     </ul>
                 </div>
                 <div class="nav_bottom">
                     <ul class="nav_wrap">
                         <li><a href="/movie/list.do">영화</a></li>
+<<<<<<< HEAD
                         <li><a href="/theater/branchlist.do?region_id=region_001&branch_id=1">극장</a></li>
+=======
+                        <li><a href="/theater/branchlist.do?region_id=1&branch_id=1">극장</a></li>
+>>>>>>> 5bb2df2f787c30c5a08182faf4cf192112bb09d5
                         <li><a href="/ticketing/schedule" style="color:rgb(0, 128, 255);">예매</a></li>
                         <li><a href="/product/list.do">스토어</a></li>
                         <li><a href="#">이벤트</a></li>

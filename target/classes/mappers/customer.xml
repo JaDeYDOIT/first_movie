@@ -75,6 +75,7 @@
 		(#{member_id}, #{inquire_kind}, #{inquire_file}, #{inquire_title},
 		#{inquire_content}, #{inquire_pw})
 	</insert>
+<<<<<<< HEAD
 
 	<insert id="rentalInsert"
 		parameterType="kr.co.fmos.customer.InquireDTO">
@@ -95,6 +96,14 @@
 	</insert>
 	<!-- inquire관련 끝 -->
 
+=======
+	
+	<insert id="rentalInsert" parameterType="kr.co.fmos.customer.InquireDTO">
+		INSERT INTO rental_inquiry(rental_inquiry_id, rental_inquiry_area , rental_inquiry_place ,rental_inquiry_theater ,rental_inquiry_movie,rental_inquiry_date ,rental_inquiry_start ,rental_inquiry_end ,rental_inquiry_people_count ,rental_inquiry_title,rental_inquiry_content ,rental_inquiry_name ,rental_inquiry_phone ,rental_inquiry_pw)
+		VALUES (#{rental_inquiry_id},#{rental_inquiry_area}, #{rental_inquiry_place}, #{rental_inquiry_theater}, #{rental_inquiry_movie}, #{rental_inquiry_date}, #{rental_inquiry_start} , #{rental_inquiry_end} , #{rental_inquiry_people_count} , #{rental_inquiry_title} , #{rental_inquiry_content} , #{rental_inquiry_name} , #{rental_inquiry_phone} , #{rental_inquiry_pw})
+	</insert>
+<!-- inquire관련 끝 -->
+>>>>>>> 5bb2df2f787c30c5a08182faf4cf192112bb09d5
 
 
 

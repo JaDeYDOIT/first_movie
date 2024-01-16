@@ -109,6 +109,10 @@ public class MemberCont {
 	@ResponseBody
 	public String idCheckForm(HttpServletRequest req) {
 		String member_id = req.getParameter("memid").trim();
+<<<<<<< HEAD
+=======
+		System.out.println(req.getParameter("memid").trim());
+>>>>>>> 5bb2df2f787c30c5a08182faf4cf192112bb09d5
 		String result = memberDao.idcheck(member_id);
 		return result;
 	}
@@ -168,6 +172,12 @@ public class MemberCont {
 	
 	@GetMapping("/memberInfo.do")
 	public String memberInfo() {
+<<<<<<< HEAD
 		return "/member/memberInfo";
 	}
+=======
+		return "/member/memberinfo";
+	}
+	
+>>>>>>> 5bb2df2f787c30c5a08182faf4cf192112bb09d5
 }//class end

@@ -35,9 +35,12 @@ public class HomeController {
 		
      ModelAndView mav = new ModelAndView();
      mav.addObject("sessionTimeoutInSeconds", session.getMaxInactiveInterval());
+<<<<<<< HEAD
      mav.addObject("movie", movieDao.movieList());
      mav.addObject("noticelist", noticeDao.noticeselect());
      mav.addObject("FAQlist", noticeDao.faqselect());
+=======
+>>>>>>> 5bb2df2f787c30c5a08182faf4cf192112bb09d5
      mav.setViewName("main");
      return mav;
 	}//home() end

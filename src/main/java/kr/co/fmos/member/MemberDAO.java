@@ -32,5 +32,9 @@ public interface MemberDAO {
 	public void memberupdate(MemberDTO dto);
 	
 	public MemberDTO selectMemberById(String memberId);
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 5bb2df2f787c30c5a08182faf4cf192112bb09d5
 }//class end
