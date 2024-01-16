@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 	<link rel="stylesheet" href="/css/mypage.css">
 <%@ include file="../header.jsp" %>
+
 <div id="mypage_wrap">
     <div class="member_wrap">
         <div class="memberbox">
@@ -21,10 +22,10 @@
             <h2>마이페이지</h2>
             <div class="menubox">
                 <ul>
-                    <li><a href="">결제내역</a></li>
-                    <li><a href="">주문내역</a></li>
-                    <li><a href="">쿠폰</a></li>
-                    <li><a href="/member/memberModify.do">개인 정보 수정</a></li>
+                    <li><a href="">리스트1</a></li>
+                    <li><a href="">리스트2</a></li>
+                    <li><a href="">리스트3</a></li>
+                    <li><a href="">리스트4</a></li>
                     <li><a href="">리스트5</a></li>
                     <li><a href="">리스트6</a></li>
                     <li><a href="">리스트7</a></li>

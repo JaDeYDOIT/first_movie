@@ -8,315 +8,34 @@
 <link rel="stylesheet" href="/css/content.css">
 <link rel="stylesheet" href="/css/content_lc21new.css">
 <link rel="stylesheet" href="/css/dev.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-<script src="/js/ticketing_personseat.js"></script>
+<script src="/js/ticketing_personseat2.js"></script>
 
 <script>
-	document.addEventListener("DOMContentLoaded", function() {
-		// 감소 버튼 클릭 시
-		document.querySelectorAll('.btn_mins').forEach(function(btn) {
-			btn.addEventListener('click', function() {
-				updateCount(btn, -1);
-			});
-		});
-
-		// 증가 버튼 클릭 시
-		document.querySelectorAll('.btn_plus').forEach(function(btn) {
-			btn.addEventListener('click', function() {
-				updateCount(btn, 1);
-			});
-		});
-		
-		// 행과 열의 개수 설정
-		var numRows = 8; // 예시로 5개의 행 사용
-		var numCols = 10; // 예시로 10개의 열 사용
-
-		var emptySeats = [ {
-			row : 1,
-			col : 5
-		}, // 첫 번째 빈 좌석 위치
-		{
-			row : 3,
-			col : 8
-		}, // 두 번째 빈 좌석 위치
-		{
-			row : 1,
-			col : 4
-		}, // 세 번째 빈 좌석 위치
-		// 추가적인 빈 좌석은 필요에 따라 배열에 계속 추가
-		];
-
-		var seatContainer = document.querySelector('.seat-container');
-		
-		// 좌석 생성 반복문
-		for (var row = 1; row <= numRows; row++) {
-			// 행 간격 추가
-			if (row > 1) {
-				var rowGap = document.createElement('div');
-				rowGap.className = 'row-gap';
-				seatContainer.appendChild(rowGap);
-			}
-
-			// 행 레이블 추가
-			var rowLabel = document.createElement('span');
-			rowLabel.className = 'row-label';
-			rowLabel.textContent = String.fromCharCode(64 + row); // A, B, C, ...
-			seatContainer.appendChild(rowLabel);
-
-			for (var col = 1; col <= numCols; col++) {
-				var seatNumber = String.fromCharCode(64 + row) + col; // A1, A2, ..., B1, B2, ...
-
-				// 열 간격 추가
-				if (col > 1) {
-					var colGap = document.createElement('span');
-					colGap.className = 'col-gap';
-					seatContainer.appendChild(colGap);
-				}
-
-				// 빈 좌석 여부 확인
-				var isEmptySeat = emptySeats.some(function(emptySeat) {
-					return emptySeat.row === row && emptySeat.col === col;
-				});
-
-				// 통로 -- (숫자)행일 때 (왼쪽)통로에 20px 간격 추가
-				if (col === 4) {
-					var aisleElement = document.createElement('span');
-					aisleElement.className = 'aisle';
-					aisleElement.style.marginRight = '20px';
-					seatContainer.appendChild(aisleElement);
-				}
-
-				// 빈 좌석인 경우 처리
-				if (isEmptySeat) {
-					continue; // 빈 좌석은 건너뛰기
-				}
-
-				// 좌석 요소 생성
-				var seatElement = document.createElement('a');
-				seatElement.href = "#none";
-				seatElement.alt = seatNumber;
-				seatElement.className = "sel p0 grNum" + row + " seat"
-						+ " no_select";
-				seatElement.setAttribute('seat-group', 'grNum' + row);
-				seatElement.setAttribute('seat-code', row
-						+ String(col).padStart(2, '0')); // 예시: 1A01, 1A02, ...
-
-				// 좌석 텍스트 생성
-				var seatTextElement = document.createElement('span');
-				seatTextElement.className = "f1";
-				seatTextElement.textContent = col;
-				
-				// 좌석에 텍스트 추가
-				seatElement.appendChild(seatTextElement);
-
-				// 좌석을 컨테이너에 추가
-				seatContainer.appendChild(seatElement);
-			}
-		}
-		
-		// 좌석 클릭 시
-		document.querySelectorAll('.seat').forEach(function(seat) {
-			seat.addEventListener('click', function() {
-				// 클래스가 있으면 아래의 코드 실행하지 않음
-				if (seat.classList.contains('no_select')) {
-					return;
-				}
-				toggleSeatSelection(seat);
-				checkSeatSelectionStatus();
-			});
-		});
-		function toggleSeatSelection(seat) {
-			seat.classList.toggle('selected');
-		}
-	});
-	
-	// totalCount 변수에 접근할 때 totalCountProxy를 사용
-	var totalCount = 0;
-	
-	function checkSeatSelectionStatus() {
-		// seat 클래스를 가진 모든 div 요소를 선택
-		var seatElements = document.querySelectorAll('.seat');
-
-		// 좌석 갯수만큼 다 선택하면 no_select 아니면 헤제
-		if (totalCount == document.querySelectorAll('.selected').length) {
-			// 각 seat 요소에 대해 처리
-			seatElements.forEach(function(seatElement) {
-				// selected 클래스를 가지지 않으면 no_selected 클래스를 추가
-				if (!seatElement.classList.contains('selected')) {
-					seatElement.classList.add('no_select');
-					// 좌석 선택이 다 끝나면 총 합계 업데이트
-					updateTotalPrice();
-				}
-			});
-		} else {
-			seatElements.forEach(function(seatElement) {
-				seatElement.classList.remove('no_select');
-			});
-		}
-	}
-
-	function deselectAllSeats() {
-		// totalcount가 1에서 0으로 갈 때 select 되어 있는 것도 삭제해야 함
-		var seatElements = document.querySelectorAll('.seat');
-
-		seatElements.forEach(function(seatElement) {
-			seatElement.classList.remove('selected');
-		});
-	}
-
-	function updateCount(btn, increment) {
-		var parentLi = btn.closest('li');
-		var countElement = parentLi.querySelector('.txt_num');
-		var currentCount = parseInt(countElement.textContent);
-
-		// 클릭한 버튼이 감소 버튼이고 현재 총합이 0보다 크면 실행
-		if ((btn.classList.contains('btn_mins') && totalCount > 0 && currentCount > 0)
-				|| (btn.classList.contains('btn_plus') && totalCount < 8)) {
-			currentCount += increment;
-			totalCount += increment;
-		}
-		countElement.textContent = currentCount;
-		checkSeatSelectionStatus();
-		deselectAllSeats(); //수가 변경될 때마다 좌석 reset
-		updateMessage("좌석 선택 후 결제하기 버튼을 클릭하세요");
-	}
-	
-	// 메시지 업데이트 함수
-	function updateMessage(newMessage) {
-		var messageElement = document.getElementById('ticketMessageInfo');
-		if (messageElement) {
-			messageElement.textContent = newMessage;
-		}
-	}
-
-	function updateTotalPrice() {
-		// 각 가격과 선택된 좌석 수를 이용하여 총 합계 계산
-		var adultPrice = 12000;
-		var youthPrice = 10000;
-		var seniorPrice = 7000;
-
-		var adultCount = parseInt(document.getElementById('person_10')
-				.querySelector('.txt_num').textContent);
-		var youthCount = parseInt(document.getElementById('person_20')
-				.querySelector('.txt_num').textContent);
-		var seniorCount = parseInt(document.getElementById('person_12')
-				.querySelector('.txt_num').textContent);
-
-		var totalPrice = adultCount * adultPrice + youthCount * youthPrice
-				+ seniorCount * seniorPrice;
-
-		// PersonSeatSummery의 합계 금액 업데이트
-		var totalPriceElement = document
-				.querySelector('.PersonSeatSummeryTotalPrice');
-		if (totalPriceElement) {
-			totalPriceElement.textContent = totalPrice;
-		}
-	}
-	
-	 // 선택된 좌석 정보를 담을 배열
-    var selectedSeats = [];
-	
-	function link_check(){
-		if ((totalCount !== document.querySelectorAll('.selected').length) || (totalCount === 0)) {
-	        alert('인원수에 맞게 좌석을 선택해 주세요.');
-	    } else {
-	    	var reservationData = {
-	    		    // 선택된 좌석 정보를 담을 배열
-	    		    selectedSeats: [],
-
-	    		    // 각 인원별 수량을 담을 배열
-	    		    peopleCounts: {
-	    		        "10": 0, // 성인
-	    		        "20": 0, // 청소년
-	    		        "12": 0  // 경로
-	    		    },
-
-	    		    // 총 합계를 저장할 속성
-	    		    totalPrice: 0,
-	    	};
-	    	
-	        // 모든 좌석 요소를 선택
-	        var seatElements = document.getElementsByClassName('seat');
-
-	        // 각 좌석 요소에 대해 확인
-	        for (var i = 0; i < seatElements.length; i++) {
-	            var seatElement = seatElements[i];
-
-	            // "selected" 클래스가 있는 경우 선택된 좌석으로 간주
-	            if (seatElement.classList.contains('selected')) {
-	                // 좌석 정보를 가져와서 배열에 추가
-	                var seatNumber = seatElement.alt;
-	                reservationData.selectedSeats.push(seatNumber);
-	            }
-	        }
-	    
-		 // txt_num의 값들을 peopleCounts 배열에 추가하는 코드
-	    var personElements = document.querySelectorAll('.count_people li');
-	    personElements.forEach(function(personElement) {
-	        var code = personElement.getAttribute('data-code');
-	        var count = parseInt(personElement.querySelector('.txt_num').textContent, 10);
-	        reservationData.peopleCounts[code] = count;
-	    });
-
-	    // PersonSeatSummeryTotalPrice 값을 totalPrice에 추가하는 코드
-	    var totalPriceElement = document.querySelector('.PersonSeatSummeryTotalPrice');
-	    reservationData.totalPrice = parseInt(totalPriceElement.textContent, 10);
-	    
-	    console.log(reservationData);
-	    
-	    }
-	}
+	// 행과 열의 개수 설정
+	var numRows = "${screenMovieInfo.screen_line}"; // 예시로 5개의 행 사용
+	var numCols = "${screenMovieInfo.screen_row}";
 </script>
-
 <br>
 <div class="wrap_reserve">
 	<h2 class="hidden">예매하기</h2>
 	<div id="PersonSeatHeader" class="section_step_tit">
 		<ul>
-			<li class="step01 prev"><a href="/ticketing/schedule"><strong
-					class="tit"><span>01</span><br>상영시간</strong>
-					<div class="bx_con">
-						<dl>
-							<dt>선택한 영화 제목</dt>
-							<dd>서울의 봄</dd>
-							<dt>선택한 상영관</dt>
-							<dd>산본피트인 7관</dd>
-							<dt>선택한 상영 날짜</dt>
-							<dd>2023-12-18 (월)</dd>
-							<dt>선택한 시간</dt>
-							<dd>15:10 ~ 17:41</dd>
-						</dl>
-					</div></a></li>
+			<li class="step01 prev"><a href="/ticketing/schedule"> <strong
+					class="tit"> <span>01</span> <br>상영시간
+				</strong>
+			</a></li>
 			<li class="step02 active"><a href="#reserveStep02"> <strong
-					class="tit"><span>02</span><br>인원/좌석</strong>
-					<div class="bx_con">
-						<dl>
-							<dt>선택한 인원</dt>
-							<dd>
-								<span id="preview_person_info">성인</span>
-							</dd>
-							<dt>선택한 좌석</dt>
-							<dd class="seat_list">
-								<span id="preview_seat_info">a01</span>
-							</dd>
-						</dl>
-					</div></a></li>
-			<li class="step03"><a style="cursor: default;"><strong
-					class="tit"><span>03</span><br>결제</strong>
-					<div class="bx_con">
-						<dl>
-							<dt>티켓금액</dt>
-							<dd>0원</dd>
-							<dt>할인금액</dt>
-							<dd>0원</dd>
-							<dt>총합계</dt>
-							<dd>0원</dd>
-						</dl>
-					</div></a></li>
-			<li><a style="cursor: default;"><strong class="tit"><span>04</span><br>결제완료</strong></a></li>
+					class="tit"> <span>02</span> <br>인원/좌석
+				</strong>
+			</a></li>
+			<li class="step03"><a style="cursor: default;"> <strong
+					class="tit"> <span>03</span> <br>결제
+				</strong>
+			</a></li>
+			<li><a style="cursor: default;"> <strong class="tit">
+						<span>04</span> <br>결제완료
+				</strong>
+			</a></li>
 		</ul>
 	</div>
 
@@ -339,21 +58,41 @@
 						<h5 class="hidden">인원선택</h5>
 						<div class="movie_infor">
 							<h6 class="hidden">예매 정보</h6>
-							
-							<span class="thm"><img
-								src="https://cf.lottecinema.co.kr//Media/MovieFile/MovieImg/202311/20443_103_1.jpg"></span>
+
+							<span class="thm"> <!-- 영화이미지 --> <img
+								src="${screenMovieInfo.movie_image}">
+							</span>
 							<div class="group_infor">
 								<div class="bx_tit">
-									<span class="ic_grade gr_12">관람가</span> <strong>서울의 봄
-										(2D)</strong>
+									<c:choose>
+										<c:when
+											test="${screenMovieInfo.movie_audience_rating eq '전체'}">
+											<span class="ic_grade gr_all">전체 관람가</span>
+										</c:when>
+										<c:when
+											test="${screenMovieInfo.movie_audience_rating eq '12세'}">
+											<span class="ic_grade gr_12">12세 관람가</span>
+										</c:when>
+										<c:when
+											test="${screenMovieInfo.movie_audience_rating eq '15세'}">
+											<span class="ic_grade gr_15">15세 관람가</span>
+										</c:when>
+										<c:when
+											test="${screenMovieInfo.movie_audience_rating eq '18세'}">
+											<span class="ic_grade gr_18">18세 관람가</span>
+										</c:when>
+									</c:choose>
+									<strong>${screenMovieInfo.movie_name}</strong>
 								</div>
 								<dl>
 									<dt>일시</dt>
-									<dd class="sub_info1">
-										23.12.18<em>(월)</em> <span class="time">15:10 ~ 17:41</span>
+									<dd class="sub_info1">${screenMovieInfo.formatted_date}
+										<span class="time">${screenMovieInfo.formatted_time} ~
+											${screenMovieInfo.result_time}</span>
 									</dd>
 									<dt>영화관</dt>
-									<dd class="sub_info1">산본피트인 · 7관</dd>
+									<dd class="sub_info1">${screenMovieInfo.branch_name}·
+										${screenMovieInfo.screen_location}</dd>
 								</dl>
 							</div>
 						</div>
@@ -362,21 +101,21 @@
 							<h6 class="hidden">인원선택</h6>
 							<ul>
 								<li id="person_10" data-code="10" data-peple="성인" data-count="0"
-									value="12000"><strong class="tit">성인</strong> <span
+									><strong class="tit">성인</strong> <span
 									class="bx_num">
 										<button class="btn_mins" id="Minus|10">감소</button>
 										<div class="txt_num">0</div>
 										<button class="btn_plus" id="Plus|10">증가</button>
 								</span></li>
 								<li id="person_20" data-code="20" data-peple="청소년"
-									data-count="0" value="10000"><strong class="tit">청소년</strong>
+									data-count="0"><strong class="tit">청소년</strong>
 									<span class="bx_num">
 										<button class="btn_mins" id="Minus|20">감소</button>
 										<div class="txt_num">0</div>
 										<button class="btn_plus" id="Plus|20">증가</button>
 								</span></li>
 								<li id="person_12" data-code="12" data-peple="경로" data-count="0"
-									value="7000"><strong class="tit">경로</strong> <spanselectedlist
+									><strong class="tit">경로</strong> <span
 									class="bx_num">
 										<button class="btn_mins" id="Minus|12">감소</button>
 										<div class="txt_num">0</div>
@@ -398,8 +137,7 @@
 						<article class="mseat_wrap">
 							<div class="mseat_inner">
 
-								<div
-									class="mCustomScrollbar _mCS_1 mCS-autoHide mCS_no_scrollbar"
+								<div class="mCustomScrollbar _mCS_1 mCS-autoHide mCS_no_scrollbar"
 									data-mcs-theme="minimal-dark"
 									style="position: relative; overflow: visible; height: 470px;">
 									<div id="mCSB_1"
@@ -409,32 +147,29 @@
 											class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y"
 											style="position: relative; top: 0; left: 0;" dir="ltr">
 											<div class="meat_door_pos" id="scrollWrap">
-												<div class="mseat_hidden">
 
-													<span class="title_screen1">SCREEN</span>
+												<span class="title_screen1">SCREEN</span>
 
-													<div class="showMap">
-														<div class="floor_bx seatSet1">
-															<span class="floor_tit" style="display: none;">10F</span>
-															<div class="seat_area"
-																style="margin-top: 50px; width: 473px; height: 358px;">
-																<!-- HTML -->
-																<div class="seat-container">
-																
-																	<!-- 좌석 생성을 위한 컨테이너 -->
-																</div>
-																<div class="seat_btm_box">
-																	<div class="seat_type_box">
-																		<div class="top_info">
-																			<span class="seat_type1">선택좌석</span> <span
-																				class="seat_type2">선택가능</span> <span
-																				class="seat_type3">예매완료</span> <span
-																				class="seat_type4">선택불가</span>
-																		</div>
+												<div class="showMap">
+													<div class="floor_bx seatSet1">
+														<span class="floor_tit" style="display: none;">10F</span>
+														<div class="seat_area">
+															<!-- HTML -->
+															<div class="seat-container">
+																  <div id="myContainer">
+															        <!-- 여기에 좌석이 생성됩니다. -->
+															      </div>
+															</div>
+															<div class="seat_btm_box">
+																<div class="seat_type_box">
+																	<div class="top_info">
+																		<span class="seat_type1">선택좌석</span> <span
+																			class="seat_type2">선택가능</span> <span
+																			class="seat_type3">예매완료</span> <span
+																			class="seat_type4">선택불가</span>
 																	</div>
 																</div>
 															</div>
-
 														</div>
 													</div>
 												</div>
@@ -451,22 +186,12 @@
 												</div>
 											</div>
 										</div>
-
-										<div class="notice_box" style="display: none;">
-											<h6 class="tit_info">이용안내</h6>
-											<ul class="list_txt ty3">
-												<li>12세 미만의 고객님(영,유아 포함)은 부모님 또는 보호자를 동반하여도 관람이 불가합니다.</li>
-												<li>영화 관람 시, 신분증을 지참하여 주시기 바랍니다.</li>
-											</ul>
-										</div>
 									</div>
 								</div>
 							</div>
 						</article>
 					</div>
-
 				</div>
-
 				<div id="PersonSeatSummery">
 					<div class="select_seat_result">
 						<div class="group_lft">
@@ -487,20 +212,14 @@
 			</div>
 		</div>
 	</div>
-	
 
 	<div id="reserveStep03" class="section_step_con step03 ">
 		<h3 class="hidden">결제</h3>
-
 	</div>
-
-
 
 	<div id="reserveStep04" class="section_step_con step04 ">
 		<h3 class="hidden">결제완료</h3>
-
 	</div>
-
 </div>
 <br>
 

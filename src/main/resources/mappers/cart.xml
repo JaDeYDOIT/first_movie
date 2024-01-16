@@ -18,16 +18,8 @@
 		ON PD.product_id = CPD.product_id AND CPD.member_id = #{member_id}
 	</select>
 
-	<!-- 장바구니 삭제  -->
 	<delete id="delete" parameterType="int">
 		DELETE FROM cart_payment_detail
 		WHERE payment_detail_id=#{payment_detail_id}
 	</delete>
-	
-	<!-- 장바구니 개수 -->
-	<select id="cartcnt" resultType="int" parameterType="String">
-		SELECT count(product_id)
-		FROM cart_payment_detail
-		WHERE member_id = #{member_id}
-	</select>
 </mapper>

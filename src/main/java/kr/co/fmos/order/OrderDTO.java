@@ -1,19 +1,18 @@
 package kr.co.fmos.order;
 
-import kr.co.fmos.cart.CartDTO;
+import kr.co.fmos.member.MemberDTO;
 
-public class OrderDTO extends CartDTO{
+public class OrderDTO extends MemberDTO{
+	private int cart_payment_id;			//INT UNSIGNED  AUTO_INCREMENT PRIMARY KEY	NOT NULL,
+	private String member_id;				//VARCHAR(30)	NOT NULL	COMMENT 
+	private String cart_payment_datetime;	//DATETIME		NOT NULL,
+	private int cart_payment_method;		//TINYINT 		UNSIGNED	NOT NULL	DEFAULT CURRENT_TIMESTAMP
+	private String cart_payment_status;		//VARCHAR(30)	NOT NULL	COMMENT
 	
-	private String cart_payment_id;		//VARCHAR(30)   PRIMARY KEY	NOT NULL,
-	private String member_id;			//VARCHAR(30)	NOT NULL	COMMENT 최대15글자,
-	private long payment_datetime;		//DATETIME		NOT NULL	DEFAULT CURRENT_TIMESTAMP,
-	private int payment_method;			//TINYINT 		UNSIGNED	NOT NULL	COMMENT 0: 카드결제, 1: 카카오페이,
-	private String payment_status;		//TINYINT 		UNSIGNED	NOT NULL	DEFAULT 0	COMMENT 0: 결제완료, 1: 환불
-	
-	public String getCart_payment_id() {
+	public int getCart_payment_id() {
 		return cart_payment_id;
 	}
-	public void setCart_payment_id(String cart_payment_id) {
+	public void setCart_payment_id(int cart_payment_id) {
 		this.cart_payment_id = cart_payment_id;
 	}
 	public String getMember_id() {
@@ -22,28 +21,29 @@ public class OrderDTO extends CartDTO{
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
-	public long getPayment_datetime() {
-		return payment_datetime;
+	public String getCart_payment_datetime() {
+		return cart_payment_datetime;
 	}
-	public void setPayment_datetime(long payment_datetime) {
-		this.payment_datetime = payment_datetime;
+	public void setCart_payment_datetime(String cart_payment_datetime) {
+		this.cart_payment_datetime = cart_payment_datetime;
 	}
-	public int getPayment_method() {
-		return payment_method;
+	public int getCart_payment_method() {
+		return cart_payment_method;
 	}
-	public void setPayment_method(int payment_method) {
-		this.payment_method = payment_method;
+	public void setCart_payment_method(int cart_payment_method) {
+		this.cart_payment_method = cart_payment_method;
 	}
-	public String getPayment_status() {
-		return payment_status;
+	public String getCart_payment_status() {
+		return cart_payment_status;
 	}
-	public void setPayment_status(String payment_status) {
-		this.payment_status = payment_status;
+	public void setCart_payment_status(String cart_payment_status) {
+		this.cart_payment_status = cart_payment_status;
 	}
 	
 	@Override
 	public String toString() {
-		return "OrderDTO [cart_payment_id=" + cart_payment_id + ", member_id=" + member_id + ", payment_datetime="
-				+ payment_datetime + ", payment_method=" + payment_method + ", payment_status=" + payment_status + "]";
+		return "OrderDTO [cart_payment_id=" + cart_payment_id + ", member_id=" + member_id + ", cart_payment_datetime="
+				+ cart_payment_datetime + ", cart_payment_method=" + cart_payment_method + ", cart_payment_status="
+				+ cart_payment_status + "]";
 	}
 }//class end

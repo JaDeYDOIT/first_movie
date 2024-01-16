@@ -77,18 +77,13 @@
 	 		<div class="headtext">비밀번호</div>
 	 		<input type="password" class="reservation" name="rental_inquiry_pw" id="rental_inquiry_pw">
  		</div>
- 		<select id="branchselectbox" class="dependent-select">
- 			<option value="0">지점선택</option>
- 		</select>
- 		<select id="screenselectbox" class="dependent-select">
- 			<option>상영관 선택</option>
- 		</select>
- 		</td>
- 	</tr>
+ 		
+ 	</div>
  	<div class="button_wrap">
 		<input type="submit" value="등록하기"> 	
 		<input type="button" value="취소하기" onclick="goBack()">
 	</div>
+	
 </form>
 <script>
 
@@ -96,7 +91,7 @@ $("#regionselectbox").change(
 		function() {
 			var region_id = $('#regionselectbox').val();
 				$.ajax({
-					url : '/customer/regionselectbox.do',
+					url : '/customer/branchselectbox.do',
 					type : 'post',
 					data : {
 						'region_id' : region_id
@@ -107,11 +102,10 @@ $("#regionselectbox").change(
 					success : function(result) {
 						 $("#branchselectbox").empty();
 						 $("#branchselectbox").append($('<option>', {
-							 value: 0,
 							 text: '지점선택'
 						 }));
 				            // 서버에서 전송한 객체의 'screenajaxlist' 프로퍼티에 접근합니다.
-				            $.each(result.checkList, function(index, value) {
+				            $.each(result.regionselectbox, function(index, value) {
 				                // 각각의 값에 대한 옵션을 생성하고 추가합니다.
 				                $("#branchselectbox").append($('<option>', {
 				                    value: value.branch_id,
@@ -142,9 +136,7 @@ $("#branchselectbox").change(
 						 $("#screenselectbox").append($('<option>', {
 							 text: '상영관 선택'
 						 }));
-				            // 서버에서 전송한 객체의 'screenajaxlist' 프로퍼티에 접근합니다.
 				            $.each(result.screenselectbox, function(index, value) {
-				                // 각각의 값에 대한 옵션을 생성하고 추가합니다.
 				                $("#screenselectbox").append($('<option>', {
 				                    value: value.screen_id,
 				                    text: value.screen_location
@@ -175,7 +167,7 @@ $("#screenselectbox").change(
 							 text: '영화선택'
 						 }));
 				            // 서버에서 전송한 객체의 'screenajaxlist' 프로퍼티에 접근합니다.
-				            $.each(result.screenselectbox, function(index, value) {
+				            $.each(result.movieselectbox, function(index, value) {
 				                // 각각의 값에 대한 옵션을 생성하고 추가합니다.
 				                $("#movieselectbox").append($('<option>', {
 				                    value: value.movie_id,
@@ -234,9 +226,6 @@ var plainText = tempDiv.textContent || tempDiv.innerText;
 var withoutPTags = plainText.replace(/<p>/g, '').replace(/<\/p>/g, '');
 
 	
-=======
-
->>>>>>> 050e549eb5cbdafeaaf62171395abc442624a84a
 function goBack() {
 	window.location.href = "/customer/notice.do?notice_kind=0";
 }
@@ -252,7 +241,6 @@ function rentalcheck(){
       alert("아이디는 4~15 글자로 작성해주세요");
       return false;
     }
-    
 }
 </script>
 <%@ include file="../footer.jsp" %>

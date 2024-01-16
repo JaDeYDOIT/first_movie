@@ -5,25 +5,21 @@ ver : 1.00
 ver : 1.01 20191219 2502 line > íŒì—…ë©”ë‰´ ê³ ì •ë†’ì´ê°’ ì‚­ì œ
 ============================== */
 
-<<<<<<< HEAD
-#myContainer{
-	text-align: center;
-	margin-right: 30px;
-}
 
-=======
->>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
+
 
 .seat-container {
-	margin-left: 40px;
+    margin: 10% auto 0 auto;
+    width: auto;
 }
 
 .row-gap {
-	
 	display: block;
 	height: 16px;
-	/* 행 간격 조절 */
+	width:100% 
+		/* 행 간격 조절 */
 }
+
 
 .col-gap {
 	display: inline-block;
@@ -39,15 +35,15 @@ ver : 1.01 20191219 2502 line > íŒì—…ë©”ë‰´ ê³ ì •ë†�
 /* 추가된 스타일: 행 레이블 스타일 */
 .row-label {
 	display: inline-block;
+	width: 20px;
 	/* 행 레이블 너비 조절 */
 	text-align: right;
 	/* 행 레이블을 오른쪽 정렬 */
-	margin-right: 30px;
+	margin-right: 31px;
 	/* 행 레이블과 좌석 간격 조절 */
 }
 
 /* íŒì—… : ì”¨ì¸„ ì œê³µë™ì˜ ============================== */
-
 
 
 .layer_wrap.layer_movie_grade {
@@ -9403,9 +9399,8 @@ label.lab_txt .tit_lab {
 	height: 18px
 }
 
-.mseat_inner .title_screen1+.floor_bx {
-	margin-top: 15px;
-	padding-top: 0;
+ .showMap .floor_bx {
+	width: 100%;
 }
 
 .mseat_inner .floor_bx {
@@ -9434,7 +9429,9 @@ label.lab_txt .tit_lab {
 
 .mseat_inner .floor_bx .seat_area {
 	position: relative;
-	margin: 10px auto 0;
+	width: 46%;
+	margin: 0 auto;
+
 }
 
 .mseat_inner .floor_bx .seat_area .sel {
@@ -9813,11 +9810,12 @@ label.lab_txt .tit_lab {
 
 .seat_btm_box .seat_type_box {
 	float: left;
-	width: 615px;
+	width: 382px;
 }
 
 .seat_btm_box .seat_type_box .top_info {
 	margin-bottom: 15px;
+	margin-left: 60px;
 	
 }
 
@@ -16737,7 +16735,8 @@ dl.total_price dd strong {
 
 .select_num_people_wrap .movie_infor .group_infor .bx_tit {
 	display: block;
-	margin-bottom: 10px;
+	margin-bottom: 8px;
+	margin-inline-start: 3px;
 }
 
 .select_num_people_wrap .movie_infor .group_infor .bx_tit .ic_grade {
@@ -16767,12 +16766,14 @@ dl.total_price dd strong {
 	text-overflow: ellipsis;
 	margin-bottom: 5px;
 	font-size: 11px;
+	margin-inline-start: 3px;
+	font-weight: 500;
 }
 
 .select_num_people_wrap .movie_infor .group_infor dl dd.sub_info1 .time {
 	position: relative;
-	padding-left: 9px;
-	margin-left: 10px;
+	padding-left: 11px;
+	margin-left: 9px;
 }
 
 .select_num_people_wrap .movie_infor .group_infor dl dd.sub_info1 .time:before {
@@ -22643,7 +22644,7 @@ select.ty5~select.ty5 {
 }
 
 .seat_btm_box .seat_type_box {
-	width: 690px;
+	width: 382px;
 }
 
 /* íŒì—… : ì¢Œì„ì•ˆë‚´ */

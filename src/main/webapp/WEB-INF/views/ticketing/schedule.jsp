@@ -23,10 +23,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="/js/ticketing_schedule.js"></script>
-
 </head>
-
-
 
 <body>
 	<div id="loading" class="loader loader-bouncing is-active hidden"></div>
@@ -91,7 +88,6 @@
 								<li class="movieID disabled" data-movieid="${movie.movie_id}"><a
 									href="#none">
 										<div class="bx_thm">
-											<span class="rank"><span class="hidden">순위</span><strong>${movie.movie_rank}</strong></span><img
 												src="${movie.movie_image}" alt="포스터" class="mCS_img_loaded">
 										</div>
 										<div class="group_infor">

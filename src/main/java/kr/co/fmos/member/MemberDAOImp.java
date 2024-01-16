@@ -1,5 +1,7 @@
 package kr.co.fmos.member;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -54,4 +56,13 @@ public class MemberDAOImp implements MemberDAO {
 	public MemberDTO selectMemberById(String memberId) {
 		return sqlSession.selectOne("member.selectMemberById", memberId);
 	}// selectMemberById() end
+	
+	public int logincussesscheck(Map<String, String> map) {
+		return sqlSession.selectOne("member.logincussesscheck", map);
+	}//totalamount() end
+	
+	public int loginfailcheck(String member_id) {
+		return sqlSession.selectOne("member.loginfailcheck", member_id);
+	}//totalamount() end
+
 }

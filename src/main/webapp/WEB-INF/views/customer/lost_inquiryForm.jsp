@@ -4,53 +4,123 @@
 <link rel="stylesheet" href="/css/customer/notice.css" />
 
 <!-- include libraries(jQuery, bootstrap) -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-<!-- include summernote css/js -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
 
 <form name="noticefm" method="post" action="/customer/noticeinsert.do">
+<div id="mtebox">
  	<div class="text">
     <div class="form-section">
-        <label for="notice_type">문의유형</label>
-        <select name="notice_type" id="notice_type">
-            <option value="영화관이용관련">영화관이용관련</option>
-            <option value="대관문의관련">대관문의관련</option>
-            <option value="결제관련">결제관련</option>
-        </select>
+        <div class="inquire_title_test">상영관</div>
+ 		<select id="inquire_region" class="inquire_inputbox" name="rental_inquiry_area">
+	 			<option value="0">상영관 선택</option>
+ 			<c:forEach items="${region_customer}" var="list">
+				<option value="${list.region_id}">${list.region}</option> 
+			</c:forEach>
+ 		</select>
+ 		<select id="inquire_screen" class="inquire_inputbox" name="rental_inquiry_area">
+	 			<option value="0">지점선택</option>
+ 		</select>
     </div>
-    
-    <div class="form-section">
-        <label for="notice_title">제목</label><br>
-        <input type="text" class="titleinp" name="notice_title" id="notice_title">
-    </div>
+    	<div class="form-section">
+	    	<span class="inquire_title_test">제목</span><br>
+	        <input type="text" class="titleinp" name="inquire_title" id="inquire_title">
+	    </div>
 
-    <div class="form-section">
-        <label for="editordata">문의내용</label>
-        <div class="container">
-            <textarea class="summernote" name="editordata" id="editordata"></textarea>
-        </div>
+    	<div class="form-section">
+	        <span class="inquire_title_test">내용</span>
+	        <div class="container">
+	          <textarea class="summernote" name="inquire_content" id="inquire_content"></textarea>
+	    </div>
+	    
+        <div class="form-section">
+		    <span class="inquire_title_test">비밀번호</span>
+		    <input type="password" name="inquire_password" id="inquire_password">
+	    </div>
+	    
+        <div class="form-section">
+		     <span class="inquire_title_test">파일첨부</span>
+		     <input type="file" name="inquire_file" id="inquire_file">
+	    </div>
+	        
         <script>
-            $('.summernote').summernote({
-                height: 150,
-                lang: "ko-KR"
-            });
+        $('.summernote').summernote({
+      	  // 에디터 높이
+      	  height: 300,
+      	  width: 700,
+      	  // 에디터 한글 설정
+      	  lang: "ko-KR",
+      	  // 에디터에 커서 이동 (input창의 autofocus라고 생각하시면 됩니다.)
+      	  focus : true,
+      	  toolbar: [
+      		    // 글꼴 설정
+      		    ['fontname', ['fontname']],
+      		    // 글자 크기 설정
+      		    ['fontsize', ['fontsize']],
+      		    // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
+      		    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+      		    // 글자색
+      		    ['color', ['forecolor','color']],
+      		    // 표만들기
+      		    ['table', ['table']],
+      		    // 글머리 기호, 번호매기기, 문단정렬
+      		    ['para', ['ul', 'ol', 'paragraph']],
+      		    // 줄간격
+      		    ['height', ['height']],
+      		    // 그림첨부, 링크만들기, 동영상첨부
+      		    ['insert',['picture','link','video']],
+      		    // 코드보기, 확대해서보기, 도움말
+      		    ['view', ['codeview','fullscreen', 'help']]
+      		  ],
+      		  // 추가한 글꼴
+      		fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'],
+      		 // 추가한 폰트사이즈
+      		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
+      	});
         </script>
     </div>
+</div>
 </div>
  	<div class="button_wrap">
 		<input type="submit" value="등록하기"> 	
 		<input type="button" value="취소하기" onclick="goBack()">
 	</div>
+
 </form>
 	<script>
         function goBack() {
         	window.location.href = "/customer/notice.do?notice_kind=0";
         }
+        
+        $("#inquire_region").change(
+        		function() {
+        			var region_id = $('#inquire_region').val();
+        				$.ajax({
+        					url : '/customer/branchselectbox.do',
+        					type : 'post',
+        					data : {
+        						'region_id' : region_id
+        					},
+        					error : function(error) {
+        						alert(error);
+        					},
+        					success : function(result) {
+        						 $("#inquire_screen").empty();
+        						 $("#inquire_screen").append($('<option>', {
+        							 text: '지점선택'
+        						 }));
+        				            // 서버에서 전송한 객체의 'screenajaxlist' 프로퍼티에 접근합니다.
+        				            $.each(result.regionselectbox, function(index, value) {
+        				                // 각각의 값에 대한 옵션을 생성하고 추가합니다.
+        				                $("#inquire_screen").append($('<option>', {
+        				                    value: value.branch_id,
+        				                    text: value.branch_name
+        				                }));
+        				            });
+        			            // #screen_id의 옵션을 갱신합니다.
+        			            $("#inquire_screen").html(options);
+        			        }
+        				}); // ajax() end
+        		}// function() end 
+        ); // change function end
     </script>
 <%@ include file="../footer.jsp" %>
 
