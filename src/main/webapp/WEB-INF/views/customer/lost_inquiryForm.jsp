@@ -9,6 +9,7 @@
 <div id="mtebox">
  	<div class="text">
     <div class="form-section">
+<<<<<<< HEAD
         <div class="inquire_title_test">상영관</div>
  		<select id="inquire_region" class="inquire_inputbox" name="rental_inquiry_area">
 	 			<option value="0">상영관 선택</option>
@@ -19,6 +20,18 @@
  		<select id="inquire_screen" class="inquire_inputbox" name="rental_inquiry_area">
 	 			<option value="0">지점선택</option>
  		</select>
+=======
+        <label for="notice_type">문의유형</label>
+        <select name="notice_type" id="notice_type">
+            <option value="영화관이용관련">영화관이용관련</option>
+            <option value="대관문의관련">대관문의관련</option>
+            <option value="결제관련">결제관련</option>
+        </select>
+    </div>
+    <div class="form-section">
+        <label for="notice_title">제목</label><br>
+        <input type="text" class="titleinp" name="notice_title" id="notice_title">
+>>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
     </div>
     	<div class="form-section">
 	    	<span class="inquire_title_test">제목</span><br>

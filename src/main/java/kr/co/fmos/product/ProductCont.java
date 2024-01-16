@@ -25,12 +25,52 @@ public class ProductCont {
 	
 	@RequestMapping("/list.do")
 	public ModelAndView list(HttpSession session) {
+<<<<<<< HEAD
+=======
+		String s_id = (String)session.getAttribute("s_id");
+		//System.out.println(s_id);
+>>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("product/list");
 		mav.addObject("list", productDao.list());
 		return mav;
 	}//list() end
 	
+<<<<<<< HEAD
+=======
+	/* write 페이지 만들 때 필요 */
+	@GetMapping("/write.do") 
+	public String write(HttpSession session) { 
+	   String s_id = (String)session.getAttribute("s_id");
+	   //System.out.println(s_id);
+	   return "product/write";
+	}//write() end
+	 
+	
+	@PostMapping("/insert.do") 
+	public String insert(@RequestParam Map<String, Object> map, 
+						 @RequestParam MultipartFile img,
+						 HttpServletRequest req) {
+		String product_image = "-";
+		if(img != null && !img.isEmpty()) {
+			product_image = img.getOriginalFilename();
+		 try {
+			ServletContext application = req.getSession().getServletContext();
+			String path = application.getRealPath("/storage");//실제 물리적 경로
+			img.transferTo(new File(path + "\\" + product_image)); //파일 저장
+		 } catch (Exception e) {
+			System.out.println(e);
+		 }//try end
+		 
+		}//if end
+		map.put("product_image", product_image);
+		
+		productDao.insert(map);
+		return "redirect:/product/list.do";
+	}//insert() end
+
+	
+>>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
 	@GetMapping("/category.do")
 	//public ModelAndView category(int product_category_id) { //--->이렇게 하면 에러남 Name for argument of type [int] not specified
 	public ModelAndView category(HttpServletRequest req) {

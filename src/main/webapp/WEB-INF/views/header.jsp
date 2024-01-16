@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.Date" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -92,7 +91,11 @@
                 <div class="nav_bottom">
                     <ul class="nav_wrap">
                         <li><a href="/movie/list.do">영화</a></li>
+<<<<<<< HEAD
                         <li><a href="/theater/branchlist.do?region_id=region_001&branch_id=1">극장</a></li>
+=======
+                        <li><a href="/theater/branchlist.do?region_id=1&branch_id=1">극장</a></li>
+>>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
                         <li><a href="/ticketing/schedule" style="color:rgb(0, 128, 255);">예매</a></li>
                         <li><a href="/product/list.do">스토어</a></li>
                         <li><a href="#">이벤트</a></li>

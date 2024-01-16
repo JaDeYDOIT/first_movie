@@ -49,7 +49,6 @@ public class MovieDTO extends MoviegenreDTO{
 	public void setMovie_audience_rating(String movie_audience_rating) {
 		this.movie_audience_rating = movie_audience_rating;
 	}
-	
 	public String getMovie_image() {
 		return movie_image;
 	}
@@ -74,5 +73,6 @@ public class MovieDTO extends MoviegenreDTO{
 	public void setActor_name(String actor_name) {
 		this.actor_name = actor_name;
 	}
+	
 	
 }

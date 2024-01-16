@@ -25,6 +25,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="/js/ticketing_orderSettlement.js"></script>
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 </head>
 
 <body>
@@ -34,8 +35,14 @@
 			<ul>
 				<li class="step01 prev"><a href="/ticketing/schedule"><strong
 						class="tit"><span>01</span><br>상영시간</strong> </a></li>
+<<<<<<< HEAD
 				<li class="step02 prev"><a href="/ticketing/personseat"><strong
 						class="tit"><span>02</span><br>인원/좌석</strong> </a></li>
+=======
+				<li class="step02 prev"><a
+					href="javascript:window.history.back();"><strong class="tit"><span>02</span><br>인원/좌석</strong>
+				</a></li>
+>>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
 				<li class="step03 active"><a href="#"><strong class="tit"><span>03</span><br>결제</strong>
 				</a></li>
 				<li><a href="#" style="cursor: default;"><strong
@@ -55,6 +62,7 @@
 					<h4 class="tit">예매정보</h4>
 				</div>
 				<div class="inner">
+<<<<<<< HEAD
 					<div class="movie_infor new2020">
 						<span class="thm"><img
 							src="https://cf.lottecinema.co.kr//Media/MovieFile/MovieImg/202312/20492_104_1.jpg"></span><strong
@@ -71,11 +79,14 @@
 							<dd>성인1</dd>
 						</dl>
 					</div>
+=======
+					<div class="movie_infor new2020"></div>
+>>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
 					<div class="seat_infor">
 						<dl class="dlist_infor">
 							<dt>좌석</dt>
 							<dd>
-								<strong>A4</strong>
+								<strong></strong>
 							</dd>
 						</dl>
 					</div>
@@ -91,8 +102,12 @@
 						<div class="wrap_coupon">
 							<button class="btn_coupon">쿠폰 사용하기</button>
 							<div class="wrap_selected_coupon" style="display: none;">
+<<<<<<< HEAD
 								<button type="button" class="btn_close" onclick="cancelCoupon()">팝업
 									닫기</button>
+=======
+								<button type="button" class="btn_close">팝업 닫기</button>
+>>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
 								<div class="coupon_name">(쿠폰명)</div>
 								<dl>
 									<dd class="period">(사용기간)</dd>
@@ -100,7 +115,11 @@
 							</div>
 						</div>
 						<h3 class="tit_payment">포인트</h3>
+<<<<<<< HEAD
 						<div class="remain_point">잔여 포인트 : 1000</div>
+=======
+						<div class="remain_point">잔여 포인트 :</div>
+>>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
 						<input class="point_amount" type="number" placeholder="사용할 포인트 입력">
 					</div>
 					<div class="group_payment">
@@ -259,7 +278,11 @@
 						<dl>
 							<dt>상품금액</dt>
 							<dd class="price">
+<<<<<<< HEAD
 								<strong>18,000</strong>원
+=======
+								<strong></strong>원
+>>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
 							</dd>
 						</dl>
 						<dl>
@@ -271,15 +294,26 @@
 						<dl>
 							<dt>결제금액</dt>
 							<dd class="total_price">
+<<<<<<< HEAD
 								총<strong>18,000</strong>원
 							</dd>
 						</dl>
 						<a href="/ticketing/paysuccess" class="btn_col1 btn_confirm pay_button disabled">결제하기</a>
+=======
+								총<strong></strong>원
+							</dd>
+						</dl>
+
+						<a class="btn_col1 btn_confirm pay_button disabled"
+							onclick="requestPay()">결제하기</a>
+						<script src="/js/main.js"></script>
+
+>>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
 					</div>
 				</div>
 			</div>
 			<div id="layerDiscountCoupon"
-				class="layer_wrap layer_discount_Coupon active">
+				class="layer_wrap layer_discount_Coupon">
 				<strong class="hidden">레이어 팝업 시작</strong>
 				<div class="layer_header">
 					<h1 class="tit" id="popup_discount_title_A300">쿠폰</h1>
@@ -333,7 +367,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="dim ty2" style="position: fixed;"></div>
+		<div class="dim ty2" style="position: fixed; display: none;"></div>
 	</div>
 	<div id="reserveStep04" class="section_step_con step04 ">
 		<h3 class="hidden">결제완료</h3>

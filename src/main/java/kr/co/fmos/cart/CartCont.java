@@ -29,13 +29,17 @@ public class CartCont {
 		//System.out.println(cartDto.getProduct_count());
 		int num = cartDao.cartInsert(cartDto);
 		//System.out.println(num);
+<<<<<<< HEAD
+=======
+		//cartDao.cartcnt("s_id");
+>>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
 		return "redirect:/cart/list.do";
 	}//cartInsert() end
 	
 	@RequestMapping("/list.do")
 	public ModelAndView list(HttpSession session) {
 		String s_id = (String)session.getAttribute("s_id");
-		//System.out.println(s_id);
+		System.out.println(s_id);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("cart/list");
 		mav.addObject("list", cartDao.cartList(s_id));

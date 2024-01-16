@@ -83,6 +83,7 @@
 											<strong class="txt_num">39497442</strong>
 										</dd>
 									</dl>
+<<<<<<< HEAD
 									<dl>
 										<dt>상영일시</dt>
 										<dd>
@@ -134,6 +135,8 @@
 											<dd class="sml last">토스</dd>
 										</dl>
 									</div>
+=======
+>>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
 								</div>
 							</div>
 						</div>
@@ -158,6 +161,7 @@
 			</div>
 		</div>
 	</div>
-	<br>
+</div>
+<br>
 
 <%@ include file="../footer.jsp"%>
