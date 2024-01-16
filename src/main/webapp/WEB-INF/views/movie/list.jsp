@@ -50,10 +50,7 @@
 			<c:forEach items="${list}" var="dto" varStatus="vs">
 				<li class="movie_item">
 					<div class='rank_box'>
-<<<<<<< HEAD
 						<div class='movie_rank'>영화순위 : ${vs.count}</div>
-=======
->>>>>>> 5bb2df2f787c30c5a08182faf4cf192112bb09d5
 						<div class="movie_img">
 							<img src="${dto.movie_image}" alt="영화 이미지">
 							<div class="click_btn">

@@ -118,28 +118,12 @@
                  </c:if>
              </c:if>
              </c:forEach>
-<<<<<<< HEAD
-=======
-                     <button id="delete" onclick="return screendelete(${screen.branch_id})">삭제</button>
->>>>>>> 5bb2df2f787c30c5a08182faf4cf192112bb09d5
             </li>
          </ul>
       </c:forEach>
    </div> 
 
-<<<<<<< HEAD
 
-=======
-	<script>
-	function screendelete(branch_id) {
-	    alert(branch_id);
-	    if (confirm("해당 상영관을 삭제할까요??")) {
-	        alert(branch_id);
-	        location.href = "/theater/delete.do";
-	    }// if end
-	}// screendelete() end
-	</script>
->>>>>>> 5bb2df2f787c30c5a08182faf4cf192112bb09d5
 	<!-- 극장상영시간표 끝 -->
 	
 <%@ include file="../footer.jsp"%>

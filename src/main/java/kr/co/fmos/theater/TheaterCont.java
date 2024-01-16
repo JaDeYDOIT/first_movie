@@ -96,10 +96,6 @@ public class TheaterCont {
 	@PostMapping("/writelist.do")
 	@ResponseBody
 	public Map<String, Object> writeajaxlist(int movie_id) {
-<<<<<<< HEAD
-=======
-		System.out.println(movie_id);
->>>>>>> 5bb2df2f787c30c5a08182faf4cf192112bb09d5
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("writeajaxlist", theaterdao.writeajaxlist(movie_id));
 		return map;
@@ -130,10 +126,6 @@ public class TheaterCont {
 		map.put("branch_id", branch_id);
 		map.put("movie_showing_date", movie_showing_date);
 		map.put("movie_showing_time", movie_showing_time);
-<<<<<<< HEAD
-=======
-		System.out.println(map.toString());
->>>>>>> 5bb2df2f787c30c5a08182faf4cf192112bb09d5
 
 		int cnt = theaterdao.theaterinsert(map);
 

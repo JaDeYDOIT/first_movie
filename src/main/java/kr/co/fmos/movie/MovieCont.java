@@ -40,11 +40,6 @@ public class MovieCont {
 	public ModelAndView list(HttpSession session, String movie_id) {
 		
 		String s_id = (String)session.getAttribute("s_id");
-<<<<<<< HEAD
-=======
-		System.out.println(s_id);
-		System.out.println(123);
->>>>>>> 5bb2df2f787c30c5a08182faf4cf192112bb09d5
 		
 		ModelAndView mav = new ModelAndView();
 
