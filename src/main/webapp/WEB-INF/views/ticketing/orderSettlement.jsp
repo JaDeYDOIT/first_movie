@@ -89,7 +89,7 @@
 						<div class="remain_point">잔여 포인트 :</div>
 						<input class="point_amount" type="number" placeholder="사용할 포인트 입력">
 					</div>
-					<div class="group_payment">
+<!-- 					<div class="group_payment">
 						<h5 class="tit_payment">최종 결제수단</h5>
 						<div class="bx_cate">
 							<ul class="list_pay_item cate6">
@@ -204,7 +204,7 @@
 								</ul>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 			<div class="article article_payment">

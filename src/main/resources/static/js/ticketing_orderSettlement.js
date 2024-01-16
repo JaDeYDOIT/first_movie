@@ -39,10 +39,10 @@ function initialize() {
 	selectCouponName();
 
 	//최종 결제수단
-	handlePaymentButtonClick();
+	//handlePaymentButtonClick();
 
 	//상세 결제수단
-	handlePayItemClick();
+	//handlePayItemClick();
 
 	//약관 동의
 	handleProvisionCheckboxChange();
@@ -463,9 +463,7 @@ function showPaymentWarning() {
 
 	function showPaymentWarningProcess() {
 		const provisionCheckboxes = $('.provision_list input[type="checkbox"]');
-		const payMethodActive = $('.pay_method_list li.active');
-		if (provisionCheckboxes.length === provisionCheckboxes.filter(':checked').length
-			&& payMethodActive.length === 1) {
+		if (provisionCheckboxes.length === provisionCheckboxes.filter(':checked').length) {
 			$('.payment_disabled').text("");
 			$('.pay_button').removeClass("disabled");
 		}
