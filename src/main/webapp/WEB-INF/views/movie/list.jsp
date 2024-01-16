@@ -4,45 +4,20 @@
 <%@ include file="../header.jsp"%>
 <link rel="stylesheet" href="/css/movielist.css">
 
-<script>
-  
-   //페이지 로드 시 호출하여 특정 아이디의 버튼을 활성화 여부를 설정
-    window.onload = function () {
-    	screenInsertInsertButton();
-   };
-   // 특정 아이디를 가진 버튼만 활성화하는 함수
-   function screenInsertInsertButton() {
-      let checkLogin = "${s_id}";
-      let insertButton = document.getElementById("insert_bt");
-      // 특정 아이디가 "fmos"인 경우에만 버튼을 보이고 활성화
-      if (checkLogin === 'fmos' && insertButton) {
-          insertButton.style.visibility = "visible"; // 보이도록 설정
-          insertButton.disabled = false; // 활성화
-        } else if (insertButton) {
-          insertButton.style.visibility = "hidden"; // 감추도록 설정
-          insertButton.disabled = true; // 비활성화
-        }
-    }//enableInsertButton() end
-
-    
-    
-</script>
-
-
 
 <!-- 실컨텐츠 시작 -->
 <div class="movie_chart_wrap">
+	<!-- Heading Map Multi -->
 	<h2>무비차트</h2>
 
 	<div class="submenu">
 		<ul>
-			<li><a href="" onclick="return rankList()" title="선택">예매율순</a></li>
-			<li><a href="">좋아요순</a></li>
-			<button id="insert_bt" disabled="disabled">
+			<li><a href="" title="선택">예매율순</a></li>
+			<li><a href="">평점순</a></li>
+			<div class="insert_bt">
 				<a href="/movie/write.do">영화추가</a>
-			</button>
+			</div>
 		</ul>
-		
 	</div>
 
 	<div class="movie_chart">
@@ -50,7 +25,6 @@
 			<c:forEach items="${list}" var="dto" varStatus="vs">
 				<li class="movie_item">
 					<div class='rank_box'>
-						<div class='movie_rank'>영화순위 : ${vs.count}</div>
 						<div class="movie_img">
 							<img src="${dto.movie_image}" alt="영화 이미지">
 							<div class="click_btn">
@@ -78,6 +52,7 @@ $(".movie_img").mouseover(function(){
 $(".movie_img").mouseout(function(){
 	$(this).find("button").hide()
 })
+
 </script>
 
 

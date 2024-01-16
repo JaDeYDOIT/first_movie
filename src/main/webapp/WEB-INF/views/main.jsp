@@ -83,22 +83,127 @@
                             <div class="swiper-button-next"></div>
                            <div class="chart_cont1 swiper-wrapper">
  
-							<c:forEach items="${movie}" var="movie">
                                <div class="swiper-slide">
+                                
                                    <div class="poster">
-                                       <a href="/movie/detail.do?movie_id=${movie.movie_id }"><img src="${movie.movie_image}" alt="영화 이미지">
-                                       <div class="rank"><strong>${movie.movie_rank}</strong></div>
-                                       </a>
+                                       <figure>
+                                           <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87888/87888_320.jpg" alt="침묵">
+                                       </figure>
+                                       <div class="rank"><strong>1</strong></div>
                                    </div>
                                    <div class="infor">
-                                       <h3><span class="icon all ir_pm">${movie.movie_audience_rating}</span> <strong class="movie_name">${movie.movie_name}</strong></h3>
+                                       <h3><span class="icon all ir_pm">전체관람가</span> <strong>짱구는 못말려</strong></h3>
                                        <div class="infor_btn">
-                                           <a href="/movie/detail.do?movie_id=${movie.movie_id }">상세정보</a>
-                                           <a href="/ticketing/schedule">예매하기</a>
+                                           <a href="#">상세정보</a>
+                                           <a href="/ticketing/schedule.do">예매하기</a>
                                        </div>
                                    </div>
                                </div>
-                             </c:forEach>
+                               <div class="swiper-slide">
+                                   <div class="poster">
+                                       <figure>
+                                           <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87888/87888_320.jpg" alt="신세계">
+                                       </figure>
+                                       <div class="rank"><strong>2</strong></div>
+                                   </div>
+                                   <div class="infor">
+                                       <h3><span class="icon a19 ir_pm">19세 이상 관람</span> <strong>짱구는 못말려</strong></h3>
+                                       <div class="infor_btn">
+                                           <a href="#">상세정보</a>
+                                           <a href="#">예매하기</a>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="swiper-slide">
+                                   <div class="poster">
+                                       <figure>
+                                           <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87888/87888_320.jpg" alt="마스터">
+                                       </figure>
+                                       <div class="rank"><strong>3</strong></div>
+                                   </div>
+                                   <div class="infor">
+                                       <h3><span class="icon a12 ir_pm">12세 이상 관람</span> <strong>짱구는 못말려</strong></h3>
+                                       <div class="infor_btn">
+                                           <a href="#">상세정보</a>
+                                           <a href="#">예매하기</a>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="swiper-slide">
+                                   <div class="poster">
+                                       <figure>
+                                           <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87888/87888_320.jpg" alt="마약왕">
+                                       </figure>
+                                       <div class="rank"><strong>4</strong></div>
+                                   </div>
+                                   <div class="infor">
+                                       <h3><span class="icon a15 ir_pm">15세 이상 관람</span> <strong>짱구는 못말려</strong></h3>
+                                       <div class="infor_btn">
+                                           <a href="#">상세정보</a>
+                                           <a href="#">예매하기</a>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="swiper-slide">
+                                   <div class="poster">
+                                       <figure>
+                                           <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87888/87888_320.jpg" alt="마약왕">
+                                       </figure>
+                                       <div class="rank"><strong>5</strong></div>
+                                   </div>
+                                   <div class="infor">
+                                       <h3><span class="icon a15 ir_pm">15세 이상 관람</span> <strong>짱구는 못말려</strong></h3>
+                                       <div class="infor_btn">
+                                           <a href="#">상세정보</a>
+                                           <a href="#">예매하기</a>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="swiper-slide">
+                                   <div class="poster">
+                                       <figure>
+                                           <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87888/87888_320.jpg" alt="마약왕">
+                                       </figure>
+                                       <div class="rank"><strong>6</strong></div>
+                                   </div>
+                                   <div class="infor">
+                                       <h3><span class="icon a15 ir_pm">15세 이상 관람</span> <strong>짱구는 못말려</strong></h3>
+                                       <div class="infor_btn">
+                                           <a href="#">상세정보</a>
+                                           <a href="#">예매하기</a>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="swiper-slide">
+                                   <div class="poster">
+                                       <figure>
+                                           <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87888/87888_320.jpg" alt="마약왕">
+                                       </figure>
+                                       <div class="rank"><strong>7</strong></div>
+                                   </div>
+                                   <div class="infor">
+                                       <h3><span class="icon a15 ir_pm">15세 이상 관람</span> <strong>짱구는 못말려</strong></h3>
+                                       <div class="infor_btn">
+                                           <a href="#">상세정보</a>
+                                           <a href="#">예매하기</a>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="swiper-slide">
+                                   <div class="poster">
+                                       <figure>
+                                           <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87888/87888_320.jpg" alt="마약왕">
+                                       </figure>
+                                       <div class="rank"><strong>8</strong></div>
+                                   </div>
+                                   <div class="infor">
+                                       <h3><span class="icon a15 ir_pm">15세 이상 관람</span> <strong>짱구는 못말려</strong></h3>
+                                       <div class="infor_btn">
+                                           <a href="#">상세정보</a>
+                                           <a href="#">예매하기</a>
+                                       </div>
+                                   </div>
+                               </div>
                            </div>
                         </div>
                         <!-- //chart_cont1-->
@@ -380,28 +485,25 @@
 <!-- S > 공지사항 & 고객센터 -->
 <section id="notice_wrap">
 	<div class="service_center">
-		<h3>FAQ</h3>
+		<h3>고객센터</h3>
 		<ul>
-			<c:forEach items="${FAQlist}" var="list">
-			<li>${list.notice_title}</li>
-			</c:forEach>
-			
+			<li>글1</li>
+			<li>글2</li>
+			<li>글3</li>
+			<li>글4</li>
 		</ul>
 	</div>
-	<p>
-		<a href="/customer/notice.do?notice_kind=0">더보기</a>
-	</p>
-	
 	<div class="notice">
 		<h3>공지사항</h3>
 		<ul>
-			<c:forEach items="${noticelist}" var="list">
-			<li>${list.notice_title}</li>
-			</c:forEach>
+			<li>글1</li>
+			<li>글2</li>
+			<li>글3</li>
+			<li>글4</li>
 		</ul>
 	</div>
 	<p>
-		<a href="/customer/notice.do?notice_kind=1">더보기</a>
+		<a href="#">더보기</a>
 	</p>
 
 </section>

@@ -78,18 +78,7 @@
 						<div class="wrap_coupon">
 							<button class="btn_coupon">쿠폰 사용하기</button>
 							<div class="wrap_selected_coupon" style="display: none;">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 								<button type="button" class="btn_close">팝업 닫기</button>
-=======
->>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
-=======
-								<button type="button" class="btn_close">팝업 닫기</button>
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
-								<button type="button" class="btn_close">팝업 닫기</button>
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 								<div class="coupon_name">(쿠폰명)</div>
 								<dl>
 									<dd class="period">(사용기간)</dd>
@@ -271,27 +260,11 @@
 								총<strong></strong>원
 							</dd>
 						</dl>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 
 						<a class="btn_col1 btn_confirm pay_button disabled"
 							onclick="requestPay()">결제하기</a>
 						<script src="/js/main.js"></script>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-						<a href="/ticketing/paysuccess" class="btn_col1 btn_confirm">결제하기</a>
->>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
-=======
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 					</div>
 				</div>
 			</div>
