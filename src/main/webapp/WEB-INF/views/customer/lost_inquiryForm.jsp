@@ -9,23 +9,38 @@
 <div id="mtebox">
  	<div class="text">
     <div class="form-section">
-        <label for="notice_type">문의유형</label>
-        <select name="notice_type" id="notice_type">
-            <option value="영화관이용관련">영화관이용관련</option>
-            <option value="대관문의관련">대관문의관련</option>
-            <option value="결제관련">결제관련</option>
-        </select>
+        <div class="inquire_title_test">상영관</div>
+ 		<select id="inquire_region" class="inquire_inputbox" name="rental_inquiry_area">
+	 			<option value="0">상영관 선택</option>
+ 			<c:forEach items="${region_customer}" var="list">
+				<option value="${list.region_id}">${list.region}</option> 
+			</c:forEach>
+ 		</select>
+ 		<select id="inquire_screen" class="inquire_inputbox" name="rental_inquiry_area">
+	 			<option value="0">지점선택</option>
+ 		</select>
     </div>
-    <div class="form-section">
-        <label for="notice_title">제목</label><br>
-        <input type="text" class="titleinp" name="notice_title" id="notice_title">
-    </div>
+    	<div class="form-section">
+	    	<span class="inquire_title_test">제목</span><br>
+	        <input type="text" class="titleinp" name="inquire_title" id="inquire_title">
+	    </div>
 
-    <div class="form-section">
-        <label for="editordata">문의내용</label>
-        <div class="container">
-            <textarea class="summernote" name="editordata" id="editordata"></textarea>
-        </div>
+    	<div class="form-section">
+	        <span class="inquire_title_test">내용</span>
+	        <div class="container">
+	          <textarea class="summernote" name="inquire_content" id="inquire_content"></textarea>
+	    </div>
+	    
+        <div class="form-section">
+		    <span class="inquire_title_test">비밀번호</span>
+		    <input type="password" name="inquire_password" id="inquire_password">
+	    </div>
+	    
+        <div class="form-section">
+		     <span class="inquire_title_test">파일첨부</span>
+		     <input type="file" name="inquire_file" id="inquire_file">
+	    </div>
+	        
         <script>
         $('.summernote').summernote({
       	  // 에디터 높이
@@ -74,6 +89,38 @@
         function goBack() {
         	window.location.href = "/customer/notice.do?notice_kind=0";
         }
+        
+        $("#inquire_region").change(
+        		function() {
+        			var region_id = $('#inquire_region').val();
+        				$.ajax({
+        					url : '/customer/branchselectbox.do',
+        					type : 'post',
+        					data : {
+        						'region_id' : region_id
+        					},
+        					error : function(error) {
+        						alert(error);
+        					},
+        					success : function(result) {
+        						 $("#inquire_screen").empty();
+        						 $("#inquire_screen").append($('<option>', {
+        							 text: '지점선택'
+        						 }));
+        				            // 서버에서 전송한 객체의 'screenajaxlist' 프로퍼티에 접근합니다.
+        				            $.each(result.regionselectbox, function(index, value) {
+        				                // 각각의 값에 대한 옵션을 생성하고 추가합니다.
+        				                $("#inquire_screen").append($('<option>', {
+        				                    value: value.branch_id,
+        				                    text: value.branch_name
+        				                }));
+        				            });
+        			            // #screen_id의 옵션을 갱신합니다.
+        			            $("#inquire_screen").html(options);
+        			        }
+        				}); // ajax() end
+        		}// function() end 
+        ); // change function end
     </script>
 <%@ include file="../footer.jsp" %>
 

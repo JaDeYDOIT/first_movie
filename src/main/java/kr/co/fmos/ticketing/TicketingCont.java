@@ -1,31 +1,24 @@
 package kr.co.fmos.ticketing;
 
-import java.time.format.TextStyle;
-import java.util.Locale;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpSession;
 import kr.co.fmos.coupon.UserHavingCouponDAO;
-import kr.co.fmos.member.MemberDAO;
-import kr.co.fmos.member.MemberDTO;
-import kr.co.fmos.movie.MovieDAO;
-import kr.co.fmos.movie.MovieDTO;
-import kr.co.fmos.payment.PaymentDAO;
-import kr.co.fmos.payment.PaymentDTO;
-import kr.co.fmos.region.RegionDAO;
-import kr.co.fmos.screen.ScreenDAO;
-import kr.co.fmos.screen.ScreenDTO;
+import kr.co.fmos.movie.MovieDAOImp;
+import kr.co.fmos.region.RegionDAOImp;
 import kr.co.fmos.screenMovieInfo.ScreenMovieInfoDAO;
-import kr.co.fmos.screenMovieInfo.ScreenMovieInfoDTO;
-import kr.co.fmos.theaterBranch.TheaterBranchDAO;
-import kr.co.fmos.theaterBranch.TheaterBranchDTO;
+import kr.co.fmos.theaterBranch.TheaterBranchDAOImp;
 
 @Controller
 @RequestMapping("/ticketing")
@@ -35,24 +28,16 @@ public class TicketingCont {
 	}
 
 	@Autowired
-	HttpSession session;
+	RegionDAOImp regionDao;
 	@Autowired
-	RegionDAO regionDao;
+	TheaterBranchDAOImp theaterBranchDao;
 	@Autowired
-	TheaterBranchDAO theaterBranchDao;
-	@Autowired
-	MovieDAO movieDao;
+	MovieDAOImp movieDao;
 	@Autowired
 	ScreenMovieInfoDAO screenMovieInfoDao;
 	@Autowired
 	UserHavingCouponDAO userHavingCouponDao;
-	@Autowired
-	PaymentDAO paymentDao;
-	@Autowired
-	ScreenDAO screenDao;
-	@Autowired
-	MemberDAO memberDao;
-
+	
 	@GetMapping("/personseat")
 	public ModelAndView personseat(@RequestParam int screenMovieInfoID, int remainSeatCount) {
 		ModelAndView mav = new ModelAndView();
@@ -61,14 +46,15 @@ public class TicketingCont {
 		mav.setViewName("ticketing/personseat");
 		return mav;
 	}
-
+	
 	@GetMapping("/paysuccess")
-	public ModelAndView getPaysuccess() {
+	public ModelAndView paysuccess() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("ticketing/paysuccess");
 		return mav;
 	}
 
+<<<<<<< HEAD
 	@PostMapping("/paysuccess")
 	public ModelAndView paysuccess(@RequestParam String screenMovieInfoID, @RequestParam int adult,
 			@RequestParam int student, @RequestParam int silver, @RequestParam int price, @RequestParam int payDiscount,
@@ -117,6 +103,8 @@ public class TicketingCont {
 		return mav;
 	}
 
+=======
+>>>>>>> 49fb42d715485f568cfa9ec545af0462cc6ec645
 	@GetMapping("/schedule")
 	public ModelAndView schedule() {
 		ModelAndView mav = new ModelAndView();
@@ -129,13 +117,13 @@ public class TicketingCont {
 	}
 
 	@GetMapping("/orderSettlement")
-	public ModelAndView orderSettlement() {
+	public ModelAndView orderSettlement(HttpSession session, @RequestParam int screenMovieInfoID, String[] selectedSeats, int totalPrice) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("ticketing/orderSettlement");
 		session.setAttribute("s_id", "sungwoo");
-		mav.addObject("userHavingCouponList",
-				userHavingCouponDao.userHavingCouponList((String) session.getAttribute("s_id").toString()));
+		mav.addObject("userHavingCouponList", userHavingCouponDao.userHavingCouponList((String) session.getAttribute("s_id")));
 		return mav;
 	}// home() end
-
+	
+	
 }

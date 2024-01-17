@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpSession;
-import kr.co.fmos.member.MemberDAO;
 
 @Controller
 @RequestMapping("/movie")

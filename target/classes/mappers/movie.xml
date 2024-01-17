@@ -22,8 +22,22 @@
 		movie_audience_rating, movie_image, movie_video,
 		director_name, actor_name)
 		VALUES (#{movie_genre_id},
+<<<<<<< HEAD
 		#{movie_name}, #{movie_running_time}, #{movie_production_year}, #{movie_audience_rating},
 	    #{movie_image}, #{movie_video}, #{director_name},
+=======
+<<<<<<< HEAD
+		#{movie_name}, #{movie_running_time}, #{movie_production_year}, #{movie_audience_rating},
+	    #{movie_image}, #{movie_video}, #{director_name},
+=======
+		#{movie_name},
+		#{movie_running_time}, #{movie_production_year},
+		#{movie_audience_rating},
+		#{movie_image},
+		#{movie_video},
+		#{director_name},
+>>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
+>>>>>>> 49fb42d715485f568cfa9ec545af0462cc6ec645
 		#{actor_name})
 	</insert>
 

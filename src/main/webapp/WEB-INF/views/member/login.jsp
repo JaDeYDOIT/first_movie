@@ -204,11 +204,12 @@
 		        	var check = result
 		        	if (result == 0) {
 		 	  	    	Swal.fire({
-		 	  	    	  title: "로그인실패했다 이 멍청아!! 아이디도 기억하지 못하다니...",
+		 	  	    	  title: "로그인에 실패하셨습니다.",
 		 	  	    	  width: 600,
 		 	  	    	  padding: "3em",
 		 	  	    	  color: "#716add",
 			 	  	    	html: `
+			 	  	    	 <div><span style="font-size: 30px; font-weight: 600;" >다시 시도해 주세요!!</span></div> 
 			 	  	         <div style="background: #fff url(/images/trees.png) no-repeat center/cover; padding: 20px;">
 			 	  	           <img src="/images/nyan-cat.gif" alt="Image 1" style="width: 80px; height: 80px; margin-right: 2px;">
 			 	  	           <img src="/images/nyan-cat.gif" alt="Image 1" style="width: 80px; height: 80px; margin-right: 2px;">
@@ -254,11 +255,12 @@
 		                    });
 		                } else {
 		                    Swal.fire({
-		                        title: "로그인실패했다 이 멍청아!! 아이디도 기억하지 못하다니...",
+		                        title: "로그인에 실패하셨습니다.",
 		                        width: 600,
 		                        padding: "3em",
 		                        color: "#716add",
 		                        html: `
+		                        <div><span style="font-size: 30px; font-weight: 600;">다시 시도해 주세요!!</span></div> 
 		                            <div style="background: #fff url(/images/trees.png) no-repeat center/cover; padding: 20px;">
 		                                <img src="/images/nyan-cat.gif" alt="Image 1" style="width: 80px; height: 80px; margin-right: 2px;">
 		                                <img src="/images/nyan-cat.gif" alt="Image 1" style="width: 80px; height: 80px; margin-right: 2px;">
