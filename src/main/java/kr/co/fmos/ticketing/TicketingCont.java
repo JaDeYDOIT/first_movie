@@ -39,7 +39,7 @@ public class TicketingCont {
 	UserHavingCouponDAO userHavingCouponDao;
 	
 	@GetMapping("/personseat")
-	public ModelAndView personseat(@RequestParam int screenMovieInfoID, int remainSeatCount) {
+	public ModelAndView personseat(@RequestParam String screenMovieInfoID, int remainSeatCount) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("screenMovieInfo", screenMovieInfoDao.detail(screenMovieInfoID));
 		mav.addObject("remainSeatCount", remainSeatCount);
@@ -56,7 +56,7 @@ public class TicketingCont {
 
 <<<<<<< HEAD
 	@PostMapping("/paysuccess")
-	public ModelAndView paysuccess(@RequestParam String screenMovieInfoID, @RequestParam int adult,
+	public ModelAndView paysuccess(@RequestParam String payment_id, @RequestParam String screenMovieInfoID, @RequestParam int adult,
 			@RequestParam int student, @RequestParam int silver, @RequestParam int price, @RequestParam int payDiscount,
 			@RequestParam String[] selectedSeats) {
 		ModelAndView mav = new ModelAndView();
@@ -64,6 +64,7 @@ public class TicketingCont {
 
 		// Payment테이블 행 추가 후 그 행 가져오기
 		PaymentDTO paymentDto = new PaymentDTO();
+		paymentDto.setPayment_id(payment_id);
 		paymentDto.setMember_id((String) session.getAttribute("s_id"));
 		paymentDto.setMovie_information_id(screenMovieInfoID);
 		paymentDto.setAdult(adult);

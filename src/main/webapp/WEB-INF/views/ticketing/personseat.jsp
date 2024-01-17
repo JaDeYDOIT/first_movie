@@ -86,7 +86,7 @@
 								</div>
 								<dl>
 									<dt>일시</dt>
-									<dd class="sub_info1">${screenMovieInfo.formatted_date}
+									<dd class="sub_info1">${screenMovieInfo.formatted_date} (${screenMovieInfo.korean_day})
 										<span class="time">${screenMovieInfo.formatted_time} ~
 											${screenMovieInfo.result_time}</span>
 									</dd>

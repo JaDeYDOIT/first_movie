@@ -14,10 +14,11 @@ public class PaymentDTO {
 	private int pay_discount;
 	private int refund;
 	private LocalDateTime pay_datetime;
-	
+
 	public String getPayment_id() {
 		return payment_id;
 	}
+
 	public void setPayment_id(String payment_id) {
 		this.payment_id = payment_id;
 	}

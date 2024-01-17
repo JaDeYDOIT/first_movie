@@ -5,8 +5,24 @@ ver : 1.00
 ver : 1.01 20191219 2502 line > íŒì—…ë©”ë‰´ ê³ ì •ë†’ì´ê°’ ì‚­ì œ
 ============================== */
 
+/* 구매한 좌석 예매 페이지에서 검은색 처리 */
+.mseat_inner .floor_bx .seat.completed>span {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 21px;
+	height: 16px;
+	background: #000;
+	opacity: 0.5;
+	z-index: 1
+}
 
-
+div #myContainer{
+	text-align: center;
+	margin-right: 30px;
+}
 
 .seat-container {
     margin: 10% auto 0 auto;
@@ -9568,20 +9584,6 @@ label.lab_txt .tit_lab {
 
 .mseat_inner .floor_bx .seat_area .sel.completed {
 	cursor: inherit;
-}
-
-/* ì¢Œì„ì™„ë£Œ */
-.mseat_inner .floor_bx .seat_area .sel.completed span:before {
-	content: '';
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 21px;
-	height: 16px;
-	background: #000;
-	opacity: 0.5;
-	z-index: 1
 }
 
 .mseat_inner .floor_bx .seat_area .sel.completed span.Impossible {

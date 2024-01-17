@@ -22,16 +22,13 @@
 	</select>
 
 	<insert id="insertAndReturnWithId" useGeneratedKeys="true"
-		keyProperty="payment_id" parameterType="kr.co.fmos.payment.PaymentDTO">
-		<selectKey keyProperty="payment_id" resultType="int"
-			order="AFTER">
-			SELECT LAST_INSERT_ID() as payment_id
-		</selectKey>
-
+		parameterType="kr.co.fmos.payment.PaymentDTO">
 		INSERT INTO
-		payment (member_id, movie_information_id, adult, student,
+		payment (payment_id, member_id, movie_information_id, adult, student,
 		silver, price, pay_discount, refund) VALUES
-		(#{member_id},
+		(
+		#{payment_id},
+		#{member_id},
 		#{movie_information_id},
 		#{adult},
 		#{student},
