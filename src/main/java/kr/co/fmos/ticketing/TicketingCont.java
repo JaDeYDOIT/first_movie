@@ -19,6 +19,8 @@ import kr.co.fmos.movie.MovieDAO;
 import kr.co.fmos.movie.MovieDTO;
 import kr.co.fmos.payment.PaymentDAO;
 import kr.co.fmos.payment.PaymentDTO;
+import kr.co.fmos.paymentSeat.PaymentSeatDAO;
+import kr.co.fmos.paymentSeat.PaymentSeatDTO;
 import kr.co.fmos.region.RegionDAO;
 import kr.co.fmos.screen.ScreenDAO;
 import kr.co.fmos.screen.ScreenDTO;
@@ -52,6 +54,8 @@ public class TicketingCont {
 	ScreenDAO screenDao;
 	@Autowired
 	MemberDAO memberDao;
+	@Autowired
+	PaymentSeatDAO paymentSeatDao;
 
 	@GetMapping("/personseat")
 	public ModelAndView personseat(@RequestParam String screenMovieInfoID, int remainSeatCount) {
@@ -70,9 +74,9 @@ public class TicketingCont {
 	}
 
 	@PostMapping("/paysuccess")
-	public ModelAndView paysuccess(@RequestParam String payment_id, @RequestParam String screenMovieInfoID, @RequestParam int adult,
-			@RequestParam int student, @RequestParam int silver, @RequestParam int price, @RequestParam int payDiscount,
-			@RequestParam String[] selectedSeats) {
+	public ModelAndView paysuccess(@RequestParam String payment_id, @RequestParam String screenMovieInfoID,
+			@RequestParam int adult, @RequestParam int student, @RequestParam int silver, @RequestParam int price,
+			@RequestParam int payDiscount, @RequestParam String[] selectedSeats) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("ticketing/paysuccess");
 
@@ -96,6 +100,15 @@ public class TicketingCont {
 				.selectTheaterBranchById(String.valueOf(screenMovieInfo.getBranch_id()));
 		ScreenDTO screen = screenDao.selectScreenById(String.valueOf(screenMovieInfo.getScreen_id()));
 		MemberDTO member = memberDao.selectMemberById((String) session.getAttribute("s_id"));
+
+		// 결제완료된 좌석테이블에 행 추가
+		for (String seat : selectedSeats) {
+			PaymentSeatDTO paymentSeatDto = new PaymentSeatDTO();
+			paymentSeatDto.setPayment_id(payment_id);
+			paymentSeatDto.setSeat_x(Integer.parseInt(seat.substring(1)));
+			paymentSeatDto.setSeat_y(seat.charAt(0) - 64);
+			paymentSeatDao.insert(paymentSeatDto);
+		}
 
 		mav.addObject("memberName", member.getMember_name());
 		mav.addObject("paymentId", inputPaymentDto.getPayment_id());
