@@ -169,6 +169,7 @@ public class MemberCont {
 		return mav;
 	}
 
+<<<<<<< HEAD
 	@GetMapping("/test.do")
 	public String test() {
 		return "/member/test";
@@ -178,4 +179,6 @@ public class MemberCont {
 		return "/member/memberinfo";
 	}
 
+=======
+>>>>>>> wsj
 }//class end

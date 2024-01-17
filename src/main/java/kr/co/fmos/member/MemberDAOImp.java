@@ -74,6 +74,11 @@ public class MemberDAOImp implements MemberDAO {
 		return sqlSession.selectOne("member.logincussesscheck", map);
 	}//totalamount() end
 	
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> wsj
 	//mypage 메인
 	@Override
 	public MemberDTO mypage(String member_id) {
@@ -84,10 +89,19 @@ public class MemberDAOImp implements MemberDAO {
 	public int memberdelete(String member_pw) {
 		return sqlSession.delete("member.memberdelete",member_pw);
 	}
+<<<<<<< HEAD
 
 	@Override
 	public int logincheck(String member_id) {
 		return sqlSession.selectOne("member.iogincheck", member_id);
 	}
+=======
+	
+
+	
+	
+	
+	
+>>>>>>> wsj
 	
 }
