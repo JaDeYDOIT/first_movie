@@ -166,8 +166,5 @@ public class MemberCont {
 		return "/member/test";
 	}
 	
-	@GetMapping("/memberInfo.do")
-	public String memberInfo() {
-		return "/member/memberInfo";
-	}
+
 }//class end

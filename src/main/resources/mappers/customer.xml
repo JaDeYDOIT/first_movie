@@ -41,9 +41,10 @@
 		notice
 		WHERE notice_kind = 1
 	</select>
-	
+
 	<select id="mainfaq" resultType="kr.co.fmos.customer.NoticeDTO">
-		SELECT notice_title, notice_type, notice_kind
+		SELECT notice_title,
+		notice_type, notice_kind
 		FROM notice
 		WHERE notice_kind = 0
 	</select>
@@ -97,5 +98,20 @@
 
 
 
+	<select id="memberinquirelist" resultType="kr.co.fmos.customer.InquireDTO" parameterType="String">
+		SELECT
+		inquire_id,
+		member_id,
+		inquire_kind,
+		inquire_title,
+		inquire_content,
+		inquire_theater_name,
+		inquire_file,
+		inquire_pw
+<!-- 		inquiry_answer, -->
+<!-- 		inquiry_datetime -->
+		FROM inquire
+		WHERE member_id = #{member_id}
+	</select>
 
 </mapper>

@@ -2,10 +2,6 @@ package kr.co.fmos.member;
 
 import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
 public interface MemberDAO {
 
 	public int memberInsert(MemberDTO dto);
@@ -27,10 +23,18 @@ public interface MemberDAO {
 	
 	public int sinsert(MemberDTO dto);	
 	
+	//회원정보 수정 리스트
 	public MemberDTO memberlist(String member_id);
 	
+	//회원정보 수정 업데이트
 	public void memberupdate(MemberDTO dto);
 	
 	public MemberDTO selectMemberById(String memberId);
 
+	//마이 페이지
+	public MemberDTO mypage(String member_id);
+
+	//회원 삭제
+	public int memberdelete(String member_pw);
+	
 }//class end

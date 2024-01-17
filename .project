@@ -32,12 +32,9 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
 	</natures>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 	<filteredResources>
 		<filter>
-			<id>1705319668325</id>
+			<id>1705378313051</id>
 			<name></name>
 			<type>30</type>
 			<matcher>
@@ -46,7 +43,4 @@
 			</matcher>
 		</filter>
 	</filteredResources>
-=======
->>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
->>>>>>> 5bb2df2f787c30c5a08182faf4cf192112bb09d5
 </projectDescription>
