@@ -26,7 +26,7 @@ public class MemberCont {
 	}// end
 
 	@Autowired
-	private MemberDAO memberDao;
+	private MemberDAOImp memberDao;
 	
 	@GetMapping("/login.do")
 	public String list() {
@@ -141,25 +141,50 @@ public class MemberCont {
 		mav.setViewName("logmsgView");
 		return mav;
 	}
-
+	
+//	네이버 소셜 로그인 성공
 	@GetMapping("/social_log")
-	public ModelAndView kakao_log(MemberDTO dto, HttpSession session) {
+	public ModelAndView naver_log(MemberDTO dto, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		int result = memberDao.sMembercheck(dto);
-		System.out.println(result);
-
-		if (result != 1) {
+		String[] emailId = dto.getMember_email().split("@");
+		dto.setMember_id(emailId[0]);
+		
+		int idcheck = memberDao.sMembercheck(dto);
+		int socialcheck = memberDao.socialcheck(dto);
+		
+		if (idcheck != 1) {
+			//아이디가 존재하지 않으면 회원가입 후 환영합니다 메시지 출력
 			memberDao.sinsert(dto);
 			mav.addObject("msg1", "<script>alert('환영합니다')</script>");
-			session.setAttribute("s_id", dto.getMember_email());
+			session.setAttribute("s_id", dto.getMember_id());
+			System.out.println(dto.getMember_id());
+		} else if(idcheck == 1 && socialcheck == 0) {
+			//아이디는 있지만 가입한 소셜 로그인이 다른경우
+			mav.addObject("msg1", "<script>alert('이미 아이디가 존재합니다.')</script>");
+			session.setAttribute("s_id", dto.getMember_id());
 		} else {
 			mav.addObject("msg1", "<script>alert('환영합니다')</script>");
-			session.setAttribute("s_id", dto.getMember_email());
+			session.setAttribute("s_id", dto.getMember_id());
 		}
-
+		mav.addObject("msg2", 1);
 		mav.setViewName("logmsgView");
 		return mav;
 	}
+<<<<<<< HEAD
 
 	//
+=======
+//	네이버 소셜 로그인 끝
+	
+	@GetMapping("/test.do")
+	public String test() {
+		return "/member/test";
+	}
+	
+	@GetMapping("/memberInfo.do")
+	public String memberInfo() {
+		return "/member/memberinfo";
+	}
+	
+>>>>>>> dh
 }//class end

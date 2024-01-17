@@ -34,10 +34,21 @@ pageEncoding="UTF-8"%>
       </div>
       <div>
         <c:forEach items="${list}" var="row" varStatus="vs">
+<<<<<<< HEAD
 		<div class="num">${vs.count}</div>
         <div class="writer">${row.notice_type}</div>
         <div class="title" style="width: 60%">
           <a href="view.html">${row.notice_title}</a>
+=======
+        <div id="faqdiv">
+			<div class="num" style="width:10%">${vs.count}</div>
+	        <div class="writer" style="width:10%">${row.notice_type}</div>
+	        <div class="title" style="width:60%"><a href="view.html">${row.notice_title}</a></div>
+	        <div class="date" style="width:20%">${row.notice_datetime}</div>
+	       	<c:if test="${s_id eq 'fmos'}">
+		   		 <input class="delete" type="button" value="삭제" onclick="inquireDelete(${row.notice_id},${row.notice_kind})">
+	    	</c:if>
+>>>>>>> dh
         </div>
         <div class="date">${row.notice_datetime}</div>
       </c:forEach>
@@ -62,7 +73,18 @@ pageEncoding="UTF-8"%>
       <li></li>
       <li><a href="#" class="bt last">>></a></li>
       <li>
+<<<<<<< HEAD
         <input class="gbutt" type="button" value="글쓰기" onclick="location.href='/customer/noticeForm.do'">
+=======
+     	 <style>
+          .hidden {
+			    display: none;
+			}
+      	 </style>
+      <div class="delete-container ${s_id ne 'fmos' ? 'hidden' : ''}">
+        <input class="gbutt" type="button" value="글쓰기" onclick="location.href='/customer/noticeForm.do?notice_kind=1'">
+      </div>
+>>>>>>> dh
       </li>
     </div>
   </div>

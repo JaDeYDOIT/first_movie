@@ -5,10 +5,11 @@
 
 <!-- include libraries(jQuery, bootstrap) -->
 
-<form name="noticefm" method="post" action="/customer/noticeinsert.do">
+<form name="noticefm" method="post" action="/customer/lost_inquireins.do">
 <div id="mtebox">
  	<div class="text">
     <div class="form-section">
+<<<<<<< HEAD
         <label for="notice_type">문의유형</label>
         <select name="notice_type" id="notice_type">
             <option value="영화관이용관련">영화관이용관련</option>
@@ -19,13 +20,44 @@
     <div class="form-section">
         <label for="notice_title">제목</label><br>
         <input type="text" class="titleinp" name="notice_title" id="notice_title">
+=======
+        <div class="inquire_title_test">상영관</div>
+ 		<select id="inquire_region" class="inquire_inputbox" name="rental_inquiry_area">
+	 			<option value="0">상영관 선택</option>
+ 			<c:forEach items="${region_customer}" var="list">
+				<option value="${list.region_id}">${list.region}</option> 
+			</c:forEach>
+ 		</select>
+ 		<select id="inquire_screen" class="inquire_inputbox" name="inquire_theater_name">
+	 			<option value="0">지점선택</option>
+ 		</select>
+>>>>>>> dh
     </div>
 
+<<<<<<< HEAD
     <div class="form-section">
         <label for="editordata">문의내용</label>
         <div class="container">
             <textarea class="summernote" name="editordata" id="editordata"></textarea>
         </div>
+=======
+    	<div class="form-section">
+	        <span class="inquire_title_test">내용</span>
+	        <div class="container">
+	          <textarea class="summernote" name="inquire_content" id="inquire_content"></textarea>
+	    </div>
+	    
+        <div class="form-section">
+		    <span class="inquire_title_test">비밀번호</span>
+		    <input type="password" name="inquire_pw" id="inquire_pw">
+	    </div>
+	    
+        <div class="form-section">
+		     <span class="inquire_title_test">파일첨부</span>
+		     <input type="file" name="inquire_file" id="inquire_file">
+	    </div>
+	        
+>>>>>>> dh
         <script>
         $('.summernote').summernote({
       	  // 에디터 높이
@@ -68,8 +100,8 @@
 		<input type="submit" value="등록하기"> 	
 		<input type="button" value="취소하기" onclick="goBack()">
 	</div>
-
 </form>
+
 	<script>
         function goBack() {
         	window.location.href = "/customer/notice.do?notice_kind=0";

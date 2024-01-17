@@ -8,8 +8,13 @@
 <mapper namespace="product">
 
 	<insert id="insert" parameterType="java.util.Map">
+<<<<<<< HEAD
 		INSERT INTO product(product_category_id ,product_name ,product_image ,product_cost ,product_content)
 		VALUES (#{product_category_id}, #{product_name}, #{product_image}, #{product_cost}, #{product_content})
+=======
+		INSERT INTO product(product_id, product_category_id, product_name, product_image, product_cost, product_content, product_quantity)
+		VALUES (product_seq.nextval, #{product_category_id}, #{product_name}, #{product_image}, #{product_cost}, #{product_content}, #{product_quantity})
+>>>>>>> dh
 	</insert>
 	
 	<!-- 스토어 전체 목록 -->

@@ -10,10 +10,9 @@
  		<td>
  		<input type="hidden" name="notice_kind" value="1">
  		<select name="notice_type">
- 			<option value="시스템점검">시스템점검</option>
- 			<option value="극장">극장</option>
- 			<option value="이벤트/행사">이벤트/행사</option>
- 			<option value="기타">기타</option>
+ 			<option value="영화관이용관련">영화관이용관련</option>
+ 			<option value="대관문의관련">대관문의관련</option>
+ 			<option value="결제관련">결제관련</option>
  		</select>
  		</td>
  	</tr>
@@ -34,7 +33,7 @@
 </form>
 	<script>
         function goBack() {
-        	window.location.href = "/customer/notice.do?notice_kind=1";
+        	window.location.href = "/customer/notice.do?notice_kind=0";
         }
     </script>
 <%@ include file="../footer.jsp" %>
