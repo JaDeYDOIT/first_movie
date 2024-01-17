@@ -31,7 +31,10 @@
 	</select>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 1273a93995ca58a977e7efd5a6572507b62601f8
 	<select id="logincheck" parameterType="String" resultType="int">
 		select COUNT(*)
 		from member
@@ -53,11 +56,15 @@
 		#{member_pw};
 	</select>
 
+<<<<<<< HEAD
+>>>>>>> 1273a93995ca58a977e7efd5a6572507b62601f8
+=======
 >>>>>>> 1273a93995ca58a977e7efd5a6572507b62601f8
 	<select id="logincussesscheck" parameterType="java.util.Map"
 		resultType="int">
 		select COUNT(*)
 		from member
+<<<<<<< HEAD
 <<<<<<< HEAD
 		where member_id = #{member_id} and member_pw = #{member_pw}
 	</select>
@@ -135,6 +142,44 @@
 		FROM member
 		WHERE member_id = #{member_id}
 	</select>
+=======
+		where member_id = #{member_id}
+		and member_pw = #{member_pw};
+	</select>
+
+	<!-- 카카오 로그인 관련 -->
+	<select id="smembercheck"
+		parameterType="kr.co.fmos.member.MemberDTO" resultType="int">
+		SELECT COUNT(*)
+		from member
+		where member_name = #{member_name} and
+		member_email = #{member_email};
+	</select>
+
+	<insert id="sinsert" parameterType="kr.co.fmos.member.MemberDTO">
+		INSERT INTO member(member_id,
+		member_name, member_pw, member_email, member_gender, member_birthdate,
+		member_phone, member_email_check, member_sns_check)
+		VALUES
+		(#{member_email}, #{member_name}, '0', #{member_email},
+		#{member_gender}, '0', '0', '0', '0')
+	</insert>
+	
+	<select id="mypage" resultType="kr.co.fmos.member.MemberDTO" parameterType="string">
+		SELECT
+		member_id,
+		member_name,
+		member_pw,
+		member_email,
+		member_gender,
+		member_birthdate,
+		member_phone,
+		member_email_check,
+		member_sns_check
+		FROM member
+		WHERE member_id = #{member_id}
+	</select>
+>>>>>>> 1273a93995ca58a977e7efd5a6572507b62601f8
 	
 	<!-- 회원정보 수정 관련 -->
    <!-- 기존 정보 불러오기  -->
@@ -155,5 +200,8 @@
    		DELETE FROM member
    		WHERE member_pw = #{member_pw}
  </delete>
+<<<<<<< HEAD
+>>>>>>> 1273a93995ca58a977e7efd5a6572507b62601f8
+=======
 >>>>>>> 1273a93995ca58a977e7efd5a6572507b62601f8
 </mapper>

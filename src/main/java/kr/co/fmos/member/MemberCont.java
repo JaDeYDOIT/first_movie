@@ -173,7 +173,6 @@ public class MemberCont {
 	public String test() {
 		return "/member/test";
 	}
-
 	@GetMapping("/memberInfo.do")
 	public String memberInfo() {
 		return "/member/memberinfo";

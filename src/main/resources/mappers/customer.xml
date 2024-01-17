@@ -47,7 +47,6 @@
 	<select id="mainfaq" resultType="kr.co.fmos.customer.NoticeDTO">
 		SELECT notice_title,
 		notice_type, notice_kind
->>>>>>> 1273a93995ca58a977e7efd5a6572507b62601f8
 		FROM notice
 		WHERE notice_kind = #{notice_kind}
 	</select>

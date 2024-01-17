@@ -3,8 +3,8 @@ package kr.co.fmos.member;
 import java.util.Map;
 
 public interface MemberDAO {
+	
 	public int memberInsert(MemberDTO dto);
-<<<<<<< HEAD
 
 	public String idcheck(String member_id);
 
@@ -21,25 +21,8 @@ public interface MemberDAO {
 	public int sinsert(MemberDTO dto);
 
 	public MemberDTO selectMemberById(String memberId);
-}
-=======
-	
-	public String idcheck(String member_id);
 	
 	public int logincheck(String member_id);
-	
-	public int loginfailcheck(String member_id);	
-	
-	public int logincussesscheck(Map<String, String> map);
-	
-	public String emailcheck(String member_email);
-	
-	public int membercheck(MemberDTO dto);
-	
-	// 카카오 로그인 관련
-	public int sMembercheck(MemberDTO dto);
-	
-	public int sinsert(MemberDTO dto);	
 	
 	//회원정보 수정 리스트
 	public MemberDTO memberlist(String member_id);
@@ -47,8 +30,6 @@ public interface MemberDAO {
 	//회원정보 수정 업데이트
 	public void memberupdate(MemberDTO dto);
 	
-	public MemberDTO selectMemberById(String memberId);
-
 	//마이 페이지
 	public MemberDTO mypage(String member_id);
 
@@ -56,4 +37,3 @@ public interface MemberDAO {
 	public int memberdelete(String member_pw);
 	
 }//class end
->>>>>>> 1273a93995ca58a977e7efd5a6572507b62601f8
