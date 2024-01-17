@@ -46,7 +46,9 @@ pageEncoding="UTF-8"%>
 	        <div class="writer" style="width:10%">${row.notice_type}</div>
 	        <div class="title" style="width:60%"><a href="view.html">${row.notice_title}</a></div>
 	        <div class="date" style="width:20%">${row.notice_datetime}</div>
-	       	<input class="delete" type="button" value="삭제" onclick="noticeDelete(${row.notice_id},${row.notice_kind})">
+	       	<c:if test="${s_id eq 'fmos'}">
+		   		 <input class="delete" type="button" value="삭제" onclick="inquireDelete(${row.notice_id},${row.notice_kind})">
+	    	</c:if>
         </div>
        </c:forEach>
     </div>
@@ -75,7 +77,7 @@ pageEncoding="UTF-8"%>
 			}
       	 </style>
       <div class="delete-container ${s_id ne 'fmos' ? 'hidden' : ''}">
-        <input class="gbutt" type="button" value="글쓰기" onclick="location.href='/customer/noticeForm.do'">
+        <input class="gbutt" type="button" value="글쓰기" onclick="location.href='/customer/noticeForm.do?notice_kind=1'">
       </div>
       </li>
     </div>

@@ -12,7 +12,6 @@
 		VALUES (#{product_id}, #{product_count}, #{member_id})
 	</insert>
 
-
 	<select id="list" resultType="kr.co.fmos.cart.CartDTO" parameterType="String">
 		SELECT CPD.payment_detail_id, PD.product_id, PD.product_name, PD.product_cost, PD.product_content, CPD.member_id, CPD.product_count
 		FROM product PD join cart_payment_detail CPD
@@ -23,15 +22,4 @@
 		DELETE FROM cart_payment_detail
 		WHERE payment_detail_id=#{payment_detail_id}
 	</delete>
-<<<<<<< HEAD
-=======
-	
-	
-	<!-- 장바구니 개수 -->
-	<select id="cartcnt" resultType="int" parameterType="String">
-		SELECT count(product_id)
-		FROM cart_payment_detail
-		WHERE member_id = #{member_id}
-	</select>
->>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
 </mapper>

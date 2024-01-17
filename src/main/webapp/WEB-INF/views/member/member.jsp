@@ -61,6 +61,7 @@
 </script>
 
 	<form method="post" action="insert" onsubmit="return member()">
+		<input type="hidden" name="member_means" value="퍼스트">
 		<h2>회원가입</h2>
 	<table>
 		<tr>

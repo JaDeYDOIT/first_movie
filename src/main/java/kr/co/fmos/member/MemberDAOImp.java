@@ -36,9 +36,13 @@ public class MemberDAOImp implements MemberDAO {
 		return sqlSession.selectOne("member.membercheck", dto);
 	}
 	
-	// 카카오 로그인 관련
+	// 소셜 로그인 관련
 	public int sMembercheck(MemberDTO dto){
 		return sqlSession.selectOne("member.smembercheck", dto);
+	}
+	
+	public int socialcheck(MemberDTO dto){
+		return sqlSession.selectOne("member.socialcheck", dto);
 	}
 	
 	public int sinsert(MemberDTO dto) {

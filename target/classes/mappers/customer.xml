@@ -24,14 +24,11 @@
 		FROM notice
 		WHERE notice_kind = #{notice_kind}
 	</select>
-<<<<<<< HEAD
 	
 	<delete id="noticeDelete" parameterType="int">
 		DELETE FROM notice
 		WHERE notice_id=#{notice_id}
 	</delete>
-=======
->>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
 <!-- notice관련 끝 -->
 	
 <!-- inquire관련 시작 -->
@@ -50,6 +47,11 @@
 	<insert id="oneinquireins" parameterType="kr.co.fmos.customer.InquireDTO">
 		INSERT INTO inquire(member_id ,inquire_kind ,inquire_file ,inquire_title ,inquire_content ,inquire_pw )
 		VALUES (#{member_id}, #{inquire_kind}, #{inquire_file}, #{inquire_title}, #{inquire_content}, #{inquire_pw})
+	</insert>
+	
+	<insert id="lostInquireins" parameterType="kr.co.fmos.customer.InquireDTO">
+		INSERT INTO inquire(member_id ,inquire_kind ,inquire_title ,inquire_content ,inquire_pw )
+		VALUES (#{member_id}, #{inquire_kind}, #{inquire_title}, #{inquire_content}, #{inquire_pw})
 	</insert>
 	
 	<insert id="rentalInsert" parameterType="kr.co.fmos.customer.InquireDTO">

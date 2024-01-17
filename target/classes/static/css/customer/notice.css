@@ -112,7 +112,6 @@ table th{
 #titleinp{
 	width: 695px;
 }
-<<<<<<< HEAD
 
 .inquire_title_test{
 	font-size: 25px;
@@ -132,7 +131,7 @@ table th{
 	height: 30px;	
 }
 
-#inquire_password{
+#inquire_pw{
 	width: 80px;
 	height: 30px;
 	position: relative;
@@ -147,5 +146,3 @@ table th{
 	font-size: 17px;
 	width: 120px;
 }
-=======
->>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42

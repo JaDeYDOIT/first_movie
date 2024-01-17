@@ -77,8 +77,12 @@ public class CustomerCont {
 	}
 	
 	@GetMapping("/noticeForm.do")
-	public String noticeForm() {
-		return "customer/noticeForm";
+	public String noticeForm(int notice_kind) {
+		if(notice_kind == 0) {
+			return "customer/FAQForm";
+		} else {
+			return "customer/noticeForm";
+		}
 	}
 	
 	@GetMapping("/one_inquiryForm.do")
@@ -104,8 +108,14 @@ public class CustomerCont {
 		 	} 
 		 else { mav.addObject("msg1","<script>alert('등록실패')</script>"); 
 			}
-		mav.addObject("list", noticeDao.faqselect(0));
-    	mav.setViewName("/customer/FAQ");
+		 
+		 if(dto.getNotice_kind() == 0) {
+			 mav.addObject("list", noticeDao.faqselect(dto.getNotice_kind()));
+			 mav.setViewName("/customer/FAQ");
+		 } else {
+			 mav.addObject("list", noticeDao.noticeselect(dto.getNotice_kind()));
+			 mav.setViewName("/customer/notice");
+		 }
     	return mav;
     }
     
@@ -117,8 +127,8 @@ public class CustomerCont {
 		return "redirect:/customer/notice.do?notice_kind=" + notice_kind;
 	}//delete() end
     
-    @PostMapping("/inquireins.do")
-    public ModelAndView oneinquiryins(InquireDTO dto ,HttpSession session) {
+    @PostMapping("/one_inquireins.do")
+    public ModelAndView one_inquireins(InquireDTO dto ,HttpSession session) {
     	ModelAndView mav = new ModelAndView();
     	String s_id = (String)session.getAttribute("s_id");
     	dto.setMember_id(s_id);
@@ -132,8 +142,27 @@ public class CustomerCont {
     	else { mav.addObject("msg1","<script>alert('등록실패')</script>"); 
 		}
     	mav.addObject("list", noticeDao.faqselect(0));
-		mav.setViewName("/customer/FAQ");
+		mav.setViewName("/customer/one_inquire");
 		return mav;
+    }
+    
+    @PostMapping("/lost_inquireins.do")
+    public ModelAndView lost_inquiryins(InquireDTO dto ,HttpSession session) {
+    	ModelAndView mav = new ModelAndView();
+    	String s_id = (String)session.getAttribute("s_id");
+    	dto.setMember_id(s_id);
+    	System.out.println(dto.toString());
+    	
+    	int num = inquireDao.lostInquireins(dto);
+    	
+    	if(num != 0) { 
+    		mav.addObject("msg1","<script>alert('등록이 완료되었습니다.')</script>"); 
+    	} 
+    	else { mav.addObject("msg1","<script>alert('등록실패')</script>"); 
+    	}
+    	mav.addObject("list", noticeDao.faqselect(0));
+    	mav.setViewName("/customer/lost_inquire");
+    	return mav;
     }
     
     @GetMapping("/inquiredelete.do")

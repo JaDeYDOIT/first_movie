@@ -5,7 +5,7 @@
 
 <!-- include libraries(jQuery, bootstrap) -->
 
-<form name="inquiryfm" method="post" action="/customer/inquireins.do">
+<form name="inquiryfm" method="post" action="/customer/one_inquireins.do">
 
 <input type="hidden" name="inquire_kind" value="0">
 	<div id="mtebox">

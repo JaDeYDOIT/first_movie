@@ -5,7 +5,7 @@
 
 <!-- include libraries(jQuery, bootstrap) -->
 
-<form name="noticefm" method="post" action="/customer/noticeinsert.do">
+<form name="noticefm" method="post" action="/customer/lost_inquireins.do">
 <div id="mtebox">
  	<div class="text">
     <div class="form-section">
@@ -16,7 +16,7 @@
 				<option value="${list.region_id}">${list.region}</option> 
 			</c:forEach>
  		</select>
- 		<select id="inquire_screen" class="inquire_inputbox" name="rental_inquiry_area">
+ 		<select id="inquire_screen" class="inquire_inputbox" name="inquire_theater_name">
 	 			<option value="0">지점선택</option>
  		</select>
     </div>
@@ -33,7 +33,7 @@
 	    
         <div class="form-section">
 		    <span class="inquire_title_test">비밀번호</span>
-		    <input type="password" name="inquire_password" id="inquire_password">
+		    <input type="password" name="inquire_pw" id="inquire_pw">
 	    </div>
 	    
         <div class="form-section">
@@ -83,8 +83,8 @@
 		<input type="submit" value="등록하기"> 	
 		<input type="button" value="취소하기" onclick="goBack()">
 	</div>
-
 </form>
+
 	<script>
         function goBack() {
         	window.location.href = "/customer/notice.do?notice_kind=0";

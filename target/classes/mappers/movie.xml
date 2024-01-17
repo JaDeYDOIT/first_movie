@@ -15,7 +15,6 @@
 		FROM movie
 	</select>
 
-
 	<!-- 추가 -->
 	<insert id="insert" parameterType="kr.co.fmos.movie.MovieDTO">
 		INSERT INTO movie(
@@ -23,20 +22,10 @@
 		movie_audience_rating, movie_image, movie_video,
 		director_name, actor_name)
 		VALUES (#{movie_genre_id},
-<<<<<<< HEAD
 		#{movie_name}, #{movie_running_time}, #{movie_production_year}, #{movie_audience_rating},
 	    #{movie_image}, #{movie_video}, #{director_name},
-=======
-		#{movie_name},
-		#{movie_running_time}, #{movie_production_year},
-		#{movie_audience_rating},
-		#{movie_image},
-		#{movie_video},
-		#{director_name},
->>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
 		#{actor_name})
 	</insert>
-
 
 	<select id="detail" resultType="kr.co.fmos.movie.MovieDTO"
 		parameterType="String">

@@ -17,8 +17,7 @@ public class HomeController {
     //-> http://localhost:9095/main    
 	@RequestMapping("/main")
 	public ModelAndView home(HttpSession session ) {
-		if(session.getAttribute("s_id") == null || session.getAttribute("s_pw") == null ||
-		session.getAttribute("s_id").equals("") || session.getAttribute("s_pw").equals("")) 
+		if(session.getAttribute("s_id") == null || session.getAttribute("s_id").equals("")) 
 		{
 			String s_id = "guest";
 			String s_pw = "";
