@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kr.co.fmos.theater.TheaterDAO;
 
@@ -38,10 +37,8 @@ public class CustomerCont {
 	private RentalDAO rentalDao;
 	
 	@RequestMapping("/notice.do")
-	public ModelAndView noticelist(int notice_kind, HttpSession session) {
+	public ModelAndView noticelist(int notice_kind) {
 		ModelAndView mav = new ModelAndView();
-		String s_id = (String)session.getAttribute("s_id");
-		
 		if(notice_kind == 0) {
 			mav.addObject("list", noticeDao.faqselect(notice_kind));
 			mav.setViewName("customer/FAQ");
@@ -49,13 +46,11 @@ public class CustomerCont {
 			mav.addObject("list", noticeDao.noticeselect(notice_kind));
 			mav.setViewName("customer/notice");
 		}
-		mav.addObject("s_id", s_id);
 		return mav;
 	}
 		
 	@RequestMapping("/inquire.do")
-	public ModelAndView inquirylist(int inquire_kind, HttpSession session) {
-		String s_id = (String)session.getAttribute("s_id");
+	public ModelAndView inquirylist(int inquire_kind) {
 		ModelAndView mav = new ModelAndView();
 		if(inquire_kind == 0) {
 			mav.addObject("list", inquireDao.oneselect(inquire_kind));
@@ -64,7 +59,6 @@ public class CustomerCont {
 			mav.addObject("list", inquireDao.lostselect(inquire_kind));
 			mav.setViewName("customer/lost_inquire");
 		}
-		mav.addObject("s_id", s_id);
 		return mav;
 	}
 	
@@ -87,11 +81,8 @@ public class CustomerCont {
 	}
 	
 	@GetMapping("/lost_inquiryForm.do")
-	public ModelAndView lost_inquiryForm() {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("region_customer", theaterDao.region_customer());
-		mav.setViewName("customer/lost_inquiryForm");
-		return mav;
+	public String lost_inquiryForm() {
+		return "customer/lost_inquiryForm";
 	}
 	
     @PostMapping("/noticeinsert.do") 
@@ -109,20 +100,11 @@ public class CustomerCont {
     	return mav;
     }
     
-    @GetMapping("/noticedelete.do")
-	public String delete(HttpServletRequest req) {//
-		int notice_id = Integer.parseInt(req.getParameter("notice_id"));
-		int notice_kind = Integer.parseInt(req.getParameter("notice_kind"));
-		noticeDao.noticeDelete(notice_id);
-		return "redirect:/customer/notice.do?notice_kind=" + notice_kind;
-	}//delete() end
-    
     @PostMapping("/inquireins.do")
     public ModelAndView oneinquiryins(InquireDTO dto ,HttpSession session) {
     	ModelAndView mav = new ModelAndView();
     	String s_id = (String)session.getAttribute("s_id");
     	dto.setMember_id(s_id);
-    	System.out.println(dto.toString());
     	
     	int num = inquireDao.oneInquireins(dto);
     	
@@ -135,14 +117,6 @@ public class CustomerCont {
 		mav.setViewName("/customer/FAQ");
 		return mav;
     }
-    
-    @GetMapping("/inquiredelete.do")
-	public String inquiredelete(HttpServletRequest req) {//
-		int inquire_id = Integer.parseInt(req.getParameter("inquire_id"));
-		int inquire_kind = Integer.parseInt(req.getParameter("inquire_kind"));
-		inquireDao.inquiredelete(inquire_id);
-		return "redirect:/customer/inquire.do?inquire_kind=" + inquire_kind;
-	}//delete() end
     
     @PostMapping("/branchselectbox.do")
     @ResponseBody

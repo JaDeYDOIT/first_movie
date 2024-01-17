@@ -88,10 +88,7 @@
 								<li class="movieID disabled" data-movieid="${movie.movie_id}"><a
 									href="#none">
 										<div class="bx_thm">
-<<<<<<< HEAD
 											<span class="rank"><span class="hidden">순위</span><strong>${loopStatus.index + 1}</strong></span><img
-=======
->>>>>>> 49fb42d715485f568cfa9ec545af0462cc6ec645
 												src="${movie.movie_image}" alt="포스터" class="mCS_img_loaded">
 										</div>
 										<div class="group_infor">

@@ -25,10 +25,7 @@ public class ProductCont {
 	
 	@RequestMapping("/list.do")
 	public ModelAndView list(HttpSession session) {
-<<<<<<< HEAD
 		System.out.println(session.getAttribute("s_id"));
-=======
->>>>>>> 49fb42d715485f568cfa9ec545af0462cc6ec645
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("product/list");
 		mav.addObject("list", productDao.list());

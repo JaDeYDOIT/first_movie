@@ -2,15 +2,7 @@
 pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 <link rel="stylesheet" href="/css/customer/customercss.css" />
-<script>
-	function noticeDelete(notice_id,notice_kind){
-		alert(notice_id, notice_kind)
-		if(confirm("해당 상품을 삭제할까요?")){
-			location.href='/customer/noticedelete.do?notice_id=' + notice_id + "&notice_kind=" + notice_kind;
-		}//if end
-	}//cartDelete() end
-</script>
-	 
+
 <div class="board_wrap">
   <div class="board_title">
     <strong>고객센터</strong>
@@ -35,20 +27,21 @@ pageEncoding="UTF-8"%>
   <div class="board_list_wrap">
     <div class="board_list">
       <div class="top">
-        <div class="num" style="width:10%">번호</div>
-        <div class="writer" style="width:10%">구분</div>
+        <div class="num">번호</div>
+        <div class="writer">구분</div>
         <div class="title" style="width: 60%">제목</div>
-        <div class="date" style="width:20%">작성일</div>
+        <div class="date">작성일</div>
       </div>
+      <div>
         <c:forEach items="${list}" var="row" varStatus="vs">
-        <div id="faqdiv">
-			<div class="num" style="width:10%">${vs.count}</div>
-	        <div class="writer" style="width:10%">${row.notice_type}</div>
-	        <div class="title" style="width:60%"><a href="view.html">${row.notice_title}</a></div>
-	        <div class="date" style="width:20%">${row.notice_datetime}</div>
-	       	<input class="delete" type="button" value="삭제" onclick="noticeDelete(${row.notice_id},${row.notice_kind})">
+		<div class="num">${vs.count}</div>
+        <div class="writer">${row.notice_type}</div>
+        <div class="title" style="width: 60%">
+          <a href="view.html">${row.notice_title}</a>
         </div>
-       </c:forEach>
+        <div class="date">${row.notice_datetime}</div>
+      </c:forEach>
+      </div>
     </div>
     <div class="board_page">
       <li><a href="#" class="bt first"><<</a></li>
@@ -69,14 +62,7 @@ pageEncoding="UTF-8"%>
       <li></li>
       <li><a href="#" class="bt last">>></a></li>
       <li>
-     	 <style>
-          .hidden {
-			    display: none;
-			}
-      	 </style>
-      <div class="delete-container ${s_id ne 'fmos' ? 'hidden' : ''}">
         <input class="gbutt" type="button" value="글쓰기" onclick="location.href='/customer/noticeForm.do'">
-      </div>
       </li>
     </div>
   </div>

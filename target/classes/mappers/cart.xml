@@ -22,18 +22,4 @@
 		DELETE FROM cart_payment_detail
 		WHERE payment_detail_id=#{payment_detail_id}
 	</delete>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-	
-	
-	<!-- 장바구니 개수 -->
-	<select id="cartcnt" resultType="int" parameterType="String">
-		SELECT count(product_id)
-		FROM cart_payment_detail
-		WHERE member_id = #{member_id}
-	</select>
->>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
->>>>>>> 49fb42d715485f568cfa9ec545af0462cc6ec645
 </mapper>
