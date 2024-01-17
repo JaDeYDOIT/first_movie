@@ -12,9 +12,42 @@
 		INSERT INTO notice(notice_kind, notice_type, notice_title ,notice_content)
 		VALUES (#{notice_kind}, #{notice_type}, #{notice_title}, #{notice_content})
 	</insert>
+<<<<<<< HEAD
 	
 	<select id="faqselect" resultType="kr.co.fmos.customer.NoticeDTO" parameterType="int">
 		SELECT notice_title, notice_type, notice_kind
+=======
+
+	<select id="faqselect"
+		resultType="kr.co.fmos.customer.NoticeDTO" parameterType="int">
+		SELECT
+		notice_title, notice_type, notice_kind
+		FROM notice
+		WHERE notice_kind =
+		#{notice_kind}
+	</select>
+
+	<select id="noticeselect"
+		resultType="kr.co.fmos.customer.NoticeDTO" parameterType="int">
+		SELECT
+		notice_title, notice_type, notice_datetime
+		FROM notice
+		WHERE notice_kind
+		= #{notice_kind}
+	</select>
+
+	<select id="mainnotice"
+		resultType="kr.co.fmos.customer.NoticeDTO">
+		SELECT notice_title, notice_type, notice_datetime
+		FROM
+		notice
+		WHERE notice_kind = 1
+	</select>
+
+	<select id="mainfaq" resultType="kr.co.fmos.customer.NoticeDTO">
+		SELECT notice_title,
+		notice_type, notice_kind
+>>>>>>> 1273a93995ca58a977e7efd5a6572507b62601f8
 		FROM notice
 		WHERE notice_kind = #{notice_kind}
 	</select>
@@ -51,6 +84,21 @@
 <!-- inquire관련 끝 -->
 
 
+	<select id="memberinquirelist" resultType="kr.co.fmos.customer.InquireDTO" parameterType="String">
+		SELECT
+		inquire_id,
+		member_id,
+		inquire_kind,
+		inquire_title,
+		inquire_content,
+		inquire_theater_name,
+		inquire_file,
+		inquire_pw
+<!-- 		inquiry_answer, -->
+<!-- 		inquiry_datetime -->
+		FROM inquire
+		WHERE member_id = #{member_id}
+	</select>
 
 	
 </mapper>

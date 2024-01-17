@@ -45,7 +45,23 @@ public class MemberDAOImp implements MemberDAO {
 	@Override
 	public int sinsert(MemberDTO dto) {
 		return sqlSession.insert("member.sinsert", dto);
+<<<<<<< HEAD
 	}// sinsert() end
+=======
+	}//insert() endz
+		
+	//회원정보 수정 리스트
+	@Override
+	public MemberDTO memberlist(String member_id) {
+		return sqlSession.selectOne("member.memberlist", member_id);
+	}//memberList() end
+	
+	//회원정보 수정 업데이트
+	@Override
+	public void memberupdate(MemberDTO dto) {
+		sqlSession.update("member.memberupdate", dto);
+	}//memberupdate() end
+>>>>>>> 1273a93995ca58a977e7efd5a6572507b62601f8
 
 	@Override
 	public MemberDTO selectMemberById(String memberId) {
@@ -60,5 +76,29 @@ public class MemberDAOImp implements MemberDAO {
 	@Override
 	public int logincussesscheck(Map<String, String> map) {
 		return sqlSession.selectOne("member.logincussesscheck", map);
+<<<<<<< HEAD
 	}
+=======
+	}//totalamount() end
+	
+	
+	
+	//mypage 메인
+	@Override
+	public MemberDTO mypage(String member_id) {
+		return sqlSession.selectOne("member.mypage",member_id);
+	}
+	
+	@Override
+	public int memberdelete(String member_pw) {
+		return sqlSession.delete("member.memberdelete",member_pw);
+	}
+	
+
+	
+	
+	
+	
+	
+>>>>>>> 1273a93995ca58a977e7efd5a6572507b62601f8
 }

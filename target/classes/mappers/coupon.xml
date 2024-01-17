@@ -22,4 +22,41 @@
 		WHERE
 		coupon_id=#{couponID}
 	</select>
+
+	<select id="mycouponlist" resultType="java.util.Map"
+		parameterType="String">
+		SELECT
+		uhc.member_id,
+		uhc.coupon_id AS having_coupon_id,
+		DATE_FORMAT(uhc.coupon_create_date, '%Y-%m-%d %H:%i')
+		as
+		coupon_create_date,
+		DATE_FORMAT(uhc.coupon_expiration_date,'%Y-%m-%d
+		%H:%i')
+		AS coupon_expiration_date,
+		c.coupon_name,
+		c.coupon_discount_rate,
+		c.coupon_status,
+		uuc.payment_id,
+		uuc.coupon_used_date AS coupon_used_date
+		FROM
+		user_having_coupon uhc
+		JOIN
+		coupon c ON uhc.coupon_id = c.coupon_id
+		LEFT JOIN
+		user_used_coupon
+		uuc ON uhc.member_id = uuc.member_id AND
+		uhc.coupon_id =
+		uuc.coupon_id
+		WHERE uhc.member_id = #{member_id}
+	</select>
+
+<select id="mycouponCount"
+    resultType="kr.co.fmos.coupon.UserHavingCouponDTO"
+    parameterType="String">
+    SELECT COUNT(having_coupon_id) AS having_coupon_id
+    FROM user_having_coupon
+    WHERE member_id = #{member_id}
+</select>
+
 </mapper>

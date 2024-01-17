@@ -97,6 +97,7 @@
 						        window.alert("세션 시간이 만료되었습니다.");
 						        location.href="/member/sessionlogout.do";
 						    </script>
+<<<<<<< HEAD
 							</c:otherwise>
 						</c:choose>
 						<li><img src="/images/header_icon/mypage.png" alt=""><a
@@ -123,3 +124,30 @@
 		<div class="headerfill"></div>
 		<div id="myModal" class="overlay"></div>
 		<!-- header end -->
+=======
+						</c:otherwise>
+					</c:choose>
+                                 <li><img src="/images/header_icon/mypage.png" alt="" onclick="location.href='/mypage/payment_detail.do'"><a href="/mypage/payment_detail.do">my page</a></li>
+                        <li><img src="/images/header_icon/csc.png" alt="" onclick="location.href='/customer/notice.do?notice_kind=0'"><a href="/customer/notice.do?notice_kind=0">고객센터</a></li>
+                    </ul>
+                </div>
+                <div class="nav_bottom">
+                    <ul class="nav_wrap">
+                        <li><a href="/movie/list.do">영화</a></li>
+                        <li><a href="/theater/branchlist.do?region_id=region_001&branch_id=1">극장</a></li>
+                        <li><a href="/ticketing/schedule" style="color:rgb(0, 128, 255);">예매</a></li>
+                        <li><a href="/product/list.do">스토어</a></li>
+                        <li><a href="#">이벤트</a></li>
+                        <li><a href="#">혜택</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="headerfill"></div>
+        <div id="myModal" class="overlay">
+	</div>
+	       <!-- header end -->
+        
+
+    
+>>>>>>> 1273a93995ca58a977e7efd5a6572507b62601f8

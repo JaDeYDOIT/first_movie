@@ -179,4 +179,4 @@ public class MemberCont {
 		return "/member/memberinfo";
 	}
 
-}// class end
+}//class end

@@ -35,7 +35,6 @@
     position: relative;
     background-color: #fff;
     border-bottom: 1px solid #cacaca;
-    z-index: 101;
 }
 
 .category_contents_wrap { /*스토어 카테고리 css*/
