@@ -161,10 +161,4 @@ public class MemberCont {
 		return mav;
 	}
 
-	@GetMapping("/test.do")
-	public String test() {
-		return "/member/test";
-	}
-	
-
 }//class end
