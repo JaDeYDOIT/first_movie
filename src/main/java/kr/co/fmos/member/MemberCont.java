@@ -170,21 +170,10 @@ public class MemberCont {
 		mav.setViewName("logmsgView");
 		return mav;
 	}
-<<<<<<< HEAD
-
-	//
-=======
-//	네이버 소셜 로그인 끝
-	
-	@GetMapping("/test.do")
-	public String test() {
-		return "/member/test";
-	}
 	
 	@GetMapping("/memberInfo.do")
 	public String memberInfo() {
 		return "/member/memberinfo";
 	}
 	
->>>>>>> dh
 }//class end

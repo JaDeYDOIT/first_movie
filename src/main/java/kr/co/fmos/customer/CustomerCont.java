@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kr.co.fmos.theater.TheaterDAO;
 
@@ -110,10 +111,6 @@ public class CustomerCont {
     	return mav;
     }
     
-<<<<<<< HEAD
-    @PostMapping("/inquireins.do")
-    public ModelAndView oneinquiryins(InquireDTO dto ,HttpSession session) {
-=======
     @GetMapping("/noticedelete.do")
 	public String delete(HttpServletRequest req) {//
 		int notice_id = Integer.parseInt(req.getParameter("notice_id"));
@@ -124,7 +121,6 @@ public class CustomerCont {
     
     @PostMapping("/one_inquireins.do")
     public ModelAndView one_inquireins(InquireDTO dto ,HttpSession session) {
->>>>>>> dh
     	ModelAndView mav = new ModelAndView();
     	String s_id = (String)session.getAttribute("s_id");
     	dto.setMember_id(s_id);
@@ -141,8 +137,6 @@ public class CustomerCont {
 		return mav;
     }
     
-<<<<<<< HEAD
-=======
     @PostMapping("/lost_inquireins.do")
     public ModelAndView lost_inquiryins(InquireDTO dto ,HttpSession session) {
     	ModelAndView mav = new ModelAndView();
@@ -170,7 +164,6 @@ public class CustomerCont {
 		return "redirect:/customer/inquire.do?inquire_kind=" + inquire_kind;
 	}//delete() end
     
->>>>>>> dh
     @PostMapping("/branchselectbox.do")
     @ResponseBody
     public Map<String, Object> branchselectbox(String region_id) {

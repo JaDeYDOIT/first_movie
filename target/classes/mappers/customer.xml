@@ -33,7 +33,6 @@
 		WHERE notice_kind
 		= #{notice_kind}
 	</select>
-<<<<<<< HEAD
 
 	<select id="mainnotice"
 		resultType="kr.co.fmos.customer.NoticeDTO">
@@ -65,18 +64,6 @@
 		resultType="kr.co.fmos.customer.InquireDTO" parameterType="int">
 		SELECT
 		inquire_theater_name, inquire_title, inquire_answer ,inquire_datetime
-=======
-	
-	<delete id="noticeDelete" parameterType="int">
-		DELETE FROM notice
-		WHERE notice_id=#{notice_id}
-	</delete>
-<!-- notice관련 끝 -->
-	
-<!-- inquire관련 시작 -->
-	<select id="oneselect" resultType="kr.co.fmos.customer.InquireDTO" parameterType="int">
-		SELECT inquire_title ,inquire_answer ,inquire_datetime , inquire_id ,inquire_kind , member_id
->>>>>>> dh
 		FROM inquire
 		WHERE inquire_kind = #{inquire_kind}
 	</select>

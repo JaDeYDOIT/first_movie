@@ -113,9 +113,4 @@ public class MemberDTO {
 				+ ", member_sns_check=" + member_sns_check + ", member_means=" + member_means + ", member_grade="
 				+ member_grade + "]";
 	}
-<<<<<<< HEAD
-
-	//
-=======
->>>>>>> dh
 }
