@@ -2,8 +2,6 @@ package kr.co.fmos.payment;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.RequestBody;
-
 public interface PaymentDAO {
 	public List<PaymentDTO> list();
 
