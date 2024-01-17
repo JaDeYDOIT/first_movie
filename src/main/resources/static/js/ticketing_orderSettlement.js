@@ -483,13 +483,14 @@ function handlePaymentConfirmButtonClick() {
 		IMP.request_pay({
 			pg: "html5_inicis",  // PG사
 			pay_method: "card",  // 결제 수단
-			merchant_uid: "merchant_" + new Date().getTime(), // 주문번호
+			merchant_uid: "FirstMovie_" + screenMovieInfoID + new Date().getTime(), // 주문번호
 			name: "first movie_" + movieName,  // 상품명
 			amount: 100,//price - payDiscount,  // 결제 금액
 			buyer_name: memberID
 		}, function(rsp) {
 			if (rsp.success) {
-				console.log(rsp);
+				console.log(rsp.merchant_uid);
+				payment_id = rsp.merchant_uid;
 				postPaysuccess();
 			} else {
 				// 결제 실패 시
@@ -506,6 +507,7 @@ function handlePaymentConfirmButtonClick() {
 			form.method = 'post';
 
 			// 폼에 전송할 데이터 추가 (키-값 쌍 형식)
+			addFormField(form, 'payment_id', payment_id);
 			addFormField(form, 'screenMovieInfoID', screenMovieInfoID);
 			addFormField(form, 'adult', adult);
 			addFormField(form, 'student', student);

@@ -3,7 +3,7 @@ package kr.co.fmos.payment;
 import java.time.LocalDateTime;
 
 public class PaymentDTO {
-	private int payment_id;
+	private String payment_id;
 	private String member_id;
 	private String movie_information_id;
 	private int adult;
@@ -14,11 +14,11 @@ public class PaymentDTO {
 	private int refund;
 	private LocalDateTime pay_datetime;
 
-	public int getPayment_id() {
+	public String getPayment_id() {
 		return payment_id;
 	}
 
-	public void setPayment_id(int payment_id) {
+	public void setPayment_id(String payment_id) {
 		this.payment_id = payment_id;
 	}
 
