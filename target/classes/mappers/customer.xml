@@ -96,8 +96,6 @@
 	</insert>
 	<!-- inquire관련 끝 -->
 
-
-
 	<select id="memberinquirelist" resultType="kr.co.fmos.customer.InquireDTO" parameterType="String">
 		SELECT
 		inquire_id,
