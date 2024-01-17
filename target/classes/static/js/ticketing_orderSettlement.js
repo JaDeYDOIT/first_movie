@@ -459,7 +459,6 @@ function handlePointAmountInput() {
 
 function showPaymentWarning() {
 	$('.provision input[type="checkbox"]').on('change', showPaymentWarningProcess);
-	$('.pay_method_list button').on('click', showPaymentWarningProcess);
 
 	function showPaymentWarningProcess() {
 		const provisionCheckboxes = $('.provision_list input[type="checkbox"]');

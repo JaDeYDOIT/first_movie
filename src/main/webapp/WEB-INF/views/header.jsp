@@ -1,15 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.Date"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-=======
-    pageEncoding="UTF-8"%>
-<%@ page import="java.util.Date" %>
->>>>>>> 49fb42d715485f568cfa9ec545af0462cc6ec645
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -51,7 +46,6 @@
 <link rel="stylesheet" href="/css/summernote/summernote-lite.css">
 <!-- 서머노트 관련 끝 -->
 <link rel="icon" type="image/ico" href="images/header/logo.png">
-
 <script src="/js/header.js"></script>
 
 <title>영화</title>
@@ -103,7 +97,6 @@
 						        window.alert("세션 시간이 만료되었습니다.");
 						        location.href="/member/sessionlogout.do";
 						    </script>
-<<<<<<< HEAD
 							</c:otherwise>
 						</c:choose>
 						<li><img src="/images/header_icon/mypage.png" alt=""><a
@@ -130,30 +123,3 @@
 		<div class="headerfill"></div>
 		<div id="myModal" class="overlay"></div>
 		<!-- header end -->
-=======
-						</c:otherwise>
-					</c:choose>
-                        <li><img src="/images/header_icon/mypage.png" alt=""><a href="/member/memberInfo.do">my page</a></li>
-                        <li><img src="/images/header_icon/csc.png" alt="" onclick="location.href='/customer/notice.do?notice_kind=0'"><a href="/customer/notice.do?notice_kind=0">고객센터</a></li>
-                    </ul>
-                </div>
-                <div class="nav_bottom">
-                    <ul class="nav_wrap">
-                        <li><a href="/movie/list.do">영화</a></li>
-                        <li><a href="/theater/branchlist.do?region_id=region_001&branch_id=1">극장</a></li>
-                        <li><a href="/ticketing/schedule" style="color:rgb(0, 128, 255);">예매</a></li>
-                        <li><a href="/product/list.do">스토어</a></li>
-                        <li><a href="#">이벤트</a></li>
-                        <li><a href="#">혜택</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <div class="headerfill"></div>
-        <div id="myModal" class="overlay">
-	</div>
-	       <!-- header end -->
-        
-
-    
->>>>>>> 49fb42d715485f568cfa9ec545af0462cc6ec645

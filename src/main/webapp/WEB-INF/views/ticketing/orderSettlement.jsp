@@ -274,13 +274,8 @@
 								총<strong>18,000</strong>원
 							</dd>
 						</dl>
-<<<<<<< HEAD
 
 						<a class="btn_col1 btn_confirm pay_button disabled">결제하기</a>
-
-=======
-						<a href="/ticketing/paysuccess" class="btn_col1 btn_confirm pay_button disabled">결제하기</a>
->>>>>>> 49fb42d715485f568cfa9ec545af0462cc6ec645
 					</div>
 				</div>
 			</div>
