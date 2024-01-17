@@ -111,4 +111,5 @@
    		DELETE FROM member
    		WHERE member_pw = #{member_pw}
  </delete>
+ <!--  -->
 </mapper>
