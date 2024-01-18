@@ -12,6 +12,5 @@ public interface PaymentDAO {
 
 	public List<PaymentDTO> selectPaymentByScreenMovieInfoId(String screenMovieInfoID);
 
-	public PaymentDTO insertAndReturnWithId(PaymentDTO paymentDto);
-	
+	public PaymentDTO insertAndReturnWithId(PaymentDTO paymentDto);	
 }

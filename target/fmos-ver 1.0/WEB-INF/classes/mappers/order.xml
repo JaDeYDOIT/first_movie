@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- order.xml -->
+
+<mapper namespace="order">
+
+	<!-- 주문서 -->
+	<select id="orderno" parameterType="String" resultType="String">
+		SELECT
+		NVL(MAX(cart_payment_id),'1')
+		FROM cart_payment
+		WHERE cart_payment_id
+		LIKE #{cdate} || '%'
+	</select>
+
+	<!-- 회원별 전체 금액 조회 -->
+	<select id="totalmoney" parameterType="String" resultType="int">
+		SELECT sum(PD.product_cost*CPD.product_count) AS totalmoney
+		FROM
+		product PD JOIN cart_payment_detail CPD
+		ON PD.product_id =
+		CPD.product_id
+		WHERE member_id = #{member_id}
+	</select>
+
+	<!-- 주문자정보(이름, 전화번호) -->
+	<select id="consumerlist" parameterType="String"
+		resultType="kr.co.fmos.member.MemberDTO">
+		SELECT member_id, member_name, member_pw, member_email,
+		member_gender, member_birthdate, member_phone, member_email_check,
+		member_sns_check
+		FROM member
+		WHERE member_id=#{member_id}
+	</select>
+
+	<!-- 장바구니 → 결제 테이블로 이동(dto) -->
+	<insert id="confirmInsert"
+		parameterType="kr.co.fmos.order.OrderDTO">
+		INSERT INTO cart_payment(cart_payment_id, member_id)
+		VALUES (#{cart_payment_id}, #{member_id})
+	</insert>
+
+	<!-- 결제 완료 시 장바구니 삭제 -->
+	<delete id="cartDelete" parameterType="String">
+		DELETE FROM
+		cart_payment_detail
+		WHERE member_id = #{member_id}
+	</delete>
+</mapper>
