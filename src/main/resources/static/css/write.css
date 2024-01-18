@@ -1,0 +1,77 @@
+@charset "utf-8";
+
+body {
+	font-family: Arial, sans-serif;
+}
+
+#moviefrm{
+	padding-bottom: 5%;
+}
+
+h2{
+	font-size: 25px;
+	font-weight: bold;
+	padding: 1%;
+}
+.movie_addition {
+	width: 100%;
+	max-width: 600px;
+	margin: 0 auto;
+	background-color: #f4f4f4;
+}
+
+.movie_addition tr {
+	margin-bottom: 10px;
+}
+
+.movie_addition td {
+	padding: 10px;
+}
+
+.movie_addition input {
+	width: 100%;
+	padding: 8px;
+	box-sizing: border-box;
+	margin-top: 4px;
+}
+
+.execution {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.execution input {
+	width: 100px;
+	cursor: pointer;
+}
+
+
+#movie_name{
+	white-space: nowrap;/* 텍스트가 줄 바꿈되지 않도록 설정 */
+	overflow: hidden;/* 넘치는 부분을 감추기 */
+	text-overflow: ellipsis;/* 넘치는 부분에 ... 추가 */
+	font-weight: bold;
+	max-width: 200px;
+	
+}
+
+
+#movie_running_time{
+	background-color: rgba(192, 192, 192, 0.2);
+}
+#movie_production_year{
+	background-color: rgba(192, 192, 192, 0.2);
+}
+#movie_audience_rating{
+	background-color: rgba(192, 192, 192, 0.2);
+}
+#movie_genre_name{
+	background-color: rgba(192, 192, 192, 0.2);
+}
+#director_name{
+	background-color: rgba(192, 192, 192, 0.2);
+}
+#actor_name{
+	background-color: rgba(192, 192, 192, 0.2);
+}
+
