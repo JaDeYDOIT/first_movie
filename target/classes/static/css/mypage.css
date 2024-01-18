@@ -12,34 +12,40 @@ a{
 #mypage_wrap{
     width: 100%;
     box-sizing: border-box;
-  
 }
+#mypage_wrap > h2{
+    font-size: 40px;
+    font-weight: bold;
+    color: #22A2F2;
+    padding: 1% 0;
+}
+
+
 
 /* 회원 wrap */
 .member_wrap{
     width: 100%;
-    margin: 0 auto 2% auto;
+    margin: 0px auto 2% auto;
     text-align: center;
     box-sizing: border-box;
-    
 }
 /* 상단 회원 박스 내용물 wrap */
 .memberbox{
 	font-size: 20px;
 	font-weight: bold;
-	line-height: 200px;
+	line-height: 100px;
     width: 100%;
     display: flex;
-    padding: 5% 0;
     
 }
 
 /* 회원 */
 .member{
+	color: #22A2F2;
     width: 40%;
-    height: 100%;
-	background-color: rgb(255, 233, 191);
 	box-sizing: border-box;
+	border: 2px dashed black;
+	border-radius: 10px;
 }
 
 /* 우측 리스트박스 */
@@ -52,6 +58,11 @@ a{
     width: 100%;
     height: 100%;
     display: flex;
+    
+}
+.list2 a span{
+	color: red;
+	
 }
 
 /* 리스트 li 묶음 */
@@ -63,14 +74,9 @@ a{
 }
 
 /* 리스트 li 시작 */
-.list .list1{
-    background: rgb(35, 107, 178);
-}
-.list .list2{
-    background: rgb(183, 189, 195);
-}
-.list .list3{
-    background: rgb(191, 210, 229);
+.list article{
+	  border: 2px dashed black;
+	  border-radius: 10px;
 }
 /* 리스트 li 끝 */
 
@@ -104,22 +110,25 @@ a{
 }
 .menubox ul li{
     background-color: wheat;
-    font-size: 15px;
+   
     font-weight: bold;
     margin-bottom:5%;
      
 }
 .menubox ul li a{
+	font-size: 18px;
     padding: 10%;
     display: block;
     text-align: center;
+    background-color: #22A2F2;
+    color: white;
 }
 /* aside 박스 묶음 끝 */
 
 /* 우측 content 묶음 */
 .content_wrap{
-    width: 80%;
-    margin:0 auto;
+    width: 90%;
+    margin-left: 2%;
 }
 
 /* 콘텐츠 상단 */
