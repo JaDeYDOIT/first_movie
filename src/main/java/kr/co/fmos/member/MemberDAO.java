@@ -2,6 +2,9 @@ package kr.co.fmos.member;
 
 import java.util.Map;
 
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@ResponseBody
 public interface MemberDAO {
 
 	public int memberInsert(MemberDTO dto);
