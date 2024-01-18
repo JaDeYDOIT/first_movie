@@ -159,10 +159,10 @@ public class CustomerCont {
 		 	} 
 	    	else { mav.addObject("msg1","<script>alert('등록실패')</script>"); 
 			}
-	    	mav.addObject("list", noticeDao.faqselect(0));
+	    	mav.addObject("list", inquireDao.oneselect(dto.getInquire_kind()));
 			mav.setViewName("/customer/one_inquire");
 			return mav;
-	    }
+	    }//
 	 
 	 @PostMapping("/lost_inquireins.do")
 	    public ModelAndView lost_inquiryins(InquireDTO dto ,HttpSession session) {
@@ -243,9 +243,10 @@ public class CustomerCont {
     	dto.setRental_inquiry_place(theaterDao.rental_inquiry_movie(rental_inquiry_movie));
     	
     	int cnt = rentalDao.rentalInsert(dto);
-    	
+    	mav.addObject("msg1","<script>alert('등록이 완료되었습니다.')</script>"); 
+    	mav.addObject("msg2","<script>window.location.href = '/main';</script>");
     	mav.addObject("cnt", cnt);
-    	mav.setViewName("/noticeView"); 	
+    	mav.setViewName("/msgView"); 	
     	return mav;
     }
 }//class end

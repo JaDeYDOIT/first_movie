@@ -45,6 +45,6 @@ public class InquireDAO {
 		return sqlSession.selectList("customer.memberinquirelist", member_id);
 	}
 	
-	
+//	
 	
 }//class end
