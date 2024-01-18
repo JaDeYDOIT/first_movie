@@ -8,7 +8,6 @@
 <mapper namespace="member">
 
 	<insert id="insert" parameterType="kr.co.fmos.member.MemberDTO">
-<<<<<<< HEAD
 		INSERT INTO member(member_id,
 		member_name, member_pw, member_email, member_gender, member_birthdate,
 		member_phone, member_email_check, member_sns_check)
@@ -16,10 +15,8 @@
 		(#{member_id}, #{member_name}, #{member_pw}, #{member_email},
 		#{member_gender}, #{member_birthdate}, #{member_phone},
 		#{member_email_check}, #{member_sns_check});
-=======
 		INSERT INTO member(member_id, member_name, member_pw, member_email, member_gender, member_birthdate, member_phone, member_email_check, member_sns_check, member_means)
 		VALUES (#{member_id}, #{member_name}, #{member_pw}, #{member_email}, #{member_gender}, #{member_birthdate}, #{member_phone}, #{member_email_check}, #{member_sns_check} , #{member_means});
->>>>>>> dh
 	</insert>
 
 	<select id="idcheck" parameterType="String" resultType="String">
@@ -55,7 +52,6 @@
 		where member_id = #{member_id} and member_pw =
 		#{member_pw};
 	</select>
-<<<<<<< HEAD
 
 	<select id="logincussesscheck" parameterType="java.util.Map"
 		resultType="int">
@@ -65,24 +61,6 @@
 		and member_pw = #{member_pw};
 	</select>
 
-	<!-- 카카오 로그인 관련 -->
-	<select id="smembercheck"
-		parameterType="kr.co.fmos.member.MemberDTO" resultType="int">
-		SELECT COUNT(*)
-		from member
-		where member_name = #{member_name} and
-		member_email = #{member_email};
-	</select>
-
-	<insert id="sinsert" parameterType="kr.co.fmos.member.MemberDTO">
-		INSERT INTO member(member_id,
-		member_name, member_pw, member_email, member_gender, member_birthdate,
-		member_phone, member_email_check, member_sns_check)
-		VALUES
-		(#{member_email}, #{member_name}, '0', #{member_email},
-		#{member_gender}, '0', '0', '0', '0')
-=======
-	
 	<!-- 소셜 로그인 관련 시작 -->
 	<select id="smembercheck" parameterType="kr.co.fmos.member.MemberDTO" resultType="int">
 	 	SELECT COUNT(*)
@@ -100,7 +78,6 @@
 	<insert id="sinsert" parameterType="kr.co.fmos.member.MemberDTO">
 		INSERT INTO member(member_id, member_name, member_pw, member_email, member_gender, member_birthdate, member_phone, member_email_check, member_sns_check, member_means)
 		VALUES (#{member_id}, #{member_name}, '0', #{member_email}, #{member_gender}, '0', '0', '0', '0', #{member_means}) 
->>>>>>> dh
 	</insert>
 	
 	<select id="mypage" resultType="kr.co.fmos.member.MemberDTO" parameterType="string">
@@ -137,5 +114,4 @@
    		DELETE FROM member
    		WHERE member_pw = #{member_pw}
  </delete>
- <!--  -->
 </mapper>

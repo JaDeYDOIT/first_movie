@@ -21,9 +21,6 @@ public class NoticeDAO {
 	public List<NoticeDTO> faqselect(int notice_kind) {
 		return sqlSession.selectList("customer.faqselect", notice_kind);
 	}// movieList() end
-	public List<NoticeDTO> faqselect() {
-		return sqlSession.selectList("customer.mainfaq");
-	}// movieList() end
 	
 	public List<NoticeDTO> noticeselect(int notice_kind) {
 		return sqlSession.selectList("customer.noticeselect", notice_kind);
@@ -31,4 +28,8 @@ public class NoticeDAO {
 	public List<NoticeDTO> noticeselect() {
 		return sqlSession.selectList("customer.mainnotice");
 	}// movieList() end
+	
+	public int noticeDelete(int notice_id) { 
+		return sqlSession.delete("customer.noticeDelete", notice_id); 
+	}//delete() end
 }

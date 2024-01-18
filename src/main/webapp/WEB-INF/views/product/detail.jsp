@@ -166,4 +166,5 @@
 		<!-- category_product_detail_wrap 끝 -->
 	</div>
 	<!-- contents 끝 -->
+	<!--  -->
 <%@ include file="../footer.jsp" %>
