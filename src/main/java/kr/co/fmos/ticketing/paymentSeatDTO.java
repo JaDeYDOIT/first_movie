@@ -1,16 +1,18 @@
-package kr.co.fmos.paymentSeat;
+package kr.co.fmos.ticketing;
 
-public class PaymentSeatDTO {
-	private int payment_seat_id;
+public class paymentSeatDTO {
+	private String payment_seat_id;
 	private String payment_id;
 	private int seat_x;
-	private int seat_y;
+	private String seat_y;
 
-	public int getPayment_seat_id() {
+	public paymentSeatDTO() {}
+
+	public String getPayment_seat_id() {
 		return payment_seat_id;
 	}
 
-	public void setPayment_seat_id(int payment_seat_id) {
+	public void setPayment_seat_id(String payment_seat_id) {
 		this.payment_seat_id = payment_seat_id;
 	}
 
@@ -30,11 +32,11 @@ public class PaymentSeatDTO {
 		this.seat_x = seat_x;
 	}
 
-	public int getSeat_y() {
+	public String getSeat_y() {
 		return seat_y;
 	}
 
-	public void setSeat_y(int seat_y) {
+	public void setSeat_y(String seat_y) {
 		this.seat_y = seat_y;
 	}
 
@@ -43,4 +45,6 @@ public class PaymentSeatDTO {
 		return "paymentSeatDTO [payment_seat_id=" + payment_seat_id + ", payment_id=" + payment_id + ", seat_x="
 				+ seat_x + ", seat_y=" + seat_y + "]";
 	}
+	
 }
+

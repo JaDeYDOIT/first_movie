@@ -30,11 +30,10 @@
 		where member_id = #{member_id}
 	</select>
 
-	<select id="logincussesscheck" parameterType="java.util.Map"
-		resultType="int">
+	<select id="logincheck" parameterType="String" resultType="int">
 		select COUNT(*)
 		from member
-		where member_id = #{member_id} and member_pw = #{member_pw}
+		where member_id = #{member_id}
 	</select>
 
 	<select id="emailcheck" parameterType="String"
@@ -50,6 +49,14 @@
 		from member
 		where member_id = #{member_id} and member_pw =
 		#{member_pw};
+	</select>
+
+	<select id="logincussesscheck" parameterType="java.util.Map"
+		resultType="int">
+		select COUNT(*)
+		from member
+		where member_id = #{member_id}
+		and member_pw = #{member_pw};
 	</select>
 
 	<!-- 카카오 로그인 관련 -->
@@ -69,13 +76,40 @@
 		(#{member_email}, #{member_name}, '0', #{member_email},
 		#{member_gender}, '0', '0', '0', '0')
 	</insert>
-
-	<select id="selectMemberById" parameterType="String"
-		resultType="kr.co.fmos.member.MemberDTO">
-		SELECT member_id, member_name, member_pw, member_email,
-		member_gender, member_birthdate, member_phone, member_email_check,
+	
+	<select id="mypage" resultType="kr.co.fmos.member.MemberDTO" parameterType="string">
+		SELECT
+		member_id,
+		member_name,
+		member_pw,
+		member_email,
+		member_gender,
+		member_birthdate,
+		member_phone,
+		member_email_check,
 		member_sns_check
 		FROM member
-		WHERE member_id=#{member_id}
+		WHERE member_id = #{member_id}
 	</select>
+	
+	<!-- 회원정보 수정 관련 -->
+   <!-- 기존 정보 불러오기  -->
+   <select id="memberlist" resultType="kr.co.fmos.member.MemberDTO" parameterType="String">
+      SELECT member_id, member_name, member_email, member_birthdate, member_gender
+      FROM member
+      WHERE member_id = #{member_id}
+   </select>
+   
+   <!-- 수정사항 업데이트하기  -->
+   <update id="memberupdate">
+      UPDATE member
+      SET member_pw = #{member_pw}, member_phone = #{member_phone}, member_gender = #{member_gender}, member_email_check =#{member_email_check}, member_sns_check =#{member_sns_check}
+      WHERE member_id = #{member_id}
+   </update>
+   
+ <delete id="memberdelete" parameterType="String">
+   		DELETE FROM member
+   		WHERE member_pw = #{member_pw}
+ </delete>
+ <!--  -->
 </mapper>

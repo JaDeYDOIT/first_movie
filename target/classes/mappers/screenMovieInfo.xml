@@ -44,7 +44,7 @@
 	</select>
 
 	<select id="detail" resultType="java.util.Map"
-		parameterType="String">
+		parameterType="int">
 		SELECT
 		m.movie_id,
 		s.screen_id,
@@ -56,17 +56,7 @@
 		smi.movie_information_id,
 		m.movie_name,
 		m.movie_image,
-		DATE_FORMAT(smi.movie_showing_date, '%y.%m.%d') AS formatted_date,
-		CASE DATE_FORMAT(smi.movie_showing_date, '%a')
-		WHEN 'Mon' THEN '월'
-		WHEN 'Tue' THEN '화'
-		WHEN 'Wed' THEN '수'
-		WHEN 'Thu' THEN '목'
-		WHEN 'Fri' THEN '금'
-		WHEN 'Sat' THEN '토'
-		WHEN 'Sun' THEN '일'
-		ELSE DATE_FORMAT(smi.movie_showing_date, '%a') -- 다른 경우는 그대로 출력
-		END AS korean_day,
+		DATE_FORMAT(smi.movie_showing_date, '%y.%m.%d(%a)') AS formatted_date,
 		TIME_FORMAT(smi.movie_showing_time, '%H:%i') AS formatted_time,
 		TIME_FORMAT(
 		ADDTIME(STR_TO_DATE(smi.movie_showing_time, '%H:%i'),
@@ -87,6 +77,7 @@
 		smi.movie_information_id = #{screenMovieInfoID}
 	</select>
 
+
 	<select id="emptySeats" resultType="java.util.Map"
 		parameterType="String">
 		SELECT es.screen_row row, es.screen_line col
@@ -96,20 +87,4 @@
 		= es.screen_id
 		WHERE smi.movie_information_id = #{screenMovieInfoID}
 	</select>
-	
-	<select id="paymentSeats" resultType="java.util.Map"
-		parameterType="String">
-	  	SELECT
-	    ps.seat_x paycol,
-	    ps.seat_y payrow
-		FROM
-		screen_movie_information s
-		JOIN
-		payment p ON s.movie_information_id = p.movie_information_id
-		JOIN
-		payment_seat ps ON p.payment_id = ps.payment_id
-		where
-		s.movie_information_id = #{screenMovieInfoID};
-	</select>
-	
 </mapper>

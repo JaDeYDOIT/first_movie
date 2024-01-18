@@ -11,9 +11,11 @@ h2{
 	font-size: 35px;
 	font-weight: bold;
 	text-align: center;
-	margin: 25px 0;
 }
 
+#memfrm{
+	margin:0 auto;	
+}
 input[type="button"] {
 	width: 120px;
 	height: 40px;
@@ -90,3 +92,4 @@ margin: 0;
 	justify-content: center;
 	margin-bottom: 30px;
 }
+

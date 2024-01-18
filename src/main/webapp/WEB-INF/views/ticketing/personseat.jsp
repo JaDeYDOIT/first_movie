@@ -8,6 +8,9 @@
 <link rel="stylesheet" href="/css/content.css">
 <link rel="stylesheet" href="/css/content_lc21new.css">
 <link rel="stylesheet" href="/css/dev.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/js/ticketing_personseat.js"></script>
 
 <script>
@@ -86,7 +89,7 @@
 								</div>
 								<dl>
 									<dt>일시</dt>
-									<dd class="sub_info1">${screenMovieInfo.formatted_date} (${screenMovieInfo.korean_day})
+									<dd class="sub_info1">${screenMovieInfo.formatted_date}
 										<span class="time">${screenMovieInfo.formatted_time} ~
 											${screenMovieInfo.result_time}</span>
 									</dd>

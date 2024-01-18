@@ -32,21 +32,4 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
 	</natures>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-	<filteredResources>
-		<filter>
-			<id>1705319668325</id>
-			<name></name>
-			<type>30</type>
-			<matcher>
-				<id>org.eclipse.core.resources.regexFilterMatcher</id>
-				<arguments>node_modules|\.git|__CREATED_BY_JAVA_LANGUAGE_SERVER__</arguments>
-			</matcher>
-		</filter>
-	</filteredResources>
-=======
->>>>>>> d3787eea5fc2f7cc98b3ba85f7c534cdf751cb42
->>>>>>> 49fb42d715485f568cfa9ec545af0462cc6ec645
 </projectDescription>
