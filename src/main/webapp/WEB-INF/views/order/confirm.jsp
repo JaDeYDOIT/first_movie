@@ -80,12 +80,5 @@
 	var buyerId = "${confirm.member_id}";
 	var buyerPhone = "${confirm.member_phone}";
 </script>
-<<<<<<< HEAD
-</div>
-<!-- contents 끝 -->
-<!--  -->
-<%@ include file="../footer.jsp" %>
-=======
 
 <%@ include file="../footer.jsp"%>
->>>>>>> wsj

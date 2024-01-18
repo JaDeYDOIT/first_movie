@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %> 
 
-<p>${msg1}</p>
-
 	<c:if test="${msg2 eq 1}">
 	 <%
         // HttpSession 객체 가져오기
@@ -20,6 +18,7 @@
 	</c:if>
 	 
 	<c:if test="${msg2 eq 2}">
+	<p>${msg1}</p>
 	 	<%
 		    // HttpSession 객체 가져오기
 		    HttpSession session2 = request.getSession();

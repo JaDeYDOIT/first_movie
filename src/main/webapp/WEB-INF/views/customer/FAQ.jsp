@@ -33,22 +33,11 @@ pageEncoding="UTF-8"%>
       </div>
       <div>
       <c:forEach items="${list}" var="row" varStatus="vs">
-<<<<<<< HEAD
 		<div class="num">${vs.count}</div>
         <div class="writer">${row.notice_type}</div>
         <div class="title" style="width: 80%">
           <a href="view.html">${row.notice_title}</a>
         </div>
-=======
-      <div id="faqdiv">
-		<div class="num" style="width:10%">${vs.count}</div>
-        <div class="writer" style="width:10%">${row.notice_type}</div>
-        <div class="title" style="width:80%"><a href="view.html">${row.notice_title}</a></div>
-     	 <c:if test="${s_id eq 'fmos'}">
-		    <input class="delete" type="button" value="삭제" onclick="inquireDelete(${row.notice_id},${row.notice_kind})">
-	     </c:if>
-      </div>
->>>>>>> dh
       </c:forEach>
       </div>
     </div>
@@ -71,18 +60,7 @@ pageEncoding="UTF-8"%>
       <li></li>
       <li><a href="#" class="bt last">>></a></li>
       <li>
-<<<<<<< HEAD
         <input class="gbutt" type="button" value="글쓰기" onclick="location.href='/customer/noticeForm.do'">
-=======
-      	<style>
-          .hidden {
-			    display: none;
-			}
-      	</style>
-      <div class="delete-container ${s_id ne 'fmos' ? 'hidden' : ''}">
-        <input class="gbutt" type="button" value="글쓰기" onclick="location.href='/customer/noticeForm.do?notice_kind=0'">
-      </div>
->>>>>>> dh
       </li>
     </div>
   </div>

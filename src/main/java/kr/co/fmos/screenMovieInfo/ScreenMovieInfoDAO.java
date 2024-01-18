@@ -13,6 +13,4 @@ public interface ScreenMovieInfoDAO {
 	public Map<String, Object> detail(int screenMovieInfoID);
 
 	public List<Map<String, Object>> emptySeats(String screenMovieInfoID);
-
-	public List<Map<String, Object>> paymentSeats(String screenMovieInfoID);
 }
