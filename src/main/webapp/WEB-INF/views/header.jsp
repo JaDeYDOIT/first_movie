@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.Date" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -85,7 +84,7 @@
 						    </script>
 						</c:otherwise>
 					</c:choose>
-                        <li><img src="/images/header_icon/mypage.png" alt=""><a href="/member/memberInfo.do">my page</a></li>
+                                 <li><img src="/images/header_icon/mypage.png" alt="" onclick="location.href='/mypage/payment_detail.do'"><a href="/mypage/payment_detail.do">my page</a></li>
                         <li><img src="/images/header_icon/csc.png" alt="" onclick="location.href='/customer/notice.do?notice_kind=0'"><a href="/customer/notice.do?notice_kind=0">고객센터</a></li>
                     </ul>
                 </div>

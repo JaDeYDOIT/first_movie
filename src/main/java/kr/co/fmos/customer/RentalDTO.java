@@ -2,9 +2,9 @@ package kr.co.fmos.customer;
 
 public class RentalDTO {
 
-	private long rental_inquiry_id;			
-	private String rental_inquiry_area;		
-	private String rental_inquiry_place;  	
+	private long rental_inquiry_id;
+	private String rental_inquiry_area;
+	private String rental_inquiry_place;
 	private String rental_inquiry_theater;
 	private String rental_inquiry_date;
 	private String rental_inquiry_start;
