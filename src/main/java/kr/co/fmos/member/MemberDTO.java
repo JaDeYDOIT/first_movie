@@ -11,6 +11,8 @@ public class MemberDTO {
 	private String member_phone;
 	private int member_email_check;
 	private int member_sns_check;
+	private String member_means;
+	private String member_grade;
 	
 	public MemberDTO() {}
 
@@ -87,13 +89,28 @@ public class MemberDTO {
 		this.member_sns_check = member_sns_check;
 	}
 
+	public String getMember_means() {
+		return member_means;
+	}
+
+	public void setMember_means(String member_means) {
+		this.member_means = member_means;
+	}
+
+	public String getMember_grade() {
+		return member_grade;
+	}
+
+	public void setMember_grade(String member_grade) {
+		this.member_grade = member_grade;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberDTO [member_id=" + member_id + ", member_name=" + member_name + ", member_pw=" + member_pw
 				+ ", member_email=" + member_email + ", member_gender=" + member_gender + ", member_birthdate="
 				+ member_birthdate + ", member_phone=" + member_phone + ", member_email_check=" + member_email_check
-				+ ", member_sns_check=" + member_sns_check + "]";
+				+ ", member_sns_check=" + member_sns_check + ", member_means=" + member_means + ", member_grade="
+				+ member_grade + "]";
 	}
-
-	//
 }

@@ -33,15 +33,19 @@ pageEncoding="UTF-8"%>
         <div class="writer">답변수신여부</div>
         <div class="date">작성일</div>
       </div>
-      <div>
-        <div class="num">1</div>
-        <div class="writer">김이름2</div>
-        <div class="title" style="width: 55%">
-          <a href="view.html">글 제목이 들어갑니다.</a>
+       <c:forEach items="${list}" var="row" varStatus="vs">
+        <div id="faqdiv">
+		<div class="num" style="width:10%">${vs.count}</div>
+        <div class="title" style="width: 60%">
+          <a href="view.html">${row.inquire_title}</a>
         </div>
-        <div class="writer">김이름2</div>
-        <div class="date">2021.1.15222</div>
-      </div>
+        <div class="writer" style="width:10%">${row.inquire_answer}</div>
+	        <div class="date" style="width:20%">${row.inquire_datetime}</div>
+	        <c:if test="${row.member_id eq s_id or s_id eq 'fmos'}">
+		        <input class="delete" type="button" value="삭제" onclick="inquireDelete(${row.inquire_id},${row.inquire_kind})">
+	        </c:if>
+        </div>
+      </c:forEach>
     </div>
     <div class="board_page">
       <li><a href="#" class="bt first"><<</a></li>

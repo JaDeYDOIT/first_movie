@@ -7,10 +7,8 @@
 
 <mapper namespace="payment">
 	<select id="list" resultType="kr.co.fmos.payment.PaymentDTO">
-		SELECT payment_id, member_id,
-		movie_information_id, adult, student,
-		silver, price, pay_discount,
-		pay_type, refund, pay_datetime
+		SELECT payment_id, member_id, movie_information_id, adult, student,
+		silver, price, pay_discount, refund, pay_datetime
 		FROM payment
 	</select>
 
@@ -43,36 +41,28 @@
 		WHERE
 		p.member_id = #{member_id}
 	</select>
-
 	<select id="selectPaymentByScreenMovieInfoId"
 		parameterType="String" resultType="kr.co.fmos.payment.PaymentDTO">
-		SELECT payment_id, member_id,
-		movie_information_id, adult, student,
-		silver, price, pay_discount,
-		pay_type, refund, pay_datetime
+		SELECT payment_id, member_id, movie_information_id, adult, student,
+		silver, price, pay_discount, refund, pay_datetime
 		FROM payment
-		WHERE
-		movie_information_id=#{screenMovieInfoID}
+		WHERE movie_information_id=#{screenMovieInfoID}
 	</select>
 
 	<insert id="insertAndReturnWithId" useGeneratedKeys="true"
-		keyProperty="payment_id" parameterType="kr.co.fmos.payment.PaymentDTO">
-		<selectKey keyProperty="payment_id" resultType="int"
-			order="AFTER">
-			SELECT LAST_INSERT_ID() as payment_id
-		</selectKey>
-
+		parameterType="kr.co.fmos.payment.PaymentDTO">
 		INSERT INTO
-		payment (member_id, movie_information_id, adult, student,
-		silver, price, pay_discount, pay_type, refund) VALUES
-		(#{member_id},
+		payment (payment_id, member_id, movie_information_id, adult, student,
+		silver, price, pay_discount, refund) VALUES
+		(
+		#{payment_id},
+		#{member_id},
 		#{movie_information_id},
 		#{adult},
 		#{student},
 		#{silver},
 		#{price},
 		#{pay_discount},
-		#{pay_type},
 		#{refund})
 	</insert>
 </mapper>
