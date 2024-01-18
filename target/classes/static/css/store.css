@@ -16,7 +16,10 @@
     height: 60px;
     border-bottom: 3px solid #241d1e;
     padding: 1% 0;
-}
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    }
 
 .tit-evt > h3 { /*스토어 폰트 css*/
     display: inline-block;
@@ -27,8 +30,8 @@
     color: #22A2F2;
     font-size: 40px;
     font-weight: bold;
-    text-align: left;
-    vertical-align: middle;
+    margin-right: 2%;
+    
 }
 
 .category_wrap { /*스토어 밑 회식 라인*/

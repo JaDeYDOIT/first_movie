@@ -11,6 +11,7 @@
 </c:if>
 
 <div id="mypage_wrap">
+	<h2>마이 페이지</h2>
 	<div class="member_wrap">
 		<div class="memberbox">
 			<div class="member">${mypage.member_name} 님</div>
@@ -21,7 +22,7 @@
 					</article>
 					<article class="list2">
 						<a href="/mypage/coupon.do">쿠폰
-							${mycouponCount.having_coupon_id}개 </a>
+							 <span>${mycouponCount.having_coupon_id} </span>개</a>
 					</article>
 					<article class="list3">
 						<a>회원정보</a>
@@ -33,7 +34,7 @@
 
 	<div class="mypage_content">
 		<aside class="menu_wrap">
-			<h2>마이페이지</h2>
+			<h2>목록</h2>
 			<div class="menubox">
 				<ul>
 					<li><a href="/mypage/payment_detail.do">결제내역</a></li>
@@ -44,5 +45,3 @@
 				</ul>
 			</div>
 		</aside>
-
-

@@ -45,7 +45,7 @@
 			<h3 class="hidden">상영시간</h3>
 			<div class="article article_cinema area__movingbar litype2">
 				<div class="group_top">
-					<h4 class="tit">서울대입구</h4>
+					<h4 class="tit">지역/지점</h4>
 				</div>
 				<div class="inner">
 					<ul class="tab_wrap outer actionmovingbar">
@@ -78,7 +78,7 @@
 			</div>
 			<div class="article article_movie">
 				<div class="group_top">
-					<h4 class="tit movie_name">서울의 봄</h4>
+					<h4 class="tit movie_name">영화</h4>
 				</div>
 				<div class="inner">
 					<div class="movie_select_wrap list mCustomScrollbar thm"
