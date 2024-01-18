@@ -10,7 +10,7 @@
 		SELECT payment_id, member_id,
 		movie_information_id, adult, student,
 		silver, price, pay_discount,
-		pay_type, refund, pay_datetime
+		refund, pay_datetime
 		FROM payment
 	</select>
 
@@ -49,7 +49,7 @@
 		SELECT payment_id, member_id,
 		movie_information_id, adult, student,
 		silver, price, pay_discount,
-		pay_type, refund, pay_datetime
+		refund, pay_datetime
 		FROM payment
 		WHERE
 		movie_information_id=#{screenMovieInfoID}
@@ -57,14 +57,14 @@
 
 	<insert id="insertAndReturnWithId" useGeneratedKeys="true"
 		keyProperty="payment_id" parameterType="kr.co.fmos.payment.PaymentDTO">
-		<selectKey keyProperty="payment_id" resultType="int"
+		<selectKey keyProperty="payment_id" resultType="String"
 			order="AFTER">
 			SELECT LAST_INSERT_ID() as payment_id
 		</selectKey>
 
 		INSERT INTO
 		payment (member_id, movie_information_id, adult, student,
-		silver, price, pay_discount, pay_type, refund) VALUES
+		silver, price, pay_discount, refund) VALUES
 		(#{member_id},
 		#{movie_information_id},
 		#{adult},
@@ -72,7 +72,6 @@
 		#{silver},
 		#{price},
 		#{pay_discount},
-		#{pay_type},
 		#{refund})
 	</insert>
 </mapper>
