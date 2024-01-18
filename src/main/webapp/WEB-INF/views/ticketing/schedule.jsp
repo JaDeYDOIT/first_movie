@@ -84,11 +84,11 @@
 					<div class="movie_select_wrap list mCustomScrollbar thm"
 						style="display: none;">
 						<ul>
-							<c:forEach items="${movieList}" var="movie" varStatus="loopStatus">
+							<c:forEach items="${movieList}" var="movie">
 								<li class="movieID disabled" data-movieid="${movie.movie_id}"><a
 									href="#none">
 										<div class="bx_thm">
-											<span class="rank"><span class="hidden">순위</span><strong>${loopStatus.index + 1}</strong></span><img
+											<span class="rank"><span class="hidden">순위</span><strong>${movie.movie_rank}</strong></span><img
 												src="${movie.movie_image}" alt="포스터" class="mCS_img_loaded">
 										</div>
 										<div class="group_infor">

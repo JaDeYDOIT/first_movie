@@ -14,8 +14,8 @@
 .tit-evt { /*헤더와 스토어 사이 공백*/
 	width: 100%;
     height: 60px;
-    padding-top: 30px;
     border-bottom: 3px solid #241d1e;
+    padding: 1% 0;
 }
 
 .tit-evt > h3 { /*스토어 폰트 css*/
@@ -24,9 +24,9 @@
     height: inherit;
     margin: 0;
     background-image: none;
-    color: #222;
-    font-weight: 500;
-    font-size: 36px;
+    color: #22A2F2;
+    font-size: 40px;
+    font-weight: bold;
     text-align: left;
     vertical-align: middle;
 }

@@ -23,18 +23,6 @@
 	        alert('Not logged in');
 	      });
 	  }
-	function mypage_check(){
-		// 세션 아이디 넘기기
-		var checkLogin = "${s_id}";
-		// 로그인하지 않은 경우
-		if(checkLogin == 'guest'){
-			alert("로그인 해주세요.");
-			location.href='/member/login.do';
-		}else{
-		// 로그인한 경우 mypage페이지로 이동
-			location.href='/member/memberInfo.do';
-		}
-	}//mypage_check()() end 
 	</script>
     	
     <!-- 웹 폰트 -->

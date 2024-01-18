@@ -41,14 +41,13 @@ public class MemberDAOImp implements MemberDAO {
 		return sqlSession.selectOne("member.membercheck", dto);
 	}
 	
+	@Override
+	// 카카오 로그인 관련
 	public int sMembercheck(MemberDTO dto){
 		return sqlSession.selectOne("member.smembercheck", dto);
 	}
 	
-	public int socialcheck(MemberDTO dto){
-		return sqlSession.selectOne("member.socialcheck", dto);
-	}
-	
+	@Override
 	public int sinsert(MemberDTO dto) {
 		return sqlSession.insert("member.sinsert", dto);
 	}//insert() endz
@@ -92,4 +91,11 @@ public class MemberDAOImp implements MemberDAO {
 	public int memberdelete(String member_pw) {
 		return sqlSession.delete("member.memberdelete",member_pw);
 	}
+	
+
+	
+	
+	
+	
+//	
 }

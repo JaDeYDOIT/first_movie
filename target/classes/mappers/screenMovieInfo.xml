@@ -87,19 +87,4 @@
 		= es.screen_id
 		WHERE smi.movie_information_id = #{screenMovieInfoID}
 	</select>
-	
-	<select id="paymentSeats" resultType="java.util.Map"
-		parameterType="String">
-	  	SELECT
-	    ps.seat_x paycol,
-	    ps.seat_y payrow
-		FROM
-		screen_movie_information s
-		JOIN
-		payment p ON s.movie_information_id = p.movie_information_id
-		JOIN
-		payment_seat ps ON p.payment_id = ps.payment_id
-		where
-		s.movie_information_id = #{screenMovieInfoID};
-	</select>
 </mapper>

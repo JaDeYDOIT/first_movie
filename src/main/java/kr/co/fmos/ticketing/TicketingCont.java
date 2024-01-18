@@ -19,7 +19,6 @@ import kr.co.fmos.movie.MovieDAO;
 import kr.co.fmos.movie.MovieDTO;
 import kr.co.fmos.payment.PaymentDAO;
 import kr.co.fmos.payment.PaymentDTO;
-import kr.co.fmos.paymentSeat.PaymentSeatDAO;
 import kr.co.fmos.region.RegionDAO;
 import kr.co.fmos.screen.ScreenDAO;
 import kr.co.fmos.screen.ScreenDTO;
@@ -53,8 +52,6 @@ public class TicketingCont {
 	ScreenDAO screenDao;
 	@Autowired
 	MemberDAO memberDao;
-	@Autowired
-	PaymentSeatDAO paymentSeatDao;
 
 	@GetMapping("/personseat")
 	public ModelAndView personseat(@RequestParam int screenMovieInfoID, int remainSeatCount) {

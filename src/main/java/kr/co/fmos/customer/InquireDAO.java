@@ -36,12 +36,6 @@ public class InquireDAO {
 		return sqlSession.selectList("customer.memberinquirelist", member_id);
 	}
 	
-	public int lostInquireins(InquireDTO dto) {
-		return sqlSession.insert("customer.lostInquireins", dto);
-	}
 	
-	public int inquiredelete(int inquire_id) { 
-		return sqlSession.delete("customer.inquiredelete", inquire_id); 
-	}//delete() end
 	
 }//class end

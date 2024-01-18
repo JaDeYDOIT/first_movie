@@ -25,7 +25,8 @@ public class HomeController {
     //-> http://localhost:9095/main    
 	@RequestMapping("/main")
 	public ModelAndView home(HttpSession session ) {
-		if(session.getAttribute("s_id") == null || session.getAttribute("s_id").equals("")) 
+		if(session.getAttribute("s_id") == null || session.getAttribute("s_pw") == null ||
+		session.getAttribute("s_id").equals("") || session.getAttribute("s_pw").equals("")) 
 		{
 			String s_id = "guest";
 			String s_pw = "";
@@ -34,6 +35,9 @@ public class HomeController {
 		
      ModelAndView mav = new ModelAndView();
      mav.addObject("sessionTimeoutInSeconds", session.getMaxInactiveInterval());
+     mav.addObject("movie", movieDao.movieList());
+     mav.addObject("noticelist", noticeDao.noticeselect());
+     mav.addObject("FAQlist", noticeDao.faqselect());
      mav.setViewName("main");
      return mav;
 	}//home() end

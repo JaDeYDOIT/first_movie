@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kr.co.fmos.theater.TheaterDAO;
 
@@ -72,12 +71,8 @@ public class CustomerCont {
 	}
 	
 	@GetMapping("/noticeForm.do")
-	public String noticeForm(int notice_kind) {
-		if(notice_kind == 0) {
-			return "customer/FAQForm";
-		} else {
-			return "customer/noticeForm";
-		}
+	public String noticeForm() {
+		return "customer/noticeForm";
 	}
 	
 	@GetMapping("/one_inquiryForm.do")
@@ -100,27 +95,13 @@ public class CustomerCont {
 		 	} 
 		 else { mav.addObject("msg1","<script>alert('등록실패')</script>"); 
 			}
-		 
-		 if(dto.getNotice_kind() == 0) {
-			 mav.addObject("list", noticeDao.faqselect(dto.getNotice_kind()));
-			 mav.setViewName("/customer/FAQ");
-		 } else {
-			 mav.addObject("list", noticeDao.noticeselect(dto.getNotice_kind()));
-			 mav.setViewName("/customer/notice");
-		 }
+		mav.addObject("list", noticeDao.faqselect(0));
+    	mav.setViewName("/customer/FAQ");
     	return mav;
     }
     
-    @GetMapping("/noticedelete.do")
-	public String delete(HttpServletRequest req) {//
-		int notice_id = Integer.parseInt(req.getParameter("notice_id"));
-		int notice_kind = Integer.parseInt(req.getParameter("notice_kind"));
-		noticeDao.noticeDelete(notice_id);
-		return "redirect:/customer/notice.do?notice_kind=" + notice_kind;
-	}//delete() end
-    
-    @PostMapping("/one_inquireins.do")
-    public ModelAndView one_inquireins(InquireDTO dto ,HttpSession session) {
+    @PostMapping("/inquireins.do")
+    public ModelAndView oneinquiryins(InquireDTO dto ,HttpSession session) {
     	ModelAndView mav = new ModelAndView();
     	String s_id = (String)session.getAttribute("s_id");
     	dto.setMember_id(s_id);
@@ -133,36 +114,9 @@ public class CustomerCont {
     	else { mav.addObject("msg1","<script>alert('등록실패')</script>"); 
 		}
     	mav.addObject("list", noticeDao.faqselect(0));
-		mav.setViewName("/customer/one_inquire");
+		mav.setViewName("/customer/FAQ");
 		return mav;
     }
-    
-    @PostMapping("/lost_inquireins.do")
-    public ModelAndView lost_inquiryins(InquireDTO dto ,HttpSession session) {
-    	ModelAndView mav = new ModelAndView();
-    	String s_id = (String)session.getAttribute("s_id");
-    	dto.setMember_id(s_id);
-    	System.out.println(dto.toString());
-    	
-    	int num = inquireDao.lostInquireins(dto);
-    	
-    	if(num != 0) { 
-    		mav.addObject("msg1","<script>alert('등록이 완료되었습니다.')</script>"); 
-    	} 
-    	else { mav.addObject("msg1","<script>alert('등록실패')</script>"); 
-    	}
-    	mav.addObject("list", noticeDao.faqselect(0));
-    	mav.setViewName("/customer/lost_inquire");
-    	return mav;
-    }
-    
-    @GetMapping("/inquiredelete.do")
-	public String inquiredelete(HttpServletRequest req) {//
-		int inquire_id = Integer.parseInt(req.getParameter("inquire_id"));
-		int inquire_kind = Integer.parseInt(req.getParameter("inquire_kind"));
-		inquireDao.inquiredelete(inquire_id);
-		return "redirect:/customer/inquire.do?inquire_kind=" + inquire_kind;
-	}//delete() end
     
     @PostMapping("/branchselectbox.do")
     @ResponseBody
