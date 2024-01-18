@@ -539,12 +539,8 @@ function handlePaymentConfirmButtonClick() {
 			}
 		}
 	});
+<<<<<<< HEAD
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> dh
 
 function handleCouponCloseButtonClick() {
 	$('.wrap_selected_coupon .btn_close').click(function() {
@@ -552,9 +548,14 @@ function handleCouponCloseButtonClick() {
 		selectedCouponID = undefined;
 		couponDiscountRate = 0;
 	});
-<<<<<<< HEAD
-}
->>>>>>> 872227f9e1761c7491716113e93b7479d8c9c11e
 =======
-}
 >>>>>>> dh
+}
+
+function handleCouponCloseButtonClick() {
+	$('.wrap_selected_coupon .btn_close').click(function() {
+		$('.wrap_selected_coupon').css('display', 'none');
+		selectedCouponID = undefined;
+		couponDiscountRate = 0;
+	});
+}
