@@ -90,10 +90,4 @@ public class MemberDAOImp implements MemberDAO {
 		return sqlSession.delete("member.memberdelete",member_pw);
 	}
 	
-
-	
-	
-	
-	
-//	
 }
