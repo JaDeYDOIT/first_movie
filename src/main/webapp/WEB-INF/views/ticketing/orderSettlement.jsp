@@ -78,18 +78,7 @@
 						<div class="wrap_coupon">
 							<button class="btn_coupon">쿠폰 사용하기</button>
 							<div class="wrap_selected_coupon" style="display: none;">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 								<button type="button" class="btn_close">팝업 닫기</button>
-=======
->>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
-=======
-								<button type="button" class="btn_close">팝업 닫기</button>
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
-								<button type="button" class="btn_close">팝업 닫기</button>
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 								<div class="coupon_name">(쿠폰명)</div>
 								<dl>
 									<dd class="period">(사용기간)</dd>
@@ -99,122 +88,6 @@
 						<h3 class="tit_payment">포인트</h3>
 						<div class="remain_point">잔여 포인트 :</div>
 						<input class="point_amount" type="number" placeholder="사용할 포인트 입력">
-					</div>
-					<div class="group_payment">
-						<h5 class="tit_payment">최종 결제수단</h5>
-						<div class="bx_cate">
-							<ul class="list_pay_item cate6">
-								<li><button type="button" class="cate1 pay_card">신용카드</button></li>
-								<li><button type="button" class="cate3 pay_simple">간편결제</button></li>
-								<li><button type="button" class="cate5 ty2">내통장결제</button></li>
-								<li><button type="button" class="cate4 ty2">휴대폰</button></li>
-							</ul>
-						</div>
-						<div class="pay_method_list">
-							<div class="article_pay_card">
-								<ul class="list_pay_item cate5 itemcenter ">
-									<li><button class="">
-											<span class="thm"><img
-												src="/images/ticketing/card_logo_lotte.png" alt="롯데카드"
-												class="mCS_img_loaded"></span><span class="tit">롯데카드</span>
-										</button></li>
-									<li><button class="">
-											<span class="thm"><img
-												src="/images/ticketing/card_logo_kb.png" alt="국민카드"
-												class="mCS_img_loaded"></span><span class="tit">국민카드</span>
-										</button></li>
-									<li><button class="">
-											<span class="thm"><img
-												src="/images/ticketing/card_logo_kakao.png" alt="카카오뱅크"
-												class="mCS_img_loaded"></span><span class="tit">카카오뱅크</span>
-										</button></li>
-									<li><button class="">
-											<span class="thm"><img
-												src="/images/ticketing/card_logo_shinhan.png" alt="신한카드"
-												class="mCS_img_loaded"></span><span class="tit">신한카드</span>
-										</button></li>
-									<li><button class="">
-											<span class="thm"><img
-												src="/images/ticketing/card_logo_samsung_20230112.png"
-												alt="삼성카드" class="mCS_img_loaded"></span><span class="tit">삼성카드</span>
-										</button></li>
-									<li><button class="">
-											<span class="thm"><img
-												src="/images/ticketing/card_logo_hyundai.png" alt="현대카드"
-												class="mCS_img_loaded"></span><span class="tit">현대카드</span>
-										</button></li>
-									<li><button class="">
-											<span class="thm"><img
-												src="/images/ticketing/card_logo_hana.png" alt="하나카드"
-												class="mCS_img_loaded"></span><span class="tit">하나카드</span>
-										</button></li>
-									<li><button class="">
-											<span class="thm"><img
-												src="/images/ticketing/card_logo_keb.png" alt="외환카드"
-												class="mCS_img_loaded"></span><span class="tit">외환카드</span>
-										</button></li>
-									<li><button class="">
-											<span class="thm"><img
-												src="/images/ticketing/card_logo_woori.png" alt="우리카드"
-												class="mCS_img_loaded"></span><span class="tit">우리카드</span>
-										</button></li>
-									<li><button class="">
-											<span class="thm"><img
-												src="/images/ticketing/card_logo_bc.png" alt="BC카드"
-												class="mCS_img_loaded"></span><span class="tit">BC카드</span>
-										</button></li>
-									<li><button class="">
-											<span class="thm"><img
-												src="/images/ticketing/card_logo_citi.png" alt="씨티카드"
-												class="mCS_img_loaded"></span><span class="tit">씨티카드</span>
-										</button></li>
-									<li><button class="">
-											<span class="thm"><img
-												src="/images/ticketing/card_logo_nh.png" alt="NH카드"
-												class="mCS_img_loaded"></span><span class="tit">NH카드</span>
-										</button></li>
-									<li><button class="">
-											<span class="thm"><img
-												src="/images/ticketing/card_logo_jb.png" alt="전북카드"
-												class="mCS_img_loaded"></span><span class="tit">전북카드</span>
-										</button></li>
-									<li><button class="">
-											<span class="thm"><img
-												src="/images/ticketing/card_logo_kj.png" alt="광주카드"
-												class="mCS_img_loaded"></span><span class="tit">광주카드</span>
-										</button></li>
-								</ul>
-							</div>
-							<div class="article_pay_simple">
-								<ul class="list_pay_item cate3">
-									<li><button type="button" class="pay_simple_btn_box">
-											<span class="pay_simple_thm"><img
-												src="/images/ticketing/payment_simple_kakao.png" alt="카카오페이"></span><span
-												class="pay_simple_tit">카카오페이</span>
-										</button></li>
-									<li><button type="button" class="pay_simple_btn_box">
-											<span class="pay_simple_thm"><img
-												src="/images/ticketing/payment_simple_payco.png" alt="페이코"></span><span
-												class="pay_simple_tit">페이코</span>
-										</button></li>
-									<li><button type="button" class="pay_simple_btn_box">
-											<span class="pay_simple_thm"><img
-												src="/images/ticketing/payment_simple_npay1.png" alt="네이버페이"></span><span
-												class="pay_simple_tit">네이버페이</span>
-										</button></li>
-									<li><button type="button" class="pay_simple_btn_box">
-											<span class="pay_simple_thm"><img
-												src="/images/ticketing/payment_simple_toss_221012.png"
-												alt="토스"></span><span class="pay_simple_tit">토스</span>
-										</button></li>
-									<li><button type="button" class="pay_simple_btn_box">
-											<span class="pay_simple_thm"><img
-												src="/images/ticketing/payment_simple_tbee.png"
-												alt="모바일캐시비/티머니"></span><span class="pay_simple_tit">모바일캐시비/티머니</span>
-										</button></li>
-								</ul>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -271,27 +144,9 @@
 								총<strong></strong>원
 							</dd>
 						</dl>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 
-						<a class="btn_col1 btn_confirm pay_button disabled"
-							onclick="requestPay()">결제하기</a>
-						<script src="/js/main.js"></script>
+						<a class="btn_col1 btn_confirm pay_button disabled">결제하기</a>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-						<a href="/ticketing/paysuccess" class="btn_col1 btn_confirm">결제하기</a>
->>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
-=======
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 					</div>
 				</div>
 			</div>
@@ -357,4 +212,5 @@
 	</div>
 </body>
 </html>
+<!--  -->
 <%@ include file="../footer.jsp"%>
