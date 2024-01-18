@@ -19,13 +19,6 @@ let memberPoint = 0;
 let usedPoint = 0;
 
 $(document).ready(function() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 	initialize();
 	asyncInitialize();
 });
@@ -83,14 +76,6 @@ async function asyncInitialize() {
 }
 
 function initializeCustomScrollbar() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
-=======
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 	$(".mCustomScrollbar").mCustomScrollbar({
 		theme: "dark-thin", // 테마 설정 (dark 또는 light)
 		scrollButtons: {
@@ -100,13 +85,6 @@ function initializeCustomScrollbar() {
 	});
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 async function getTicketingInfo() {
 	try {
 		const screenMovieInfo = await $.ajax({
@@ -297,17 +275,6 @@ function selectMemberPoint() {
 
 function handlePaymentButtonClick() {
 	$('.bx_cate li>button').click(function() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-//최종 결제수단
-$(document).ready(function() {
-	$('.group_payment .list_pay_item li>button').click(function() {
->>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
-=======
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 		// 모든 li 요소에서 'selected' 클래스를 제거
 		$('.bx_cate li>button').removeClass('active');
 
@@ -412,13 +379,6 @@ function handleCouponCancleButtonClick() {
 	});
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 function handlePointAmountInput() {
 	$(".point_amount").on("input", function() {
 		var enteredPoints = $(this).val();
@@ -465,19 +425,3 @@ function cancelCoupon() {
 	selectedCouponID = undefined;
 	couponDiscountRate = 0;
 }
-<<<<<<< HEAD
-
-function handleCouponCloseButtonClick() {
-	$('.wrap_selected_coupon .btn_close').click(function() {
-		$('.wrap_selected_coupon').css('display', 'none');
-		selectedCouponID = undefined;
-		couponDiscountRate = 0;
-	});
-}
-<<<<<<< HEAD
-=======
->>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
-=======
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
