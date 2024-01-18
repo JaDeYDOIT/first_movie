@@ -43,4 +43,17 @@ public class ProductDAO {
 		return sqlSession.selectList("product.detail", product_id);
 	}//detail() end
 	
+	public String product_image(int product_id) {
+		return sqlSession.selectOne("product.product_image", product_id);
+	}//product_image() end
+	
+	public void delete(int product_id) {
+		sqlSession.delete("product.delete", product_id);
+	}//delete() end
+	
+	/* 장바구니 개수 조회 */
+	public List<Map<String, Object>> cartcnt(String member_id){
+		return sqlSession.selectList("cart.cartcnt", member_id);
+	}//cartcnt() end
+	
 }//class end

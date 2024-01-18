@@ -47,7 +47,7 @@
  </div>
  </form> <!-- form 끝 -->
  
-<!-- <!-- 구글 로그인 시작 -->
+<!-- 구글 로그인 시작 -->
 <!-- content에 자신의 OAuth2.0 클라이언트ID를 넣습니다. -->
 <ul>
  <li id="GgCustomLogin">

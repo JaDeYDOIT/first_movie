@@ -5,7 +5,16 @@ const adult = decodeURIComponent(currentUrl.searchParams.get('adult'));
 const student = decodeURIComponent(currentUrl.searchParams.get('student'));
 const silver = decodeURIComponent(currentUrl.searchParams.get('silver'));
 const price = decodeURIComponent(currentUrl.searchParams.get('price'));
+<<<<<<< HEAD
 
+=======
+/*const student = 1;
+const adult = 0;
+const silver = 3;
+const price = 15000;
+const screenMovieInfoID = 50;
+let selectedSeats = ["C6", "H9", "A1", "B2"];*/
+>>>>>>> dh
 let memberID;
 let movieName;
 let movieAudienceRating;
@@ -240,10 +249,17 @@ function printTicketingInfo() {
 	$('.movie_infor').html(movieInfoContent);
 
 	selectedSeats.sort(function(a, b) {
+<<<<<<< HEAD
 		const alphaA = a.charAt(0);
 		const alphaB = b.charAt(0);
 		const numA = parseInt(a.slice(1), 10);
 		const numB = parseInt(b.slice(1), 10);
+=======
+		var alphaA = a.charAt(0);
+		var alphaB = b.charAt(0);
+		var numA = parseInt(a.slice(1), 10);
+		var numB = parseInt(b.slice(1), 10);
+>>>>>>> dh
 
 		if (alphaA === alphaB) {
 			return numA - numB;
@@ -523,6 +539,17 @@ function handlePaymentConfirmButtonClick() {
 			}
 		}
 	});
+<<<<<<< HEAD
+}
+
+function handleCouponCloseButtonClick() {
+	$('.wrap_selected_coupon .btn_close').click(function() {
+		$('.wrap_selected_coupon').css('display', 'none');
+		selectedCouponID = undefined;
+		couponDiscountRate = 0;
+	});
+=======
+>>>>>>> dh
 }
 
 function handleCouponCloseButtonClick() {

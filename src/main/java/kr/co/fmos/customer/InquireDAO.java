@@ -38,4 +38,10 @@ public class InquireDAO {
 	
 	
 	
+	public List<InquireDTO> memberinquirelist(String member_id) {
+		return sqlSession.selectList("customer.memberinquirelist", member_id);
+	}
+	
+	
+	
 }//class end

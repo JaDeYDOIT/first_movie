@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/css/content.css">
 <link rel="stylesheet" href="/css/content_lc21new.css">
 <link rel="stylesheet" href="/css/dev.css">
-<script src="/js/ticketing_personseat2.js"></script>
+<script src="/js/ticketing_personseat.js"></script>
 
 <script>
 	// 행과 열의 개수 설정
@@ -86,7 +86,7 @@
 								</div>
 								<dl>
 									<dt>일시</dt>
-									<dd class="sub_info1">${screenMovieInfo.formatted_date}
+									<dd class="sub_info1">${screenMovieInfo.formatted_date} (${screenMovieInfo.korean_day})
 										<span class="time">${screenMovieInfo.formatted_time} ~
 											${screenMovieInfo.result_time}</span>
 									</dd>

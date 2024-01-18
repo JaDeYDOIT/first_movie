@@ -37,4 +37,10 @@ public class ScreenMovieInfoCont {
 	public List<Map<String, Object>> emptySeats(@RequestBody String screenMovieInfoID) {
 		return screenMovieInfoDao.emptySeats(screenMovieInfoID);
 	}
+	
+	@PostMapping("/paymentSeats")
+	@ResponseBody
+	public List<Map<String, Object>> paymentSeats(@RequestBody String screenMovieInfoID) {
+		return screenMovieInfoDao.paymentSeats(screenMovieInfoID);
+	}
 }
