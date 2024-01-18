@@ -150,5 +150,5 @@ public class TheaterDAO {
 	public Map<String, Object> writelist(Map<String, Object> writelist) {
 		return sqlSession.selectOne("theater.writelist", writelist);
 	}
-	
+	//
 }// class end
