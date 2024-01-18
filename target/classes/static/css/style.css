@@ -259,7 +259,8 @@ nav ul li a {
 	font-size: 15px;
 }
 
-#notice_wrap div, #notice_wrap p {
+#notice_wrap div,
+p {
 	padding: 20px;
 }
 
@@ -270,7 +271,6 @@ nav ul li a {
 
 .notice {
 	width: 45%;
-	height: 100%;
 	border-left: 1px solid #000;
 }
 
