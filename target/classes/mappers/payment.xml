@@ -41,6 +41,7 @@
 		WHERE
 		p.member_id = #{member_id}
 	</select>
+	
 	<select id="selectPaymentByScreenMovieInfoId"
 		parameterType="String" resultType="kr.co.fmos.payment.PaymentDTO">
 		SELECT payment_id, member_id, movie_information_id, adult, student,
@@ -65,4 +66,6 @@
 		#{pay_discount},
 		#{refund})
 	</insert>
+
+	
 </mapper>

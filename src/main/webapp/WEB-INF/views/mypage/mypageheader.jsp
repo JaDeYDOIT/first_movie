@@ -31,7 +31,7 @@
 			</div>
 		</div>
 	</div>
-
+<!--  -->
 	<div class="mypage_content">
 		<aside class="menu_wrap">
 			<h2>목록</h2>
