@@ -3,7 +3,6 @@
 <%@ include file="../header.jsp"%>
 <link rel="stylesheet" href="/css/moviedetail.css">
 
-
 <div class="movie_detail_wrap">
 	<div class='movie_detail'>
 		<div class="movie_img_wrap">
@@ -21,7 +20,7 @@
 				<li>감독명 : ${detail.director_name}</li>
 				<li>배우명 : ${detail.actor_name}</li>
 			</ul>
-				<button class="Ticketing_btn" onclick="location.href='http:/ticketing/schedule'">예매하기</button>
+			<button onclick="location.href='http:/ticketing/schedule'">예매하기</button>
 		</div>
 		<!-- movie_text end -->
 	</div>

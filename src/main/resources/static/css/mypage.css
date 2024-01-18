@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 
-*{margin: 0; padding: 0; }
+*{margin: 0; padding: 0;}
 
 
 a{
@@ -11,41 +11,36 @@ a{
 /* 전체 wrap */
 #mypage_wrap{
     width: 100%;
-    box-sizing: border-box;
-  
+    height: auto;
+    background: #f2ecec;
 }
 
 /* 회원 wrap */
 .member_wrap{
-    width: 100%;
-    margin: 0 auto 2% auto;
-    text-align: center;
-    box-sizing: border-box;
-    
+    width: 90%;
+    height: 300px;
+    margin: 0 auto 10% auto;
 }
 /* 상단 회원 박스 내용물 wrap */
 .memberbox{
-	font-size: 20px;
-	font-weight: bold;
-	line-height: 200px;
     width: 100%;
+    height: 100%;
     display: flex;
     padding: 5% 0;
-    
 }
 
 /* 회원 */
 .member{
     width: 40%;
     height: 100%;
-	background-color: rgb(255, 233, 191);
-	box-sizing: border-box;
+    background: rgb(192, 41, 229);
 }
 
 /* 우측 리스트박스 */
 .list_box{
     width: 60%;
     height: 100%;
+    background: #544954;
 }
 /* 리스트 ul */
 .list{
@@ -58,8 +53,6 @@ a{
 .list article{
     width: 33.333333%;
     height: 100%;
-    box-sizing: border-box;
-    margin-left: 1%;
 }
 
 /* 리스트 li 시작 */
@@ -77,6 +70,8 @@ a{
 /* 하단 .mypage_content */
 .mypage_content{
     width: 100%;
+    height: 700px;
+    background: #fc4d4d;
     display: flex;
 }
 
@@ -90,6 +85,7 @@ a{
     font-size: 30px;
     font-weight: bold;
     width: 100%;
+    height: 15%;
     text-align: center;
     line-height: 100px;
 }
@@ -97,210 +93,49 @@ a{
 /* aside 박스 묶음 */
 .menubox{
     width: 100%;
+    height: 85%;
 }
 .menubox ul{
     display: flex;
     flex-direction: column;
 }
 .menubox ul li{
+    width: 100%;
+    height: 10%;
     background-color: wheat;
-    font-size: 15px;
-    font-weight: bold;
-    margin-bottom:5%;
-     
 }
 .menubox ul li a{
     padding: 10%;
     display: block;
-    text-align: center;
+    border: 1px solid black;
+    text-align: center
 }
 /* aside 박스 묶음 끝 */
 
 /* 우측 content 묶음 */
 .content_wrap{
-    width: 80%;
-    margin:0 auto;
+    width: 85%;
+    background: rgb(27, 175, 99);
 }
 
 /* 콘텐츠 상단 */
 .content_top{
     width: 100%;
-    border-bottom: 2px solid #22A2F2;  
-    font-size: 25px;
-    margin-bottom: 1%;
-    line-height: 100px;
-    
-    
+    background: rgb(127, 232, 178); 
+    height: 15%;  
 }
 
 /* 콘텐츠 하단 */
 .content_bottom{
-    width: 100%;
-
-}
-
-.content_bottom table thead tr,
-.content_bottom table tbody tr{
-	border-bottom: 1px solid black;
-	    font-size: 14px;
-}
-
-/*---------------------------결제 내역 시작 -----------------------*/
-.payment_box{
-	width: 100%;	
-	text-align: center;	
-}
-/*번호, 제목, 내용 박스*/
-.payment_box .payment_title tr,
-.payment_box .payment_detail tr{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	font-weight: 500;
-}
-.payment_box .payment_title tr th,
-.payment_box .payment_detail tr td{
-		margin: 1% 0;
-}
-/*번호 컬럼*/
-.payment_box .payment_title tr th:nth-of-type(1),
-.payment_box .payment_detail tr td:nth-of-type(1){
-	width: 10%;
-}
-/*제목컬럼*/
-.payment_box .payment_title tr th:nth-of-type(2),
-.payment_box .payment_detail tr td:nth-of-type(2){
-	width: 10%;
-}
-/*내용컬럼*/
-.payment_box .payment_title tr th:nth-of-type(3),
-.payment_box .payment_detail tr td:nth-of-type(3){
-	width: 10%;
-}
-/*내용컬럼*/
-.payment_box .payment_title tr th:nth-of-type(4),
-.payment_box .payment_detail tr td:nth-of-type(4){
-	width: 10%;
-}
-/*내용컬럼*/
-.payment_box .payment_title tr th:nth-of-type(5),
-.payment_box .payment_detail tr td:nth-of-type(5){
-	width: 10%;
-}
-/*내용컬럼*/
-.payment_box .payment_title tr th:nth-of-type(6),
-.payment_box .payment_detail tr td:nth-of-type(6){
-	width: 10%;
-}
-/*내용컬럼*/
-.payment_box .payment_title tr th:nth-of-type(7),
-.payment_box .payment_detail tr td:nth-of-type(7){
-	width: 10%;
-}
-/*내용컬럼*/
-.payment_box .payment_title tr th:nth-of-type(8),
-.payment_box .payment_detail tr td:nth-of-type(8){
-	width: 10%;
-}
-/*내용컬럼*/
-.payment_box .payment_title tr th:nth-of-type(9),
-.payment_box .payment_detail tr td:nth-of-type(9){
-	width: 10%;
-}
-
-/*---------------------------결제 내역 끝 -----------------------*/
-
-
-/*--------------------------- 쿠폰 시작 -----------------------*/
-.coupon_box{
-	width: 100%;	
-	text-align: center;	
-}
-/*번호, 제목, 내용 박스*/
-.coupon_box .coupon_title tr,
-.coupon_box .coupon_detail tr{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	font-weight: 500;
-}
-.coupon_box .coupon_title tr th,
-.coupon_box .coupon_detail tr td{
-		margin: 1% 0;
-}
-/*번호 컬럼*/
-.coupon_box .coupon_title tr th:nth-of-type(1),
-.coupon_box .coupon_detail tr td:nth-of-type(1){
-	width: 10%;
-}
-/*제목컬럼*/
-.coupon_box .coupon_title tr th:nth-of-type(2),
-.coupon_box .coupon_detail tr td:nth-of-type(2){
-	width: 10%;
-}
-/*내용컬럼*/
-.coupon_box .coupon_title tr th:nth-of-type(3),
-.coupon_box .coupon_detail tr td:nth-of-type(3){
-	width: 10%;
-}
-/*내용컬럼*/
-.coupon_box .coupon_title tr th:nth-of-type(4),
-.coupon_box .coupon_detail tr td:nth-of-type(4){
-	width: 10%;
-}
-/*내용컬럼*/
-.coupon_box .coupon_title tr th:nth-of-type(5),
-.coupon_box .coupon_detail tr td:nth-of-type(5){
-	width: 10%;
-}
-/*내용컬럼*/
-.coupon_box .coupon_title tr th:nth-of-type(6),
-.coupon_box .coupon_detail tr td:nth-of-type(6){
-	width: 10%;
-}
-/*내용컬럼*/
-.coupon_box .coupon_title tr th:nth-of-type(7),
-.coupon_box .coupon_detail tr td:nth-of-type(7){
-	width: 10%;
-}
-/*---------------------------쿠폰 끝 -----------------------*/
-
-
-/*---------------------------내 문의 시작 -----------------------*/
-.inquiry_box{
-	width: 100%;	
-	text-align: center;
-}
-/*번호, 제목, 내용 박스*/
-.inquiry_box .inquiry_title tr,
-.inquiry_box .inquiry_detail tr{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	font-weight: 500;
-}
-.inquiry_box .inquiry_title tr th,
-.inquiry_box .inquiry_detail tr td{
-	margin: 1% 0;
-}
-/*번호 컬럼*/
-.inquiry_box .inquiry_title tr th:nth-of-type(1),
-.inquiry_box .inquiry_detail tr td:nth-of-type(1){
-	width: 10%;
-}
-/*제목컬럼*/
-.inquiry_box .inquiry_title tr th:nth-of-type(2),
-.inquiry_box .inquiry_detail tr td:nth-of-type(2){
-	width: 10%;
-}
-/*내용컬럼*/
-.inquiry_box .inquiry_title tr th:nth-of-type(3),
-.inquiry_box .inquiry_detail tr td:nth-of-type(3){
-	width: 70%;
+    width: 100%;;
+    height: 85%;
+    background: #bbcc37;
 }
 
 
-/*---------------------------내 문의 끝 -----------------------*/
+
+
+
 
 
 
