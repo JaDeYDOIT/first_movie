@@ -32,6 +32,15 @@ public class InquireDAO {
 	public int oneInquireins(InquireDTO dto) {
 		return sqlSession.insert("customer.oneinquireins", dto);
 	}
+	
+	public int lostInquireins(InquireDTO dto) {
+		return sqlSession.insert("customer.lostInquireins", dto);
+	}
+	
+	public int inquiredelete(int inquire_id) { 
+		return sqlSession.delete("customer.inquiredelete", inquire_id); 
+	}//delete() end
+	
 	public List<InquireDTO> memberinquirelist(String member_id) {
 		return sqlSession.selectList("customer.memberinquirelist", member_id);
 	}

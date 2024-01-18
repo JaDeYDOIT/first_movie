@@ -33,6 +33,11 @@
 		WHERE notice_kind
 		= #{notice_kind}
 	</select>
+	
+	<delete id="noticeDelete" parameterType="int">
+		DELETE FROM notice
+		WHERE notice_id=#{notice_id}
+	</delete>
 
 	<select id="mainnotice"
 		resultType="kr.co.fmos.customer.NoticeDTO">
@@ -76,6 +81,11 @@
 		(#{member_id}, #{inquire_kind}, #{inquire_file}, #{inquire_title},
 		#{inquire_content}, #{inquire_pw})
 	</insert>
+	
+	<insert id="lostInquireins" parameterType="kr.co.fmos.customer.InquireDTO">
+		INSERT INTO inquire(member_id ,inquire_kind ,inquire_title ,inquire_content ,inquire_pw )
+		VALUES (#{member_id}, #{inquire_kind}, #{inquire_title}, #{inquire_content}, #{inquire_pw})
+	</insert>
 
 	<insert id="rentalInsert"
 		parameterType="kr.co.fmos.customer.InquireDTO">
@@ -111,5 +121,10 @@
 		FROM inquire
 		WHERE member_id = #{member_id}
 	</select>
+	
+	<delete id="inquiredelete" parameterType="int">
+		DELETE FROM inquire
+		WHERE inquire_id=#{inquire_id}
+	</delete>
 <!--  -->
 </mapper>
