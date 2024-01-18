@@ -170,6 +170,7 @@ public class CustomerCont {
     public Map<String, Object> branchselectbox(String region_id) {
         Map<String, Object> map = new HashMap<>();
         map.put("regionselectbox", theaterDao.branchselectbox(region_id));
+        System.out.println(theaterDao.branchselectbox(region_id));
         return map;
     }
     
