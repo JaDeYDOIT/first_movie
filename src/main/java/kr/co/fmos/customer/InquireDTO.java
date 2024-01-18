@@ -2,16 +2,16 @@ package kr.co.fmos.customer;
 
 public class InquireDTO {
 
-	private String inquire_id;
-	private String member_id;
-	private int inquire_kind;
-	private String inquire_title;
-	private String inquire_content;
-	private String inquire_theater_name;
-	private String inquire_file;
-	private String inquire_pw;
-	private String inquire_answer;
-	private String inquire_datetime;
+	private String inquire_id;			 //기본
+	private String member_id;			 //회원아이디
+	private int inquire_kind;			 //문의유형
+	private String inquire_title;		 //제목
+	private String inquire_content;		 //내용
+	private String inquire_theater_name; //영화관이름
+	private String inquire_file;		 //파일첨부
+	private String inquire_pw;			 //비밀번호
+	private String inquire_answer;		 //답변상태
+	private String inquire_datetime;	 //작성일
 	
 	public InquireDTO() {}
 	

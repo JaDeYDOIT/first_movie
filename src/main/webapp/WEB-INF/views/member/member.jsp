@@ -27,12 +27,12 @@
 		membirth = membirth.trim();
 		
 		if(memid.length < 4 || memid.length > 15 || memid === null){
-			alert("아이디는 4~15글자 사이로 작성해주세요");
+			alert("아이디는 5~15글자 사이로 작성해주세요");
 			$(".memid").focus();
 			return false;
 			
 		} else if(mempw.length < 4 || mempw.length > 15){
-			alert("비밀번호는 4~15글자 사이로 작성해주세요");
+			alert("비밀번호는 5~15글자 사이로 작성해주세요");
 			$(".mempw").focus();
 			return false;
 		} else if(mempw !== mempw2){
@@ -61,6 +61,7 @@
 </script>
 
 	<form method="post" action="insert" onsubmit="return member()">
+		<input type="hidden" name="member_means" value="퍼스트">
 		<h2>회원가입</h2>
 	<table>
 		<tr>

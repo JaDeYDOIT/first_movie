@@ -1,7 +1,6 @@
 package kr.co.fmos.payment;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,19 +19,10 @@ public class PaymentDAOImp implements PaymentDAO {
 	public List<PaymentDTO> list() {
 		return sqlSession.selectList("payment.list");
 	}
-	@Override
-	public List<Map<String, Object>> mypagelist(String member_id) {
-		return sqlSession.selectList("payment.mypagelist", member_id);
-	}
 
 	@Override
-	public List<PaymentDTO> selectPaymentByScreenMovieInfoId(String screenMovieInfoID) {
+	public List<PaymentDTO> selectPaymentByScreenMovieInfoId(String screenMovieInfoID)
+	{
 		return sqlSession.selectList("payment.selectPaymentByScreenMovieInfoId", screenMovieInfoID);
-	}
-
-	@Override
-	public PaymentDTO insertAndReturnWithId(PaymentDTO paymentDto) {
-		sqlSession.insert("payment.insertAndReturnWithId", paymentDto);
-		return paymentDto;
 	}
 }

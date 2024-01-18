@@ -8,17 +8,7 @@
 <link rel="stylesheet" href="/css/content.css">
 <link rel="stylesheet" href="/css/content_lc21new.css">
 <link rel="stylesheet" href="/css/dev.css">
-<<<<<<< HEAD
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<<<<<<< HEAD
-
-=======
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
-<script src="/js/ticketing_personseat.js"></script>
+<script src="/js/ticketing_personseat2.js"></script>
 
 <script>
 	// 행과 열의 개수 설정
