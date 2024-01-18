@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kr.co.fmos.theater.TheaterDAO;
 
@@ -85,7 +86,7 @@ public class CustomerCont {
 		return "customer/lost_inquiryForm";
 	}
 	
-    @PostMapping("/noticeinsert.do") 
+	@PostMapping("/noticeinsert.do") 
     public ModelAndView noticeins(NoticeDTO dto) {
     	ModelAndView mav = new ModelAndView();
 		
@@ -118,6 +119,52 @@ public class CustomerCont {
 		return mav;
     }
     
+	 @GetMapping("/noticedelete.do")
+		public String delete(HttpServletRequest req) {//
+			int notice_id = Integer.parseInt(req.getParameter("notice_id"));
+			int notice_kind = Integer.parseInt(req.getParameter("notice_kind"));
+			noticeDao.noticeDelete(notice_id);
+			return "redirect:/customer/notice.do?notice_kind=" + notice_kind;
+		}//delete() end
+	 
+	 @PostMapping("/one_inquireins.do")
+	    public ModelAndView one_inquireins(InquireDTO dto ,HttpSession session) {
+	    	ModelAndView mav = new ModelAndView();
+	    	String s_id = (String)session.getAttribute("s_id");
+	    	dto.setMember_id(s_id);
+	    	System.out.println(dto.toString());
+	    	
+	    	int num = inquireDao.oneInquireins(dto);
+	    	
+	    	if(num != 0) { 
+			 	mav.addObject("msg1","<script>alert('등록이 완료되었습니다.')</script>"); 
+		 	} 
+	    	else { mav.addObject("msg1","<script>alert('등록실패')</script>"); 
+			}
+	    	mav.addObject("list", noticeDao.faqselect(0));
+			mav.setViewName("/customer/one_inquire");
+			return mav;
+	    }
+	 
+	 @PostMapping("/lost_inquireins.do")
+	    public ModelAndView lost_inquiryins(InquireDTO dto ,HttpSession session) {
+	    	ModelAndView mav = new ModelAndView();
+	    	String s_id = (String)session.getAttribute("s_id");
+	    	dto.setMember_id(s_id);
+	    	System.out.println(dto.toString());
+	    	
+	    	int num = inquireDao.lostInquireins(dto);
+	    	
+	    	if(num != 0) { 
+	    		mav.addObject("msg1","<script>alert('등록이 완료되었습니다.')</script>"); 
+	    	} 
+	    	else { mav.addObject("msg1","<script>alert('등록실패')</script>"); 
+	    	}
+	    	mav.addObject("list", noticeDao.faqselect(0));
+	    	mav.setViewName("/customer/lost_inquire");
+	    	return mav;
+	    }
+	 
     @PostMapping("/branchselectbox.do")
     @ResponseBody
     public Map<String, Object> branchselectbox(String region_id) {
@@ -125,6 +172,14 @@ public class CustomerCont {
         map.put("regionselectbox", theaterDao.branchselectbox(region_id));
         return map;
     }
+    
+    @GetMapping("/inquiredelete.do")
+	public String inquiredelete(HttpServletRequest req) {//
+		int inquire_id = Integer.parseInt(req.getParameter("inquire_id"));
+		int inquire_kind = Integer.parseInt(req.getParameter("inquire_kind"));
+		inquireDao.inquiredelete(inquire_id);
+		return "redirect:/customer/inquire.do?inquire_kind=" + inquire_kind;
+	}//delete() end
     
     @PostMapping("/screenselectbox.do")
     @ResponseBody

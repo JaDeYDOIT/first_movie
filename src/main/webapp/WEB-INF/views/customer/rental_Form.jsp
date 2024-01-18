@@ -241,7 +241,6 @@ function rentalcheck(){
       alert("아이디는 4~15 글자로 작성해주세요");
       return false;
     }
-    
 }
 </script>
 <%@ include file="../footer.jsp" %>

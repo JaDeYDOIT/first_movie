@@ -2,6 +2,28 @@
 pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 <link rel="stylesheet" href="/css/customer/customercss.css" />
+<script>
+	function inquireDelete(inquire_id,inquire_kind){
+		alert(inquire_id, inquire_kind)
+		if(confirm("해당 상품을 삭제할까요?")){
+			location.href='/customer/inquiredelete.do?inquire_id=' + inquire_id + "&inquire_kind=" + inquire_kind;
+		}//if end
+	}//cartDelete() end
+	
+	//글쓰기 클릭시 로그인 유무 체크
+	function logincheck() {
+	  	   //세션 아이디 넘기기
+	  	   var checkLogin = "${s_id}";
+		
+	  	   //로그인을 하지 않은 상태
+	  	   if (checkLogin == 'guest') {
+	  	        alert("로그인 해주세요.");
+	  	    } else {
+	  	    	//로그인을 한 상태
+	  	        location.href = "/customer/one_inquiryForm.do";
+	  	    }
+	  	}//product_cart() end
+</script>
 
 <div class="board_wrap">
   <div class="board_title">
@@ -27,21 +49,24 @@ pageEncoding="UTF-8"%>
   <div class="board_list_wrap">
     <div class="board_list">
       <div class="top">
-        <div class="num">번호</div>
+        <div class="num" style="width:10%">번호</div>
         <div class="title" style="width: 60%">제목</div>
-        <div class="writer">글쓴이</div>
-        <div class="date">작성일</div>
+        <div class="writer" style="width:10%">답변여부</div>
+        <div class="date" style="width:20%">작성일</div>
       </div>
-      <div>
         <c:forEach items="${list}" var="row" varStatus="vs">
-		<div class="num">${vs.count}</div>
+        <div id="faqdiv">
+		<div class="num" style="width:10%">${vs.count}</div>
         <div class="title" style="width: 60%">
           <a href="view.html">${row.inquire_title}</a>
         </div>
-        <div class="writer">${row.inquire_answer}</div>
-        <div class="date">${row.inquire_datetime}</div>
+        <div class="writer" style="width:10%">${row.inquire_answer}</div>
+	        <div class="date" style="width:20%">${row.inquire_datetime}</div>
+	        <c:if test="${row.member_id eq s_id or s_id eq 'fmos'}">
+		        <input class="delete" type="button" value="삭제" onclick="inquireDelete(${row.inquire_id},${row.inquire_kind})">
+	        </c:if>
+        </div>
       </c:forEach>
-      </div>
     </div>
     <div class="board_page">
       <li><a href="#" class="bt first"><<</a></li>
@@ -62,7 +87,7 @@ pageEncoding="UTF-8"%>
       <li></li>
       <li><a href="#" class="bt last">>></a></li>
       <li>
-        <input class="gbutt" type="button" value="글쓰기" onclick="location.href='/customer/one_inquiryForm.do'">
+        <input class="gbutt" type="button" value="글쓰기" onclick="return logincheck()">
       </li>
     </div>
   </div>

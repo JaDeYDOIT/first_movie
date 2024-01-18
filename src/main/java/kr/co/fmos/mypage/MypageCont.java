@@ -12,11 +12,9 @@ import jakarta.servlet.http.HttpSession;
 import kr.co.fmos.coupon.CouponDAO;
 import kr.co.fmos.coupon.UserHavingCouponDAO;
 import kr.co.fmos.customer.InquireDAO;
-import kr.co.fmos.customer.InquireDTO;
 import kr.co.fmos.member.MemberDAO;
 import kr.co.fmos.member.MemberDTO;
 import kr.co.fmos.payment.PaymentDAO;
-import kr.co.fmos.payment.PaymentDTO;
 
 @Controller
 @RequestMapping("/mypage")

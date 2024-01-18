@@ -1,9 +1,20 @@
 const currentUrl = new URL(window.location.href);
-const seats = JSON.parse(decodeURIComponent(currentUrl.searchParams.get('seats')));
-//const screenMovieInfoID = decodeURIComponent(currentUrl.searchParams.get('screenMovieInfoID'));
-//const price = decodeURIComponent(currentUrl.searchParams.get('price'));
+const screenMovieInfoID = decodeURIComponent(currentUrl.searchParams.get('screenMovieInfoID'));
+const selectedSeats = JSON.parse(decodeURIComponent(currentUrl.searchParams.get('selectedSeats')));
+const adult = decodeURIComponent(currentUrl.searchParams.get('adult'));
+const student = decodeURIComponent(currentUrl.searchParams.get('student'));
+const silver = decodeURIComponent(currentUrl.searchParams.get('silver'));
+const price = decodeURIComponent(currentUrl.searchParams.get('price'));
+<<<<<<< HEAD
+
+=======
+/*const student = 1;
+const adult = 0;
+const silver = 3;
 const price = 15000;
 const screenMovieInfoID = 50;
+let selectedSeats = ["C6", "H9", "A1", "B2"];*/
+>>>>>>> dh
 let memberID;
 let movieName;
 let movieAudienceRating;
@@ -17,15 +28,9 @@ let couponDiscountRate = 0;
 let selectedCouponID;
 let memberPoint = 0;
 let usedPoint = 0;
+let payDiscount = 0;
 
 $(document).ready(function() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 	initialize();
 	asyncInitialize();
 });
@@ -38,10 +43,10 @@ function initialize() {
 	selectCouponName();
 
 	//최종 결제수단
-	handlePaymentButtonClick();
+	//handlePaymentButtonClick();
 
 	//상세 결제수단
-	handlePayItemClick();
+	//handlePayItemClick();
 
 	//약관 동의
 	handleProvisionCheckboxChange();
@@ -55,8 +60,14 @@ function initialize() {
 	//쿠폰 취소
 	handleCouponCancleButtonClick();
 
+	//선택한 쿠폰 취소 버튼
+	handleCouponCloseButtonClick();
+
 	//결제수단이나 약관동의하지 않았을 경우 경고 표기
 	showPaymentWarning();
+
+	//최종결제
+	handlePaymentConfirmButtonClick();
 }
 
 async function asyncInitialize() {
@@ -83,14 +94,6 @@ async function asyncInitialize() {
 }
 
 function initializeCustomScrollbar() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
-=======
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 	$(".mCustomScrollbar").mCustomScrollbar({
 		theme: "dark-thin", // 테마 설정 (dark 또는 light)
 		scrollButtons: {
@@ -100,13 +103,6 @@ function initializeCustomScrollbar() {
 	});
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 async function getTicketingInfo() {
 	try {
 		const screenMovieInfo = await $.ajax({
@@ -209,7 +205,32 @@ function printTicketingInfo() {
 	let movieEndTime = dateObject.setMinutes(dateObject.getMinutes() + movieRunningTime);
 	movieEndTime = dateObject.toTimeString().split(' ')[0];
 
-	let htmlContent =
+	let studentString = "청소년";
+	let adultString = "성인";
+	let silverString = "경로";
+
+	if (parseInt(student) === 0) {
+		studentString = "";
+	}
+	else {
+		studentString += student;
+	}
+
+	if (parseInt(adult) === 0) {
+		adultString = "";
+	}
+	else {
+		adultString += adult;
+	}
+
+	if (parseInt(silver) === 0) {
+		silverString = "";
+	}
+	else {
+		silverString += silver;
+	}
+
+	let movieInfoContent =
 		'<span class="thm"><img src="' + movieImage + '"></span>' +
 		'<strong class="tit"><span class="ic_grade ' + movieAudienceRatingClass + '"></span>' +
 		'&nbsp;' + movieName + '</strong>' +
@@ -222,10 +243,37 @@ function printTicketingInfo() {
 		'<dt>영화관</dt>' +
 		'<dd>' + theaterBranchName + " " + screenLocation + '</dd>' +
 		'<dt>인원</dt>' +
-		'<dd>성인1</dd>' +
+		'<dd>' + adultString + " " + studentString + " " + silverString + '</dd>' +
 		'</dl>';
 
-	$('.movie_infor').html(htmlContent);
+	$('.movie_infor').html(movieInfoContent);
+
+	selectedSeats.sort(function(a, b) {
+<<<<<<< HEAD
+		const alphaA = a.charAt(0);
+		const alphaB = b.charAt(0);
+		const numA = parseInt(a.slice(1), 10);
+		const numB = parseInt(b.slice(1), 10);
+=======
+		var alphaA = a.charAt(0);
+		var alphaB = b.charAt(0);
+		var numA = parseInt(a.slice(1), 10);
+		var numB = parseInt(b.slice(1), 10);
+>>>>>>> dh
+
+		if (alphaA === alphaB) {
+			return numA - numB;
+		} else {
+			return alphaA.localeCompare(alphaB);
+		}
+	});
+
+	//예매 좌석 표시
+	let seatInfoContent = "";
+	selectedSeats.forEach(function(seat) {
+		seatInfoContent += seat + " ";
+	});
+	$('.seat_infor strong').text(seatInfoContent);
 }
 
 async function getSessionMemberId() {
@@ -243,20 +291,21 @@ async function getSessionMemberId() {
 }
 
 function printPrice() {
-	$('.price strong').text(price.toLocaleString());
+	$('.price strong').text(parseInt(price).toLocaleString());
+	$('.total_price strong').text(parseInt(price).toLocaleString());
 
 	$('#layerDiscountCoupon .submit').click(printDiscountPrice);
 	$(".point_amount").on("input", printDiscountPrice);
 	function printDiscountPrice() {
-		const discountAmount = Math.round(price * (couponDiscountRate / 100)) + usedPoint;
-		$('.discount_amount strong').text(discountAmount);
-		$('.total_price strong').text(price - discountAmount);
+		payDiscount = Math.round(price * (couponDiscountRate / 100)) + usedPoint;
+		$('.discount_amount strong').text(payDiscount.toLocaleString());
+		$('.total_price strong').text((price - payDiscount).toLocaleString());
 	}
 }
 
 function selectCouponName() {
 	$('.coupon').each(function() {
-		var currentCoupon = $(this);
+		const currentCoupon = $(this);
 
 		$.ajax({
 			url: "/coupon/selectCouponById",
@@ -297,17 +346,6 @@ function selectMemberPoint() {
 
 function handlePaymentButtonClick() {
 	$('.bx_cate li>button').click(function() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-//최종 결제수단
-$(document).ready(function() {
-	$('.group_payment .list_pay_item li>button').click(function() {
->>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
-=======
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 		// 모든 li 요소에서 'selected' 클래스를 제거
 		$('.bx_cate li>button').removeClass('active');
 
@@ -354,10 +392,10 @@ function handleProvisionCheckboxChange() {
 	});
 
 	$('.provision_list input[type="checkbox"]').click(function() {
-		var checkbox = $('.provision_list input[type="checkbox"]');
+		const checkbox = $('.provision_list input[type="checkbox"]');
 
 		// 체크박스들 중 모두 체크되어 있는지 확인
-		var someUnchecked = checkbox.filter(':checked').length === checkbox.length;
+		const someUnchecked = checkbox.filter(':checked').length === checkbox.length;
 
 		// 모든 체크박스의 체크 상태를 토글
 		$('#chkSavingTerm').prop('checked', someUnchecked);
@@ -392,10 +430,10 @@ function handleCouponSubmitButtonClick() {
 
 		//체크한 쿠폰을 등록시 페이지에 표기
 		$('.wrap_selected_coupon').css('display', 'block');
-		var checkedBox = $('.list_pay_coupon input[type="checkbox"]:checked').closest('li');
-		var couponName = checkedBox.find('.coupon_name').text();
-		var couponPeriod = checkedBox.find('.period').text();
-		var couponConstraints = checkedBox.find('dt').text();
+		const checkedBox = $('.list_pay_coupon input[type="checkbox"]:checked').closest('li');
+		const couponName = checkedBox.find('.coupon_name').text();
+		const couponPeriod = checkedBox.find('.period').text();
+		const couponConstraints = checkedBox.find('dt').text();
 		selectedCouponID = checkedBox.data("couponid");
 		couponDiscountRate = checkedBox.data("coupondiscountrate");
 
@@ -412,44 +450,30 @@ function handleCouponCancleButtonClick() {
 	});
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
 function handlePointAmountInput() {
 	$(".point_amount").on("input", function() {
-		var enteredPoints = $(this).val();
+		const enteredPoints = $(this).val();
 
-		$(this).val(function(_, value) {
-			if (value > memberPoint) {
-				usedPoint = parseInt(enteredPoints);
-				return parseInt(memberPoint);
-			}
-
-			return parseInt(value.replace(/[^0-9.]/g, ''));
-		});
-
-		if (enteredPoints === "") {
+		if (enteredPoints.trim() === "") {
 			usedPoint = 0;
 		}
+		else if (enteredPoints > memberPoint) {
+			usedPoint = memberPoint;
+			$(this).val(memberPoint);
+		}
 		else {
-			usedPoint = parseInt(enteredPoints);
+
+			usedPoint = parseInt(enteredPoints.replace(/[^0-9.]/g, ''), 10) || '';
 		}
 	});
 }
 
 function showPaymentWarning() {
 	$('.provision input[type="checkbox"]').on('change', showPaymentWarningProcess);
-	$('.pay_method_list button').on('click', showPaymentWarningProcess);
 
 	function showPaymentWarningProcess() {
 		const provisionCheckboxes = $('.provision_list input[type="checkbox"]');
-		const payMethodActive = $('.pay_method_list li.active');
-		if (provisionCheckboxes.length === provisionCheckboxes.filter(':checked').length
-			&& payMethodActive.length === 1) {
+		if (provisionCheckboxes.length === provisionCheckboxes.filter(':checked').length) {
 			$('.payment_disabled').text("");
 			$('.pay_button').removeClass("disabled");
 		}
@@ -460,12 +484,67 @@ function showPaymentWarning() {
 	}
 }
 
-function cancelCoupon() {
-	$('.wrap_selected_coupon').css('display', 'none');
-	selectedCouponID = undefined;
-	couponDiscountRate = 0;
+function handlePaymentConfirmButtonClick() {
+	$('.pay_button').click(function() {
+		console.log("handlePaymentConfirmButtonClick");
+		IMP.init("imp14397622");
+		IMP.request_pay({
+			pg: "html5_inicis",  // PG사
+			pay_method: "card",  // 결제 수단
+			merchant_uid: "FirstMovie_" + screenMovieInfoID + new Date().getTime(), // 주문번호
+			name: "first movie_" + movieName,  // 상품명
+			amount: 100,//price - payDiscount,  // 결제 금액
+			buyer_name: memberID
+		}, function(rsp) {
+			if (rsp.success) {
+				console.log(rsp.merchant_uid);
+				payment_id = rsp.merchant_uid;
+				postPaysuccess();
+			} else {
+				// 결제 실패 시
+				alert("결제에 실패하였습니다. 에러 내용: " + rsp.error_msg);
+			}
+		});
+
+		function postPaysuccess() {
+			// 새로운 폼 엘리먼트 생성
+			let form = document.createElement('form');
+
+			// 폼 속성 설정 (페이지 URL과 전송 방식 설정)
+			form.action = '/ticketing/paysuccess'; // 대상 페이지 URL
+			form.method = 'post';
+
+			// 폼에 전송할 데이터 추가 (키-값 쌍 형식)
+			addFormField(form, 'payment_id', payment_id);
+			addFormField(form, 'screenMovieInfoID', screenMovieInfoID);
+			addFormField(form, 'adult', adult);
+			addFormField(form, 'student', student);
+			addFormField(form, 'silver', silver);
+			addFormField(form, 'price', price);
+			addFormField(form, 'payDiscount', payDiscount);
+			addFormField(form, 'selectedSeats', selectedSeats);
+			// ... 원하는 만큼 필드 추가
+
+			// 폼을 문서에 추가하고 자동으로 제출
+			document.body.appendChild(form);
+			form.submit();
+
+			// 폼에 필드를 추가하는 함수
+			function addFormField(form, name, value) {
+				let input = document.createElement('input');
+				input.type = 'hidden';
+				input.name = name;
+				input.value = value;
+				form.appendChild(input);
+			}
+		}
+	});
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> dh
 
 function handleCouponCloseButtonClick() {
 	$('.wrap_selected_coupon .btn_close').click(function() {
@@ -473,11 +552,9 @@ function handleCouponCloseButtonClick() {
 		selectedCouponID = undefined;
 		couponDiscountRate = 0;
 	});
-}
 <<<<<<< HEAD
+}
+>>>>>>> 872227f9e1761c7491716113e93b7479d8c9c11e
 =======
->>>>>>> e62e91181430c7dcf1fe7c7e507418866377b16a
-=======
->>>>>>> 46477e0baa95529adba19dd135cf4f031055b39d
-=======
->>>>>>> 6f2551e54227df18d7a7a8d76a3a4ee5e65b3e9e
+}
+>>>>>>> dh

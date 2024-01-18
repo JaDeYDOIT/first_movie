@@ -14,5 +14,4 @@ public interface PaymentDAO {
 
 	public PaymentDTO insertAndReturnWithId(PaymentDTO paymentDto);
 	
-	
 }
