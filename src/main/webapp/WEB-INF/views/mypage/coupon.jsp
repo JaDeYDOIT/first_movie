@@ -33,5 +33,5 @@
 		</table>
 	</div>
 </div>
-
+<!--  -->
 <%@ include file="mypagefooter.jsp"%>
