@@ -9,6 +9,7 @@ public class OrderDTO extends CartDTO{
 	private long payment_datetime;		//DATETIME		NOT NULL	DEFAULT CURRENT_TIMESTAMP,
 	private int payment_method;			//TINYINT 		UNSIGNED	NOT NULL	COMMENT 0: 카드결제, 1: 카카오페이,
 	private String payment_status;		//TINYINT 		UNSIGNED	NOT NULL	DEFAULT 0	COMMENT 0: 결제완료, 1: 환불
+	private String paymentResponse;
 	
 	public String getCart_payment_id() {
 		return cart_payment_id;
@@ -41,9 +42,18 @@ public class OrderDTO extends CartDTO{
 		this.payment_status = payment_status;
 	}
 	
+	public String getPaymentResponse() {
+		return paymentResponse;
+	}
+	public void setPaymentResponse(String paymentResponse) {
+		this.paymentResponse = paymentResponse;
+	}
 	@Override
 	public String toString() {
 		return "OrderDTO [cart_payment_id=" + cart_payment_id + ", member_id=" + member_id + ", payment_datetime="
-				+ payment_datetime + ", payment_method=" + payment_method + ", payment_status=" + payment_status + "]";
+				+ payment_datetime + ", payment_method=" + payment_method + ", payment_status=" + payment_status
+				+ ", paymentResponse=" + paymentResponse + "]";
 	}
+	
+	
 }//class end
