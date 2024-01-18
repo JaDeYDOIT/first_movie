@@ -6,7 +6,6 @@
 <!-- order.xml --> 
 
 <mapper namespace="order">
-	
 	<select id="totalmoney" parameterType="String" resultType="int">
 		SELECT sum(PD.product_cost*CPD.product_count) AS totalmoney
 		FROM product PD JOIN cart_payment_detail CPD
@@ -19,7 +18,4 @@
 		FROM member
 		WHERE member_id = #{member_id}
 	</select>
-
-
-
 </mapper>

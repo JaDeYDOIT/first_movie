@@ -47,8 +47,6 @@
 <!-- 서머노트 관련 끝 -->
 <link rel="icon" type="image/ico" href="images/header/logo.png">
 <script src="/js/header.js"></script>
-
-<title>영화</title>
 </head>
 
 <body>
