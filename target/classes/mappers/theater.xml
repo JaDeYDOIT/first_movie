@@ -51,6 +51,13 @@
 		where s.branch_id = #{branch_id};
 	</select>
 	
+	<select id="movieselectbox" resultType="java.util.Map">
+		select m.movie_id , m.movie_name 
+		from screen_movie_information smi join movie m 
+		on smi.movie_id = m.movie_id
+		where smi.screen_id = #{screen_id}
+	</select>
+	
 	<select id="Rental_inquiry_area" resultType="String">
 		select region 
 		from region
@@ -175,15 +182,7 @@
 		SELECT movie_id, movie_name
 		FROM movie
 	</select>
-
-	<select id="movieselectbox" resultType="java.util.Map">
-		select m.movie_id ,
-		m.movie_name
-		from screen_movie_information smi join movie m
-		on smi.movie_id = m.movie_id
-		where smi.screen_id = #{screen_id}
-	</select>
-	<!--  -->
+<!--  -->
 
 	<!-- 상영관 추가 페이지 끝 -->
 </mapper>

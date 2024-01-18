@@ -43,6 +43,11 @@ public class InquireDAO {
 	public List<InquireDTO> memberinquirelist(String member_id) {
 		return sqlSession.selectList("customer.memberinquirelist", member_id);
 	}
+<<<<<<< HEAD
 	//
+=======
+	
+//	
+>>>>>>> 1ffdf2c2297c1bbf8aae94e27526a0f07238b796
 	
 }//class end
