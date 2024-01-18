@@ -146,5 +146,5 @@
 		/* 영민작업 끝*/
 	</script>
 	
-	
+	<!--  -->
 <%@ include file="mypagefooter.jsp" %>

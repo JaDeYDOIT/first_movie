@@ -42,5 +42,5 @@
 		</ul>
 	</div>
 </div>
-
+<!--  -->
 <%@ include file="mypagefooter.jsp"%>

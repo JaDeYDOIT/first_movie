@@ -30,7 +30,7 @@
 			</div>
 		</div>
 	</div>
-
+<!--  -->
 	<div class="mypage_content">
 		<aside class="menu_wrap">
 			<h2>마이페이지</h2>
