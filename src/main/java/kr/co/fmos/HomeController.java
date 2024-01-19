@@ -22,7 +22,7 @@ public class HomeController {
     }
     
     //first movie 프로젝트의 첫페이지 호출
-    //-> http://localhost:9095/main    
+    //-> http://localhost:9095/main
 	@RequestMapping("/main")
 	public ModelAndView home(HttpSession session ) {
 		if(session.getAttribute("s_id") == null || session.getAttribute("s_pw") == null ||

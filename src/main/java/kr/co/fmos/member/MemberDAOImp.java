@@ -84,7 +84,7 @@ public class MemberDAOImp implements MemberDAO {
 	public MemberDTO mypage(String member_id) {
 		return sqlSession.selectOne("member.mypage",member_id);
 	}
-	
+	//mypage 회원 삭제
 	@Override
 	public int memberdelete(String member_pw) {
 		return sqlSession.delete("member.memberdelete",member_pw);

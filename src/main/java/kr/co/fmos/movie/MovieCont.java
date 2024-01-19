@@ -125,11 +125,16 @@ public class MovieCont {
 /////////////////////리뷰 추가//////////////////////////
 
 	@GetMapping("/insert.do")
-	public String reviewInsert(HttpSession session, MoviereviewDTO dto) {
+	public ModelAndView reviewInsert(HttpSession session, MoviereviewDTO dto) {
 		String s_id = (String) session.getAttribute("s_id");
+		ModelAndView mav = new ModelAndView();
 		dto.setMember_id(s_id);
-		movieDao.reviewInsert(dto);
-		return "redirect:/movie/detail.do?movie_id=" + dto.getMovie_id();
+		if(s_id.equals("guest")){
+			mav.addObject("messge", "로그인 해주세요");
+		};
+		mav.addObject(movieDao.reviewInsert(dto));
+		mav.setViewName("redirect:/movie/detail.do?movie_id=" + dto.getMovie_id());
+		return mav;		
 	}// list() end
 	
 }

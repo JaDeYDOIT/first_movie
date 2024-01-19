@@ -40,5 +40,5 @@ public interface MemberDAO {
 	//회원 삭제
 	public int memberdelete(String member_pw);
 
-	//
+
 }//class end

@@ -40,9 +40,10 @@ public class InquireDAO {
 	public int oneInquireins(InquireDTO dto) {
 		return sqlSession.insert("customer.oneinquireins", dto);
 	}
+	
+	//mypage 나의 문의
 	public List<InquireDTO> memberinquirelist(String member_id) {
 		return sqlSession.selectList("customer.memberinquirelist", member_id);
 	}
-	//
 	
 }//class end
