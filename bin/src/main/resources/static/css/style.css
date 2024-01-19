@@ -1,0 +1,512 @@
+@charset "utf-8";
+
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+/* 레이아웃 wrap*/
+#wrap {
+	width: 70%;
+	margin: 0 auto;
+}
+
+
+/* 헤더 영역 */
+
+.headerfill {
+	width: 100%;
+	height: 150px;
+}
+
+header {
+	width: 70%;
+	height: 150px;
+	background: rgb(255, 255, 255);
+	font-weight: bold;
+	position: fixed;
+	top: 0;
+	z-index: 78;
+	border-bottom: 3px solid #22A2F2;;
+	
+}
+
+.nav_top {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	font-size: 15px;
+	border-bottom: 2px solid #000;
+
+}
+
+.nav_bottom {
+	font-size: 20px;
+}
+
+nav .login_wrap {
+	display: flex;
+	height: 100px;
+	justify-content: space-around;
+}
+
+nav .login_wrap li {
+	float: left;
+	text-align: center;
+	margin-top: 35px;
+	margin-left: 25px;
+	cursor: pointer;
+}
+
+nav .login_wrap li img {
+	width: 30px;
+	height: 30px;
+}
+
+nav ul li a {
+	display: block;
+	padding: 3px;
+	color: black;
+}
+
+#logo {
+	margin-top: 7px;
+	width: 90px;
+	height: 90px;
+	float: left;
+}
+
+#logo img {
+	width: 100%;
+	height: 100%;
+}
+
+.nav_wrap {
+	display: flex;
+}
+
+.nav_wrap li {
+	padding: 5px 15px 0px 15px;
+}
+
+/* 헤더 end */
+
+
+
+/* 배너 */
+
+#banner {
+	width: 100%;
+	background: #444;
+	margin: 0px 0 20px 0;
+}
+
+.modal_bt {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 30px;
+	height: 100px;
+	transform: translate(-50%, -50%);
+	cursor: pointer;
+}
+
+#slide_wrap {
+	width: 100%;
+	height: 100%;
+}
+
+
+
+.slider {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+.slider ul {
+	position: relative;
+	width: 400%;
+	height: 100%;
+}
+
+.slider ul li {
+	width: 25%;
+	height: 100%;
+	position: relative;
+	float: left;
+}
+
+.slider ul li .slide_img {
+	width: 100%;
+	height: 100%;
+}
+
+.modal_bt {
+	width: 100px;
+	height: 100px;
+}
+
+
+.modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 102;
+	width: 820px;
+	height: 520px;
+	border: 3px solid black;
+	background: white;
+	display: none;
+}
+
+.modal_video {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 800px;
+	height: 500px;
+}
+
+.modal_bg {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.5);
+	display: none;
+	z-index: 101;
+}
+
+/* 베너 end */
+
+
+/* 스토어 */
+#store_wrap {
+	width: 100%;
+	margin-bottom: 10%;
+}
+
+#store_wrap dt a {
+	font-size: 30px;
+	color: black;
+}
+
+.package_list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin-bottom: 5%;
+}
+
+.package_list dd div img {
+	width: 200px;
+	height: 170px;
+}
+
+.giftcon_list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.giftcon_info_wrap {
+	margin-top: 15px;
+	text-align: center;
+}
+
+/* 스토어 end */
+
+/* 공지사항 */
+#notice_wrap {
+	width: 100%;
+	height: auto;
+	display: flex;
+	border: 1px solid #000;
+	margin-bottom: 50px;
+}
+
+#notice_wrap h3 {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#notice_wrap p {
+	font-size: 15px;
+	width: 10%;
+	text-align: center;
+}
+
+#notice_wrap ul {
+	margin-top: 20px;
+}
+
+#notice_wrap ul li {
+	padding: 10px;
+	font-size: 15px;
+}
+
+#notice_wrap div, 
+#notice_wrap p {
+	padding: 20px;
+}
+
+.service_center {
+	width: 45%;
+	height: 100%;
+}
+
+.notice {
+	width: 45%;
+	border-left: 1px solid #000;
+}
+
+/* 고객센터 공지사항 end */
+
+
+
+
+
+
+
+
+/* footer */
+footer {
+	width: 100%;
+	height: 200px;
+	z-index: 1;
+	background: #999;
+	position: absolute;
+	left: 0;
+}
+
+footer .footer_wrap {
+	width: 70%;
+	height: 100%;
+	margin: 0 auto;
+}
+
+footer .tooter_logo {
+	width: 75px;
+	height: 75px;
+	float: left;
+	margin: 2% 2% 0 0;
+	text-align: center;
+	display: block;
+}
+
+footer .tooter_logo img {
+	width: 100%;
+	height: 100%;
+}
+
+/* footer .footer_top */
+footer .footer_top {
+	width: 100%;
+	padding-top: 20px;
+
+}
+
+footer .footer_top ul {
+	text-align: center;
+	display: flex;
+}
+
+footer .footer_top ul li {
+	padding: 0 2%;
+	text-align: center;
+	border-left: 2px solid black;
+}
+
+footer .footer_top ul li:nth-child(1) {
+	border-left: 0px;
+	padding-left: 0;
+}
+
+footer .footer_top ul li a {
+	color: white;
+	font-size: 15px;
+}
+
+/* footer .footer_bottom */
+footer .footer_bottom {
+	width: 40%;
+	margin: 1% 0 0 0%;
+	float: left;
+}
+
+footer .footer_bottom ul {
+	width: 80%;
+}
+
+footer .footer_bottom ul li {
+	font-size: 13px;
+	color: white;
+	padding: 2% 0 0% 0;
+}
+
+footer .footer_bottom ul li:nth-child(1) {
+	float: left;
+}
+
+footer .footer_bottom ul li:nth-child(3) {
+	float: left;
+}
+
+
+/* SNS */
+.SNS {
+	margin-top: 3%;
+	float: left;
+}
+
+.SNS ul {
+	width: 50%;
+	display: flex;
+	justify-content: center;
+
+}
+
+.SNS ul li {
+	width: 75px;
+	height: 30px;
+	margin-left: 5%;
+}
+
+.SNS ul li img {
+	width: 100%;
+	height: 100%;
+}
+
+
+
+
+@media screen and (min-width: 0px) and (max-width:1040px) {
+	/* footer */
+
+
+
+
+
+
+
+	footer .footer_top ul li a {
+		color: white;
+		font-size: 10px;
+	}
+
+	/* footer .footer_bottom */
+	footer .footer_bottom {
+		margin: 1% 0 0 0%;
+		float: left;
+	}
+
+	footer .footer_bottom ul {
+		width: 100%;
+	}
+
+	footer .footer_bottom ul li {
+		font-size: 10px;
+	}
+
+
+	/* SNS */
+	.SNS {
+		float: left;
+	}
+
+	.SNS ul {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+
+	}
+
+	.SNS ul li {
+		width: 35px;
+		height: 25px;
+		margin-left: 2%;
+	}
+
+	.SNS ul li img {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+@media screen and (min-width: 0px) and (max-width:700px) {
+
+
+	header {
+		width: 100%;
+		height: 150px;
+		background: rgb(255, 255, 255);
+		font-weight: bold;
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+
+	.footer_bottom ul li{
+		padding-top:1% ;
+	}
+
+	.SNS ul li {
+		width: 42%;
+		margin: 4%;
+	}
+
+	.SNS ul li img {
+		width: 100%;
+		height: 100%;
+	}
+
+	.SNS ul {
+		flex-wrap: wrap;
+	}
+
+}
+
+
+@media screen and (min-width: 0px) and (max-width:600px) {
+	
+	nav .nav_wrap{
+		justify-content: space-around;
+	}
+	nav .nav_wrap li{
+		font-size: 15px;
+	}
+	
+	footer{
+		width: 100%;
+	}
+	
+	footer .footer_wrap{
+		width: 100%;
+	}
+	footer .SNS ul li {
+		width: 42%;
+		margin: 4%;
+	}
+
+	.SNS ul li img {
+		width: 100%;
+		height: 100%;
+	}
+
+/**/
+
+}

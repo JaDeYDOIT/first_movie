@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- point.xml -->
+
+<mapper namespace="point">
+	<select id="selectMemberPoint" parameterType="String"
+		resultType="kr.co.fmos.point.PointDTO">
+		SELECT point_id, payment_id, member_id, point_history,
+		point_date
+		FROM point
+		WHERE member_id=#{memberID}
+	</select>
+</mapper>

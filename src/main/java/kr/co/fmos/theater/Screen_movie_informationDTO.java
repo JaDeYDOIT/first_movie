@@ -1,5 +1,7 @@
 package kr.co.fmos.theater;
 
+import kr.co.fmos.screen.ScreenDTO;
+
 public class Screen_movie_informationDTO extends ScreenDTO{
 
 	private int    movie_information_id;		//TINYINT UNSIGNED  AUTO_INCREMENT PRIMARY KEY	NOT NULL,

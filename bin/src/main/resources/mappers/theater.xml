@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- movie.xml -->
+
+
+<mapper namespace="theater">
+	<select id="regionlist"
+		resultType="kr.co.fmos.theater.TheaterregionDTO">
+		SELECT region_id, region
+		FROM region
+	</select>
+
+	<select id="branchlist"
+		resultType="kr.co.fmos.theater.TheaterbranchDTO"
+		parameterType="String">
+		SELECT region_id, branch_name, branch_address,
+		branch_id,
+		branch_number
+		FROM theater_branch
+		WHERE region_id =
+		#{region_id}
+	</select>
+	
+	<select id="branchselectbox"
+	    resultType="java.util.Map"
+	    parameterType="String">
+	    select tb.branch_id, tb.region_id, tb.branch_name
+	    from theater_branch tb join region r
+	    on tb.region_id = r.region_id 
+	    where r.region_id= #{region_id}
+	</select>
+
+	<!-- <select id="branchlist" -->
+	<!-- resultType="kr.co.fmos.theater.Screen_movie_informationDTO" -->
+	<!-- parameterType="String"> -->
+	<!-- SELECT TB.region_id, TB.branch_name, TB.branch_address, -->
+	<!-- TB.branch_id, branch_number -->
+	<!-- FROM theater_branch TB JOIN screen_movie_information SMI -->
+	<!-- ON TB.branch_id = SMI.branch_id -->
+	<!-- WHERE TB.region_id = #{region_id} -->
+	<!-- </select> -->
+	
+	<select id="screenselectbox"
+	    resultType="java.util.Map">
+	    select s.screen_id , s.screen_location 
+		from theater_branch tb join screen s 
+		on tb.branch_id = s.branch_id
+		where s.branch_id = #{branch_id};
+	</select>
+	
+	<select id="movieselectbox" resultType="java.util.Map">
+		select m.movie_id , m.movie_name 
+		from screen_movie_information smi join movie m 
+		on smi.movie_id = m.movie_id
+		where smi.screen_id = #{screen_id}
+	</select>
+	
+	<select id="Rental_inquiry_area" resultType="String">
+		select region 
+		from region
+		where region_id = #{rental_inquiry_area}
+	</select>
+	
+	<select id="rental_inquiry_place" resultType="String">
+		select branch_name 
+		from theater_branch
+		where branch_id = #{rental_inquiry_place}
+	</select>
+	
+	<select id="rental_inquiry_theater" resultType="String">
+		select screen_location 
+		from screen
+		where screen_id = #{rental_inquiry_theater}
+	</select>
+	
+	<select id="rental_inquiry_movie" resultType="String">
+		select movie_name 
+		from movie
+		where movie_id = #{movie_id}
+	</select>
+
+	<!-- 지역 -> 지점 ajax -->
+	<select id="checkList"
+		resultType="kr.co.fmos.theater.TheaterbranchDTO"
+		parameterType="String">
+		select branch_id , region_id, branch_name
+		from
+		theater_branch
+		where region_id = #{check}
+	</select>
+
+	<select id="branchimg"
+		resultType="kr.co.fmos.theater.TheaterbranchDTO">
+		SELECT branch_img
+		FROM theater_branch
+		WHERE branch_id =
+		#{branch_id}
+	</select>
+
+	<select id="screenlist" resultType="java.util.Map"
+		parameterType="kr.co.fmos.theater.Screen_movie_informationDTO">
+		SELECT tb.branch_name, smi.movie_showing_date, m.movie_name,
+		mg.movie_genre_name,
+		m.movie_running_time, m.movie_production_year, s.screen_location,
+		m.movie_id, s.screen_id, tb.branch_id, s.screen_row * s.screen_line as
+		screen_seat_count
+		FROM screen_movie_information smi
+		JOIN screen s ON smi.screen_id = s.screen_id
+		JOIN movie m ON smi.movie_id = m.movie_id
+		JOIN theater_branch tb ON tb.branch_id = s.branch_id
+		JOIN movie_genre mg ON m.movie_genre_id = mg.movie_genre_id
+		WHERE tb.branch_id = #{branch_id}
+		GROUP BY m.movie_name, s.screen_id
+	</select>
+
+	<select id="writeajaxlist" resultType="java.util.Map"
+		parameterType="int">
+		SELECT movie_id, MV.movie_genre_id, movie_genre_name,
+		movie_name, movie_running_time, movie_production_year,
+		movie_audience_rating, movie_image, movie_video,
+		director_name, actor_name
+		FROM movie MV join movie_genre MG
+		ON
+		MV.movie_genre_id = MG.movie_genre_id
+		where movie_id = #{movie_id};
+	</select>
+
+	<insert id="theaterinsert" parameterType="java.util.Map">
+		INSERT INTO
+		screen_movie_information(movie_id, screen_id, branch_id,
+		movie_showing_date, movie_showing_time)
+		VALUES (#{movie_id},
+		#{screen_id}, #{branch_id}, #{movie_showing_date},
+		#{movie_showing_time})
+	</insert>
+
+	<select id="timecheck"
+		resultType="kr.co.fmos.theater.Screen_movie_informationDTO">
+		select TIME_FORMAT(movie_showing_time, '%H:%i') as
+		movie_showing_time, movie_id , branch_id , screen_id
+		from
+		screen_movie_information
+	</select>
+
+	<!-- customer 호출 시작 -->
+	<select id="region_customer"
+		resultType="kr.co.fmos.theater.TheaterregionDTO">
+		SELECT region_id, region
+		FROM region
+	</select>
+	<!-- customer 호출 끝 -->
+
+	<!-- 상영관 추가 페이지 시작 -->
+	<select id="writebranchlist"
+		resultType="kr.co.fmos.theater.TheaterbranchDTO">
+		SELECT branch_id, region_id, branch_name, branch_address,
+		branch_number, branch_img
+		FROM theater_branch
+	</select>
+
+	<select id="screenajaxlist"
+		resultType="kr.co.fmos.theater.ScreenDTO" parameterType="int">
+		SELECT
+		screen_id, branch_id, screen_location,
+		screen_row, screen_line
+		FROM
+		screen
+		WHERE branch_id = #{branch_id}
+	</select>
+
+	<select id="moviewritelist" resultType="java.util.Map"
+		parameterType="int">
+		SELECT movie_id, movie_name
+		FROM movie
+	</select>
+
+	<select id="writelist" resultType="java.util.Map"
+		parameterType="int">
+		SELECT movie_id, movie_name
+		FROM movie
+	</select>
+<!--  -->
+
+	<!-- 상영관 추가 페이지 끝 -->
+</mapper>

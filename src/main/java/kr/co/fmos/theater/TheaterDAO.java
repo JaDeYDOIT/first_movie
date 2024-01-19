@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import kr.co.fmos.movie.MovieDTO;
+import kr.co.fmos.screen.ScreenDTO;
 
 @Repository
 public class TheaterDAO {
