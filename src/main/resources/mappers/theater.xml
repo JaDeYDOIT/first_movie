@@ -23,6 +23,15 @@
 		WHERE region_id =
 		#{region_id}
 	</select>
+	
+	<select id="branchselectbox"
+	    resultType="java.util.Map"
+	    parameterType="String">
+	    select tb.branch_id, tb.region_id, tb.branch_name
+	    from theater_branch tb join region r
+	    on tb.region_id = r.region_id 
+	    where r.region_id= #{region_id}
+	</select>
 
 	<!-- <select id="branchlist" -->
 	<!-- resultType="kr.co.fmos.theater.Screen_movie_informationDTO" -->
@@ -33,6 +42,45 @@
 	<!-- ON TB.branch_id = SMI.branch_id -->
 	<!-- WHERE TB.region_id = #{region_id} -->
 	<!-- </select> -->
+	
+	<select id="screenselectbox"
+	    resultType="java.util.Map">
+	    select s.screen_id , s.screen_location 
+		from theater_branch tb join screen s 
+		on tb.branch_id = s.branch_id
+		where s.branch_id = #{branch_id};
+	</select>
+	
+	<select id="movieselectbox" resultType="java.util.Map">
+		select m.movie_id , m.movie_name 
+		from screen_movie_information smi join movie m 
+		on smi.movie_id = m.movie_id
+		where smi.screen_id = #{screen_id}
+	</select>
+	
+	<select id="Rental_inquiry_area" resultType="String">
+		select region 
+		from region
+		where region_id = #{rental_inquiry_area}
+	</select>
+	
+	<select id="rental_inquiry_place" resultType="String">
+		select branch_name 
+		from theater_branch
+		where branch_id = #{rental_inquiry_place}
+	</select>
+	
+	<select id="rental_inquiry_theater" resultType="String">
+		select screen_location 
+		from screen
+		where screen_id = #{rental_inquiry_theater}
+	</select>
+	
+	<select id="rental_inquiry_movie" resultType="String">
+		select movie_name 
+		from movie
+		where movie_id = #{movie_id}
+	</select>
 
 	<!-- 지역 -> 지점 ajax -->
 	<select id="checkList"
@@ -134,14 +182,7 @@
 		SELECT movie_id, movie_name
 		FROM movie
 	</select>
-
-	<select id="movieselectbox" resultType="java.util.Map">
-		select m.movie_id ,
-		m.movie_name
-		from screen_movie_information smi join movie m
-		on smi.movie_id = m.movie_id
-		where smi.screen_id = #{screen_id}
-	</select>
+<!--  -->
 
 	<!-- 상영관 추가 페이지 끝 -->
 </mapper>

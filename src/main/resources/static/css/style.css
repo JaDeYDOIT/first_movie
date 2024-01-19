@@ -259,8 +259,8 @@ nav ul li a {
 	font-size: 15px;
 }
 
-#notice_wrap div,
-p {
+#notice_wrap div, 
+#notice_wrap p {
 	padding: 20px;
 }
 
@@ -507,6 +507,6 @@ footer .footer_bottom ul li:nth-child(3) {
 		height: 100%;
 	}
 
-
+/**/
 
 }

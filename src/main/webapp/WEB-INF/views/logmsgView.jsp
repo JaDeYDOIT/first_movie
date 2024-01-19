@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %> 
-
+	<p>${msg1}</p>
+	
 	<c:if test="${msg2 eq 1}">
 	 <%
         // HttpSession 객체 가져오기

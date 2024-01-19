@@ -344,3 +344,29 @@ a {
     border: 0;
     resize: vertical;
 }
+
+.delete{
+	 position: absolute;
+	 right: 0;
+	 width: 50px;
+	 height: 40px;
+	 top: 10%;
+}
+
+#faqdiv{
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	
+}
+
+.top{
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+}
+
+.delete{
+  cursor: pointer; 
+}
+/**/

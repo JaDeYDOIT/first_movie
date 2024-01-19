@@ -243,4 +243,5 @@ function rentalcheck(){
     }
 }
 </script>
+<!--  -->
 <%@ include file="../footer.jsp" %>
