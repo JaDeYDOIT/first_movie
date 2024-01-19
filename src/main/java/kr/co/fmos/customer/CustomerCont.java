@@ -37,6 +37,7 @@ public class CustomerCont {
 	@Autowired
 	private RentalDAO rentalDao;
 	
+//	notice 조회 시작
 	@RequestMapping("/notice.do")
 	public ModelAndView noticelist(int notice_kind, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -52,7 +53,9 @@ public class CustomerCont {
 		mav.addObject("s_id", s_id);
 		return mav;
 	}
+//	notice 조회 끝
 		
+//	inquire 조회 시작
 	@RequestMapping("/inquire.do")
 	public ModelAndView inquirylist(int inquire_kind, HttpSession session) {
 		String s_id = (String)session.getAttribute("s_id");
@@ -67,7 +70,9 @@ public class CustomerCont {
 		mav.addObject("s_id", s_id);
 		return mav;
 	}
+//	inquire 조회 끝
 	
+//	rental 페이지 이동 시작
 	@RequestMapping("/rental_inquiry.do")
 	public ModelAndView list() {
 	ModelAndView mav = new ModelAndView();
@@ -75,7 +80,9 @@ public class CustomerCont {
 	mav.setViewName("customer/rental_Form");
 	return mav;
 	}
+//	rental 페이지 이동 끝
 	
+//	notice 입력 페이지 이동 시작	
 	@GetMapping("/noticeForm.do")
 	public String noticeForm(int notice_kind) {
 		if(notice_kind == 0) {
@@ -84,12 +91,16 @@ public class CustomerCont {
 			return "customer/noticeForm";
 		}
 	}
+//	notice 입력 페이지 이동 끝
 	
+//	1:1문의 페이지 이동 시작	
 	@GetMapping("/one_inquiryForm.do")
 	public String one_inquiryForm() {
 		return "customer/one_inquiryForm";
 	}
+//	1:1문의 페이지 이동 끝
 	
+//	분실문문의 페이지 이동 시작	
 	@GetMapping("/lost_inquiryForm.do")
 	public ModelAndView lost_inquiryForm() {
 		ModelAndView mav = new ModelAndView();
@@ -97,8 +108,10 @@ public class CustomerCont {
 		mav.setViewName("customer/lost_inquiryForm");
 		return mav;
 	}
+//	분실문문의 페이지 이동 끝	
 	
-	@PostMapping("/noticeinsert.do") 
+//	noticeinsert 시작
+    @PostMapping("/noticeinsert.do") 
     public ModelAndView noticeins(NoticeDTO dto) {
     	ModelAndView mav = new ModelAndView();
 		
@@ -111,85 +124,62 @@ public class CustomerCont {
 		 
 		 if(dto.getNotice_kind() == 0) {
 			 mav.addObject("list", noticeDao.faqselect(dto.getNotice_kind()));
-			 mav.setViewName("/customer/FAQ");
+			 mav.addObject("msg2", 0);
 		 } else {
 			 mav.addObject("list", noticeDao.noticeselect(dto.getNotice_kind()));
-			 mav.setViewName("/customer/notice");
+			 mav.addObject("msg2", 1);
 		 }
+		 	mav.setViewName("noticeView");
     	return mav;
     }
+//	noticeinsert 끝
     
-	@PostMapping("/inquireins.do")
-    public ModelAndView oneinquiryins(InquireDTO dto ,HttpSession session) {
+    @GetMapping("/noticedelete.do")
+	public String delete(HttpServletRequest req) {//
+		int notice_id = Integer.parseInt(req.getParameter("notice_id"));
+		int notice_kind = Integer.parseInt(req.getParameter("notice_kind"));
+		noticeDao.noticeDelete(notice_id);
+		return "redirect:/customer/notice.do?notice_kind=" + notice_kind;
+	}//delete() end
+    
+    @PostMapping("/one_inquireins.do")
+    public ModelAndView one_inquireins(InquireDTO dto ,HttpSession session) {
     	ModelAndView mav = new ModelAndView();
     	String s_id = (String)session.getAttribute("s_id");
     	dto.setMember_id(s_id);
+    	System.out.println(dto.toString());
     	
     	int num = inquireDao.oneInquireins(dto);
     	
     	if(num != 0) { 
 		 	mav.addObject("msg1","<script>alert('등록이 완료되었습니다.')</script>"); 
+		 	mav.addObject("msg2", 2);
 	 	} 
     	else { mav.addObject("msg1","<script>alert('등록실패')</script>"); 
 		}
-    	mav.addObject("list", noticeDao.faqselect(0));
-		mav.setViewName("/customer/FAQ");
+    	mav.addObject("list", inquireDao.oneselect(dto.getInquire_kind()));
+    	mav.setViewName("noticeView");
 		return mav;
     }
     
-	 @GetMapping("/noticedelete.do")
-		public String delete(HttpServletRequest req) {//
-			int notice_id = Integer.parseInt(req.getParameter("notice_id"));
-			int notice_kind = Integer.parseInt(req.getParameter("notice_kind"));
-			noticeDao.noticeDelete(notice_id);
-			return "redirect:/customer/notice.do?notice_kind=" + notice_kind;
-		}//delete() end
-	 
-	 @PostMapping("/one_inquireins.do")
-	    public ModelAndView one_inquireins(InquireDTO dto ,HttpSession session) {
-	    	ModelAndView mav = new ModelAndView();
-	    	String s_id = (String)session.getAttribute("s_id");
-	    	dto.setMember_id(s_id);
-	    	System.out.println(dto.toString());
-	    	
-	    	int num = inquireDao.oneInquireins(dto);
-	    	
-	    	if(num != 0) { 
-			 	mav.addObject("msg1","<script>alert('등록이 완료되었습니다.')</script>"); 
-		 	} 
-	    	else { mav.addObject("msg1","<script>alert('등록실패')</script>"); 
-			}
-	    	mav.addObject("list", inquireDao.oneselect(dto.getInquire_kind()));
-			mav.setViewName("/customer/one_inquire");
-			return mav;
-	    }//
-	 
-	 @PostMapping("/lost_inquireins.do")
-	    public ModelAndView lost_inquiryins(InquireDTO dto ,HttpSession session) {
-	    	ModelAndView mav = new ModelAndView();
-	    	String s_id = (String)session.getAttribute("s_id");
-	    	dto.setMember_id(s_id);
-	    	System.out.println(dto.toString());
-	    	
-	    	int num = inquireDao.lostInquireins(dto);
-	    	
-	    	if(num != 0) { 
-	    		mav.addObject("msg1","<script>alert('등록이 완료되었습니다.')</script>"); 
-	    	} 
-	    	else { mav.addObject("msg1","<script>alert('등록실패')</script>"); 
-	    	}
-	    	mav.addObject("list", noticeDao.faqselect(0));
-	    	mav.setViewName("/customer/lost_inquire");
-	    	return mav;
-	    }
-	 
-    @PostMapping("/branchselectbox.do")
-    @ResponseBody
-    public Map<String, Object> branchselectbox(String region_id) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("regionselectbox", theaterDao.branchselectbox(region_id));
-        System.out.println(theaterDao.branchselectbox(region_id));
-        return map;
+    @PostMapping("/lost_inquireins.do")
+    public ModelAndView lost_inquiryins(InquireDTO dto ,HttpSession session) {
+    	ModelAndView mav = new ModelAndView();
+    	String s_id = (String)session.getAttribute("s_id");
+    	dto.setMember_id(s_id);
+    	System.out.println(dto.toString());
+    	
+    	int num = inquireDao.lostInquireins(dto);
+    	
+    	if(num != 0) { 
+    		mav.addObject("msg1","<script>alert('등록이 완료되었습니다.')</script>"); 
+    		mav.addObject("msg2", 3);
+    	} 
+    	else { mav.addObject("msg1","<script>alert('등록실패')</script>"); 
+    	}
+    	mav.addObject("list", noticeDao.faqselect(0));
+    	mav.setViewName("noticeView");
+    	return mav;
     }
     
     @GetMapping("/inquiredelete.do")
@@ -199,6 +189,14 @@ public class CustomerCont {
 		inquireDao.inquiredelete(inquire_id);
 		return "redirect:/customer/inquire.do?inquire_kind=" + inquire_kind;
 	}//delete() end
+    
+    @PostMapping("/branchselectbox.do")
+    @ResponseBody
+    public Map<String, Object> branchselectbox(String region_id) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("regionselectbox", theaterDao.branchselectbox(region_id));
+        return map;
+    }
     
     @PostMapping("/screenselectbox.do")
     @ResponseBody
@@ -227,26 +225,21 @@ public class CustomerCont {
         dto.setRental_inquiry_id(Long.parseLong(payment_datetime));
     	
     	String rental_inquiry_area = dto.getRental_inquiry_area();
-    	System.out.println(theaterDao.Rental_inquiry_area(rental_inquiry_area));
     	dto.setRental_inquiry_area(theaterDao.Rental_inquiry_area(rental_inquiry_area));
     	
     	int rental_inquiry_place = Integer.parseInt(dto.getRental_inquiry_place());
-    	System.out.println(theaterDao.rental_inquiry_place(rental_inquiry_place));
     	dto.setRental_inquiry_place(theaterDao.rental_inquiry_place(rental_inquiry_place));
     	
     	int rental_inquiry_theater = Integer.parseInt(dto.getRental_inquiry_theater());
-    	System.out.println(theaterDao.rental_inquiry_theater(rental_inquiry_theater));
     	dto.setRental_inquiry_place(theaterDao.rental_inquiry_theater(rental_inquiry_theater));
     	
     	int rental_inquiry_movie = Integer.parseInt(dto.getRental_inquiry_movie());
-    	System.out.println(theaterDao.rental_inquiry_movie(rental_inquiry_movie));
     	dto.setRental_inquiry_place(theaterDao.rental_inquiry_movie(rental_inquiry_movie));
     	
-    	int cnt = rentalDao.rentalInsert(dto);
-    	mav.addObject("msg1","<script>alert('등록이 완료되었습니다.')</script>"); 
-    	mav.addObject("msg2","<script>window.location.href = '/main';</script>");
-    	mav.addObject("cnt", cnt);
-    	mav.setViewName("/msgView"); 	
+//    	int cnt = rentalDao.rentalInsert(dto);
+    	mav.addObject("msg1","<script>alert('등록이 완료되었습니다.')</script>");
+    	mav.addObject("msg2", 4);
+    	mav.setViewName("/noticeView"); 	
     	return mav;
     }
 }//class end

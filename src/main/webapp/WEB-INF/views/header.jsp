@@ -24,7 +24,7 @@
 	      });
 	  }
 	</script>
-    	<!--  -->
+    	
     <!-- 웹 폰트 -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
     <link rel="stylesheet" href="/css/reset.css">
@@ -41,7 +41,7 @@
 	  	<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
 	  	<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
     <!-- 서머노트 관련 끝 -->
-    <link rel="icon" type="image/ico" href="../images/header/logo.png">
+    <link rel="icon" type="image/ico" href="images/header/logo.png">
     <title>영화</title>
 </head>
 
@@ -57,7 +57,7 @@
 					  <c:choose>                   
 					    <c:when test="${sessionScope.s_id eq 'guest'}">
 					        <!-- 로그인하지 않은 경우 또는 세션의 s_id가 'guest'인 경우 -->
-					        <li id="loginhid"><img src="/images/header_icon/login.png" alt="" onclick="location.href='/member/login.do'"><a href="/member/login.do">로그인</a></li>
+					        <li id="loginhid"><img src="/images/header_icon/login.png" alt="loginimage" onclick="location.href='/member/login.do'"><a href="/member/login.do">로그인</a></li>
 					        <li id="hiddenNewMember"><img src="/images/header_icon/newmember.png" alt="" onclick="location.href='/member/member.do'"><a href="/member/member.do">회원가입</a></li>
 					    </c:when>
 					    <c:when test="${not empty sessionScope.s_id && sessionScope.s_id ne 'guest'}">
@@ -66,7 +66,7 @@
 					                display: none;
 					            }
 					        </style>
-					        <li><img src="/images/header_icon/logout.png" alt="" onclick="kakaoLogout()"><a href="/member/logout.do">로그아웃</a></li>
+					        <li><img src="/images/header_icon/logout.png" alt="" onclick="location.href='/member/logout.do'"><a href="/member/logout.do">로그아웃</a></li>
 					    </c:when>
 					    <c:otherwise>
 						    <%

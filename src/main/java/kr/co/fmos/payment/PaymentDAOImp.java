@@ -20,10 +20,6 @@ public class PaymentDAOImp implements PaymentDAO {
 	public List<PaymentDTO> list() {
 		return sqlSession.selectList("payment.list");
 	}
-	@Override
-	public List<Map<String, Object>> mypagelist(String member_id) {
-		return sqlSession.selectList("payment.mypagelist", member_id);
-	}
 
 	@Override
 	public List<PaymentDTO> selectPaymentByScreenMovieInfoId(String screenMovieInfoID) {
@@ -34,5 +30,10 @@ public class PaymentDAOImp implements PaymentDAO {
 	public PaymentDTO insertAndReturnWithId(PaymentDTO paymentDto) {
 		sqlSession.insert("payment.insertAndReturnWithId", paymentDto);
 		return paymentDto;
+	}
+	
+	@Override
+	public List<Map<String, Object>> mypagelist(String member_id) {
+		return sqlSession.selectList("payment.mypagelist", member_id);
 	}
 }

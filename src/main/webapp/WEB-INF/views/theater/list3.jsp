@@ -122,14 +122,16 @@
                   ${screen.movie_type}&nbsp/&nbsp${screen.screen_location}&nbsp/&nbsp${screen.screen_seat_count}석</a></li>
             <li class="Screening_date"><a>상영날짜 :
                   ${screen.movie_showing_date}</a></li>
-            <li class=Screening_time><a>상영시간</a>
+            <li class=><a>상영시간</a>
             <c:forEach items="${timecheck}" var="time">
             <c:if test="${time.screen_id eq screen.screen_id}">
-                 <c:if test="${time.movie_id eq screen.movie_id && time.branch_id eq screen.branch_id}">
-                     <span><a href="/ticketing/schedule">${time.movie_showing_time}</a></a></span>
-                 </c:if>
+                    <a href="/ticketing/schedule">
+                        <c:if test="${time.movie_id eq screen.movie_id && time.branch_id eq screen.branch_id}">
+                            <span>${time.movie_showing_time}</span>
+                        </c:if>
+                    </a>
              </c:if>
-             </c:forEach>
+            	</c:forEach>
             </li>
          </ul>
       </c:forEach>

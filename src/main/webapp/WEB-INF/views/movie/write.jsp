@@ -4,13 +4,10 @@
 <link rel="stylesheet" href="/css/moviewrite.css">
 <h2>영화추가</h2>
 
-
-
 <script>
 	function submitcheck() {		
 		//장르명 선택
 		let movie_genre_id = $("#movie_genre_id").val()
-		alert(movie_genre_id);
 		if (movie_genre_id == 0) {
 			alert("장르명을 선택해 주세요~!");
 			return false;

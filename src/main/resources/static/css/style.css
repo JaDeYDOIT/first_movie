@@ -259,7 +259,7 @@ nav ul li a {
 	font-size: 15px;
 }
 
-#notice_wrap div, 
+#notice_wrap div,
 #notice_wrap p {
 	padding: 20px;
 }
@@ -275,13 +275,6 @@ nav ul li a {
 }
 
 /* 고객센터 공지사항 end */
-
-
-
-
-
-
-
 
 /* footer */
 footer {
@@ -392,16 +385,8 @@ footer .footer_bottom ul li:nth-child(3) {
 }
 
 
-
-
 @media screen and (min-width: 0px) and (max-width:1040px) {
 	/* footer */
-
-
-
-
-
-
 
 	footer .footer_top ul li a {
 		color: white;
@@ -507,6 +492,6 @@ footer .footer_bottom ul li:nth-child(3) {
 		height: 100%;
 	}
 
-/**/
+
 
 }

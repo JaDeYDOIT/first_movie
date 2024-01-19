@@ -22,7 +22,7 @@
 		WHERE
 		coupon_id=#{couponID}
 	</select>
-
+	
 	<select id="mycouponlist" resultType="java.util.Map"
 		parameterType="String">
 		SELECT
@@ -58,5 +58,4 @@
     FROM user_having_coupon
     WHERE member_id = #{member_id}
 </select>
-
 </mapper>

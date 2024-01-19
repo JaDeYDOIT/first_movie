@@ -5,12 +5,7 @@ const adult = decodeURIComponent(currentUrl.searchParams.get('adult'));
 const student = decodeURIComponent(currentUrl.searchParams.get('student'));
 const silver = decodeURIComponent(currentUrl.searchParams.get('silver'));
 const price = decodeURIComponent(currentUrl.searchParams.get('price'));
-/*const student = 1;
-const adult = 0;
-const silver = 3;
-const price = 15000;
-const screenMovieInfoID = 50;
-let selectedSeats = ["C6", "H9", "A1", "B2"];*/
+
 let memberID;
 let movieName;
 let movieAudienceRating;
@@ -245,10 +240,10 @@ function printTicketingInfo() {
 	$('.movie_infor').html(movieInfoContent);
 
 	selectedSeats.sort(function(a, b) {
-		var alphaA = a.charAt(0);
-		var alphaB = b.charAt(0);
-		var numA = parseInt(a.slice(1), 10);
-		var numB = parseInt(b.slice(1), 10);
+		const alphaA = a.charAt(0);
+		const alphaB = b.charAt(0);
+		const numA = parseInt(a.slice(1), 10);
+		const numB = parseInt(b.slice(1), 10);
 
 		if (alphaA === alphaB) {
 			return numA - numB;
@@ -294,7 +289,7 @@ function printPrice() {
 
 function selectCouponName() {
 	$('.coupon').each(function() {
-		var currentCoupon = $(this);
+		const currentCoupon = $(this);
 
 		$.ajax({
 			url: "/coupon/selectCouponById",
@@ -381,10 +376,10 @@ function handleProvisionCheckboxChange() {
 	});
 
 	$('.provision_list input[type="checkbox"]').click(function() {
-		var checkbox = $('.provision_list input[type="checkbox"]');
+		const checkbox = $('.provision_list input[type="checkbox"]');
 
 		// 체크박스들 중 모두 체크되어 있는지 확인
-		var someUnchecked = checkbox.filter(':checked').length === checkbox.length;
+		const someUnchecked = checkbox.filter(':checked').length === checkbox.length;
 
 		// 모든 체크박스의 체크 상태를 토글
 		$('#chkSavingTerm').prop('checked', someUnchecked);
@@ -419,10 +414,10 @@ function handleCouponSubmitButtonClick() {
 
 		//체크한 쿠폰을 등록시 페이지에 표기
 		$('.wrap_selected_coupon').css('display', 'block');
-		var checkedBox = $('.list_pay_coupon input[type="checkbox"]:checked').closest('li');
-		var couponName = checkedBox.find('.coupon_name').text();
-		var couponPeriod = checkedBox.find('.period').text();
-		var couponConstraints = checkedBox.find('dt').text();
+		const checkedBox = $('.list_pay_coupon input[type="checkbox"]:checked').closest('li');
+		const couponName = checkedBox.find('.coupon_name').text();
+		const couponPeriod = checkedBox.find('.period').text();
+		const couponConstraints = checkedBox.find('dt').text();
 		selectedCouponID = checkedBox.data("couponid");
 		couponDiscountRate = checkedBox.data("coupondiscountrate");
 
@@ -441,7 +436,7 @@ function handleCouponCancleButtonClick() {
 
 function handlePointAmountInput() {
 	$(".point_amount").on("input", function() {
-		var enteredPoints = $(this).val();
+		const enteredPoints = $(this).val();
 
 		if (enteredPoints.trim() === "") {
 			usedPoint = 0;
@@ -482,7 +477,7 @@ function handlePaymentConfirmButtonClick() {
 			pay_method: "card",  // 결제 수단
 			merchant_uid: "FirstMovie_" + screenMovieInfoID + new Date().getTime(), // 주문번호
 			name: "first movie_" + movieName,  // 상품명
-			amount: 100,//price - payDiscount,  // 결제 금액
+			amount: price - payDiscount,  // 결제 금액
 			buyer_name: memberID
 		}, function(rsp) {
 			if (rsp.success) {

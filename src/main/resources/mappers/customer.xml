@@ -19,7 +19,7 @@
 	<select id="faqselect"
 		resultType="kr.co.fmos.customer.NoticeDTO" parameterType="int">
 		SELECT
-		notice_title, notice_type, notice_kind
+		notice_title, notice_type, notice_kind ,notice_id
 		FROM notice
 		WHERE notice_kind =
 		#{notice_kind}
@@ -28,7 +28,7 @@
 	<select id="noticeselect"
 		resultType="kr.co.fmos.customer.NoticeDTO" parameterType="int">
 		SELECT
-		notice_title, notice_type, notice_datetime
+		notice_title, notice_type, notice_datetime ,notice_id , notice_kind
 		FROM notice
 		WHERE notice_kind
 		= #{notice_kind}
@@ -64,7 +64,7 @@
 		WHERE
 		inquire_kind = #{inquire_kind}
 	</select>
-<!--  -->
+
 	<select id="lostselect"
 		resultType="kr.co.fmos.customer.InquireDTO" parameterType="int">
 		SELECT
@@ -104,11 +104,6 @@
 		#{rental_inquiry_name} , #{rental_inquiry_phone} ,
 		#{rental_inquiry_pw})
 	</insert>
-	
-	<delete id="inquiredelete" parameterType="int">
-		DELETE FROM inquire
-		WHERE inquire_id=#{inquire_id}
-	</delete>
 	<!-- inquire관련 끝 -->
 
 	<select id="memberinquirelist" resultType="kr.co.fmos.customer.InquireDTO" parameterType="String">
@@ -126,5 +121,10 @@
 		FROM inquire
 		WHERE member_id = #{member_id}
 	</select>
-	<!--  -->
+	
+	<delete id="inquiredelete" parameterType="int">
+		DELETE FROM inquire
+		WHERE inquire_id=#{inquire_id}
+	</delete>
+<!--  -->
 </mapper>

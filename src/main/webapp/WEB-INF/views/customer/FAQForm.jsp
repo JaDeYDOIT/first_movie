@@ -8,7 +8,7 @@
  	<tr>
  		<th>문의유형</th>
  		<td>
- 		<input type="hidden" name="notice_kind" value="1">
+ 		<input type="hidden" name="notice_kind" value="0">
  		<select name="notice_type">
  			<option value="영화관이용관련">영화관이용관련</option>
  			<option value="대관문의관련">대관문의관련</option>

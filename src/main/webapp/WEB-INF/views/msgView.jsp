@@ -4,6 +4,4 @@
     <p>${msg1 }</p>
     <p>${msg2 }</p>
     
-    
-    
 <%@ include file="footer.jsp" %>

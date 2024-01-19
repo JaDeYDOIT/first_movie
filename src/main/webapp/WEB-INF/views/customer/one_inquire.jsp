@@ -4,7 +4,6 @@ pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/css/customer/customercss.css" />
 <script>
 	function inquireDelete(inquire_id,inquire_kind){
-		alert(inquire_id, inquire_kind)
 		if(confirm("해당 상품을 삭제할까요?")){
 			location.href='/customer/inquiredelete.do?inquire_id=' + inquire_id + "&inquire_kind=" + inquire_kind;
 		}//if end
@@ -93,5 +92,4 @@ pageEncoding="UTF-8"%>
   </div>
 </div>
 
-<!--  -->
 <%@ include file="../footer.jsp" %>

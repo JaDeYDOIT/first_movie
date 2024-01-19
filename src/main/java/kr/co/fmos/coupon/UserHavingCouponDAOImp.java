@@ -19,6 +19,8 @@ public class UserHavingCouponDAOImp implements UserHavingCouponDAO {
 	public List<UserHavingCouponDTO> userHavingCouponList(String memberID) {
 		return sqlSession.selectList("coupon.userHavingCouponList", memberID);
 	}
+	
+
 //	mypage 쿠폰 갯수
 	@Override
 	public UserHavingCouponDTO mycouponCount(String member_id){
