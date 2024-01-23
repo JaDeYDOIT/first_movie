@@ -242,4 +242,12 @@ public class CustomerCont {
     	mav.setViewName("/noticeView"); 	
     	return mav;
     }
+    
+    @GetMapping("/detail.do")
+    public ModelAndView detail(int notice_id) {
+    	ModelAndView mav = new ModelAndView();
+    	mav.addObject("notice", noticeDao.noticedetail(notice_id));
+    	mav.setViewName("/customer/detail");
+    	return mav;
+    }
 }//class end

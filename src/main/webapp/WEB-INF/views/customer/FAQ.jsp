@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<%@ include file="../header.jsp" %>
+<%@ include file="../header.jsp"%>
 <link rel="stylesheet" href="/css/customer/customercss.css" />
 
 <script>
@@ -41,9 +41,16 @@ pageEncoding="UTF-8"%>
       </div>
       <c:forEach items="${list}" var="row" varStatus="vs">
       <div id="faqdiv">
-		<div class="num" style="width:10%">${vs.count}</div>
+		 <c:choose>                   
+		    <c:when test="${vs.count <= 5}">
+		    	<div class="num" style="width:10%"><span id="fontas"><i class="fa-solid fa-bullhorn"></i></span>${vs.count}</div>
+		    </c:when>
+		    <c:otherwise>
+		    	<div class="num" style="width:10%">${vs.count}</div>
+			</c:otherwise>
+		</c:choose>
         <div class="writer" style="width:10%">${row.notice_type}</div>
-        <div class="title" style="width:80%"><a href="view.html">${row.notice_title}</a></div>
+        <div class="title" style="width:80%"><a href="/customer/detail.do?notice_id=${row.notice_id}">${row.notice_title}</a></div>
      	 <c:if test="${s_id eq 'fmos'}">
 		    <input class="delete" type="button" value="삭제" onclick="noticedelete(${row.notice_id},${row.notice_kind})">
 	     </c:if>

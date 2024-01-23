@@ -7,11 +7,11 @@
             <p class="tooter_logo"><img src="/images/footer/footerlogo.png" alt=""></p>
             <div class="footer_top">
                 <ul>
-                    <li><a href="#">오시는길</a></li>
+                    <li><a href="/footer/location">오시는길</a></li>
                     <li><a href="#">개인정보 처리방침</a></li>
                     <li><a href="#">제휴문의</a></li>
-                    <li><a href="#">이용약관</a></li>
-                    <li><a href="#">고객센터</a></li>
+                    <li><a href="/footer/agreement">이용약관</a></li>
+                    <li><a href="/customer/notice.do?notice_kind=0">고객센터</a></li>
 
                 </ul>
             </div>

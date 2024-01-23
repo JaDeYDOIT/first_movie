@@ -126,5 +126,13 @@
 		DELETE FROM inquire
 		WHERE inquire_id=#{inquire_id}
 	</delete>
-<!--  -->
+	
+	<select id="noticedetail"
+		resultType="kr.co.fmos.customer.NoticeDTO">
+		select notice_title , notice_content 
+		from notice n
+		where notice_id = #{notice_id};
+	</select>
+	
+	
 </mapper>

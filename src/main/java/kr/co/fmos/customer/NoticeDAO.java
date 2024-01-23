@@ -34,4 +34,9 @@ public class NoticeDAO {
 	public int noticeDelete(int notice_id) { 
 		return sqlSession.delete("customer.noticeDelete", notice_id); 
 	}//delete() end
+	
+	public NoticeDTO noticedetail(int notice_id) {
+		return sqlSession.selectOne("customer.noticedetail", notice_id);
+	}
+	
 }
