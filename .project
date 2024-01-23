@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>first_movie</name>
+	<name>first_movie-develop</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -34,7 +34,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1705905566681</id>
+			<id>1705905592517</id>
 			<name></name>
 			<type>30</type>
 			<matcher>

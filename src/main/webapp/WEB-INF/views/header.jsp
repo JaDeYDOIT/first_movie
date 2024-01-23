@@ -28,6 +28,7 @@
     <!-- 웹 폰트 -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
     <link rel="stylesheet" href="/css/reset.css">
+       <link rel="stylesheet" href="/css/footer.css">
     <!-- JS -->
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/jquery-3.7.1.min.js"></script>
@@ -41,7 +42,7 @@
 	  	<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
 	  	<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
     <!-- 서머노트 관련 끝 -->
-    <link rel="icon" type="image/ico" href="images/header/logo.png">
+    <link rel="icon" type="image/ico" href="../images/header/logo.png">
     <title>영화</title>
 </head>
 
