@@ -6,6 +6,7 @@
 <!-- include libraries(jQuery, bootstrap) -->
 
 <form name="noticefm" method="post" action="/customer/lost_inquireins.do">
+<input type="hidden" name="inquire_kind" value="1">
 <div id="mtebox">
  	<div class="text">
     <div class="form-section">

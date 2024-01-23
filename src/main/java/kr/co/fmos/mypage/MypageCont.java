@@ -39,8 +39,7 @@ public class MypageCont {
 		String s_id = (String)session.getAttribute("s_id");
 		System.out.println(s_id);
 		if ("guest".equals(s_id)) {
-			mav.addObject("message", "로그인해짜샤");
-			System.out.println("로그인해짜샤");
+			mav.addObject("message", "로그인 해주세요");
 		}
 		mav.addObject("mypage", memberDao.mypage(s_id));
 		mav.addObject("payment", paymentDao.mypagelist(s_id));

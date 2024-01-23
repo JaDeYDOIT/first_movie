@@ -4,7 +4,7 @@ pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/css/customer/customercss.css" />
 
 <script>
-	function noticeDelete(notice_id,notice_kind){
+	function noticedelete(notice_id,notice_kind){
 		if(confirm("해당 상품을 삭제할까요?")){
 			location.href='/customer/noticedelete.do?notice_id=' + notice_id + "&notice_kind=" + notice_kind;
 		}//if end
@@ -45,7 +45,7 @@ pageEncoding="UTF-8"%>
         <div class="writer" style="width:10%">${row.notice_type}</div>
         <div class="title" style="width:80%"><a href="view.html">${row.notice_title}</a></div>
      	 <c:if test="${s_id eq 'fmos'}">
-		    <input class="delete" type="button" value="삭제" onclick="inquireDelete(${row.notice_id},${row.notice_kind})">
+		    <input class="delete" type="button" value="삭제" onclick="noticedelete(${row.notice_id},${row.notice_kind})">
 	     </c:if>
       </div>
       </c:forEach>

@@ -15,7 +15,7 @@ function requestPay() {
 	IMP.init('imp82132377'); // 실제 가맹점 식별코드로 변경
 
 	IMP.request_pay({
-		pg: "html5_inicis",
+		pg: "kakaopay",
 		pay_method: "card",
 		merchant_uid: "merchant_" + new Date().getTime(),
 		name: "상품",

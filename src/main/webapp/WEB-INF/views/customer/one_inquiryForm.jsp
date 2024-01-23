@@ -76,7 +76,6 @@
         	window.location.href = "/customer/notice.do?notice_kind=0";
         }
     </script>
-    <!--  -->
 <%@ include file="../footer.jsp" %>
 
 

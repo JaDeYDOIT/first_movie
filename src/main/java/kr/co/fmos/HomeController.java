@@ -22,7 +22,7 @@ public class HomeController {
     }
     
     //first movie 프로젝트의 첫페이지 호출
-    //-> http://localhost:9095/main
+    //-> http://localhost:9095/main    
 	@RequestMapping("/main")
 	public ModelAndView home(HttpSession session ) {
 		if(session.getAttribute("s_id") == null || session.getAttribute("s_pw") == null ||
@@ -36,8 +36,8 @@ public class HomeController {
      ModelAndView mav = new ModelAndView();
      mav.addObject("sessionTimeoutInSeconds", session.getMaxInactiveInterval());
      mav.addObject("movie", movieDao.movieList());
-     mav.addObject("noticelist", noticeDao.noticeselect());
-     mav.addObject("FAQlist", noticeDao.faqselect());
+     //mav.addObject("noticelist", noticeDao.noticeselect());
+     //mav.addObject("FAQlist", noticeDao.faqselect());
      mav.setViewName("main");
      return mav;
 	}//home() end

@@ -3,13 +3,6 @@
 <%@ include file="../header.jsp"%>
 <link rel="stylesheet" href="/css/moviedetail.css">
 
-<c:if test="${not empty message}">
-	<script>
-		alert('${message}');
-		location.href = "redirect:/movie/detail.do?movie_id=" + dto.getMovie_id;
-	</script>
-</c:if>
-
 
 <div class="movie_detail_wrap">
 	<div class='movie_detail'>

@@ -124,9 +124,9 @@
 						</div>
 					</div>
 					<div class="btn_btm_wrap mb50 pb50">
-						<a href="#none" class="btn_col3 ty5">결제내역</a> <a
-							href="/product/list.do" class="btn_col2 ty5">스토어 바로가기</a> <a
-							href="/main" class="btn_col1 ty5">홈으로 바로가기</a>
+						 <a href="/mypage/payment_detail.do" class="btn_col3 ty5">결제내역</a> 
+						 <a href="/product/list.do" class="btn_col2 ty5">스토어 바로가기</a> 
+						 <a href="/main" class="btn_col1 ty5">홈으로 바로가기</a>
 					</div>
 				</div>
 			</div>

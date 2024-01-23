@@ -47,7 +47,7 @@
  </div>
  </form> <!-- form 끝 -->
  
-<!-- 구글 로그인 시작 -->
+<!-- <!-- 구글 로그인 시작 -->
 <!-- content에 자신의 OAuth2.0 클라이언트ID를 넣습니다. -->
 <ul>
  <li id="GgCustomLogin">
@@ -120,17 +120,10 @@
 	  	    var member_name = naver_id_login.getProfileData('name');
 	  	    var member_gender = naver_id_login.getProfileData('gender');
 	  	    
-	  	    if(member_gender == 'M'){
-	  	    	member_gender = 0;
-	  	    } else{
-	  	    	member_gender = 1;
-	  	    }
-	  	    
 		  	  const redirectUrl = 'http://localhost:9095/member/social_log' +
 	          '?member_name=' + encodeURIComponent(member_name) +
-	          '&member_email=' + encodeURIComponent(member_email) +
-	          '&member_gender=' + encodeURIComponent(member_gender) +
-	          '&member_means=' + encodeURIComponent("네이버");
+	          '&member_email=' + encodeURIComponent(member_email);
+	          '&member_gender=' + encodeURIComponent(member_gender);
 			   window.location.href = redirectUrl;
 	  	  }
 	  	  
@@ -154,23 +147,22 @@
                 window.Kakao.API.request({
                     url:'/v2/user/me',
                     success: res => {
-                    	var kakao_account = res.kakao_account;
-                        var member_name = res.kakao_account.profile.nickname;
-                        var member_email = res.kakao_account.email;
-                        var member_gender = res.kakao_account.gender;
+                        const kakao_account = res.kakao_account;
+                        const member_name = res.kakao_account.profile.nickname;
+                        const member_email = res.kakao_account.email;
+ 						const member_gender = res.kakao_account.gender;                        
                         console.log(kakao_account);
-                        console.log(Kakao.Auth.getAccessToken());
-                        if (res.kakao_account.gender == 'male') {
-                        	member_gender = 0; // 값 할당
-                        } else {
-                        	member_gender = 1; // 값 할당
+                        console.log(Kakao.Auth.getAccessToken())
+                        if(res.kakao_account.gender == 'male') { 
+                        	const kakao_gender = 0;
+                        } else{
+                        	const kakao_gender = 1;
                         }
                         const redirectUrl = 'http://localhost:9095/member/social_log' +
-                            '?member_name=' + encodeURIComponent(member_name) +
-                            '&member_email=' + encodeURIComponent(member_email) +
-                            '&member_gender=' + encodeURIComponent(member_gender) +
-                            '&member_means=' + encodeURIComponent("카카오");
-                        window.location.href = redirectUrl;
+                        '?member_name=' + encodeURIComponent(member_name) +
+                        '&member_email=' + encodeURIComponent(member_email);
+                        '&member_gender=' + encodeURIComponent(member_gender);
+        				 window.location.href = redirectUrl;
        	            }
                 });
             }
@@ -212,12 +204,11 @@
 		        	var check = result
 		        	if (result == 0) {
 		 	  	    	Swal.fire({
-		 	  	    	  title: "로그인에 실패하셨습니다.",
+		 	  	    	  title: "로그인실패했다 이 멍청아!! 아이디도 기억하지 못하다니...",
 		 	  	    	  width: 600,
 		 	  	    	  padding: "3em",
 		 	  	    	  color: "#716add",
 			 	  	    	html: `
-			 	  	    	 <div><span style="font-size: 30px; font-weight: 600;" >다시 시도해 주세요!!</span></div> 
 			 	  	         <div style="background: #fff url(/images/trees.png) no-repeat center/cover; padding: 20px;">
 			 	  	           <img src="/images/nyan-cat.gif" alt="Image 1" style="width: 80px; height: 80px; margin-right: 2px;">
 			 	  	           <img src="/images/nyan-cat.gif" alt="Image 1" style="width: 80px; height: 80px; margin-right: 2px;">
@@ -263,12 +254,11 @@
 		                    });
 		                } else {
 		                    Swal.fire({
-		                        title: "로그인에 실패하셨습니다.",
+		                        title: "로그인실패했다 이 멍청아!! 아이디도 기억하지 못하다니...",
 		                        width: 600,
 		                        padding: "3em",
 		                        color: "#716add",
 		                        html: `
-		                        <div><span style="font-size: 30px; font-weight: 600;">다시 시도해 주세요!!</span></div> 
 		                            <div style="background: #fff url(/images/trees.png) no-repeat center/cover; padding: 20px;">
 		                                <img src="/images/nyan-cat.gif" alt="Image 1" style="width: 80px; height: 80px; margin-right: 2px;">
 		                                <img src="/images/nyan-cat.gif" alt="Image 1" style="width: 80px; height: 80px; margin-right: 2px;">

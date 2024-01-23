@@ -1,6 +1,7 @@
 package kr.co.fmos.customer;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +29,6 @@ public class InquireDAO {
 		return sqlSession.selectList("customer.lostselect", inquire_kind);
 	}// movieList() end
 	
-	public int lostInquireins(InquireDTO dto) {
-		return sqlSession.insert("customer.lostInquireins", dto);
-	}
-	
-	public int inquiredelete(int inquire_id) { 
-		return sqlSession.delete("customer.inquiredelete", inquire_id); 
-	}//delete() end
-	
 	public int oneInquireins(InquireDTO dto) {
 		return sqlSession.insert("customer.oneinquireins", dto);
 	}
@@ -44,5 +37,14 @@ public class InquireDAO {
 	public List<InquireDTO> memberinquirelist(String member_id) {
 		return sqlSession.selectList("customer.memberinquirelist", member_id);
 	}
+	
+	public int lostInquireins(InquireDTO dto) {
+		return sqlSession.insert("customer.lostInquireins", dto);
+	}
+	
+	public int inquiredelete(int inquire_id) { 
+		return sqlSession.delete("customer.inquiredelete", inquire_id); 
+	}//delete() end
+
 	
 }//class end

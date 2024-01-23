@@ -3,8 +3,7 @@ pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 <link rel="stylesheet" href="/css/customer/customercss.css" />
 <script>
-	function noticeDelete(notice_id,notice_kind){
-		alert(notice_id, notice_kind)
+	function noticedelete(notice_id,notice_kind){
 		if(confirm("해당 상품을 삭제할까요?")){
 			location.href='/customer/noticedelete.do?notice_id=' + notice_id + "&notice_kind=" + notice_kind;
 		}//if end
@@ -47,7 +46,7 @@ pageEncoding="UTF-8"%>
 	        <div class="title" style="width:60%"><a href="view.html">${row.notice_title}</a></div>
 	        <div class="date" style="width:20%">${row.notice_datetime}</div>
 	       	<c:if test="${s_id eq 'fmos'}">
-		   		 <input class="delete" type="button" value="삭제" onclick="inquireDelete(${row.notice_id},${row.notice_kind})">
+		   		 <input class="delete" type="button" value="삭제" onclick="noticedelete(${row.notice_id},${row.notice_kind})">
 	    	</c:if>
         </div>
        </c:forEach>

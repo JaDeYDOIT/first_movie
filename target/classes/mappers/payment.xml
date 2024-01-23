@@ -7,12 +7,36 @@
 
 <mapper namespace="payment">
 	<select id="list" resultType="kr.co.fmos.payment.PaymentDTO">
-		SELECT payment_id, member_id, movie_information_id, adult, student,
-		silver, price, pay_discount, refund, pay_datetime
+		SELECT payment_id, member_id,
+		movie_information_id, adult, student,
+		silver, price, pay_discount,
+		refund, pay_datetime
 		FROM payment
 	</select>
 
-<!-- 마이페이지 결제내역 리스트 -->
+	<select id="selectPaymentByScreenMovieInfoId"
+		parameterType="String" resultType="kr.co.fmos.payment.PaymentDTO">
+		SELECT payment_id, member_id,
+		movie_information_id, adult, student,
+		silver, price, pay_discount,
+		refund, pay_datetime
+		FROM payment
+		WHERE
+		movie_information_id=#{screenMovieInfoID}
+	</select>
+
+	<insert id="insertAndReturnWithId" useGeneratedKeys="true"
+		parameterType="kr.co.fmos.payment.PaymentDTO">
+		INSERT INTO
+		payment (payment_id, member_id,
+		movie_information_id, adult, student,
+		silver, price, pay_discount,
+		refund) VALUES
+		(#{payment_id}, #{member_id}, #{movie_information_id},
+		#{adult}, #{student}, #{silver}, #{price}, #{pay_discount}, #{refund})
+	</insert>
+	
+	<!-- 마이페이지 결제내역 리스트 -->
 	<select id="mypagelist" resultType="java.util.Map"
 		parameterType="String">
 		SELECT
@@ -39,33 +63,8 @@
 		JOIN
 		payment p ON smi.movie_information_id = p.movie_information_id
 		WHERE
-		p.member_id = #{member_id}
+	    p.member_id = #{member_id}
+	    order by pay_datetime desc
 	</select>
-	
-	<select id="selectPaymentByScreenMovieInfoId"
-		parameterType="String" resultType="kr.co.fmos.payment.PaymentDTO">
-		SELECT payment_id, member_id, movie_information_id, adult, student,
-		silver, price, pay_discount, refund, pay_datetime
-		FROM payment
-		WHERE movie_information_id=#{screenMovieInfoID}
-	</select>
-
-	<insert id="insertAndReturnWithId" useGeneratedKeys="true"
-		parameterType="kr.co.fmos.payment.PaymentDTO">
-		INSERT INTO
-		payment (payment_id, member_id, movie_information_id, adult, student,
-		silver, price, pay_discount, refund) VALUES
-		(
-		#{payment_id},
-		#{member_id},
-		#{movie_information_id},
-		#{adult},
-		#{student},
-		#{silver},
-		#{price},
-		#{pay_discount},
-		#{refund})
-	</insert>
-
 	
 </mapper>

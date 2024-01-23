@@ -477,7 +477,7 @@ function handlePaymentConfirmButtonClick() {
 			pay_method: "card",  // 결제 수단
 			merchant_uid: "FirstMovie_" + screenMovieInfoID + new Date().getTime(), // 주문번호
 			name: "first movie_" + movieName,  // 상품명
-			amount: 100,//price - payDiscount,  // 결제 금액
+			amount: price - payDiscount,  // 결제 금액
 			buyer_name: memberID
 		}, function(rsp) {
 			if (rsp.success) {

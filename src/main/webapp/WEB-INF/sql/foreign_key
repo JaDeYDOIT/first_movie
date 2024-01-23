@@ -1,0 +1,209 @@
+ALTER TABLE `user_having_coupon` ADD CONSTRAINT `FK_member_TO_user_having_coupon_1` FOREIGN KEY (
+	`member_id`
+)
+REFERENCES `member` (
+	`member_id`
+);
+
+ALTER TABLE `user_having_coupon` ADD CONSTRAINT `FK_coupon_TO_user_having_coupon_1` FOREIGN KEY (
+	`coupon_id`
+)
+REFERENCES `coupon` (
+	`coupon_id`
+);
+
+ALTER TABLE `movie` ADD CONSTRAINT `FK_movie_genre_TO_movie_1` FOREIGN KEY (
+	`movie_genre_id`
+)
+REFERENCES `movie_genre` (
+	`movie_genre_id`
+);
+
+ALTER TABLE `user_used_coupon` ADD CONSTRAINT `FK_member_TO_user_used_coupon_1` FOREIGN KEY (
+	`member_id`
+)
+REFERENCES `member` (
+	`member_id`
+);
+
+ALTER TABLE `user_used_coupon` ADD CONSTRAINT `FK_coupon_TO_user_used_coupon_1` FOREIGN KEY (
+	`coupon_id`
+)
+REFERENCES `coupon` (
+	`coupon_id`
+);
+
+ALTER TABLE `user_used_coupon` ADD CONSTRAINT `FK_payment_TO_user_used_coupon_1` FOREIGN KEY (
+	`payment_id`
+)
+REFERENCES `payment` (
+	`payment_id`
+);
+
+ALTER TABLE `payment` ADD CONSTRAINT `FK_member_TO_payment_1` FOREIGN KEY (
+	`member_id`
+)
+REFERENCES `member` (
+	`member_id`
+);
+
+ALTER TABLE `payment` ADD CONSTRAINT `FK_screen_movie_information_TO_payment_1` FOREIGN KEY (
+	`move_information_id`
+)
+REFERENCES `screen_movie_information` (
+	`move_information_id`
+);
+
+ALTER TABLE `inquire` ADD CONSTRAINT `FK_member_TO_inquire_1` FOREIGN KEY (
+	`member_id`
+)
+REFERENCES `member` (
+	`member_id`
+);
+
+ALTER TABLE `movie_log` ADD CONSTRAINT `FK_member_TO_movie_log_1` FOREIGN KEY (
+	`member_id`
+)
+REFERENCES `member` (
+	`member_id`
+);
+
+ALTER TABLE `movie_log` ADD CONSTRAINT `FK_movie_TO_movie_log_1` FOREIGN KEY (
+	`movie_id`
+)
+REFERENCES `movie` (
+	`movie_id`
+);
+
+ALTER TABLE `movie_log` ADD CONSTRAINT `FK_movie_TO_movie_log_2` FOREIGN KEY (
+	`movie_genre_id`
+)
+REFERENCES `movie` (
+	`movie_genre_id`
+);
+
+ALTER TABLE `point` ADD CONSTRAINT `FK_payment_TO_point_1` FOREIGN KEY (
+	`payment_id`
+)
+REFERENCES `payment` (
+	`payment_id`
+);
+
+ALTER TABLE `point` ADD CONSTRAINT `FK_member_TO_point_1` FOREIGN KEY (
+	`member_id`
+)
+REFERENCES `member` (
+	`member_id`
+);
+
+ALTER TABLE `review` ADD CONSTRAINT `FK_member_TO_review_1` FOREIGN KEY (
+	`member_id`
+)
+REFERENCES `member` (
+	`member_id`
+);
+
+ALTER TABLE `review` ADD CONSTRAINT `FK_movie_TO_review_1` FOREIGN KEY (
+	`movie_id`
+)
+REFERENCES `movie` (
+	`movie_id`
+);
+
+ALTER TABLE `review` ADD CONSTRAINT `FK_movie_TO_review_2` FOREIGN KEY (
+	`movie_genre_id`
+)
+REFERENCES `movie` (
+	`movie_genre_id`
+);
+
+ALTER TABLE `screen` ADD CONSTRAINT `FK_theater_branch_TO_screen_1` FOREIGN KEY (
+	`branch_id`
+)
+REFERENCES `theater_branch` (
+	`branch_id`
+);
+
+ALTER TABLE `product` ADD CONSTRAINT `FK_product_category_TO_product_1` FOREIGN KEY (
+	`product_category_id`
+)
+REFERENCES `product_category` (
+	`product_category_id`
+);
+
+ALTER TABLE `theater_branch` ADD CONSTRAINT `FK_region_TO_theater_branch_1` FOREIGN KEY (
+	`region_id`
+)
+REFERENCES `region` (
+	`region_id`
+);
+
+ALTER TABLE `cart_payment` ADD CONSTRAINT `FK_member_TO_cart_payment_1` FOREIGN KEY (
+	`member_id`
+)
+REFERENCES `member` (
+	`member_id`
+);
+
+ALTER TABLE `benefit` ADD CONSTRAINT `FK_benefit_category_TO_benefit_1` FOREIGN KEY (
+	`benefit_category_id`
+)
+REFERENCES `benefit_category` (
+	`benefit_category_id`
+);
+
+ALTER TABLE `screen_movie_information` ADD CONSTRAINT `FK_screen_TO_screen_movie_information_1` FOREIGN KEY (
+	`screen_id`
+)
+REFERENCES `screen` (
+	`screen_id`
+);
+
+ALTER TABLE `screen_movie_information` ADD CONSTRAINT `FK_movie_TO_screen_movie_information_1` FOREIGN KEY (
+	`movie_id`
+)
+REFERENCES `movie` (
+	`movie_id`
+);
+
+ALTER TABLE `preferred_genre` ADD CONSTRAINT `FK_movie_genre_TO_preferred_genre_1` FOREIGN KEY (
+	`movie_genre_id`
+)
+REFERENCES `movie_genre` (
+	`movie_genre_id`
+);
+
+ALTER TABLE `preferred_genre` ADD CONSTRAINT `FK_member_TO_preferred_genre_1` FOREIGN KEY (
+	`member_id`
+)
+REFERENCES `member` (
+	`member_id`
+);
+
+ALTER TABLE `inquire_answer` ADD CONSTRAINT `FK_inquire_TO_inquire_answer_1` FOREIGN KEY (
+	`inquire_id`
+)
+REFERENCES `inquire` (
+	`inquire_id`
+);
+
+ALTER TABLE `cart_payment_detail` ADD CONSTRAINT `FK_cart_payment_TO_cart_payment_detail_1` FOREIGN KEY (
+	`cart_payment_id`
+)
+REFERENCES `cart_payment` (
+	`cart_payment_id`
+);
+
+ALTER TABLE `payment_seat` ADD CONSTRAINT `FK_payment_TO_payment_seat_1` FOREIGN KEY (
+	`payment_id`
+)
+REFERENCES `payment` (
+	`payment_id`
+);
+
+ALTER TABLE `payment_seat` ADD CONSTRAINT `FK_movie_seat_TO_payment_seat_1` FOREIGN KEY (
+	`seat_id`
+)
+REFERENCES `movie_seat` (
+	`seat_id`
+);
