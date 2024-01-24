@@ -6,11 +6,13 @@
 <!-- point.xml -->
 
 <mapper namespace="point">
-	<select id="selectMemberPoint" parameterType="String"
-		resultType="kr.co.fmos.point.PointDTO">
-		SELECT point_id, payment_id, member_id, point_history,
-		point_date
+	<select id="getMemberTotalPoint" parameterType="String"
+		resultType="int">
+		SELECT SUM(point_history) AS total_point
 		FROM point
-		WHERE member_id=#{memberID}
+		WHERE
+		member_id = #{memberID}
+		GROUP BY
+		member_id;
 	</select>
 </mapper>

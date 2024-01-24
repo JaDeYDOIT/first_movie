@@ -2,15 +2,21 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 
-<link href="../css/ticketing/common.css" rel="stylesheet" type="text/css">
-<link href="../css/ticketing/content.css" rel="stylesheet" type="text/css">
-<link href="../css/ticketing/content_lc2.css" rel="stylesheet" type="text/css">
-<link href="../css/ticketing/default.css" rel="stylesheet" type="text/css">
+<link href="../css/ticketing/common.css" rel="stylesheet"
+	type="text/css">
+<link href="../css/ticketing/content.css" rel="stylesheet"
+	type="text/css">
+<link href="../css/ticketing/content_lc2.css" rel="stylesheet"
+	type="text/css">
+<link href="../css/ticketing/default.css" rel="stylesheet"
+	type="text/css">
 <link href="../css/ticketing/owl.css" rel="stylesheet" type="text/css">
 <link href="../css/ticketing/dev.css" rel="stylesheet" type="text/css">
-<link href="../css/ticketing/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
+<link href="../css/ticketing/jquery.mCustomScrollbar.css"
+	rel="stylesheet" type="text/css">
 <script src="/js/jquery-3.7.1.min.js"></script>
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="/js/ticketing_schedule.js"></script>
 
@@ -33,7 +39,7 @@
 		<h3 class="hidden">상영시간</h3>
 		<div class="article article_cinema area__movingbar litype2">
 			<div class="group_top">
-				<h4 class="tit">서울대입구</h4>
+				<h4 class="tit selected_branch_name"></h4>
 			</div>
 			<div class="inner">
 				<ul class="tab_wrap outer actionmovingbar">
@@ -65,7 +71,7 @@
 		</div>
 		<div class="article article_movie">
 			<div class="group_top">
-				<h4 class="tit movie_name">서울의 봄</h4>
+				<h4 class="tit selected_movie_name"></h4>
 			</div>
 			<div class="inner">
 				<div class="movie_select_wrap list mCustomScrollbar thm"
@@ -94,7 +100,7 @@
 													<span class="ic_grade gr_18">18세 관람가</span>
 												</c:when>
 											</c:choose>
-											<strong class="tit">${movie.movie_name}</strong>
+											<strong class="tit movie_name">${movie.movie_name}</strong>
 										</div>
 										<span class="sub_info1"><span class="time blacktype"><span
 												class="roboto">${movie.movie_running_time}</span>분</span></span>
@@ -111,7 +117,11 @@
 		</div>
 		<div class="article article_time area__movingbar litype6">
 			<div class="group_top">
-				<h4 class="tit">2023-12-15(오늘)</h4>
+				<h4 class="tit">
+					<fmt:formatDate value="${now}" pattern="yyyy-MM-dd"
+						var="formattedDate" />
+					<c:out value="${formattedDate}(오늘)" />
+				</h4>
 			</div>
 			<div class="inner">
 				<div class="date_select_wrap dateReserveWrap">

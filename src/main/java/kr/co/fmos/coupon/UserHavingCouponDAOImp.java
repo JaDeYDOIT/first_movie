@@ -1,6 +1,7 @@
 package kr.co.fmos.coupon;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class UserHavingCouponDAOImp implements UserHavingCouponDAO {
 	SqlSession sqlSession;
 
 	@Override
-	public List<UserHavingCouponDTO> userHavingCouponList(String memberID) {
-		return sqlSession.selectList("coupon.userHavingCouponList", memberID);
+	public List<Map<String,Object>> getUserHavingCouponWithName(String memberID) {
+		return sqlSession.selectList("coupon.getUserHavingCouponWithName", memberID);
 	}
 }
