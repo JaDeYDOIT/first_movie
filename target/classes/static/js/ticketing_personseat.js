@@ -14,12 +14,12 @@ document.addEventListener("DOMContentLoaded", function() {
 	});
 
 	let emptySeats;
+	var seatContainer = document.querySelector('.seat-container');
 	var seatContainer = document.getElementById('myContainer');
 	initialize();
 
 	async function initialize() {
 		await selectEmptySeats();
-		await selectCompletedSeats();
 
 		// 좌석 생성 반복문
 		for (var row = 1; row <= numRows; row++) {
@@ -65,17 +65,12 @@ document.addEventListener("DOMContentLoaded", function() {
 					continue; // 빈 좌석은 건너뛰기
 				}
 
-				// 좌석이 완료된 경우 'completed' 클래스 추가
-		        var isCompletedSeat = paymentSeats.some(function(completedSeat) {
-		            return completedSeat.payrow === row && completedSeat.paycol === col;
-		        });
-
 				// 좌석 요소 생성
 				var seatElement = document.createElement('a');
 				seatElement.href = "#none";
 				seatElement.alt = seatNumber;
 				seatElement.className = "sel p0 grNum" + row + " seat"
-					+ " no_select" + (isCompletedSeat ? ' completed' : '');
+					+ " no_select";
 				seatElement.setAttribute('seat-group', 'grNum' + row);
 				seatElement.setAttribute('seat-code', row
 					+ String(col).padStart(2, '0')); // 예시: 1A01, 1A02, ...
@@ -94,26 +89,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 	}
 
-	async function selectCompletedSeats() {
-		//빈 좌석 데이터 불러오기
-		const urlSearchParams = new URLSearchParams(window.location.search);
-		const screenMovieInfoID_Value = urlSearchParams.get('screenMovieInfoID');
-		try {
-			const response = 
-			await $.ajax({
-				url: "/screenMovieInfo/paymentSeats",
-				contentType: "text/plain",
-				type: 'POST',
-				data: screenMovieInfoID_Value.toString()
-			});
-			paymentSeats = response;
-			// 좌석 생성 및 'completed' 클래스 추가
-			return response;
-		} catch (error) {
-			console.error(error);
-		}
-	}
-
 	async function selectEmptySeats() {
 		//빈 좌석 데이터 불러오기
 		const urlSearchParams = new URLSearchParams(window.location.search);
@@ -126,17 +101,17 @@ document.addEventListener("DOMContentLoaded", function() {
 				type: 'POST',
 				data: screenMovieInfoID_Value.toString()
 			});
+
 			emptySeats = response;
 			return response;
 		} catch (error) {
 			console.error(error);
 		}
 	}
-	
-// 좌석 클릭 시 (jQuery 사용)
+	// 좌석 클릭 시 (jQuery 사용)
 $('.seat-container').on('click', '.seat', function() {
-  // no_select와 completed 클래스가 있으면 아래의 코드 실행하지 않음
- if ($(this).hasClass('no_select') || $(this).hasClass('completed')) {
+  // 클래스가 있으면 아래의 코드 실행하지 않음
+  if ($(this).hasClass('no_select')) {
     return;
   }
   toggleSeatSelection($(this));
@@ -148,6 +123,22 @@ function toggleSeatSelection(seat) {
   seat.toggleClass('selected');
 }
 });
+
+// 좌석 클릭 시 (jQuery 사용)
+$('.seat-container').on('click', '.seat', function() {
+  // 클래스가 있으면 아래의 코드 실행하지 않음
+  if ($(this).hasClass('no_select')) {
+    return;
+  }
+  toggleSeatSelection($(this));
+  checkSeatSelectionStatus();
+});
+
+// 좌석 선택 함수 (jQuery 사용)
+function toggleSeatSelection(seat) {
+  seat.toggleClass('selected');
+  console.log('Seat toggled:', seat);
+}
 
 // totalCount 변수에 접근할 때 totalCountProxy를 사용
 var totalCount = 0;
@@ -290,7 +281,7 @@ function link_check() {
         var newURL = "/ticketing/orderSettlement?";
         newURL += 'screenMovieInfoID=' + getURLParameter('screenMovieInfoID');
 		newURL += '&selectedSeats=' + encodeURIComponent(JSON.stringify(reservationData.selectedSeats));
-        newURL += '&price=' + encodeURIComponent(reservationData.totalPrice);
+        newURL += '&totalPrice=' + encodeURIComponent(reservationData.totalPrice);
         newURL += '&adult=' + encodeURIComponent(reservationData.adult);
         newURL += '&student=' + encodeURIComponent(reservationData.student);
         newURL += '&silver=' + encodeURIComponent(reservationData.silver);

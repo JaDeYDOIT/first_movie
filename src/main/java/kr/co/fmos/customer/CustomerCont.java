@@ -243,11 +243,19 @@ public class CustomerCont {
     	return mav;
     }
     
-    @GetMapping("/detail.do")
-    public ModelAndView detail(int notice_id) {
+    @GetMapping("/notice_detail.do")
+    public ModelAndView notice_detail(int notice_id) {
     	ModelAndView mav = new ModelAndView();
-    	mav.addObject("notice", noticeDao.noticedetail(notice_id));
-    	mav.setViewName("/customer/detail");
+    	mav.addObject("notice", noticeDao.notice_detail(notice_id));
+    	mav.setViewName("/customer/notice_detail");
+    	return mav;
+    }
+    
+    @GetMapping("/one_detail.do")
+    public ModelAndView one_detail(int inquire_id) {
+    	ModelAndView mav = new ModelAndView();
+    	mav.addObject("notice", inquireDao.one_detail(inquire_id));
+    	mav.setViewName("/customer/one_detail");
     	return mav;
     }
 }//class end

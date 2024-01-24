@@ -68,6 +68,11 @@ table th{
 	text-align: start;
 }
 
+/* 썸머노트 크기 조절 버튼 숨기기 */
+.note-statusbar .note-resizebar {
+    display: none; 
+}
+
 #movieselectbox{
 	width: 139px;
 }
@@ -129,6 +134,13 @@ table th{
 #inquire_title{
 	width: 700px;
 	height: 30px;	
+	font-size: 18px;
+}
+
+#inquire_name{
+	width: 150px;
+	height: 30px;
+	font-size: 18px;
 }
 
 #inquire_pw{
@@ -169,3 +181,4 @@ table th{
       border: 2px solid grey;
       font-size: 18px;
 }
+

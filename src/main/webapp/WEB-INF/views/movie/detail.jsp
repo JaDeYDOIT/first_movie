@@ -3,7 +3,6 @@
 <%@ include file="../header.jsp"%>
 <link rel="stylesheet" href="/css/moviedetail.css">
 
-
 <div class="movie_detail_wrap">
 	<div class='movie_detail'>
 		<div class="movie_img_wrap">

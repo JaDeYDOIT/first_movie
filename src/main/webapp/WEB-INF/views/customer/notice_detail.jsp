@@ -35,7 +35,6 @@
 		<input type="button" value="취소하기" onclick="goBack()">
 	</div>
 	</c:if>
-	
 	</form>
 
 	<script>

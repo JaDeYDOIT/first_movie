@@ -107,7 +107,7 @@ function initializeDateToday() {
 	$('.article_time .tit').text(formattedDate);
 	$('.owl-stage .month').text(today.getMonth() + 1 + '월');
 
-	for (var i = 0; i <= 7; i++) {
+	for (let i = 0; i <= 7; i++) {
 		// 현재 날짜를 생성
 		const currentDate = new Date();
 
@@ -205,7 +205,6 @@ function showingTime() {
 			});
 
 			for (const screenMovieInfo of result) {
-				console.log(screenMovieInfo);
 				await processScreenMovieInfo(screenMovieInfo);
 			}
 
@@ -238,8 +237,9 @@ function showingTime() {
 
 			let htmlContent = '<li class="screenMovieInfo';
 
-			if (remainSeatCount === 0) {
+			if (remainSeatCount <= 0) {
 				htmlContent += ' disabled';
+				remainSeatCount = 0;
 			}
 
 			htmlContent += '" data-screenmovieinfoid = ' + screenMovieInfo.movie_information_id + ' data-remainSeatCount=' + remainSeatCount + '>' +

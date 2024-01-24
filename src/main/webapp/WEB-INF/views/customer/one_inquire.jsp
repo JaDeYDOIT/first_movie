@@ -57,7 +57,7 @@ pageEncoding="UTF-8"%>
         <div id="faqdiv">
 		<div class="num" style="width:10%">${vs.count}</div>
         <div class="title" style="width: 60%">
-          <a href="view.html">${row.inquire_title}</a>
+          <a href="/customer/one_detail.do?inquire_id=${row.inquire_id}">${row.inquire_title}</a>
         </div>
         <div class="writer" style="width:10%">${row.inquire_answer}</div>
 	        <div class="date" style="width:20%">${row.inquire_datetime}</div>

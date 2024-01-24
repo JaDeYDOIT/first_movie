@@ -50,7 +50,7 @@ pageEncoding="UTF-8"%>
 			</c:otherwise>
 		</c:choose>
         <div class="writer" style="width:10%">${row.notice_type}</div>
-        <div class="title" style="width:80%"><a href="/customer/detail.do?notice_id=${row.notice_id}">${row.notice_title}</a></div>
+        <div class="title" style="width:80%"><a href="/customer/notice_detail.do?notice_id=${row.notice_id}">${row.notice_title}</a></div>
      	 <c:if test="${s_id eq 'fmos'}">
 		    <input class="delete" type="button" value="삭제" onclick="noticedelete(${row.notice_id},${row.notice_kind})">
 	     </c:if>

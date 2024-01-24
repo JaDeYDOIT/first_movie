@@ -114,8 +114,7 @@ public class MovieCont {
 
 /////////////////////영화 상세 페이지//////////////////////////
 	@GetMapping("/detail.do")
-	public ModelAndView detail(String movie_id) {
-
+	public ModelAndView detail(String movie_id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("detail", movieDao.movieDetail(movie_id));
 		mav.addObject("review", movieDao.moviereviewList(movie_id));
