@@ -6,12 +6,15 @@
 <!-- coupon.xml -->
 
 <mapper namespace="coupon">
-	<select id="userHavingCouponList" parameterType="String"
-		resultType="kr.co.fmos.coupon.UserHavingCouponDTO">
-		SELECT having_coupon_id, member_id, coupon_id,
-		coupon_create_date, coupon_expiration_date
-		FROM user_having_coupon
-		WHERE member_id=#{memberID}
+	<select id="getUserHavingCouponWithName" parameterType="String"
+		resultType="java.util.Map">
+		SELECT uhc.having_coupon_id, uhc.member_id, uhc.coupon_id,
+		uhc.coupon_create_date, uhc.coupon_expiration_date,
+		c.coupon_name
+		FROM
+		user_having_coupon uhc
+		JOIN coupon c ON uhc.coupon_id = c.coupon_id
+		WHERE uhc.member_id = #{memberID};
 	</select>
 
 	<select id="selectCouponById" parameterType="String"

@@ -23,7 +23,7 @@ public class ScreenMovieInfoDAOImp implements ScreenMovieInfoDAO {
 	}// list() end
 
 	@Override
-	public List<ScreenMovieInfoDTO> showingTime(Map<String, Object> map) {
+	public List<Map<String, Object>> showingTime(Map<String, Object> map) {
 		return sqlSession.selectList("screenMovieInfo.showingTime", map);
 	}// showingTime() end
 
@@ -36,7 +36,8 @@ public class ScreenMovieInfoDAOImp implements ScreenMovieInfoDAO {
 	public List<Map<String, Object>> emptySeats(String screenMovieInfoID) {
 		return sqlSession.selectList("screenMovieInfo.emptySeats", screenMovieInfoID);
 	}
-
+	
+	@Override
 	public ScreenMovieInfoDTO selectScreenMovieInfoById(String screenMovieInfoID) {
 		return sqlSession.selectOne("screenMovieInfo.selectScreenMovieInfoById", screenMovieInfoID);
 	}// selectScreenMovieInfoById() end
@@ -46,4 +47,8 @@ public class ScreenMovieInfoDAOImp implements ScreenMovieInfoDAO {
 		return sqlSession.selectList("screenMovieInfo.paymentSeats", screenMovieInfoID);
 	}
 	
+	@Override
+	public Map<String, Object> getTicketingInfo(String screenMovieInfoID){
+		return sqlSession.selectOne("screenMovieInfo.getTicketingInfo", screenMovieInfoID); 
+	}
 }

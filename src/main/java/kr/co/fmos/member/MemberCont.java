@@ -28,12 +28,6 @@ public class MemberCont {
 	@Autowired
 	private MemberDAO memberDao;
 
-	@PostMapping("/getSessionMemberId")
-	@ResponseBody
-	public String getSessionMemberId(HttpSession session) {
-		return session.getAttribute("s_id").toString();
-	}
-
 	@GetMapping("/login.do")
 	public String list() {
 		return "/member/login";

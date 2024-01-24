@@ -1,6 +1,6 @@
 let selectedTheaterBranchID;
 let selectedMovieID;
-let selectedDate;
+let selectedDate = formatDate(new Date());
 
 $(document).ready(function() {
 	initialize();
@@ -43,18 +43,26 @@ function handleRegionListClick() {
 	$('.cinemaSelect .depth1').click(function() {
 		event.stopPropagation(); // 이벤트 전파 중지
 
-		// 모든 li 요소에서 'selected' 클래스를 제거
+		// 지역 선택 표시
 		$('.cinemaSelect .depth1').removeClass('active');
-
-		// 클릭된 li 요소에 'selected' 클래스 추가
 		$(this).addClass('active');
 
 		// 선택한 지역에 포함된 지점명들 표시
 		$('.depth2').css('display', 'none');
 		$(this).find('.depth2').css('display', 'block');
 
+		// 영화 목록 표시
 		$('.movie_select_wrap').css('display', 'none');
 		$('.timeScroll').css('display', 'none');
+
+		//상단 지점명, 영화 목록 표기 삭제
+		$('.selected_branch_name').empty();
+		$('.selected_movie_name').empty();
+
+		//선택한 지점 선택취소
+		$('.cinemaSelect .depth2 li').removeClass();
+		//선택한 영화 선택취소
+		$('.movie_select_wrap li').removeClass('active');
 	});
 }
 
@@ -62,12 +70,17 @@ function handleBrunchListClick() {
 	$('.cinemaSelect .depth2 li').click(function() {
 		event.stopPropagation(); // 이벤트 전파 중지
 
-		$(this).siblings().removeClass();
+		//지점 선택 표시
+		$('.cinemaSelect .depth2 li').removeClass();
 		$(this).addClass('active');
 
 		//선택한 지점 저장
 		selectedTheaterBranchID = $(this).data("theaterbranchid");
 
+		//상단에 선택 지점명 표시
+		$('.selected_branch_name').text($(this).text());
+
+		//영화 목록 표시
 		$('.movie_select_wrap').css('display', 'block');
 	});
 }
@@ -75,10 +88,12 @@ function handleBrunchListClick() {
 function handleMovieListClick() {
 	$('.movie_select_wrap li').click(
 		function() {
+			//선택한 영화 표시
 			$(".movie_select_wrap li").removeClass("active")
 				.addClass("disabled");
-
 			$(this).removeClass("disabled").addClass("active");
+
+			//상영 시간 표시
 			$('.timeScroll').css('display', 'block');
 
 			//선택한 영화 저장
@@ -88,8 +103,12 @@ function handleMovieListClick() {
 			let movieGrade = $(".movie_select_wrap .active .ic_grade").attr("class");
 			let movieName = $(".movie_select_wrap .active .tit").text();
 
+			//상영 시간 표시 부분에 선택한 영화 표시
 			$(".time_select_tit .ic_grade").removeClass().addClass(movieGrade);
 			$(".time_select_tit strong").text(movieName);
+
+			//상단에 선택한 영화명 표시
+			$('.selected_movie_name').text($(this).find('.movie_name').text());
 		});
 }
 
@@ -101,11 +120,6 @@ function initializeDateToday() {
 	const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
 	const dayOfWeek = weekdays[today.getDay()]; // 요일 가져오기
 	const formattedDate = formatDate(today) + "(" + dayOfWeek + ")";
-
-	//선택한 날짜변수 초기화
-	selectedDate = formatDate(today);
-	$('.article_time .tit').text(formattedDate);
-	$('.owl-stage .month').text(today.getMonth() + 1 + '월');
 
 	for (let i = 0; i <= 7; i++) {
 		// 현재 날짜를 생성
@@ -151,7 +165,9 @@ function initializeDateToday() {
 			'data-isplaydate="Y" data-playweek="' + playweek + '" checked=""><strong>' + futureDate.getDate() + '</strong><em>' + playweek + '</em></label></a></li>' +
 			'</div >';
 
+		//날짜 화면 출력
 		$(".article_time .owl-stage").append(htmlContent);
+		//오늘 날짜 선택
 		$('input[name="radioDate1"][data-playweek="오늘"]').prop('checked', true);
 	}
 }
@@ -184,7 +200,7 @@ function showingTime() {
 	//지점명 클릭
 	$('.cinemaSelect .depth2 li').click(showingTimeProcess);
 
-	async function showingTimeProcess() {
+	function showingTimeProcess() {
 		if (selectedTheaterBranchID === undefined || selectedMovieID === undefined) {
 			return;
 		}
@@ -196,118 +212,47 @@ function showingTime() {
 			showingDate: selectedDate
 		};
 
-		try {
-			const result = await $.ajax({
-				type: "POST",
-				contentType: "application/json",
-				url: "/screenMovieInfo/showingTime",
-				data: JSON.stringify(showingTimeParam)
-			});
+		$.ajax({
+			type: "POST",
+			contentType: "application/json",
+			url: "/screenMovieInfo/showingTime",
+			data: JSON.stringify(showingTimeParam),
+			success: function(data) {
+				$.each(data, function(index, showingTimeInfo) {
+					let htmlContent = '<li class="screenMovieInfo';
 
-			for (const screenMovieInfo of result) {
-				await processScreenMovieInfo(screenMovieInfo);
-			}
+					const screenSeatCount = showingTimeInfo.screen_row * showingTimeInfo.screen_line - showingTimeInfo.none_exist_seats_count;
+					let remainSeatCount = screenSeatCount - showingTimeInfo.payment_count;
 
-			$('.list_time').on('click', '.screenMovieInfo:not(.disabled)', handleScreenMovieInfoClick);
-		} catch (error) {
-			console.log("Error:", error);
-		}
-	}
+					if (remainSeatCount <= 0) {
+						htmlContent += ' disabled';
+						remainSeatCount = 0;
+					}
 
-	//영화 상영 시간 조회
-	async function processScreenMovieInfo(screenMovieInfo) {//상영관 전체 좌석수, 상영관 위치 조회
-		try {
-			let screen;
-			let screenSeatCount;
-			let remainSeatCount;
+					htmlContent += '" data-screenmovieinfoid = ' + showingTimeInfo.movie_information_id + ' data-remainSeatCount=' + remainSeatCount + '>' +
+						'<a role="button" href="#none"><dl>' +
+						'<dt>상영시간</dt>' +
+						'<dd class="time">' +
+						'<strong>' + showingTimeInfo.movie_showing_time.slice(0, -3) + '</strong>' +
+						'</dd>' +
+						'<dt>잔여석</dt>' +
+						'<dd class="seat">' +
+						'<strong>' + remainSeatCount + '</strong>' + ' / ' + screenSeatCount +
+						'</dd>' +
+						'<dt>상영관</dt>' +
+						'<dd class="hall">' + showingTimeInfo.screen_location + '</dd>' +
+						'</dl></a></li>';
 
-			const screenInfo = await selectScreenById(screenMovieInfo.screen_id);
-			const paymentInfo = await selectPaymentByMovieInfoId(screenMovieInfo.movie_information_id);
-			const noneExistSeatsInfo = await selectNoneExistSeatsByScreenId(screenMovieInfo.screen_id);
+					$(".list_time").append(htmlContent);
 
-			screen = screenInfo.screen_location;
-			screenSeatCount = screenInfo.screen_row * screenInfo.screen_line - noneExistSeatsInfo.length;
-			remainSeatCount = screenSeatCount;
-
-			$.each(paymentInfo, function(index, payment) {
-				remainSeatCount -= payment.adult;
-				remainSeatCount -= payment.student;
-				remainSeatCount -= payment.silver;
-			});
-
-			let htmlContent = '<li class="screenMovieInfo';
-
-			if (remainSeatCount <= 0) {
-				htmlContent += ' disabled';
-				remainSeatCount = 0;
-			}
-
-			htmlContent += '" data-screenmovieinfoid = ' + screenMovieInfo.movie_information_id + ' data-remainSeatCount=' + remainSeatCount + '>' +
-				'<a role="button" href="#none"><dl>' +
-				'<dt>상영시간</dt>' +
-				'<dd class="time">' +
-				'<strong>' + screenMovieInfo.movie_showing_time.slice(0, -3) + '</strong>' +
-				'</dd>' +
-				'<dt>잔여석</dt>' +
-				'<dd class="seat">' +
-				'<strong>' + remainSeatCount + '</strong>' + ' / ' + screenSeatCount +
-				'</dd>' +
-				'<dt>상영관</dt>' +
-				'<dd class="hall">' + screen + '</dd>' +
-				'</dl></a></li>';
-
-			// 리스트에 HTML 추가
-			$(".list_time").append(htmlContent);
-		} catch (error) {
-			console.log("Error:", error);
-		}
-
-		async function selectScreenById(screenID) {
-			try {
-				const screen = await $.ajax({
-					type: "POST",
-					contentType: "text/plain",
-					url: "/screen/selectScreenById",
-					data: screenID.toString()
+					//상영 시간 버튼 클릭시 다음페이지로 이동
+					$('.list_time').on('click', '.screenMovieInfo:not(.disabled)', handleScreenMovieInfoClick);
 				});
-
-				return screen;
-			} catch (error) {
-				console.log("Error:", error);
+			},
+			error: function(error) {
+				console.error('Error:', error);
 			}
-		}
-
-		//상영 영화의 남은 좌석수를 구하기 위한 함수
-		async function selectPaymentByMovieInfoId(movieInformationID) {
-			try {
-				const payment = await $.ajax({
-					type: "POST",
-					contentType: "text/plain",
-					url: "/payment/selectPaymentByScreenMovieInfoId",
-					data: movieInformationID.toString()
-				});
-
-				return payment;
-			} catch (error) {
-				console.log("Error:", error);
-			}
-		}
-
-		//존재하지 않는 좌석 갯수 
-		async function selectNoneExistSeatsByScreenId(screenID) {
-			try {
-				const noneExistSeats = await $.ajax({
-					type: "POST",
-					contentType: "text/plain",
-					url: "/noneExistSeats/selectNoneExistSeatsByScreenId",
-					data: screenID.toString()
-				});
-
-				return noneExistSeats;
-			} catch (error) {
-				console.log("Error:", error);
-			}
-		}
+		});
 	}
 }
 

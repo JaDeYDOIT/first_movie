@@ -1,7 +1,13 @@
 package kr.co.fmos.ticketing;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.time.format.TextStyle;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +27,7 @@ import kr.co.fmos.payment.PaymentDAO;
 import kr.co.fmos.payment.PaymentDTO;
 import kr.co.fmos.paymentSeat.PaymentSeatDAO;
 import kr.co.fmos.paymentSeat.PaymentSeatDTO;
+import kr.co.fmos.point.PointDAO;
 import kr.co.fmos.region.RegionDAO;
 import kr.co.fmos.screen.ScreenDAO;
 import kr.co.fmos.screen.ScreenDTO;
@@ -56,6 +63,20 @@ public class TicketingCont {
 	MemberDAO memberDao;
 	@Autowired
 	PaymentSeatDAO paymentSeatDao;
+	@Autowired
+	PointDAO pointDao;
+
+	@GetMapping("/schedule")
+	public ModelAndView schedule() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("regionList", regionDao.list());
+		mav.setViewName("ticketing/schedule");
+		mav.addObject("theaterBranchList", theaterBranchDao.list());
+		mav.addObject("movieList", movieDao.movieList());
+		mav.addObject("screenMovieInfoList", screenMovieInfoDao.list());
+		mav.addObject("now", new java.util.Date());
+		return mav;
+	}
 
 	@GetMapping("/personseat")
 	public ModelAndView personseat(@RequestParam String screenMovieInfoID, int remainSeatCount) {
@@ -66,10 +87,52 @@ public class TicketingCont {
 		return mav;
 	}
 
-	@GetMapping("/paysuccess")
-	public ModelAndView getPaysuccess() {
+	@GetMapping("/orderSettlement")
+	public ModelAndView orderSettlement(@RequestParam String screenMovieInfoID, @RequestParam int price,
+			@RequestParam String selectedSeats, @RequestParam int adult, @RequestParam int student,
+			@RequestParam int silver) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("ticketing/paysuccess");
+		// 현재 로그인된 세션ID
+		String sessionID = (String) session.getAttribute("s_id").toString();
+		// 사용자 보유포인트
+		int memberTotalPoint = pointDao.getMemberTotalPoint(sessionID);
+		// 사용자 보유쿠폰
+		List<Map<String, Object>> userHavingCouponWithName = userHavingCouponDao.getUserHavingCouponWithName(sessionID);
+		// 예매 정보
+		Map<String, Object> ticketingInfo = screenMovieInfoDao.getTicketingInfo(screenMovieInfoID);
+		// 선택 좌석 JSON 문자열 파싱 및 정렬
+		String decodedSeats = null;
+		try {
+			decodedSeats = URLDecoder.decode(selectedSeats, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String[] selectedSeatsArray = decodedSeats.replaceAll("[\\[\\]\"]", "").split(",");
+		Arrays.sort(selectedSeatsArray, new Comparator<String>() {
+			@Override
+			public int compare(String a, String b) {
+				char alphaA = a.charAt(0);
+				char alphaB = b.charAt(0);
+				int numA = Integer.parseInt(a.substring(1));
+				int numB = Integer.parseInt(b.substring(1));
+
+				if (alphaA == alphaB) {
+					return Integer.compare(numA, numB);
+				} else {
+					return Character.compare(alphaA, alphaB);
+				}
+			}
+		});
+
+		mav.setViewName("ticketing/orderSettlement");
+		mav.addObject("ticketingInfo", ticketingInfo);
+		mav.addObject("selectedSeats", selectedSeatsArray);
+		mav.addObject("adult", adult);
+		mav.addObject("student", student);
+		mav.addObject("silver", silver);
+		mav.addObject("userHavingCouponList", userHavingCouponWithName);
+		mav.addObject("point", memberTotalPoint);
+		mav.addObject("price", price);
 		return mav;
 	}
 
@@ -130,26 +193,4 @@ public class TicketingCont {
 
 		return mav;
 	}
-
-	@GetMapping("/schedule")
-	public ModelAndView schedule() {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("regionList", regionDao.list());
-		mav.addObject("theaterBranchList", theaterBranchDao.list());
-		mav.addObject("movieList", movieDao.movieList());
-		mav.addObject("screenMovieInfoList", screenMovieInfoDao.list());
-		mav.setViewName("ticketing/schedule");
-		return mav;
-	}
-
-	@GetMapping("/orderSettlement")
-	public ModelAndView orderSettlement() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("ticketing/orderSettlement");
-		session.setAttribute("s_id", "sungwoo");
-		mav.addObject("userHavingCouponList",
-				userHavingCouponDao.userHavingCouponList((String) session.getAttribute("s_id").toString()));
-		return mav;
-	}// home() end
-
 }
