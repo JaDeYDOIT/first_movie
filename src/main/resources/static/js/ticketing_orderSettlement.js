@@ -17,7 +17,6 @@ let theaterBranchName;
 let screenLocation;
 let couponDiscountRate = 0;
 let selectedCouponID;
-let memberPoint = 0;
 let usedPoint = 0;
 let payDiscount = 0;
 

@@ -37,7 +37,7 @@ insert
 	user_having_coupon (member_id,
 	coupon_id,
 	coupon_expiration_date)
-values('jw990609',
+values('s',
 'M1',
 '2022-04-01');
 

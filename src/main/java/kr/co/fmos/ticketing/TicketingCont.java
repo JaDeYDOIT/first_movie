@@ -74,7 +74,6 @@ public class TicketingCont {
 		mav.addObject("theaterBranchList", theaterBranchDao.list());
 		mav.addObject("movieList", movieDao.movieList());
 		mav.addObject("screenMovieInfoList", screenMovieInfoDao.list());
-		mav.addObject("now", new java.util.Date());
 		return mav;
 	}
 
@@ -97,7 +96,7 @@ public class TicketingCont {
 		// 사용자 보유포인트
 		int memberTotalPoint = pointDao.getMemberTotalPoint(sessionID);
 		// 사용자 보유쿠폰
-		List<Map<String, Object>> userHavingCouponWithName = userHavingCouponDao.getUserHavingCouponWithName(sessionID);
+		List<Map<String, Object>> userHavingCouponWithName = userHavingCouponDao.getUserHavingCoupon(sessionID);
 		// 예매 정보
 		Map<String, Object> ticketingInfo = screenMovieInfoDao.getTicketingInfo(screenMovieInfoID);
 		// 선택 좌석 JSON 문자열 파싱 및 정렬

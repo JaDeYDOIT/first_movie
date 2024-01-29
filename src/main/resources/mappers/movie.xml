@@ -16,7 +16,6 @@
 		m.movie_production_year,
 		m.movie_audience_rating,
 		m.movie_image,
-		m.movie_video,
 		m.director_name,
 		m.actor_name,
 		COALESCE(COUNT(p.movie_information_id), 0) AS
@@ -26,7 +25,8 @@
 		LEFT JOIN screen_movie_information smi ON
 		m.movie_id = smi.movie_id
 		LEFT JOIN payment p ON
-		smi.movie_information_id = p.movie_information_id
+		smi.movie_information_id =
+		p.movie_information_id
 		GROUP BY
 		m.movie_id
 		ORDER BY
@@ -38,15 +38,16 @@
 	<insert id="insert" parameterType="kr.co.fmos.movie.MovieDTO">
 		INSERT INTO movie(
 		movie_genre_id, movie_name, movie_running_time, movie_production_year,
-		movie_audience_rating, movie_image, movie_video,
+		movie_audience_rating, movie_image,
 		director_name,
 		actor_name)
-		VALUES (#{movie_genre_id},
+		VALUES
+		(#{movie_genre_id},
 		#{movie_name},
-		#{movie_running_time}, #{movie_production_year},
+		#{movie_running_time},
+		#{movie_production_year},
 		#{movie_audience_rating},
 		#{movie_image},
-		#{movie_video},
 		#{director_name},
 		#{actor_name})
 	</insert>
@@ -62,15 +63,16 @@
 		m.movie_production_year,
 		m.movie_audience_rating,
 		m.movie_image,
-		m.movie_video,
 		m.director_name,
 		m.actor_name,
 		m.movie_genre_id
-		FROM movie m JOIN movie_genre mg
+		FROM movie
+		m JOIN movie_genre mg
 		ON
 		m.movie_genre_id =
 		mg.movie_genre_id
-		WHERE m.movie_id = #{m.movie_id}
+		WHERE
+		m.movie_id = #{m.movie_id}
 	</select>
 
 	<delete id="delete" parameterType="int">
@@ -130,7 +132,7 @@
 		SELECT movie_id,
 		movie_genre_id,
 		movie_name, movie_running_time, movie_production_year,
-		movie_audience_rating, movie_image, movie_video,
+		movie_audience_rating, movie_image,
 		director_name,
 		actor_name
 		FROM movie
@@ -143,11 +145,10 @@
 		SELECT
 		movie_id, movie_genre_id, movie_name,
 		movie_running_time, movie_production_year, movie_audience_rating,
-		movie_image, movie_video, director_name, actor_name
-		FROM
-		movie
+		movie_image, director_name, actor_name
+		FROM movie
 		WHERE
 		movie_id=#{movieID}
 	</select>
-	
+
 </mapper>

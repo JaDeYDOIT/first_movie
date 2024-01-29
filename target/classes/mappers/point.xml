@@ -8,11 +8,8 @@
 <mapper namespace="point">
 	<select id="getMemberTotalPoint" parameterType="String"
 		resultType="int">
-		SELECT SUM(point_history) AS total_point
+		SELECT COALESCE(SUM(point_history), 0) AS total_point
 		FROM point
-		WHERE
-		member_id = #{memberID}
-		GROUP BY
-		member_id;
+		WHERE member_id = #{memberID}
 	</select>
 </mapper>

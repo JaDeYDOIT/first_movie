@@ -9,9 +9,9 @@
 	<select id="list"
 		resultType="kr.co.fmos.screenMovieInfo.ScreenMovieInfoDTO">
 		SELECT movie_information_id,
-		screen_id, movie_id,
+		screen_id, movie_id, branch_id,
 		movie_showing_date,
-		movie_showing_time, branch_id
+		movie_showing_time
 		FROM
 		screen_movie_information
 	</select>
@@ -19,9 +19,9 @@
 	<select id="selectScreenMovieInfoById" parameterType="String"
 		resultType="kr.co.fmos.screenMovieInfo.ScreenMovieInfoDTO">
 		SELECT movie_information_id,
-		screen_id, movie_id,
+		screen_id, movie_id, branch_id,
 		movie_showing_date,
-		movie_showing_time, branch_id
+		movie_showing_time
 		FROM
 		screen_movie_information
 		WHERE
@@ -53,17 +53,15 @@
 		none_exist_seats_count
 		FROM
 		screen_movie_information smi
-		JOIN
-		screen s ON
+		JOIN screen s ON
 		smi.screen_id = s.screen_id
 		WHERE
-		smi.branch_id=#{branchID}
+		s.branch_id = #{branchID}
 		AND
-		smi.movie_id=#{movieID}
-		AND smi.movie_showing_date=#{showingDate}
-		ORDER
-		BY
-		movie_showing_time ASC;
+		smi.movie_id = #{movieID}
+		AND smi.movie_showing_date = #{showingDate}
+		ORDER BY
+		smi.movie_showing_time ASC
 	</select>
 
 	<select id="detail" resultType="java.util.Map"
@@ -161,13 +159,20 @@
 		tb.branch_name,
 		s.screen_location,
 		CASE
-		WHEN DAYOFWEEK(smi.movie_showing_date) = 1 THEN '일'
-		WHEN DAYOFWEEK(smi.movie_showing_date) = 2 THEN '월'
-		WHEN DAYOFWEEK(smi.movie_showing_date) = 3 THEN '화'
-		WHEN DAYOFWEEK(smi.movie_showing_date) = 4 THEN '수'
-		WHEN DAYOFWEEK(smi.movie_showing_date) = 5 THEN '목'
-		WHEN DAYOFWEEK(smi.movie_showing_date) = 6 THEN '금'
-		WHEN DAYOFWEEK(smi.movie_showing_date) = 7 THEN '토'
+		WHEN
+		DAYOFWEEK(smi.movie_showing_date) = 1 THEN '일'
+		WHEN
+		DAYOFWEEK(smi.movie_showing_date) = 2 THEN '월'
+		WHEN
+		DAYOFWEEK(smi.movie_showing_date) = 3 THEN '화'
+		WHEN
+		DAYOFWEEK(smi.movie_showing_date) = 4 THEN '수'
+		WHEN
+		DAYOFWEEK(smi.movie_showing_date) = 5 THEN '목'
+		WHEN
+		DAYOFWEEK(smi.movie_showing_date) = 6 THEN '금'
+		WHEN
+		DAYOFWEEK(smi.movie_showing_date) = 7 THEN '토'
 		END AS day_of_week
 		FROM
 		screen_movie_information smi
@@ -176,7 +181,8 @@
 		JOIN
 		theater_branch tb ON smi.branch_id = tb.branch_id
 		JOIN
-		screen s ON smi.screen_id = s.screen_id
+		screen s ON
+		smi.screen_id = s.screen_id
 		WHERE
 		smi.movie_information_id=#{screenMovieInfoID}
 	</select>

@@ -17,8 +17,8 @@ public class UserHavingCouponDAOImp implements UserHavingCouponDAO {
 	SqlSession sqlSession;
 
 	@Override
-	public List<Map<String,Object>> getUserHavingCouponWithName(String memberID) {
-		return sqlSession.selectList("coupon.getUserHavingCouponWithName", memberID);
+	public List<Map<String,Object>> getUserHavingCoupon(String memberID) {
+		return sqlSession.selectList("coupon.getUserHavingCoupon", memberID);
 	}
 	
 

@@ -6,11 +6,11 @@
 <!-- coupon.xml -->
 
 <mapper namespace="coupon">
-	<select id="getUserHavingCouponWithName" parameterType="String"
+	<select id="getUserHavingCoupon" parameterType="String"
 		resultType="java.util.Map">
 		SELECT uhc.having_coupon_id, uhc.member_id, uhc.coupon_id,
 		uhc.coupon_create_date, uhc.coupon_expiration_date,
-		c.coupon_name
+		c.coupon_name, c.coupon_discount_rate
 		FROM
 		user_having_coupon uhc
 		JOIN coupon c ON uhc.coupon_id = c.coupon_id

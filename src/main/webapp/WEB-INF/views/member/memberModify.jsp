@@ -55,7 +55,7 @@
 			<td><input type="text" class="mememail" name="member_email" id="mememail" value="${memberlist.member_email}" readonly style="background-color: #f2f2f2"></td>
 		</tr>
 		<tr>
-			<td>헨드폰번호*</td>
+			<td>핸드폰번호*</td>
 			<td><input type="number" name="member_phone" class="memphone"></td>
 		</tr>
 		<tr>

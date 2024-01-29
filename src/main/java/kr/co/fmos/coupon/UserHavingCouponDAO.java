@@ -6,5 +6,5 @@ import java.util.Map;
 public interface UserHavingCouponDAO {
 	public UserHavingCouponDTO mycouponCount(String member_id);
 
-	public List<Map<String,Object>> getUserHavingCouponWithName(String memberID);
+	public List<Map<String,Object>> getUserHavingCoupon(String memberID);
 }
