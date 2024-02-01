@@ -19,8 +19,11 @@
 }
 
 
- video,img {width: 100%;}
+ video {width: 100%;}
 
+.poster img{
+	width: 100%;
+}
 
 .swiper-wrapper {
     position: relative;

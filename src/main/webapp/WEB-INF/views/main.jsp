@@ -71,7 +71,6 @@
                     <div class="movie_title" style="position: relative;">
                         <ul class="clearfix">
                             <li class="active"><a href="#">무비차트</a></li>
-                            <li><a href="#">상영예정작</a></li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--띄어쓰기 말고?-->
                             <a href="/movie/list.do" id="btn_allView_Movie" class="btn_allView" style="position: absolute; 
                             top: 53%;
                             transform: translateY(-50%);">전체보기 ▷</a>
@@ -106,98 +105,7 @@
                         <div class="swiper-container2">
                             <div class="swiper-button-prev"></div>
                             <div class="swiper-button-next"></div>
-                            <div class="chart_cont2 swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="poster">
-                                        <figure>
-                                            <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87888/87888_320.jpg" alt="침묵">
-                                        </figure>
-                                        <div class="rank"><strong>1</strong></div>
-                                    </div>
-                                    <div class="infor">
-                                        <h3><span class="icon all ir_pm">전체관람가</span> <strong>짱구는 못말려</strong></h3>
-                                        <div class="infor_btn">
-                                            <a href="#">상세정보</a>
-                                            <a href="#">예매하기</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="poster">
-                                        <figure>
-                                            <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87888/87888_320.jpg" alt="신세계">
-                                        </figure>
-                                        <div class="rank"><strong>2</strong></div>
-                                    </div>
-                                    <div class="infor">
-                                        <h3><span class="icon a19 ir_pm">19세 이상 관람</span> <strong>짱구는 못말려</strong></h3>
-                                        <div class="infor_btn">
-                                            <a href="#">상세정보</a>
-                                            <a href="#">예매하기</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="poster">
-                                        <figure>
-                                            <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87888/87888_320.jpg" alt="마스터">
-                                        </figure>
-                                        <div class="rank"><strong>3</strong></div>
-                                    </div>
-                                    <div class="infor">
-                                        <h3><span class="icon a12 ir_pm">12세 이상 관람</span> <strong>짱구는 못말려</strong></h3>
-                                        <div class="infor_btn">
-                                            <a href="#">상세정보</a>
-                                            <a href="#">예매하기</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="poster">
-                                        <figure>
-                                            <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87888/87888_320.jpg" alt="마약왕">
-                                        </figure>
-                                        <div class="rank"><strong>4</strong></div>
-                                    </div>
-                                    <div class="infor">
-                                        <h3><span class="icon a15 ir_pm">15세 이상 관람</span> <strong>짱구는 못말려</strong></h3>
-                                        <div class="infor_btn">
-                                            <a href="#">상세정보</a>
-                                            <a href="#">예매하기</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="poster">
-                                        <figure>
-                                            <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87888/87888_320.jpg" alt="마약왕">
-                                        </figure>
-                                        <div class="rank"><strong>5</strong></div>
-                                    </div>
-                                    <div class="infor">
-                                        <h3><span class="icon a15 ir_pm">15세 이상 관람</span> <strong>짱구는 못말려</strong></h3>
-                                        <div class="infor_btn">
-                                            <a href="#">상세정보</a>
-                                            <a href="#">예매하기</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="poster">
-                                        <figure>
-                                            <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87888/87888_320.jpg" alt="마약왕">
-                                        </figure>
-                                        <div class="rank"><strong>6</strong></div>
-                                    </div>
-                                    <div class="infor">
-                                        <h3><span class="icon a15 ir_pm">15세 이상 관람</span> <strong>짱구는 못말려</strong></h3>
-                                        <div class="infor_btn">
-                                            <a href="#">상세정보</a>
-                                            <a href="#">예매하기</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                           
                         </div>
                         
                         <!-- //chart_cont2-->
@@ -287,80 +195,45 @@
 <!-- 스토어 시작 -->
 <!-- 패키지 시작 -->
 <section id="store_wrap">
-	<dt>
-		<a href="/product/category.do?product_category_id=1">패키지</a>
-	</dt>
-	<dl class='package_list'>
-    <dd>
-        <a href='/product/detail.do?product_id=21'>
-            <div data-scale=false>
-                <img src='images/package/package3.png' alt='우리 패키지'>
-            </div>
-            <div class='giftcon_info_wrap'>
-                <span>우리 패키지</span> <strong>61,000원</strong>
-            </div>
-        </a>
-    </dd>
-    <dd>
-        <a href='/product/detail.do?product_id=7'>
-            <div data-scale=false>
-                <img src='images/package/package1.png' alt='나랑 너 패키지'>
-            </div>
-            <div class='giftcon_info_wrap'>
-                <span>나랑 너 패키지</span> <strong>34,000원</strong>
-            </div>
-        </a>
-    </dd>
-    <dd>
-        <a href='/product/detail.do?product_id=1'>
-            <div data-scale=false>
-                <img src='images/package/package2.png' alt='좋은 날 패키지'>
-            </div>
-            <div class='giftcon_info_wrap'>
-                <span>좋은 날 패키지</span> <strong>18,000원</strong>
-            </div>
-        </a>
-    </dd>
-	</dl>
-	<!-- 패키지 끝 -->
-
-	<!-------------------------------------------------관람권 시작----------------------------------------------------->
-	<!-- 관람권 -->
-	<dt>
-		<a href="/product/category.do?product_category_id=2">영화관람권</a>
-	</dt>
-	<dl class='giftcon_list'>
-		<dd>
-		    <a href='/product/detail.do?product_id=2'>
-				<div class='img_wrap' data-scale=false>
-					<img src='images/store/goldclass.png' alt='CGV 골드클래스'>
-				</div>
-				<div class='giftcon_info_wrap'>
-					<span>CGV 골드클래스</span> <strong>40,000원</strong>
-				</div>
-			</a>
-		</dd>
-		<dd>
-		    <a href='/product/detail.do?product_id=8'>
-				<div class='img_wrap' data-scale=false>
-					<img src='images/store/voucher.png' alt='CGV 영화관람권'>
-				</div>
-				<div class='giftcon_info_wrap'>
-					<span>영화관람권</span> <strong>13,000원</strong>
-				</div>
-			</a>
-		</dd>
-		<dd>
-			<a href='/product/detail.do?product_id=9'>
-				<div class='img_wrap' data-scale=false>
-					<img src='images/store/cinema_chef.png' alt='CGV 씨네드쉐프관람권'>
-				</div>
-				<div class='giftcon_info_wrap'>
-					<span>씨네드쉐프관람권</span> <strong>50,000원</strong>
-				</div>
-			</a>
-		</dd>
-	</dl>
+	<article class="packagebox">
+		<dt>
+			<a href="/product/category.do?product_category_id=1">패키지</a>
+		</dt>
+		<dl class='package_list'>
+			<c:forEach items="${product}" var="product">
+				<c:if test="${product.product_category_id eq 1}">
+					<div id="mainstospan">
+						<a href='/product/detail.do?product_id=${product.product_id}'> 
+							<img src='${product.product_image}' alt='${product_name}'>
+							<span>${product.product_name}<strong>${product.product_cost}</strong></span>
+						</a>
+					</div>
+				</c:if>
+			</c:forEach>
+		</dl>
+	</article>
+		<!-- 패키지 끝 -->
+	
+		<!-------------------------------------------------관람권 시작----------------------------------------------------->
+	
+		<!-- 관람권 -->
+	<article class="giftbox">
+		<dt>
+			<a href="/product/category.do?product_category_id=2">영화관람권</a>
+		</dt>
+		<dl class='giftcon_list'>
+			<c:forEach items="${product}" var="product">
+				<c:if test="${product.product_category_id eq 2}">
+					<div id="mainstospan">
+						<a href='/product/detail.do?product_id=${product.product_id}'>
+							<img src='${product.product_image}' alt='${product_name}'>
+							<span>${product.product_name}<strong>${product.product_cost}</strong></span>
+						</a>
+					</div>
+				</c:if>
+			</c:forEach>
+		</dl>
+	</article>
 	<!-- 관람권 end -->
 </section>
 <!-- 스토어 end -->

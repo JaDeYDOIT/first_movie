@@ -3,6 +3,26 @@
 <%@ include file="../header.jsp"%>
 <link rel="stylesheet" href="/css/moviedetail.css">
 
+<script>
+function review_Btn(){
+      var s_id = "${s_id}";
+      var content = $("#review_insert_content").val()
+        if(s_id == 'guest'){
+           alert('로그인 후 이용해주세요!')
+            return false;
+        } else if(content.length == ""){
+           alert("내용을 작성해 주세요.")
+            return false;
+        } else{
+//            document.productfrm.action="/movie/insert.do";
+//            document.productfrm.submit();
+			return true;
+        }
+     }//product_delete() end
+</script>
+
+
+
 
 <div class="movie_detail_wrap">
 	<div class='movie_detail'>
@@ -21,7 +41,8 @@
 				<li>감독명 : ${detail.director_name}</li>
 				<li>배우명 : ${detail.actor_name}</li>
 			</ul>
-				<button class="Ticketing_btn" onclick="location.href='http:/ticketing/schedule'">예매하기</button>
+			<button class="Ticketing_btn"
+				onclick="location.href='http:/ticketing/schedule'">예매하기</button>
 		</div>
 		<!-- movie_text end -->
 	</div>
@@ -32,9 +53,10 @@
 	<!-- 댓글시작 -->
 	<div class="review_wrap">
 		<div class="review_insert_wrap">
-			<!-- 댓글등록 -->
-			<form name="review_insert_form" id="review_insert_form" method="get" action="/movie/insert.do">
-				<input type="hidden" id="movie_id" name="movie_id" value="${detail.movie_id}">
+			<!-- 댓글등록 --> 
+			<form name="review_insert_form" id="review_insert_form" method="get" action="/movie/insert.do" onsubmit="return review_Btn()">
+				<input type="hidden" id="movie_id" name="movie_id"
+					value="${detail.movie_id}">
 				<table class="review">
 					<tr>
 						<td><input type="text" name="movie_review"

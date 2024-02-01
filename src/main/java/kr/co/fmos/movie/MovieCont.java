@@ -114,14 +114,16 @@ public class MovieCont {
 
 /////////////////////영화 상세 페이지//////////////////////////
 	@GetMapping("/detail.do")
-	public ModelAndView detail(String movie_id) {
-
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("detail", movieDao.movieDetail(movie_id));
-		mav.addObject("review", movieDao.moviereviewList(movie_id));
-		mav.setViewName("/movie/detail");
-		return mav;
-	}// list() end
+	   public ModelAndView detail(String movie_id, HttpSession session) {
+	      String s_id = (String)session.getAttribute("s_id");
+	      
+	      ModelAndView mav = new ModelAndView();
+	      mav.addObject("detail", movieDao.movieDetail(movie_id));
+	      mav.addObject("review", movieDao.moviereviewList(movie_id));
+	      mav.addObject("s_id", s_id);
+	      mav.setViewName("/movie/detail");
+	      return mav;
+	   }// list() end
 
 /////////////////////리뷰 추가//////////////////////////
 
