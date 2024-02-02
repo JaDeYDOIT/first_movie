@@ -56,9 +56,4 @@ public class ProductDAO {
 		return sqlSession.selectList("cart.cartcnt", member_id);
 	}//cartcnt() end
 	
-	public List<ProductDTO> maincategory() {
-		return sqlSession.selectList("product.maincategory");
-	}//category() end
-	
-	
 }//class end

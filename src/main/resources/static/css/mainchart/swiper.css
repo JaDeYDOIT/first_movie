@@ -322,13 +322,3 @@ text-shadow: 2px -2px #22A2F2, 2px 2px #22A2F2, 2px 2px #22A2F2, 0px -2px #22A2F
 }
 /*버튼 끝*/
 
-#mainstowrap{
-	width: 1200px;
-	height: 300px;
-}
-
-#mainstospan img{
-	widows: 150px;
-	height: 150px
-	
-}

@@ -8,7 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 import jakarta.servlet.http.HttpSession;
 import kr.co.fmos.customer.NoticeDAO;
 import kr.co.fmos.movie.MovieDAO;
-import kr.co.fmos.product.ProductDAO;
 
 @Controller
 public class HomeController {
@@ -17,8 +16,6 @@ public class HomeController {
 	private MovieDAO movieDao;
     @Autowired
 	private NoticeDAO noticeDao;
-    @Autowired 
-    private ProductDAO productdao;
     
 	public HomeController() {
         System.out.println("-----HomeController()객체 생성됨");
@@ -39,7 +36,6 @@ public class HomeController {
      ModelAndView mav = new ModelAndView();
      mav.addObject("sessionTimeoutInSeconds", session.getMaxInactiveInterval());
      mav.addObject("movie", movieDao.movieList());
-     mav.addObject("product", productdao.maincategory());
      //mav.addObject("noticelist", noticeDao.noticeselect());
      //mav.addObject("FAQlist", noticeDao.faqselect());
      mav.setViewName("main");

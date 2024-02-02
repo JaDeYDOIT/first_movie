@@ -70,6 +70,7 @@
 					<option value="6">환타지</option>
 					<option value="7">공포</option>
 					<option value="8">애니메이션</option>
+					<option value="9">전쟁</option>
 				</select>
 			</td>
 		</tr>
