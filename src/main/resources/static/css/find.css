@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+#findwrap{
+	width: 45%;
+	height: 1000px;
+	margin: 0 auto;
+	background-color: aquamarine;
+}
+
+#findwrap #findlogo {
+	width: 135px;
+	height: 135px;
+	margin: 40px auto 30px;
+}
+
+#findwrap a img{
+	width: 135px;
+	height: 135px;
+	cursor: pointer;
+}
+
+#findtitle{
+	text-align: center;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+.findspan{
+	width: 50%;
+	padding: 10px 0;
+	text-align: center;
+	cursor: pointer;
+}
+
+.findspan a {
+	font-size: 20px;
+}
+
+#findspanbox{
+	margin: 20px 0;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
+
+#inputtitle{
+	font-size: 23px;
+	font-weight: 500;
+}
+
+#findtable{
+	font-size: 19px;
+	
+}
+

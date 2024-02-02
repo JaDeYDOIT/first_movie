@@ -1,0 +1,13 @@
+-- productcg_sql.txt
+
+-- 제품 테이블 생성
+CREATE TABLE `product_category` (
+	`product_category_id`	INT UNSIGNED  	AUTO_INCREMENT PRIMARY KEY	NOT NULL,
+	`product_category_name`	VARCHAR(100)	NOT NULL
+);
+
+-- 제품 종류 시퀀스
+create sequence product_category_seq
+start with 1
+increment by 1
+cycle;

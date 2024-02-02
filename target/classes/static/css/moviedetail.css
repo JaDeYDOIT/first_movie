@@ -1,0 +1,192 @@
+@charset "utf-8";
+
+.movie_detail_wrap {
+    width: 100%;
+}
+
+.movie_detail {
+    display: flex;
+    align-items: center;
+}
+
+.movie_img_wrap{
+    width: 30%;
+    padding: 5%;
+}
+.movie_img img{
+    width: 100%;
+    cursor: pointer;
+    box-shadow: 3px 3px 10px 5px gray;
+}
+.movie_img img:hover {
+    transform: scale(120%);
+    transition: 1s;
+}
+
+
+.movie_text_wrap{
+    width: 100%;
+    height: 70%;
+    padding: 1%;
+}
+
+.movie_text{
+    width: 100%;
+}
+
+.movie_text li {
+    font-size: 18px;
+    padding: 1%;
+    font-weight: bold;
+}
+.movie_text li h3 {
+    font-size: 25px;
+    font-weight: bold;
+    color: black   
+}
+
+.button_wrap{
+	width: 100%;
+	display: flex;
+}
+.Ticketing_btn{
+	 border: 1px solid black;
+	 border-radius: 10px;
+	 cursor: pointer;
+	 background-color: #22A2F2;
+	 color: white;
+	 font-size: 20px;
+	 text-align: center;
+	 padding: 2% 3%;
+}
+
+  
+.like_btn img{
+	width: 100%;
+	height: 100%;
+}  
+
+
+
+.line{
+    border-bottom: 3px solid black;
+    margin: 3% 0;
+}
+
+
+
+.review_insert_wrap{
+    width: 80%;
+    margin: 5% auto;
+}
+.review {
+    width: 100%;
+}
+.review tr td:nth-child(2){
+    width: 50px;
+}
+
+.review input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+#review_insertBtn {
+    width: 100%;
+    padding: 8px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+#review_insertBtn{
+    width: 100px;
+}
+
+
+
+/*리뷰*/
+.review_list{
+    width: 100%;
+}
+.review_list table{
+    width: 100%;
+    margin: 0 auto 10% auto;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: dotted 10px  gray ;
+    background: #f2eee5
+}
+
+.review_list table tr th{
+    border-bottom:  3px solid gray;
+    padding: 1%;
+}
+
+.review_list table tr td{
+    border-bottom: 3px solid gray;
+    padding: 1%;
+}
+.review_list table tr td:nth-child(1){
+    width: 10%;
+}
+.review_list table tr td:nth-child(2){
+    width: 80%;
+}
+.review_list table tr td:nth-child(3){
+    width: 10%;
+}
+
+
+
+
+
+@media screen and (min-width: 1040px) and (max-width:1300px) {
+    .movie_detail > div{
+        width: 40%;
+    }
+    .movie_text_wrap button{
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width:1040px) {
+    .movie_detail > div{
+        width: 50%;
+    }
+    .movie_text li h3 {
+        font-size: 20px;
+    }
+    .movie_text li {
+        font-size: 15px;
+    }
+    .movie_text_wrap button{
+        width: 100%;
+    }
+
+}
+
+@media screen and (min-width: 0px) and (max-width:700px) {
+
+    .movie_detail > div{
+        width: 80%;
+    }
+    .movie_text_wrap{
+        padding: 5% 0;
+    }
+   
+    .movie_text li h3 {
+        font-size: 20px;
+    }
+    .movie_text li {
+        font-size: 11px;
+    }
+    .movie_text_wrap button{
+        width: 100%;
+        height: 40px;
+    }
+}
+
+
