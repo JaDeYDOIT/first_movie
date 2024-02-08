@@ -41,6 +41,7 @@ public class MovieCont {
 	public ModelAndView list(HttpSession session, String movie_id) {
 		
 		String s_id = (String)session.getAttribute("s_id");
+		
 		ModelAndView mav = new ModelAndView();
 
 		mav.addObject("list", movieDao.movieList());

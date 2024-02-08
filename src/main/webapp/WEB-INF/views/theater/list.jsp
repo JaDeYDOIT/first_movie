@@ -3,7 +3,6 @@
 <%@ include file="../header.jsp"%>
 <link rel="stylesheet" href="/css/theater.css">
 
-
 <script>
   
    //페이지 로드 시 호출하여 특정 아이디의 버튼을 활성화 여부를 설정
