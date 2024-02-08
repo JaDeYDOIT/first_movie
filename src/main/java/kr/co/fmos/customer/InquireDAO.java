@@ -46,5 +46,8 @@ public class InquireDAO {
 		return sqlSession.delete("customer.inquiredelete", inquire_id); 
 	}//delete() end
 
+	public InquireDTO one_detail(int inquire_id) {
+		return sqlSession.selectOne("customer.one_detail", inquire_id);
+	}
 	
 }//class end

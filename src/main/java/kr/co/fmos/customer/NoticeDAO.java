@@ -44,5 +44,8 @@ public class NoticeDAO {
 		return sqlSession.selectList("customer.mainnotice");
 	}// movieList() end
 	
+	public NoticeDTO notice_detail(int notice_id) {
+		return sqlSession.selectOne("customer.notice_detail", notice_id);
+	}
 	
 }

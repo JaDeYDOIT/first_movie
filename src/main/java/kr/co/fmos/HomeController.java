@@ -25,7 +25,7 @@ public class HomeController {
     //first movie 프로젝트의 첫페이지 호출
     //-> http://localhost:9095/main    
 	@RequestMapping("/main")
-	public ModelAndView home(HttpSession session ) {
+	public ModelAndView home(HttpSession session) {
 		if(session.getAttribute("s_id") == null || session.getAttribute("s_pw") == null ||
 		session.getAttribute("s_id").equals("") || session.getAttribute("s_pw").equals("")) 
 		{
@@ -40,6 +40,7 @@ public class HomeController {
      mav.addObject("product", productdao.maincategory());
      mav.addObject("FAQlist", noticeDao.mainfaq());
      mav.addObject("noticelist", noticeDao.mainnotice());
+//     mav.addObject("notice_detail", noticeDao.notice_detail(notice_id));
      mav.setViewName("main");
      return mav;
 	}//home() end
