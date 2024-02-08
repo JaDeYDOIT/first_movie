@@ -23,8 +23,6 @@
           insertButton.disabled = true; // 비활성화
         }
     }//enableInsertButton() end
-
-    
     
 </script>
 
