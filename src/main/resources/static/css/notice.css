@@ -68,11 +68,6 @@ table th{
 	text-align: start;
 }
 
-/* 썸머노트 크기 조절 버튼 숨기기 */
-.note-statusbar .note-resizebar {
-    display: none; 
-}
-
 #movieselectbox{
 	width: 139px;
 }
@@ -134,13 +129,6 @@ table th{
 #inquire_title{
 	width: 700px;
 	height: 30px;	
-	font-size: 18px;
-}
-
-#inquire_name{
-	width: 150px;
-	height: 30px;
-	font-size: 18px;
 }
 
 #inquire_pw{
@@ -158,27 +146,4 @@ table th{
 	font-size: 17px;
 	width: 120px;
 }
-
-#detail_content{
-	width: 700px;
-	height: 350px;
-	resize: none;
-}
-
-#detail_title{
-	width: 700px;
-	height: 30px;
-}
-
-#detail_writer{
-	width: 150px;
-	height: 30px;
-}
-
-.detailinp{
-	  color:black; /* 회색 텍스트 색상 예시 */
-      background-color: white;
-      border: 2px solid grey;
-      font-size: 18px;
-}
-
+/**/

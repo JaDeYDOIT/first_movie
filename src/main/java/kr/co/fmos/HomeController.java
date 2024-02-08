@@ -40,7 +40,6 @@ public class HomeController {
      mav.addObject("product", productdao.maincategory());
      mav.addObject("FAQlist", noticeDao.mainfaq());
      mav.addObject("noticelist", noticeDao.mainnotice());
-//     mav.addObject("notice_detail", noticeDao.notice_detail(notice_id));
      mav.setViewName("main");
      return mav;
 	}//home() end

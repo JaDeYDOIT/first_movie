@@ -51,7 +51,7 @@ pageEncoding="UTF-8"%>
       </c:forEach>
     </div>
     <div class="board_page">
-      <li><a href="#" class="bt first"><<</a></li>
+      <li><a href="#" class="bt first"></a></li>
       <li></li>
       <li><a href="#" class="bt prev"><</a></li>
       <li></li>

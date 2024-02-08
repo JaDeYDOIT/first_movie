@@ -41,14 +41,13 @@
 
 	<select id="mainnotice"
 		resultType="kr.co.fmos.customer.NoticeDTO">
-		SELECT notice_title, notice_type, notice_datetime
-		FROM
-		notice
+		SELECT notice_id, notice_title, notice_type, notice_datetime
+		FROM notice
 		WHERE notice_kind = 1
 	</select>
 
 	<select id="mainfaq" resultType="kr.co.fmos.customer.NoticeDTO">
-		SELECT notice_title,
+		SELECT notice_id, notice_title,
 		notice_type, notice_kind
 		FROM notice
 		WHERE notice_kind = 0
@@ -129,7 +128,7 @@
 	
 	<select id="notice_detail"
 		resultType="kr.co.fmos.customer.NoticeDTO">
-		select notice_title , notice_content 
+		select notice_id, notice_title , notice_content 
 		from notice n
 		where notice_id = #{notice_id};
 	</select>

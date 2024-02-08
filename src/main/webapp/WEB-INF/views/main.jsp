@@ -245,7 +245,7 @@
 		<h3>FAQ</h3>
 		<ul>
 			<c:forEach items="${FAQlist}" var="list">
-			<li><a href="">${list.notice_title}</a></li>
+			<li><a href="/customer/notice_detail.do?notice_id=${list.notice_id}">${list.notice_title}</a></li>
 			</c:forEach>
 			
 		</ul>
@@ -258,7 +258,7 @@
 		<h3>공지사항</h3>
 		<ul>
 			<c:forEach items="${noticelist}" var="list">
-			<li><a href="">${list.notice_title}</a></li>
+			<li><a href="/customer/notice_detail.do?notice_id=${list.notice_id}">${list.notice_title}</a></li>
 			</c:forEach>
 		</ul>
 	</div>
