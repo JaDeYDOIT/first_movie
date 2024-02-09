@@ -1,0 +1,106 @@
+@charset "utf-8";
+
+.theater_wrap{
+    width: 100%;
+}
+.theater_wrap div img{
+    width: 100%;
+}
+.theater_wrap h2{
+    font-size: 40px;
+    font-weight: bold;
+    color: #22A2F2;
+    padding: 1% 0;
+}
+.theater_box{
+    border: 5px solid #000;
+    border-radius: 10px;
+}
+.theater_btn{
+    display: flex;
+    justify-content: space-between;
+}
+.theater_btn li{
+    width: 15%;
+    border: 1px solid #000;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.theater_cont{
+    display: flex;
+    
+}
+.theater_cont li{
+    width: 100px;
+    font-size: 20px;
+    text-align: center;
+}
+
+/*상영관 추가*/
+
+#screen_insert{
+	font-size: 30px;
+	cursor:pointer;
+	border-radius: 10px;
+	float: right;
+}
+
+#screen_insert:hover{
+	background-color: #22A2F2;
+	color: white;
+}
+
+/*상영관 정보*/
+
+.screenlist_wrap{
+   display: flex;
+   flex-direction: column;
+   padding: 1%;
+}
+.screenlist{
+    font-size: 15px;
+    padding: 1%;
+    margin-top: 1%;
+    border-bottom: 5px solid black;
+}
+.movie_name{
+   font-size: 20px;
+   font-weight: bold;
+   margin-bottom: 1%;
+   cursor: pointer;
+}
+.movie_name span{
+   font-size: 15px;
+   margin-left: 2%;
+}
+
+.screen_information{
+   font-size: 18px;
+   margin: 0 2.5% 0 0 ;
+   font-weight: 500;
+   float: left;
+}
+
+
+/* 상영시간 */
+.Screening_time{
+   margin: 1% 0 1% 0%;
+}
+.Screening_time > a {
+	display: flex;
+	font-size: 20px;
+	margin-bottom: 0.5%;	
+	
+}
+.Screening_time span a{
+   border: 1px solid black;
+   font-size: 20px;
+   padding: 0 1% 0 1%;
+   display: inline-block;
+}
+
+
