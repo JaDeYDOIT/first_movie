@@ -211,7 +211,7 @@
 
    $("#branch_id").change(
          function() {
-            var branch_id = $('#branch_id').val();
+            let branch_id = $('#branch_id').val();
                $.ajax({
                   url : '/theater/screenlist.do',
                   type : 'post',

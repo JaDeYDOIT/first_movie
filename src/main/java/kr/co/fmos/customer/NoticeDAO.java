@@ -35,6 +35,15 @@ public class NoticeDAO {
 		return sqlSession.delete("customer.noticeDelete", notice_id); 
 	}//delete() end
 	
+	
+	//메인 페이지
+	public List<NoticeDTO> mainfaq() {
+		return sqlSession.selectList("customer.mainfaq");
+	}// movieList() end
+	public List<NoticeDTO> mainnotice() {
+		return sqlSession.selectList("customer.mainnotice");
+	}// movieList() end
+	
 	public NoticeDTO notice_detail(int notice_id) {
 		return sqlSession.selectOne("customer.notice_detail", notice_id);
 	}

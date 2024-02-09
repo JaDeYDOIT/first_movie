@@ -32,8 +32,9 @@
 	    <label class="check_label" for="idcheckbox" th:onclick="toggleCheckbox()" onselectstart="return false;">아이디저장</label>
 	    </span>
 	    <span>
-		    <a href="/member/member.do">회원가입 </a> |
-		    <a href="/member/idfind.do">아이디&비밀번호찾기</a>
+		    <a href="/member/member.do">회원가입 | </a>
+		    <a href="#">아이디찾기 | </a>
+		    <a href="#">비밀번호찾기</a>
 	    </span>
 	</div>
 	<div class="logbox">

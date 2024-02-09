@@ -1,0 +1,100 @@
+////////////////////공지사항 시퀀스/////////////////////
+create sequence notice_seq
+start with 1
+increment by 1
+maxvalue 999999
+cycle;
+
+
+////////////////////영화 장르 시퀀스/////////////////////
+create sequence movie_genre_seq
+start with 1
+increment by 1
+cycle;
+
+
+////////////////////대관 문의 시퀀스/////////////////////
+create sequence rental_inquiry_seq
+start with 1
+increment by 1
+maxvalue 999999
+cycle;
+
+////////////////////선호장르 시퀀스/////////////////////
+create sequence preferred_genre_seq
+start with 1
+increment by 1
+cycle;
+
+////////////////////문의 시퀀스/////////////////////
+create sequence inquire_seq
+start with 1
+increment by 1
+maxvalue 999999
+cycle;
+
+////////////////////포인트 시퀀스/////////////////////
+create sequence point_seq
+start with 1
+increment by 1
+maxvalue 999999
+cycle;
+
+
+////////////////////리뷰 시퀀스/////////////////////
+create sequence review_seq
+start with 1
+increment by 1
+cycle;
+
+
+///////////////////제품 시퀀스//////////////////////
+create sequence product_seq
+start with 1
+increment by 1
+cycle;
+
+
+///////////////////제품 종류 시퀀스//////////////////////
+create sequence product_category_seq
+start with 1
+increment by 1
+cycle;
+
+
+////////////////////장바구니 시퀀스/////////////////////
+create sequence cart_payment_seq
+start with 1
+increment by 1
+cycle;
+
+
+////////////////////문의 답변 시퀀스/////////////////////
+create sequence inquire_answer_seq
+start with 1
+increment by 1
+maxvalue 999999
+cycle;
+
+
+////////////////////대관 시퀀스/////////////////////
+create sequence rental_seq
+start with 1
+increment by 1
+maxvalue 999999
+cycle;
+
+
+
+////////////////////장바구니 결제 상세 시퀀스/////////////////////
+create sequence cart_payment_detail_seq
+start with 1
+increment by 1
+cycle;
+
+
+////////////////////혜텍 시퀀스/////////////////////
+create sequence benefit_seq
+start with 1
+increment by 1
+cycle;

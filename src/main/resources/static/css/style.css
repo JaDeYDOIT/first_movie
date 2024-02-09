@@ -60,10 +60,9 @@ nav .login_wrap {
 }
 
 nav .login_wrap li {
-	float: left;
 	text-align: center;
-	margin-top: 35px;
-	margin-left: 25px;
+	margin-top: 25px;
+	margin-left: 15px;
 	cursor: pointer;
 }
 
@@ -199,34 +198,40 @@ nav ul li a {
 	width: 100%;
 	margin-bottom: 10%;
 }
+#store_wrap article{
+	width: 100%;
+	height: 30vh;
+	margin-bottom: 10%;
+}
+#store_wrap a, #store_wrap a{
+	font-size: 18px;
+}
+#mainstospan {
+	padding: 7%;
+	text-align: center;
+}
+#mainstospan img {
+	width: 100%;
+	height: 100%;
+}
 
+
+.package_list, .giftcon_list{
+	display: flex;
+	justify-content: space-evenly;
+	flex-direction: row;
+}
+
+#store_wrap dt{
+	margin-top: 3%;
+}
 #store_wrap dt a {
 	font-size: 30px;
 	color: black;
 }
 
-.package_list {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	margin-bottom: 5%;
-}
 
-.package_list dd div img {
-	width: 200px;
-	height: 170px;
-}
 
-.giftcon_list {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-}
-
-.giftcon_info_wrap {
-	margin-top: 15px;
-	text-align: center;
-}
 
 /* 스토어 end */
 
@@ -288,7 +293,6 @@ footer {
 
 footer .footer_wrap {
 	width: 70%;
-	height: 100%;
 	margin: 0 auto;
 }
 
@@ -437,10 +441,8 @@ footer .footer_bottom ul li:nth-child(3) {
 
 	header {
 		width: 100%;
-		height: 150px;
 		background: rgb(255, 255, 255);
 		font-weight: bold;
-		position: fixed;
 		top: 0;
 		left: 0;
 	}

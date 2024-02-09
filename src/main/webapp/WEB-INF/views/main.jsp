@@ -195,7 +195,6 @@
 <!-- 스토어 시작 -->
 <!-- 패키지 시작 -->
 <section id="store_wrap">
-<<<<<<< HEAD
 	<article class="packagebox">
 		<dt>
 			<a href="/product/category.do?product_category_id=1">패키지</a>
@@ -235,82 +234,6 @@
 			</c:forEach>
 		</dl>
 	</article>
-=======
-	<dt>
-		<a href="/product/category.do?product_category_id=1">패키지</a>
-	</dt>
-	<dl class='package_list'>
-    <dd>
-        <a href='/product/detail.do?product_id=21'>
-            <div data-scale=false>
-                <img src='images/package/package3.png' alt='우리 패키지'>
-            </div>
-            <div class='giftcon_info_wrap'>
-                <span>우리 패키지</span> <strong>61,000원</strong>
-            </div>
-        </a>
-    </dd>
-    <dd>
-        <a href='/product/detail.do?product_id=7'>
-            <div data-scale=false>
-                <img src='images/package/package1.png' alt='나랑 너 패키지'>
-            </div>
-            <div class='giftcon_info_wrap'>
-                <span>나랑 너 패키지</span> <strong>34,000원</strong>
-            </div>
-        </a>
-    </dd>
-    <dd>
-        <a href='/product/detail.do?product_id=1'>
-            <div data-scale=false>
-                <img src='images/package/package2.png' alt='좋은 날 패키지'>
-            </div>
-            <div class='giftcon_info_wrap'>
-                <span>좋은 날 패키지</span> <strong>18,000원</strong>
-            </div>
-        </a>
-    </dd>
-	</dl>
-	<!-- 패키지 끝 -->
-
-	<!-------------------------------------------------관람권 시작----------------------------------------------------->
-	<!-- 관람권 -->
-	<dt>
-		<a href="/product/category.do?product_category_id=2">영화관람권</a>
-	</dt>
-	<dl class='giftcon_list'>
-		<dd>
-		    <a href='/product/detail.do?product_id=2'>
-				<div class='img_wrap' data-scale=false>
-					<img src='images/store/goldclass.png' alt='CGV 골드클래스'>
-				</div>
-				<div class='giftcon_info_wrap'>
-					<span>CGV 골드클래스</span> <strong>40,000원</strong>
-				</div>
-			</a>
-		</dd>
-		<dd>
-		    <a href='/product/detail.do?product_id=8'>
-				<div class='img_wrap' data-scale=false>
-					<img src='images/store/voucher.png' alt='CGV 영화관람권'>
-				</div>
-				<div class='giftcon_info_wrap'>
-					<span>영화관람권</span> <strong>13,000원</strong>
-				</div>
-			</a>
-		</dd>
-		<dd>
-			<a href='/product/detail.do?product_id=9'>
-				<div class='img_wrap' data-scale=false>
-					<img src='images/store/cinema_chef.png' alt='CGV 씨네드쉐프관람권'>
-				</div>
-				<div class='giftcon_info_wrap'>
-					<span>씨네드쉐프관람권</span> <strong>50,000원</strong>
-				</div>
-			</a>
-		</dd>
-	</dl>
->>>>>>> 783f7a3277d9691a622013170d420d46ae23aec5
 	<!-- 관람권 end -->
 </section>
 <!-- 스토어 end -->
@@ -322,7 +245,7 @@
 		<h3>FAQ</h3>
 		<ul>
 			<c:forEach items="${FAQlist}" var="list">
-			<li>${list.notice_title}</li>
+			<li><a href="/customer/notice_detail.do?notice_id=${list.notice_id}">${list.notice_title}</a></li>
 			</c:forEach>
 			
 		</ul>
@@ -335,7 +258,7 @@
 		<h3>공지사항</h3>
 		<ul>
 			<c:forEach items="${noticelist}" var="list">
-			<li>${list.notice_title}</li>
+			<li><a href="/customer/notice_detail.do?notice_id=${list.notice_id}">${list.notice_title}</a></li>
 			</c:forEach>
 		</ul>
 	</div>

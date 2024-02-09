@@ -169,15 +169,14 @@ public class MemberCont {
 		return mav;
 	}
 
+	@GetMapping("/test.do")
+	public String test() {
+		return "/member/test";
+	}
+
 	@GetMapping("/memberInfo.do")
 	public String memberInfo() {
 		return "/member/memberinfo";
 	}
-	
-	@GetMapping("/idfind.do")
-	public String find() {
-		return "/member/idfind";
-	}
-	
-	
+
 }// class end

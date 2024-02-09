@@ -3,23 +3,26 @@
 <%@ include file="../header.jsp"%>
 <link rel="stylesheet" href="/css/theater.css">
 
-
 <script>
-	//    $(function () {
-	//       let tabBtn = $(".sel-city");
-	//       let tabCont = $(".theater-place ul li");
-
-	//       $(".sel-city").click(function () {
-	//          alert('11');
-	//          let target = $(this);
-	//          let index = target.index();
-	//          tabBtn.removeClass('on');
-	//          target.addClass('on');
-	//          tabCont.hide();
-	//          tabCont.eq(index).show();
-	//          console.log(target);
-	//       })//$(".sel-city").click end
-	//    })
+  
+   //페이지 로드 시 호출하여 특정 아이디의 버튼을 활성화 여부를 설정
+    window.onload = function () {
+    	screenInsertInsertButton();
+   };
+   // 특정 아이디를 가진 버튼만 활성화하는 함수
+   function screenInsertInsertButton() {
+      let checkLogin = "${s_id}";
+      let insertButton = document.getElementById("screen_insert");
+      // 특정 아이디가 "fmos"인 경우에만 버튼을 보이고 활성화
+      if (checkLogin === 'fmos' && insertButton) {
+          insertButton.style.visibility = "visible"; // 보이도록 설정
+          insertButton.disabled = false; // 활성화
+        } else if (insertButton) {
+          insertButton.style.visibility = "hidden"; // 감추도록 설정
+          insertButton.disabled = true; // 비활성화
+        }
+    }//enableInsertButton() end
+    
 </script>
 
 

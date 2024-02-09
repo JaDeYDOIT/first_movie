@@ -134,7 +134,7 @@
 					        <td class="category_product_detail_txt" colspan="2">
 					            <fmt:formatNumber value="${row.product_cost}" pattern="#,###"/>
 					        </td>
-					    </tr>
+					    </tr> 
 					    <tr>
 							<td  class="category_product_detail_naeyong">상품수량</td>
 							<td>

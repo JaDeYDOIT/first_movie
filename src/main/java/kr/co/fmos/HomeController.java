@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import jakarta.servlet.http.HttpSession;
 import kr.co.fmos.customer.NoticeDAO;
 import kr.co.fmos.movie.MovieDAO;
+import kr.co.fmos.product.ProductDAO;
 
 @Controller
 public class HomeController {
@@ -16,7 +17,7 @@ public class HomeController {
 	private MovieDAO movieDao;
     @Autowired
 	private NoticeDAO noticeDao;
-    
+    @Autowired ProductDAO productdao;
 	public HomeController() {
         System.out.println("-----HomeController()객체 생성됨");
     }
@@ -24,7 +25,7 @@ public class HomeController {
     //first movie 프로젝트의 첫페이지 호출
     //-> http://localhost:9095/main    
 	@RequestMapping("/main")
-	public ModelAndView home(HttpSession session ) {
+	public ModelAndView home(HttpSession session) {
 		if(session.getAttribute("s_id") == null || session.getAttribute("s_pw") == null ||
 		session.getAttribute("s_id").equals("") || session.getAttribute("s_pw").equals("")) 
 		{
@@ -36,8 +37,9 @@ public class HomeController {
      ModelAndView mav = new ModelAndView();
      mav.addObject("sessionTimeoutInSeconds", session.getMaxInactiveInterval());
      mav.addObject("movie", movieDao.movieList());
-     //mav.addObject("noticelist", noticeDao.noticeselect());
-     //mav.addObject("FAQlist", noticeDao.faqselect());
+     mav.addObject("product", productdao.maincategory());
+     mav.addObject("FAQlist", noticeDao.mainfaq());
+     mav.addObject("noticelist", noticeDao.mainnotice());
      mav.setViewName("main");
      return mav;
 	}//home() end

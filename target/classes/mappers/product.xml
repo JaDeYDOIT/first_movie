@@ -44,4 +44,10 @@
 		WHERE product_id=#{product_id}
 	</delete>
 	
+<!-- 	//메인 스토어 -->
+	<select id="maincategory" resultType="kr.co.fmos.product.ProductDTO">
+         select product_id, product_category_id, product_name,product_image,product_cost 
+         from product
+   </select>
+	
 </mapper>

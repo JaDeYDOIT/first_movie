@@ -55,5 +55,9 @@ public class ProductDAO {
 	public List<Map<String, Object>> cartcnt(String member_id){
 		return sqlSession.selectList("cart.cartcnt", member_id);
 	}//cartcnt() end
+//	메인 스토어
+	public List<ProductDTO> maincategory() {
+	      return sqlSession.selectList("product.maincategory");
+	   }//category() end
 	
 }//class end
