@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- customer.xml -->
+
+<mapper namespace="customer">
+
+	<!-- notice관련 시작 -->
+	<insert id="noticeinsert"
+		parameterType="kr.co.fmos.customer.NoticeDTO">
+		INSERT INTO notice(notice_kind, notice_type,
+		notice_title ,notice_content)
+		VALUES (#{notice_kind}, #{notice_type},
+		#{notice_title}, #{notice_content})
+	</insert>
+
+	<select id="faqselect"
+		resultType="kr.co.fmos.customer.NoticeDTO" parameterType="int">
+		SELECT
+		notice_title, notice_type, notice_kind
+		FROM notice
+		WHERE notice_kind =
+		#{notice_kind}
+	</select>
+
+	<select id="noticeselect"
+		resultType="kr.co.fmos.customer.NoticeDTO" parameterType="int">
+		SELECT
+		notice_title, notice_type, notice_datetime
+		FROM notice
+		WHERE notice_kind
+		= #{notice_kind}
+	</select>
+	
+	<delete id="noticeDelete" parameterType="int">
+		DELETE FROM notice
+		WHERE notice_id=#{notice_id}
+	</delete>
+
+	<select id="mainnotice"
+		resultType="kr.co.fmos.customer.NoticeDTO">
+		SELECT notice_title, notice_type, notice_datetime
+		FROM
+		notice
+		WHERE notice_kind = 1
+	</select>
+
+	<select id="mainfaq" resultType="kr.co.fmos.customer.NoticeDTO">
+		SELECT notice_title,
+		notice_type, notice_kind
+		FROM notice
+		WHERE notice_kind = 0
+	</select>
+	<!-- notice관련 끝 -->
+
+	<!-- inquire관련 시작 -->
+	<select id="oneselect"
+		resultType="kr.co.fmos.customer.InquireDTO" parameterType="int">
+		SELECT
+		inquire_title ,inquire_answer ,inquire_datetime , inquire_id , inquire_kind
+		FROM inquire
+		WHERE
+		inquire_kind = #{inquire_kind}
+	</select>
+<!--  -->
+	<select id="lostselect"
+		resultType="kr.co.fmos.customer.InquireDTO" parameterType="int">
+		SELECT
+		inquire_theater_name, inquire_title, inquire_answer ,inquire_datetime
+		FROM inquire
+		WHERE inquire_kind = #{inquire_kind}
+	</select>
+
+	<insert id="oneinquireins"
+		parameterType="kr.co.fmos.customer.InquireDTO">
+		INSERT INTO inquire(member_id ,inquire_kind
+		,inquire_file ,inquire_title ,inquire_content ,inquire_pw )
+		VALUES
+		(#{member_id}, #{inquire_kind}, #{inquire_file}, #{inquire_title},
+		#{inquire_content}, #{inquire_pw})
+	</insert>
+	
+	<insert id="lostInquireins" parameterType="kr.co.fmos.customer.InquireDTO">
+		INSERT INTO inquire(member_id ,inquire_kind ,inquire_title ,inquire_content ,inquire_pw )
+		VALUES (#{member_id}, #{inquire_kind}, #{inquire_title}, #{inquire_content}, #{inquire_pw})
+	</insert>
+
+	<insert id="rentalInsert"
+		parameterType="kr.co.fmos.customer.InquireDTO">
+		INSERT INTO rental_inquiry(rental_inquiry_id,
+		rental_inquiry_area , rental_inquiry_place ,rental_inquiry_theater
+		,rental_inquiry_movie,rental_inquiry_date ,rental_inquiry_start
+		,rental_inquiry_end ,rental_inquiry_people_count
+		,rental_inquiry_title,rental_inquiry_content ,rental_inquiry_name
+		,rental_inquiry_phone ,rental_inquiry_pw)
+		VALUES
+		(#{rental_inquiry_id},#{rental_inquiry_area}, #{rental_inquiry_place},
+		#{rental_inquiry_theater}, #{rental_inquiry_movie},
+		#{rental_inquiry_date}, #{rental_inquiry_start} ,
+		#{rental_inquiry_end} , #{rental_inquiry_people_count} ,
+		#{rental_inquiry_title} , #{rental_inquiry_content} ,
+		#{rental_inquiry_name} , #{rental_inquiry_phone} ,
+		#{rental_inquiry_pw})
+	</insert>
+	
+	<delete id="inquiredelete" parameterType="int">
+		DELETE FROM inquire
+		WHERE inquire_id=#{inquire_id}
+	</delete>
+	<!-- inquire관련 끝 -->
+
+	<select id="memberinquirelist" resultType="kr.co.fmos.customer.InquireDTO" parameterType="String">
+		SELECT
+		inquire_id,
+		member_id,
+		inquire_kind,
+		inquire_title,
+		inquire_content,
+		inquire_theater_name,
+		inquire_file,
+		inquire_pw
+<!-- 		inquiry_answer, -->
+<!-- 		inquiry_datetime -->
+		FROM inquire
+		WHERE member_id = #{member_id}
+	</select>
+	<!--  -->
+</mapper>

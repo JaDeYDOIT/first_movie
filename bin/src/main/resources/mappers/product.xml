@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<!-- 스토어 product.xml --> 
+
+<mapper namespace="product">
+
+	<insert id="insert" parameterType="java.util.Map">
+		INSERT INTO product(product_category_id ,product_name ,product_image ,product_cost ,product_content)
+		VALUES (#{product_category_id}, #{product_name}, #{product_image}, #{product_cost}, #{product_content})
+	</insert>
+	
+	<!-- 스토어 전체 목록 -->
+	<select id="list" resultType="kr.co.fmos.product.ProductDTO">
+		SELECT product_id, product_category_id, product_name, product_image, product_cost, product_content, product_quantity
+		FROM product
+		ORDER BY product_id
+	</select>
+	
+	<!-- 카테고리별 목록 -->
+	<select id="category" resultType="kr.co.fmos.product.ProductDTO" parameterType="int">
+		SELECT product_id, product_category_id, product_name, product_image, product_cost, product_content, product_quantity
+		FROM product
+		WHERE product_category_id=#{product_category_id}
+	</select>
+	
+	<!-- 상품 상세 목록 -->
+	<select id="detail" resultType="kr.co.fmos.product.ProductDTO"  parameterType="int">
+		SELECT product_id, product_name, product_image, product_cost, product_content, product_quantity
+		FROM product
+		WHERE product_id=#{product_id}
+	</select>
+	
+	<select id="product_image" resultType="String" parameterType="int">
+		SELECT product_image
+		FROM product
+		WHERE product_id=#{product_id}
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM product
+		WHERE product_id=#{product_id}
+	</delete>
+	
+</mapper>

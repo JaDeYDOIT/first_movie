@@ -1,0 +1,315 @@
+@charset "utf-8";
+
+
+*{margin: 0; padding: 0; }
+
+
+a{
+    text-decoration: none;
+}
+
+/* 전체 wrap */
+#mypage_wrap{
+    width: 100%;
+    box-sizing: border-box;
+}
+#mypage_wrap > h2{
+    font-size: 40px;
+    font-weight: bold;
+    color: #22A2F2;
+    padding: 1% 0;
+}
+
+
+
+/* 회원 wrap */
+.member_wrap{
+    width: 100%;
+    margin: 0px auto 2% auto;
+    text-align: center;
+    box-sizing: border-box;
+}
+/* 상단 회원 박스 내용물 wrap */
+.memberbox{
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 100px;
+    width: 100%;
+    display: flex;
+    
+}
+
+/* 회원 */
+.member{
+	color: #22A2F2;
+    width: 40%;
+	box-sizing: border-box;
+	border: 2px dashed black;
+	border-radius: 10px;
+}
+
+/* 우측 리스트박스 */
+.list_box{
+    width: 60%;
+    height: 100%;
+}
+/* 리스트 ul */
+.list{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    
+}
+.list2 a span{
+	color: red;
+	
+}
+
+/* 리스트 li 묶음 */
+.list article{
+    width: 33.333333%;
+    height: 100%;
+    box-sizing: border-box;
+    margin-left: 1%;
+}
+
+/* 리스트 li 시작 */
+.list article{
+	  border: 2px dashed black;
+	  border-radius: 10px;
+}
+/* 리스트 li 끝 */
+
+/* 하단 .mypage_content */
+.mypage_content{
+    width: 100%;
+    display: flex;
+}
+
+/* 좌측 aside menu 묶음 */
+.menu_wrap{
+    width: 15%;
+}
+
+/* 좌측 aside 제목 */
+.menu_wrap h2{
+    font-size: 30px;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    line-height: 100px;
+}
+
+/* aside 박스 묶음 */
+.menubox{
+    width: 100%;
+}
+.menubox ul{
+    display: flex;
+    flex-direction: column;
+}
+.menubox ul li{
+    background-color: wheat;
+   
+    font-weight: bold;
+    margin-bottom:5%;
+     
+}
+.menubox ul li a{
+	font-size: 18px;
+    padding: 10%;
+    display: block;
+    text-align: center;
+    background-color: #22A2F2;
+    color: white;
+}
+/* aside 박스 묶음 끝 */
+
+/* 우측 content 묶음 */
+.content_wrap{
+    width: 90%;
+    margin-left: 2%;
+}
+
+/* 콘텐츠 상단 */
+.content_top{
+    width: 100%;
+    border-bottom: 2px solid #22A2F2;  
+    font-size: 25px;
+    margin-bottom: 1%;
+    line-height: 100px;
+    
+    
+}
+
+/* 콘텐츠 하단 */
+.content_bottom{
+    width: 100%;
+
+}
+
+.content_bottom table thead tr,
+.content_bottom table tbody tr{
+	border-bottom: 1px solid black;
+	    font-size: 14px;
+}
+
+/*---------------------------결제 내역 시작 -----------------------*/
+.payment_box{
+	width: 100%;	
+	text-align: center;	
+}
+/*번호, 제목, 내용 박스*/
+.payment_box .payment_title tr,
+.payment_box .payment_detail tr{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-weight: 500;
+}
+.payment_box .payment_title tr th,
+.payment_box .payment_detail tr td{
+		margin: 1% 0;
+}
+/*번호 컬럼*/
+.payment_box .payment_title tr th:nth-of-type(1),
+.payment_box .payment_detail tr td:nth-of-type(1){
+	width: 10%;
+}
+/*제목컬럼*/
+.payment_box .payment_title tr th:nth-of-type(2),
+.payment_box .payment_detail tr td:nth-of-type(2){
+	width: 10%;
+}
+/*내용컬럼*/
+.payment_box .payment_title tr th:nth-of-type(3),
+.payment_box .payment_detail tr td:nth-of-type(3){
+	width: 10%;
+}
+/*내용컬럼*/
+.payment_box .payment_title tr th:nth-of-type(4),
+.payment_box .payment_detail tr td:nth-of-type(4){
+	width: 10%;
+}
+/*내용컬럼*/
+.payment_box .payment_title tr th:nth-of-type(5),
+.payment_box .payment_detail tr td:nth-of-type(5){
+	width: 10%;
+}
+/*내용컬럼*/
+.payment_box .payment_title tr th:nth-of-type(6),
+.payment_box .payment_detail tr td:nth-of-type(6){
+	width: 10%;
+}
+/*내용컬럼*/
+.payment_box .payment_title tr th:nth-of-type(7),
+.payment_box .payment_detail tr td:nth-of-type(7){
+	width: 10%;
+}
+/*내용컬럼*/
+.payment_box .payment_title tr th:nth-of-type(8),
+.payment_box .payment_detail tr td:nth-of-type(8){
+	width: 10%;
+}
+/*내용컬럼*/
+.payment_box .payment_title tr th:nth-of-type(9),
+.payment_box .payment_detail tr td:nth-of-type(9){
+	width: 10%;
+}
+
+/*---------------------------결제 내역 끝 -----------------------*/
+
+
+/*--------------------------- 쿠폰 시작 -----------------------*/
+.coupon_box{
+	width: 100%;	
+	text-align: center;	
+}
+/*번호, 제목, 내용 박스*/
+.coupon_box .coupon_title tr,
+.coupon_box .coupon_detail tr{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-weight: 500;
+}
+.coupon_box .coupon_title tr th,
+.coupon_box .coupon_detail tr td{
+		margin: 1% 0;
+}
+/*번호 컬럼*/
+.coupon_box .coupon_title tr th:nth-of-type(1),
+.coupon_box .coupon_detail tr td:nth-of-type(1){
+	width: 10%;
+}
+/*제목컬럼*/
+.coupon_box .coupon_title tr th:nth-of-type(2),
+.coupon_box .coupon_detail tr td:nth-of-type(2){
+	width: 10%;
+}
+/*내용컬럼*/
+.coupon_box .coupon_title tr th:nth-of-type(3),
+.coupon_box .coupon_detail tr td:nth-of-type(3){
+	width: 10%;
+}
+/*내용컬럼*/
+.coupon_box .coupon_title tr th:nth-of-type(4),
+.coupon_box .coupon_detail tr td:nth-of-type(4){
+	width: 10%;
+}
+/*내용컬럼*/
+.coupon_box .coupon_title tr th:nth-of-type(5),
+.coupon_box .coupon_detail tr td:nth-of-type(5){
+	width: 10%;
+}
+/*내용컬럼*/
+.coupon_box .coupon_title tr th:nth-of-type(6),
+.coupon_box .coupon_detail tr td:nth-of-type(6){
+	width: 10%;
+}
+/*내용컬럼*/
+.coupon_box .coupon_title tr th:nth-of-type(7),
+.coupon_box .coupon_detail tr td:nth-of-type(7){
+	width: 10%;
+}
+/*---------------------------쿠폰 끝 -----------------------*/
+
+
+/*---------------------------내 문의 시작 -----------------------*/
+.inquiry_box{
+	width: 100%;	
+	text-align: center;
+}
+/*번호, 제목, 내용 박스*/
+.inquiry_box .inquiry_title tr,
+.inquiry_box .inquiry_detail tr{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-weight: 500;
+}
+.inquiry_box .inquiry_title tr th,
+.inquiry_box .inquiry_detail tr td{
+	margin: 1% 0;
+}
+/*번호 컬럼*/
+.inquiry_box .inquiry_title tr th:nth-of-type(1),
+.inquiry_box .inquiry_detail tr td:nth-of-type(1){
+	width: 10%;
+}
+/*제목컬럼*/
+.inquiry_box .inquiry_title tr th:nth-of-type(2),
+.inquiry_box .inquiry_detail tr td:nth-of-type(2){
+	width: 10%;
+}
+/*내용컬럼*/
+.inquiry_box .inquiry_title tr th:nth-of-type(3),
+.inquiry_box .inquiry_detail tr td:nth-of-type(3){
+	width: 70%;
+}
+
+
+/*---------------------------내 문의 끝 -----------------------*/
+
+
+

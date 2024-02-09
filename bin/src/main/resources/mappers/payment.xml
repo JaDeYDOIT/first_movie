@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- payment.xml -->
+
+<mapper namespace="payment">
+	<select id="list" resultType="kr.co.fmos.payment.PaymentDTO">
+		SELECT payment_id, member_id, movie_information_id, adult, student,
+		silver, price, pay_discount, refund, pay_datetime
+		FROM payment
+	</select>
+
+<!-- 마이페이지 결제내역 리스트 -->
+	<select id="mypagelist" resultType="java.util.Map"
+		parameterType="String">
+		SELECT
+		m.movie_id,
+		m.movie_name,
+		m.movie_running_time,
+		smi.movie_showing_date,
+		TIME_FORMAT(smi.movie_showing_time, '%H:%i') as movie_showing_time,
+		tb.branch_id,
+		tb.branch_name,
+		p.payment_id,
+		p.member_id,
+		p.price,
+		p.pay_discount,
+		p.refund,
+		DATE_FORMAT(p.pay_datetime, '%Y-%m-%d %H:%i') as
+		pay_datetime
+		FROM
+		movie m
+		JOIN
+		screen_movie_information smi ON m.movie_id = smi.movie_id
+		JOIN
+		theater_branch tb ON smi.branch_id = tb.branch_id
+		JOIN
+		payment p ON smi.movie_information_id = p.movie_information_id
+		WHERE
+		p.member_id = #{member_id}
+	</select>
+	
+	<select id="selectPaymentByScreenMovieInfoId"
+		parameterType="String" resultType="kr.co.fmos.payment.PaymentDTO">
+		SELECT payment_id, member_id, movie_information_id, adult, student,
+		silver, price, pay_discount, refund, pay_datetime
+		FROM payment
+		WHERE movie_information_id=#{screenMovieInfoID}
+	</select>
+
+	<insert id="insertAndReturnWithId" useGeneratedKeys="true"
+		parameterType="kr.co.fmos.payment.PaymentDTO">
+		INSERT INTO
+		payment (payment_id, member_id, movie_information_id, adult, student,
+		silver, price, pay_discount, refund) VALUES
+		(
+		#{payment_id},
+		#{member_id},
+		#{movie_information_id},
+		#{adult},
+		#{student},
+		#{silver},
+		#{price},
+		#{pay_discount},
+		#{refund})
+	</insert>
+
+	
+</mapper>

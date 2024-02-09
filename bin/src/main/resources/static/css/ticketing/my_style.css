@@ -1,0 +1,85 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.btn_coupon {
+	border-radius: 4px;
+	width: 100px;
+	height: 40px;
+	margin-bottom: 10px;
+}
+
+.wrap_selected_coupon {
+	display: block;
+	/* 가로로 전체를 차지하도록 block 설정 */
+	padding: 15px;
+	border-radius: 4px;
+	border: 1px solid #DDD;
+	background-color: #FFF;
+}
+
+.wrap_selected_coupon label {
+	position: relative;
+	padding: 15px;
+	/* 가로로 전체를 차지하도록 block 설정 */
+}
+
+.wrap_selected_coupon .period {
+	display: block;
+	margin-top: 8px;
+	font-size: 11px;
+	color: #666;
+}
+
+.wrap_selected_coupon dl dt {
+	clear: both;
+	float: left;
+	margin: 3px 0;
+	font-size: 11px;
+}
+
+.remain_point {
+	font-size: 20px;
+	font-weight: 700;
+	margin-bottom: 30px;
+}
+
+.point_amount {
+	width: 50%;
+	background-color: #EFEFEF;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 18px;
+	border-radius: 4px;
+	font-size: 14px;
+	box-sizing: border-box;
+	border: 1px solid #DDD;
+	vertical-align: middle;
+}
+
+.payment_disabled {
+	color: #FF243E;
+	font-weight: 700;
+	padding-top: 14px;
+	padding-bottom: 14px;
+	font-size: 20px;
+}
+
+.wrap_selected_coupon .btn_close {
+	position: absolute;
+	right: 30px;
+	top: 170px;
+	width: 15px;
+	height: 15px;
+	border: none;
+	text-indent: -9999em;
+	background: transparent url("/images/ticketing/close_19.png") no-repeat 0 0;
+	background-size: contain;
+}
+
+.pay_method_list .active button {
+	border-color: #7B7B7B;
+}

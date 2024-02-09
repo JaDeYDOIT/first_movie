@@ -1,0 +1,82 @@
+@charset "utf-8";
+
+/*스크롤*/
+#scrollTop{
+	font-size: 18px;
+	position: fixed;
+	right: 5%;
+	bottom: 5%;
+	border-radius: 20px;
+	background-color: #007bff;
+	color: white;
+	padding: 0.3% 0.5%;
+	border: 1px solid black;
+	cursor: pointer;
+	z-index: 30;
+}
+
+
+
+#agreement {
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+
+#foottitle{
+	margin-top: 30px;
+	font-size: 18px;
+}
+
+textarea::-webkit-resizer {
+    display: none;
+}
+
+/* 다음 두 줄은 Firefox를 위한 스타일입니다. */
+textarea {
+    resize: none;
+}
+
+h2 {
+	font-size: 40px;
+	font-weight: bold;
+	color: #22A2F2;
+	padding-top: 1%;
+}
+
+
+
+
+
+/*개인정보 처리방침*/
+
+.section1{
+margin-top: 1%;
+font-size: 17px;
+}
+.section1 p strong{
+	font-weight: bold;
+	font-size: 18px;
+}
+.section2{
+	margin-bottom:1%;
+	border-bottom: 3px solid black;
+}
+
+.dot-list{
+	margin:1% 0;
+}
+.dot-list li{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+
+.terms_bx{
+	display: flex;
+}
+
+
+#titleLeft li,#titleRight li{
+	padding: 1% 0
+}
+	

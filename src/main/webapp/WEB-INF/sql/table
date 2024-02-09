@@ -1,0 +1,246 @@
+CREATE TABLE `coupon` (
+	`coupon_id`	VARCHAR(30) PRIMARY KEY	NOT NULL,
+	`coupon_name`	VARCHAR(50)	NOT NULL,
+	`coupon_discount_rate`	TINYINT UNSIGNED	NOT NULL,
+	`coupon_expiration_date`	SMALLINT UNSIGNED	NOT NULL,
+	`coupon_status`	VARCHAR(30)	NOT NULL	COMMENT '진행중 or 종료'
+);
+
+CREATE TABLE `user_having_coupon` (
+	`having_coupon_id`	INT UNSIGNED AUTO_INCREMENT PRIMARY KEY	NOT NULL,
+	`member_id`	VARCHAR(30)	NOT NULL	COMMENT '최대15글자',
+	`coupon_id`	VARCHAR(30)	NOT NULL,
+	`coupon_create_date`	DATETIME	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
+	`coupon_expiration_date`	DATETIME	NOT NULL
+);
+
+CREATE TABLE `notice` (
+	`notice_id`	SMALLINT UNSIGNED  PRIMARY KEY	NOT NULL	COMMENT '시퀀스사용',
+	`notice_title`	VARCHAR(50)	NOT NULL,
+	`notice_type`	TINYINT UNSIGNED	NOT NULL	DEFAULT 0	COMMENT '0 : 극장 1 : 기타 2: 시스템점검',
+	`notice_content`	TEXT	NOT NULL,
+	`notice_datetime`	DATETIME	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
+	`notice_count`	INT UNSIGNED	NOT NULL	DEFAULT 0	COMMENT '구현한다면 필요한 컬럼 시퀀스사용'
+);
+
+CREATE TABLE `movie` (
+	`movie_id`	VARCHAR(30) PRIMARY KEY	NOT NULL,
+	`movie_genre_id`	TINYINT UNSIGNED	NOT NULL,
+	`movie_name`	VARCHAR(50)	NOT NULL,
+	`movie_running_time`	SMALLINT UNSIGNED	NOT NULL,
+	`movie_production_year`	DATETIME	NOT NULL,
+	`movie_audience_rating`	VARCHAR(30)	NOT NULL,
+	`movie_image`	VARCHAR(255)	NOT NULL,
+	`movie_video`	VARCHAR(255)	NOT NULL,
+	`director_name`	VARCHAR(20)	NOT NULL,
+	`actor_name`	VARCHAR(20)	NOT NULL
+);
+
+CREATE TABLE `member` (
+	`member_id`	VARCHAR(30)  PRIMARY KEY	NOT NULL	COMMENT '최대15글자',
+	`member_name`	VARCHAR(100)	NOT NULL	COMMENT '국내 최고 긴 이름 30글자',
+	`member_pw`	VARCHAR(50)	NOT NULL	COMMENT '최대 15글자',
+	`member_email`	VARCHAR(110)	NOT NULL	COMMENT '구글기준 최대 30글자',
+	`member_gender`	TINYINT UNSIGNED	NOT NULL	COMMENT '0:남성, 1:여성',
+	`member_birthdate`	VARCHAR(40)	NOT NULL	COMMENT '문자열로 값 저장',
+	`member_phone`	VARCHAR(45)	NOT NULL	COMMENT '문자열로 값 저장',
+	`member_email_check`	TINYINT UNSIGNED	NOT NULL	COMMENT '0 : 비동의 1 : 동의',
+	`member_sns_check`	TINYINT UNSIGNED	NOT NULL	COMMENT '0 : 비동의 1 : 동의'
+);
+
+CREATE TABLE `movie_genre` (
+	`movie_genre_id`	TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY	NOT NULL,
+	`movie_genre_name`	VARCHAR(50)	NOT NULL
+);
+
+CREATE TABLE `user_used_coupon` (
+	`member_id`	VARCHAR(30)	NOT NULL	COMMENT '최대15글자',
+	`coupon_id`	VARCHAR(30)	NOT NULL,
+	`payment_id`	VARCHAR(30)	NOT NULL	COMMENT '결제 id',
+	`coupon_used_date`	DATETIME	NOT NULL	DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE `payment` (
+	`payment_id`	VARCHAR(30) PRIMARY KEY	NOT NULL	COMMENT '결제 id',
+	`member_id`	VARCHAR(30)	NOT NULL	COMMENT '최대15글자',
+	`move_information_id`	VARCHAR(30)	NOT NULL,
+	`adult`	TINYINT UNSIGNED	NOT NULL	DEFAULT 0	COMMENT '13000원',
+	`child`	TINYINT UNSIGNED	NOT NULL	DEFAULT 0	COMMENT '11000원',
+	`silver`	TINYINT UNSIGNED	NOT NULL	DEFAULT 0	COMMENT '7000원',
+	`price`	MEDIUMINT UNSIGNED	NOT NULL,
+	`pay_discount`	MEDIUMINT UNSIGNED	NOT NULL	COMMENT '포인트 + 할인쿠폰 사용 금액',
+	`pay_type`	VARCHAR(50)	NOT NULL	COMMENT '카카오페이:0, 카드결제:1, 네이버페이:2',
+	`refund`	TINYINT UNSIGNED	NOT NULL	COMMENT '0 : 환불완료, 1 : 결제완료',
+	`pay_datetime`	DATETIME	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
+	`Field`	VARCHAR(255)	NULL
+);
+
+CREATE TABLE `rental_inquiry` (
+	`rental_inquiry_id`	SMALLINT UNSIGNED  PRIMARY KEY	NOT NULL	COMMENT '년월일시분초 를 활용',
+	`rental_inquiry_theater`	VARCHAR(60)	NOT NULL,
+	`rental_inquiry_start`	DATETIME	NOT NULL,
+	`rental_inquiry_end`	DATETIME	NOT NULL,
+	`rental_inquiry_movie`	VARCHAR(100)	NOT NULL,
+	`rental_inquiry_people_count`	TINYINT UNSIGNED	NOT NULL	COMMENT '최대 50명',
+	`rental_inquiry_content`	TEXT	NOT NULL	COMMENT '문의를 하는 이유',
+	`rental_inquiry_name`	VARCHAR(100)	NOT NULL,
+	`rental_inquiry_phone`	VARCHAR(45)	NOT NULL,
+	`rental_inquiry_pw`	INT UNSIGNED	NOT NULL	COMMENT '최대 4자릿수까지',
+	`rental_inquiry_review`	TINYINT UNSIGNED	NOT NULL	DEFAULT 0	COMMENT '0 : 대기 1 : 승인 2 : 미승인',
+	`rental_inquiry_datetime`	DATETIME	NOT NULL	DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE `inquire` (
+	`inquire_id`	VARCHAR(30) PRIMARY KEY	NOT NULL,
+	`member_id`	VARCHAR(30)	NOT NULL	COMMENT '최대15글자',
+	`inquire_kind`	TINYINT UNSIGNED	NOT NULL	DEFAULT 0	COMMENT '0 : 1:1문의 1 : 분실물문의',
+	`inquire_title`	VARCHAR(50)	NOT NULL,
+	`inquire_content`	TEXT	NOT NULL,
+	`inquire_theater_name`	VARCHAR(60)	NOT NULL,
+	`inquire_file`	VARCHAR(255)	NULL,
+	`inquire_pw`	SMALLINT UNSIGNED	NULL,
+	`inquiry_answer`	TINYINT UNSIGNED	NOT NULL	DEFAULT 0	COMMENT '0 : 미답변 1 : 답변',
+	`inquiry_datetime`	DATETIME	NOT NULL	DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE `movie_log` (
+	`movie_log_id`	INT UNSIGNED AUTO_INCREMENT PRIMARY KEY	NOT NULL,
+	`member_id`	VARCHAR(30)	NOT NULL	COMMENT '최대15글자',
+	`movie_id`	VARCHAR(30)	NOT NULL,
+	`movie_genre_id`	TINYINT UNSIGNED	NOT NULL,
+	`movie_running_date`	DATETIME	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
+	`comment`	TEXT	NULL	COMMENT '값 없을시 빈문자열 값'
+);
+
+CREATE TABLE `point` (
+	`point_id`	INT UNSIGNED AUTO_INCREMENT PRIMARY KEY	NOT NULL	COMMENT '시퀀스를 사용',
+	`payment_id`	VARCHAR(30)	NOT NULL	COMMENT '결제 id',
+	`member_id`	VARCHAR(30)	NOT NULL	COMMENT '회원테이블연결',
+	`point_list`	INT UNSIGNED	NOT NULL	COMMENT '포인트가 +, -  된 정보',
+	`point_date`	DATETIME	NOT NULL	DEFAULT CURRENT_TIMESTAMP	COMMENT '포인트 증감 발생시 기록'
+);
+
+CREATE TABLE `review` (
+	`review_id`	INT UNSIGNED AUTO_INCREMENT PRIMARY KEY	NOT NULL,
+	`member_id`	VARCHAR(30)	NOT NULL	COMMENT '최대15글자',
+	`movie_id`	VARCHAR(30)	NOT NULL,
+	`movie_genre_id`	TINYINT UNSIGNED	NOT NULL,
+	`movie_review`	TEXT	NOT NULL,
+	`creation_date`	DATETIME	NOT NULL	DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE `screen` (
+	`screen_id`	VARCHAR(30)  PRIMARY KEY	NOT NULL,
+	`branch_id`	VARCHAR(30)	NOT NULL,
+	`screen_location`	VARCHAR(20)	NOT NULL	COMMENT 'ex) 1관, 2관, 3관',
+	`screen_seat_count`	TINYINT UNSIGNED	NOT NULL,
+	`screen_row`	TINYINT UNSIGNED	NOT NULL,
+	`screen_line`	TINYINT UNSIGNED	NOT NULL	COMMENT 'A,B,C'
+);
+
+CREATE TABLE `movie_seat` (
+	`seat_id`	VARCHAR(20)  PRIMARY KEY	NOT NULL,
+	`seat_x`	CHAR	NOT NULL,
+	`seat_y`	INT UNSIGNED	NOT NULL
+);
+
+CREATE TABLE `product` (
+	`product_id`	INT UNSIGNED  AUTO_INCREMENT PRIMARY KEY	NOT NULL,
+	`product_category_id`	INT UNSIGNED	NOT NULL,
+	`product_name`	VARCHAR(50)	NOT NULL,
+	`product_image`	VARCHAR(255)	NOT NULL,
+	`product_cost`	INT UNSIGNED	NOT NULL,
+	`product_content`	VARCHAR(255)	NOT NULL,
+	`product_quantity`	SMALLINT UNSIGNED	NOT NULL	DEFAULT 1
+);
+
+CREATE TABLE `product_category` (
+	`product_category_id`	INT UNSIGNED  AUTO_INCREMENT PRIMARY KEY	NOT NULL,
+	`product_category_name`	VARCHAR(100)	NOT NULL
+);
+
+CREATE TABLE `region` (
+	`region_id`	VARCHAR(30)  PRIMARY KEY	NOT NULL,
+	`region`	VARCHAR(50)	NOT NULL
+);
+
+CREATE TABLE `theater_branch` (
+	`branch_id`	VARCHAR(30)  PRIMARY KEY	NOT NULL,
+	`region_id`	VARCHAR(30)	NOT NULL,
+	`branch_name`	VARCHAR(50)	NOT NULL,
+	`branch_address`	VARCHAR(255)	NOT NULL,
+	`branch_number`	TINYINT UNSIGNED	NOT NULL	COMMENT '전체 관수',
+	`branch_seats`	TINYINT UNSIGNED	NOT NULL	COMMENT '전체 좌석수'
+);
+
+CREATE TABLE `cart_payment` (
+	`cart_payment_id`	INT UNSIGNED  AUTO_INCREMENT PRIMARY KEY	NOT NULL,
+	`member_id`	VARCHAR(30)	NOT NULL	COMMENT '최대15글자',
+	`cart_payment_datetime`	DATETIME	NOT NULL,
+	`cart_payment_method`	TINYINT UNSIGNED	NOT NULL	DEFAULT CURRENT_TIMESTAMP	COMMENT '1: 카드 , 2: 카카오페이',
+	`cart_payment_status`	VARCHAR(30)	NOT NULL	COMMENT '0: 완료, 1: 환불'
+);
+
+CREATE TABLE `benefit` (
+	`benefit_id`	INT UNSIGNED AUTO_INCREMENT PRIMARY KEY	NOT NULL,
+	`benefit_category_id`	VARCHAR(30)	NOT NULL,
+	`benefit_name`	VARCHAR(50)	NOT NULL,
+	`benefit_image`	VARCHAR(255)	NOT NULL	COMMENT '이미지명으로 불러오기',
+	`benefit_content`	TEXT	NOT NULL
+);
+
+CREATE TABLE `benefit_category` (
+	`benefit_category_id`	VARCHAR(30) PRIMARY KEY	NOT NULL,
+	`main_category_name`	VARCHAR(50)	NOT NULL,
+	`middle_category_name`	VARCHAR(50)	NOT NULL
+);
+
+CREATE TABLE `screen_movie_information` (
+	`move_information_id`	VARCHAR(30)  PRIMARY KEY	NOT NULL,
+	`screen_id`	VARCHAR(30)	NOT NULL,
+	`movie_id`	VARCHAR(30)	NOT NULL,
+	`movie_type`	VARCHAR(30)	NOT NULL	COMMENT 'ex)2D,3D',
+	`movie_showing_datetime`	DATETIME	NOT NULL
+);
+
+CREATE TABLE `preferred_genre` (
+	`preferred_genre_id`	TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY	NOT NULL,
+	`movie_genre_id`	TINYINT UNSIGNED	NOT NULL,
+	`member_id`	VARCHAR(30)	NOT NULL	COMMENT '최대15글자'
+);
+
+CREATE TABLE `inquire_answer` (
+	`inquire_answer_id`	INT UNSIGNED AUTO_INCREMENT PRIMARY KEY	NOT NULL	COMMENT '시퀀스사용',
+	`inquire_id`	VARCHAR(30)	NOT NULL,
+	`inquire_answer_title`	VARCHAR(50)	NOT NULL,
+	`inquire_answer_content`	TEXT	NOT NULL,
+	`inquire_answer_day`	DATETIME	NOT NULL	DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE `rental` (
+	`rental_details_id`	INT UNSIGNED  PRIMARY KEY	NOT NULL	COMMENT '년월일시분초 를 활용',
+	`rental_inquiry_theater`	VARCHAR(60)	NOT NULL,
+	`rental_details_start`	DATETIME	NOT NULL,
+	`rental_details_end`	DATETIME	NOT NULL,
+	`rental_details_movie`	VARCHAR(100)	NOT NULL,
+	`rental_details_people_count`	TINYINT UNSIGNED	NOT NULL	COMMENT '최대 50명',
+	`rental_details_status`	VARCHAR(15)	NOT NULL	DEFAULT 0	COMMENT '0  : 대기중 1 : 이용중 2: 이용종료',
+	`rental_inquiry_name`	VARCHAR(100)	NOT NULL,
+	`rental_inquiry_phone`	VARCHAR(45)	NOT NULL,
+	`rental_inquiry_price`	INT UNSIGNED	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
+	`rental_inquiry_approveday`	DATETIME	NOT NULL	DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE `cart_payment_detail` (
+	`payment_detail_id`	INT UNSIGNED AUTO_INCREMENT PRIMARY KEY	NOT NULL,
+	`cart_payment_id`	INT UNSIGNED	NOT NULL,
+	`product_id`	INT UNSIGNED	NOT NULL,
+	`product_count`	SMALLINT UNSIGNED	NOT NULL,
+	`payment_price`	INT UNSIGNED	NOT NULL
+);
+
+CREATE TABLE `payment_seat` (
+	`payment_seat_id`	VARCHAR(20)  PRIMARY KEY	NOT NULL,
+	`payment_id`	VARCHAR(30)	NOT NULL	COMMENT '결제 id',
+	`seat_id`	VARCHAR(20)	NOT NULL
+);
