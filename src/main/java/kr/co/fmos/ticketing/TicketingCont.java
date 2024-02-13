@@ -5,6 +5,7 @@ import java.net.URLDecoder;
 import java.time.format.TextStyle;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -74,6 +75,7 @@ public class TicketingCont {
 		mav.addObject("theaterBranchList", theaterBranchDao.list());
 		mav.addObject("movieList", movieDao.movieList());
 		mav.addObject("screenMovieInfoList", screenMovieInfoDao.list());
+		mav.addObject("now", new Date());
 		return mav;
 	}
 
