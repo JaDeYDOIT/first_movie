@@ -1,0 +1,100 @@
+@charset "utf-8";
+/*order 시작*/
+
+.com_box_design_wrap {
+    width: 900px;
+    margin: 70px 70px 70px 220px;
+}
+
+.com_box_design_title {
+    display: block;
+    font-family: 'CJONLYONENEW';
+    padding: 20px 0 8px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #000;
+}
+ul.com_box_design {
+    padding: 29px 0 30px;
+    font-family: 'CJONLYONENEW';
+    border-top: 3px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+ul.com_box_design > li {
+    padding: 0 20px;
+}
+
+ul.com_box_design > li label {
+    height: 40px;
+    margin-right: 14px;
+    padding-left: 53px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #6a6f77;
+    line-height: 40px;
+    vertical-align: middle;
+}
+
+ul.com_box_design > li label:first-child {
+    padding-left: 0;
+}
+
+input[type='tel'][readonly], input[type='password'][readonly], input[type='text'][readonly] {
+    background-color: #fff;
+}
+
+ul.com_box_design > li input[type="text"], ul.com_box_design > li input[type="tel"] {
+    height: 38px;
+    padding: 0 0 0 10px;
+    font-family: 'CJONLYONENEW';
+    font-weight: 400;
+    font-size: 16px;
+    color: #000;
+    line-height: 38px;
+    border: 1px solid #bebebe;
+}
+
+ul.com_box_design {
+    padding: 20px 0 20px;
+    font-family: 'CJONLYONENEW';
+    border-top: 3px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+select {
+	padding: 10px;
+	font-size: 13px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.cardlabel {
+	align-items: center;
+	width: 250px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.cartButton {
+	background-color: #373e46;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: 500;
+	margin-left: 600px;
+}
+
+.row > img {
+	width: 80px;
+	margin-left: 650px;
+	margin-top: 30px;
+}
+
+.row > p {
+	font-size: 18px;
+	font-weight: 500;
+	margin-left: 500px;
+}

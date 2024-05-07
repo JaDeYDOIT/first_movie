@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- "screen_movie_information".xml -->
+
+<mapper namespace="screenMovieInfo">
+	<select id="list"
+		resultType="kr.co.fmos.screenMovieInfo.ScreenMovieInfoDTO">
+		SELECT movie_information_id,
+		screen_id, movie_id,
+		movie_showing_date,
+		movie_showing_time, branch_id
+		FROM
+		screen_movie_information
+	</select>
+
+	<select id="selectScreenMovieInfoById" parameterType="String"
+		resultType="kr.co.fmos.screenMovieInfo.ScreenMovieInfoDTO">
+		SELECT movie_information_id,
+		screen_id, movie_id,
+		movie_showing_date,
+		movie_showing_time, branch_id
+		FROM
+		screen_movie_information
+		WHERE
+		movie_information_id=#{screenMovieInfoID}
+	</select>
+
+	<select id="showingTime" parameterType="java.util.Map"
+		resultType="kr.co.fmos.screenMovieInfo.ScreenMovieInfoDTO">
+		SELECT
+		movie_information_id, movie_showing_date,
+		movie_showing_time, screen_id, branch_id
+		FROM
+		screen_movie_information
+		WHERE
+		movie_id=#{movieID} AND
+		branch_id=#{branchID} AND
+		movie_showing_date=#{showingDate}
+		ORDER BY
+		movie_showing_time ASC
+	</select>
+
+	<select id="detail" resultType="java.util.Map"
+		parameterType="int">
+		SELECT
+		m.movie_id,
+		s.screen_id,
+		tb.branch_id,
+		tb.branch_name,
+		s.screen_location,
+		s.screen_row,
+		s.screen_line,
+		smi.movie_information_id,
+		m.movie_name,
+		m.movie_image,
+		DATE_FORMAT(smi.movie_showing_date, '%y.%m.%d(%a)') AS formatted_date,
+		TIME_FORMAT(smi.movie_showing_time, '%H:%i') AS formatted_time,
+		TIME_FORMAT(
+		ADDTIME(STR_TO_DATE(smi.movie_showing_time, '%H:%i'),
+		SEC_TO_TIME(movie_running_time * 60)),
+		'%H:%i'
+		) AS result_time,
+		m.movie_audience_rating
+		FROM
+		screen_movie_information smi
+		JOIN
+		movie m ON
+		m.movie_id = smi.movie_id
+		JOIN
+		screen s ON s.screen_id = smi.screen_id
+		JOIN
+		theater_branch tb ON tb.branch_id = smi.branch_id
+		WHERE
+		smi.movie_information_id = #{screenMovieInfoID}
+	</select>
+
+
+	<select id="emptySeats" resultType="java.util.Map"
+		parameterType="String">
+		SELECT es.screen_row row, es.screen_line col
+		FROM
+		screen_movie_information AS smi
+		JOIN none_exist_seats AS es ON smi.screen_id
+		= es.screen_id
+		WHERE smi.movie_information_id = #{screenMovieInfoID}
+	</select>
+</mapper>

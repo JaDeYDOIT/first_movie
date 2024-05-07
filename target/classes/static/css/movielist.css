@@ -1,0 +1,113 @@
+@charset "utf-8";
+
+.movie_chart_wrap {
+	width: 100%;
+	padding-top: 1%;
+}
+
+.movie_chart_wrap h2 {
+	font-size: 40px;
+	font-weight: bold;
+	color: #22A2F2;
+}
+
+.movie_chart_wrap h3 {
+	font-size: 20px;
+	color: black;
+	white-space: nowrap;/* 텍스트가 줄 바꿈되지 않도록 설정 */
+	overflow: hidden;/* 넘치는 부분을 감추기 */
+	text-overflow: ellipsis;/* 넘치는 부분에 ... 추가 */
+	font-weight: bold;
+	max-width: 210px;
+	margin-top: 1%;
+}
+.movie_chart_wrap .submenu {
+	font-size: 25px;
+	margin-top: 30px;
+	padding-bottom: 1%;
+	border-bottom: 2px solid black;
+	position: relative;
+}
+
+
+.movie_chart_wrap .submenu ul {
+	width: 200px;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+
+
+#insert_bt{
+font-size: 30px;
+	cursor:pointer;
+	border-radius: 10px;
+	border: 1px solid black;
+	padding: 0 1%;
+	position: absolute;
+	right: 0;
+}
+
+.movie_chart {
+	width: 100%;
+}
+
+.movie_list {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.movie_item {
+	margin:5% 3%; 
+	}
+.movie_rank{
+	background-color: #22A2F2;
+	color: white;
+	text-align: center;
+	font-size: 20px;
+}
+.movie_img{
+	width: 100%;
+	height: 300px;
+	position: relative;
+}
+.rank_box{
+	width: 100%;
+}
+.rank_box ul li{
+	text-align: center;
+	font-size: 15px;
+}
+.movie_img img{
+	 width: 100%;
+	 height: 100%;
+	 position: relative;
+}
+.click_btn{
+	width: 80%;
+	height: 30px;
+	z-index: 2;
+	position: absolute;
+	top: 25%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	
+}
+.click_btn button{
+	width: 100%;
+	height: 50px;
+	margin: 8% 0;
+	border-radius: 10px;
+	font-size: 20px;
+	font-weight: bold;
+	display: none;
+	cursor: pointer;
+}
+.click_btn button:hover{
+	background: #22B7F2;
+	transition: 0.5s;	
+	cursor: pointer;
+}

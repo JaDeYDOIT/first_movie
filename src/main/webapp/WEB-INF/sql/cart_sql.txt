@@ -1,0 +1,16 @@
+-- cart_sql.txt
+
+-- 장바구니 테이블 생성
+CREATE TABLE `cart_payment` (
+	`cart_payment_id`	INT UNSIGNED  AUTO_INCREMENT PRIMARY KEY	NOT NULL,
+	`member_id`	VARCHAR(30)	NOT NULL	COMMENT 
+	`cart_payment_datetime`	DATETIME	NOT NULL,
+	`cart_payment_method`	TINYINT UNSIGNED	NOT NULL	DEFAULT CURRENT_TIMESTAMP
+	`cart_payment_status`	VARCHAR(30)	NOT NULL	COMMENT 
+);
+
+-- 장바구니 시퀀스 생성
+create sequence cart_payment_seq
+start with 1
+increment by 1
+cycle;

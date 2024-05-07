@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<!-- 스토어 cart.xml -->
+
+<mapper namespace="cart">
+	
+	<insert id="insert" parameterType="kr.co.fmos.cart.CartDTO">
+		INSERT INTO cart_payment_detail(product_id, product_count, member_id)
+		VALUES (#{product_id}, #{product_count}, #{member_id})
+	</insert>
+
+
+	<select id="list" resultType="kr.co.fmos.cart.CartDTO" parameterType="String">
+		SELECT CPD.payment_detail_id, PD.product_id, PD.product_name, PD.product_cost, PD.product_content, CPD.member_id, CPD.product_count
+		FROM product PD join cart_payment_detail CPD
+		ON PD.product_id = CPD.product_id AND CPD.member_id = #{member_id}
+	</select>
+
+	<!-- 장바구니 삭제  -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM cart_payment_detail
+		WHERE payment_detail_id=#{payment_detail_id}
+	</delete>
+	
+	
+	<!-- 장바구니 개수 -->
+	<select id="cartcnt" resultType="int" parameterType="String">
+		SELECT count(product_id)
+		FROM cart_payment_detail
+		WHERE member_id = #{member_id}
+	</select>
+</mapper>
